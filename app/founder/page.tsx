@@ -8,24 +8,24 @@ import { PageHeader } from "@/components/shared/page-header";
 export const metadata: Metadata = {
   title: "The Founder · Şevketullah Ölmez — SevetTeam",
   description:
-    "Three identity tiers. Three cities. One thesis: I don't build restaurants — I build repetition. The founder profile of Şevketullah 'Sevet' Ölmez.",
+    "I don't build restaurants — I build repetition. The founder profile of Şevketullah Ölmez, architect of SevetTeam's disciplined franchise infrastructure.",
 };
 
 const identities = [
   {
-    label: "Şevketullah",
-    role: "The roots",
-    body: "The legal name. The name of the father's discipline. The name carried into every contract, every filing, every signed lease. It is the name in the file room — never on the storefront.",
+    name: "Şevketullah Ölmez",
+    knownAs: "Legal name",
+    context: "Carried into every contract, every filing, every signed lease. The name in the file room.",
   },
   {
-    label: "Şevket",
-    role: "The business identity",
-    body: "The streamlined operator. The name spoken in design sessions and on accountancy calls. The voice that closes a corridor and locks four seats around a single discipline.",
+    name: "Şevket Ölmez",
+    knownAs: "Business identity",
+    context: "The streamlined operator. Spoken in design sessions and on accountancy calls.",
   },
   {
-    label: "Sevet",
-    role: "The understood identity",
-    body: "The university nickname in England that became a private identity. Sevet is for those who understand the machine before the brand. It is the name the team uses when the line is awake.",
+    name: "Sevet Ölmez",
+    knownAs: "The understood name",
+    context: "The private identity known by those who understand the machine. Used by the team when the line is awake.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function FounderPage() {
         eyebrow="The founder — Şevketullah Ölmez"
         title="The architect of"
         italicTail="repetition."
-        dek="A clinical rejection of emotional business models, born from a life shaped by geographical displacement and the search for structural stability. Three identity tiers. Three cities. One thesis."
+        dek="A clinical rejection of emotional business models. Born in Ankara, shaped by displacement, disciplined in Edinburgh. One thesis: systems outlast individuals."
         meta={[
           { label: "Born", value: "12 Oct 1988" },
           { label: "Roots", value: "Ankara" },
@@ -80,36 +80,33 @@ export default function FounderPage() {
           <div className="grid lg:grid-cols-12 gap-8 mb-20 lg:mb-28">
             <div className="lg:col-span-8">
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Three names. One operator.
+                Identity and context
               </span>
               <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-                Identity, tiered to the audience.
+                One name, known as.
               </h2>
             </div>
             <div className="lg:col-span-4 lg:pt-6">
               <p className="text-lg leading-[1.7] text-muted-foreground max-w-[44ch]">
-                Each name is a layer of access. The legal name is in the filing. The business name is on the call. The understood name belongs to the team behind the line.
+                One person. Multiple contexts. Each name serves a distinct function: legal, operational, and internal.
               </p>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {identities.map((id, i) => (
+            {identities.map((id) => (
               <article
-                key={id.label}
+                key={id.name}
                 className="border border-foreground/15 p-8 lg:p-10 bg-foreground/[0.015]"
               >
-                <span className="font-mono text-[11px] uppercase tracking-[0.22em] ember">
-                  Tier {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-6 font-display text-4xl lg:text-5xl tracking-[-0.005em]">
-                  {id.label}
+                <h3 className="font-display text-3xl lg:text-4xl tracking-[-0.005em]">
+                  {id.name}
                 </h3>
-                <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-                  {id.role}
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  Known as: <span className="text-foreground">{id.knownAs}</span>
                 </p>
-                <p className="mt-8 text-base lg:text-lg leading-[1.75] text-foreground/80">
-                  {id.body}
+                <p className="mt-6 text-base leading-[1.75] text-foreground/80">
+                  {id.context}
                 </p>
               </article>
             ))}
