@@ -8,11 +8,11 @@ import Image from "next/image";
 
 const navLinks = [
   { name: "About",      href: "/about"           },
+  { name: "Reports",    href: "/reports"         },
+  { name: "Events",     href: "/events"          },
   { name: "Filings",    href: "/#marketplace"    },
   { name: "Auditing",   href: "/auditing"        },
   { name: "Analytics",  href: "/analytics"       },
-  { name: "Project",    href: "/sevet-project"   },
-  { name: "Doctrine",   href: "/#doctrine"       },
   { name: "Magazine",   href: "/magazine"        },
 ];
 
