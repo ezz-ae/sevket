@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, Download } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
 import { articles, series } from "@/lib/magazine-data";
+import { magazineIssues } from "@/lib/brand-detailed-data";
 
 export const metadata: Metadata = {
   title: "Field Notes · Ölmez Franchise Systems Magazine",

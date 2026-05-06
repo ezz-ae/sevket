@@ -7,13 +7,13 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "About",      href: "/about"           },
-  { name: "Reports",    href: "/reports"         },
-  { name: "Events",     href: "/events"          },
-  { name: "Filings",    href: "/#marketplace"    },
-  { name: "Auditing",   href: "/auditing"        },
-  { name: "Analytics",  href: "/analytics"       },
-  { name: "Magazine",   href: "/magazine"        },
+  { name: "Brands",         href: "/brands"          },
+  { name: "Investors",      href: "/investors"       },
+  { name: "Opportunities",  href: "/opportunities"   },
+  { name: "Reports",        href: "/reports"         },
+  { name: "Magazine",       href: "/magazine"        },
+  { name: "About",          href: "/about"           },
+  { name: "Contact",        href: "/contact"         },
 ];
 
 export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean }) {
