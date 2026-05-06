@@ -6,11 +6,12 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Filings",   href: "/#marketplace" },
-  { name: "Auditing",  href: "/auditing"     },
-  { name: "Doctrine",  href: "/#doctrine"    },
-  { name: "Magazine",  href: "/magazine"     },
-  { name: "Founder",   href: "/founder"      },
+  { name: "Filings",   href: "/#marketplace"    },
+  { name: "Auditing",  href: "/auditing"        },
+  { name: "Project",   href: "/sevet-project"   },
+  { name: "Doctrine",  href: "/#doctrine"       },
+  { name: "Magazine",  href: "/magazine"        },
+  { name: "Founder",   href: "/founder"         },
 ];
 
 export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean }) {
