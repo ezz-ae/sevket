@@ -26,6 +26,7 @@ export function generateSEOMetadata(props: SEOHeadProps): Metadata {
     modifiedDate,
     keywords = [],
   } = props
+  const openGraphType = type === 'product' ? 'website' : type
 
   return {
     title,
@@ -36,7 +37,7 @@ export function generateSEOMetadata(props: SEOHeadProps): Metadata {
       title,
       description,
       url,
-      type,
+      type: openGraphType,
       images: [
         {
           url: image,

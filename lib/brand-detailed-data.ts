@@ -92,7 +92,7 @@ export const magazineIssues: MagazineIssue[] = [
     subtitle: "How Ölmez is shaping a sharper, more disciplined future",
     issueNumber: "Issue 12",
     date: "Mid 2026",
-    coverImage: "/brand-images/olmez-mid-2026-cover.png",
+    coverImage: "/brand-library/olmez-mid-2026.png",
     description:
       "An in-depth look at the strategic blueprint guiding Ölmez through 2026. From leadership and expansion to office, fleet, and identity—this issue explores what comes after growth.",
     featuredHeadlines: [
@@ -110,7 +110,7 @@ export const magazineIssues: MagazineIssue[] = [
     subtitle: "From vision to scale — the operational discipline that defines a generation",
     issueNumber: "Issue 11",
     date: "Q2 2026",
-    coverImage: "/brand-images/mag-26-olmez.jpg",
+    coverImage: "/brand-library/mag-26-olmez.jpg",
     description:
       "Inside the operational framework that's reshaping how franchise systems are built. Real numbers, real operators, real discipline.",
     featuredHeadlines: [
@@ -128,7 +128,7 @@ export const magazineIssues: MagazineIssue[] = [
     subtitle: "Building cultural authority through premium flagship operations",
     issueNumber: "Issue 10",
     date: "Spring 2026",
-    coverImage: "/brand-images/magazine-mid26.jpg",
+    coverImage: "/brand-library/magazaine-mid26.jpg",
     description:
       "A visual journey through Ölmez's premium brand authority centers and the strategic placement of training facilities across global hubs.",
     featuredHeadlines: [
@@ -138,6 +138,24 @@ export const magazineIssues: MagazineIssue[] = [
       "The Cultural Asset Model",
     ],
     pages: 48,
+  },
+  {
+    id: "olmez-business-review-issue-08",
+    brand: "olmez",
+    title: "Discipline Before Scale",
+    subtitle: "Leadership, systems, and the operating posture behind durable growth",
+    issueNumber: "Issue 08",
+    date: "May 2025",
+    coverImage: "/brand-library/olmez-business-review-issue-08.png",
+    description:
+      "An earlier Ölmez Business Review issue focused on leadership posture, systems thinking, and why structure matters before rapid expansion.",
+    featuredHeadlines: [
+      "Discipline Before Scale",
+      "Smart Expansion Rules",
+      "Leadership Through Uncertainty",
+      "The Systems Behind Influence",
+    ],
+    pages: 44,
   },
 ];
 

@@ -4,6 +4,8 @@ import { Download, FileText, TrendingUp, Users, Calendar } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
 export const metadata: Metadata = {
   title: "Reports & Filings — Ölmez Franchise Systems",
@@ -144,21 +146,30 @@ const upcomingMeetings = [
   },
 ];
 
-export default function ReportsPage() {
+export default async function ReportsPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="Corporate Transparency"
-        title="Reports & Strategic"
-        italicTail="Documentation."
-        dek="Quarterly reports, investor briefings, and operational documentation. Every number explains itself through AFFAREM. Every asset tells its story."
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "Kurumsal şeffaflık" : "Corporate Transparency"}
+        title={isTurkish ? "Raporlar ve stratejik" : "Reports & Strategic"}
+        italicTail={isTurkish ? "dokümantasyon." : "Documentation."}
+        dek={
+          isTurkish
+            ? "Çeyreklik raporlar, yatırımcı bilgilendirmeleri ve operasyon dokümantasyonu. Her sayı AFFAREM üzerinden kendini açıklar. Her varlık kendi hikayesini taşır."
+            : "Quarterly reports, investor briefings, and operational documentation. Every number explains itself through AFFAREM. Every asset tells its story."
+        }
         meta={[
-          { label: "Latest Report", value: "H1 2026" },
-          { label: "Active Portfolio", value: "147 Units" },
-          { label: "Deployed Capital", value: "$16.5M" },
-          { label: "Investor Meetings", value: "4 Scheduled" },
+          { label: isTurkish ? "Son rapor" : "Latest Report", value: "H1 2026" },
+          { label: isTurkish ? "Aktif portföy" : "Active Portfolio", value: isTurkish ? "147 ünite" : "147 Units" },
+          { label: isTurkish ? "Konuşlanan sermaye" : "Deployed Capital", value: "$16.5M" },
+          { label: isTurkish ? "Yatırımcı toplantısı" : "Investor Meetings", value: isTurkish ? "4 planlandı" : "4 Scheduled" },
         ]}
       />
 
@@ -167,10 +178,10 @@ export default function ReportsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20 lg:mb-28">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Strategic Reports
+              {isTurkish ? "Stratejik raporlar" : "Strategic Reports"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Every number explains itself.
+              {isTurkish ? "Her sayı kendini açıklar." : "Every number explains itself."}
             </h2>
           </div>
 
@@ -196,8 +207,8 @@ export default function ReportsPage() {
                         </p>
 
                         <div className="mb-6">
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                            Key Highlights
+                        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
+                            {isTurkish ? "Temel başlıklar" : "Key Highlights"}
                           </p>
                           <div className="grid sm:grid-cols-2 gap-2">
                             {report.highlights.map((highlight) => (
@@ -219,7 +230,7 @@ export default function ReportsPage() {
                     <div className="space-y-4">
                       <div className="border border-foreground/15 p-6 bg-background">
                         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
-                          Key Metrics
+                          {isTurkish ? "Temel metrikler" : "Key Metrics"}
                         </p>
                         <div className="space-y-3">
                           {Object.entries(report.metrics || {}).map(
@@ -239,11 +250,11 @@ export default function ReportsPage() {
 
                       <button className="w-full inline-flex items-center justify-center gap-2 bg-[#8B5A3C] text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-[#a0674a] transition-colors">
                         <Download className="w-4 h-4" />
-                        Download PDF
+                        {isTurkish ? "PDF indir" : "Download PDF"}
                       </button>
 
                       <p className="text-center text-xs text-foreground/50">
-                        {report.pages} pages · {report.date}
+                        {report.pages} {isTurkish ? "sayfa" : "pages"} · {report.date}
                       </p>
                     </div>
                   </div>
@@ -259,10 +270,10 @@ export default function ReportsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20 lg:mb-28">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Investor Engagement
+              {isTurkish ? "Yatırımcı etkileşimi" : "Investor Engagement"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[22ch]">
-              Upcoming Investor Meetings.
+              {isTurkish ? "Yaklaşan yatırımcı toplantıları." : "Upcoming Investor Meetings."}
             </h2>
           </div>
 
@@ -286,24 +297,24 @@ export default function ReportsPage() {
 
                 <div className="space-y-3 mb-6 pb-6 border-b border-foreground/10">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-foreground/60">Date & Time</span>
+                    <span className="text-foreground/60">{isTurkish ? "Tarih ve saat" : "Date & Time"}</span>
                     <span className="font-mono">
                       {meeting.date} · {meeting.time}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-foreground/60">Location</span>
+                    <span className="text-foreground/60">{isTurkish ? "Lokasyon" : "Location"}</span>
                     <span className="font-mono">{meeting.location}</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-foreground/60">Attendees</span>
+                    <span className="text-foreground/60">{isTurkish ? "Katılımcılar" : "Attendees"}</span>
                     <span className="text-right">{meeting.attendees}</span>
                   </div>
                 </div>
 
                 <div className="mb-6">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                    Agenda
+                    {isTurkish ? "Gündem" : "Agenda"}
                   </p>
                   <ul className="space-y-2">
                     {meeting.agenda.map((item) => (
@@ -321,7 +332,7 @@ export default function ReportsPage() {
                 {meeting.register && (
                   <button className="w-full inline-flex items-center justify-center gap-2 bg-[#8B5A3C] text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-[#a0674a] transition-colors">
                     <Users className="w-4 h-4" />
-                    Register Attendance
+                    {isTurkish ? "Katılım kaydı oluştur" : "Register Attendance"}
                   </button>
                 )}
               </div>
@@ -334,21 +345,22 @@ export default function ReportsPage() {
       <section className="relative border-t border-foreground/10 py-32 lg:py-48">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Full Schedule
+            {isTurkish ? "Tam takvim" : "Full Schedule"}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[18ch] mx-auto mb-8">
-            Company Events Calendar.
+            {isTurkish ? "Şirket etkinlik takvimi." : "Company Events Calendar."}
           </h2>
           <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
-            View all upcoming investor briefings, training sessions, operator
-            workshops, and strategic events on our comprehensive calendar.
+            {isTurkish
+              ? "Yaklaşan tüm yatırımcı bilgilendirmelerini, eğitim oturumlarını, operatör atölyelerini ve stratejik etkinlikleri kapsamlı takvimimizde görün."
+              : "View all upcoming investor briefings, training sessions, operator workshops, and strategic events on our comprehensive calendar."}
           </p>
 
           <Link
-            href="/events"
+            href={withLocale("/events", locale)}
             className="inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/90 transition-colors"
           >
-            View Events Calendar
+            {isTurkish ? "Etkinlik takvimini gör" : "View Events Calendar"}
             <Calendar className="w-4 h-4" />
           </Link>
         </div>

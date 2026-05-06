@@ -1,156 +1,258 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
-export const metadata: Metadata = {
-  title: "The Founder · Şevketullah Ölmez — Ölmez Franchise Systems",
-  description:
-    "I don't build restaurants — I build repetition. The founder profile of Şevketullah Ölmez, architect of Ölmez Franchise Systems's disciplined franchise infrastructure.",
-};
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const localizedPath = withLocale("/founder", locale);
 
-const geographies = [
-  {
-    place: "Ankara, Turkey",
-    role: "Roots — Hard discipline",
-    body: "Ingrained the value of personal responsibility and the uncompromising nature of the father's world. Discipline as the precondition for trust. Discipline as the precondition for repetition.",
-  },
-  {
-    place: "England",
-    role: "Identity — Market adaptation",
-    body: "Taught the necessity of distance. People simplify what they cannot carry; the UK provided the room to observe systems from the outside. Identity tiered into three names because three audiences were listening.",
-  },
-  {
-    place: "Edinburgh, Scotland",
-    role: "Focus — Strategic silence",
-    body: "Stopped chasing the noise of metropolis startups. Engineered silent, high-margin repetitions instead. The desk where every filing is dated, signed, and circulated to all four seats.",
-  },
-];
+  return {
+    title: isTurkish
+      ? "Kurucu · Şevketullah Ölmez — Ölmez"
+      : "The Founder · Şevketullah Ölmez — Ölmez Franchise Systems",
+    description: isTurkish
+      ? "Şevketullah Ölmez'in kurucu profili, Ölmez'in editoryal dili ve amiral marka kimliği üzerinden sunuluyor."
+      : "The founder profile of Şevketullah Ölmez, presented through the editorial language and flagship identity of Ölmez.",
+    alternates: {
+      canonical: `${baseUrl}${localizedPath}`,
+    },
+    openGraph: {
+      title: isTurkish
+        ? "Kurucu · Şevketullah Ölmez — Ölmez"
+        : "The Founder · Şevketullah Ölmez — Ölmez Franchise Systems",
+      description: isTurkish
+        ? "Kurucunun tezi, coğrafyaları ve tekrar üzerine kurduğu sistem."
+        : "The founder's thesis, geographies, and system built around repetition.",
+      url: `${baseUrl}${localizedPath}`,
+      type: "website",
+    },
+  };
+}
 
-const principles = [
-  "Stand where the customer is already stopping. Convert flow; do not manufacture it.",
-  "Build a system any disciplined operator can run. If it requires a genius, it cannot be franchised.",
-  "Audit discipline as strictly as you audit profit. The score, not the wire, decides who scales.",
-  "Brand is not a graphic-design choice. Brand is a repeated promise.",
-  "The 4-investor seat structure is the discipline. The discipline is the asset.",
-  "Money is becoming normal. Behavioral consistency is the rarity.",
-];
-
-export default function FounderPage() {
+export default async function FounderPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const geographies = isTurkish
+    ? [
+        {
+          place: "Ankara",
+          role: "Kökler",
+          body: "Daha sonra kurulan her sistemin duygusal mimarisi olarak sert disiplin ve kişisel sorumluluk.",
+        },
+        {
+          place: "İngiltere",
+          role: "Mesafe",
+          body: "Kimliği sahnelenen, çevrilen ve bilinçli biçimde kontrol edilen bir şeye dönüştüren pazar odaklı bakış.",
+        },
+        {
+          place: "Edinburgh",
+          role: "Masa",
+          body: "Markanın yapılı, editoryal ve kurumsal olarak okunabilir hale geldiği sessiz oda.",
+        },
+      ]
+    : [
+        {
+          place: "Ankara",
+          role: "Roots",
+          body: "Hard discipline and personal responsibility as the emotional architecture behind every later system.",
+        },
+        {
+          place: "England",
+          role: "Distance",
+          body: "A market-facing lens that turns identity into something staged, translated, and intentionally controlled.",
+        },
+        {
+          place: "Edinburgh",
+          role: "Desk",
+          body: "The quiet room where the brand becomes structured, editorial, and institutionally legible.",
+        },
+      ];
+  const principles = isTurkish
+    ? [
+        "Müşterinin zaten durduğu yerde konumlan. Akışı dönüştür; onu yapay biçimde üretme.",
+        "Disiplinli herhangi bir operatörün yürütebileceği bir sistem kur. Bir deha gerektiriyorsa franchise olamaz.",
+        "Disiplini, kârı denetlediğin kadar sıkı denetle. Kimin ölçekleneceğine skor karar verir, söylem değil.",
+        "Marka grafik tasarım tercihi değildir. Marka tekrar edilen bir vaattir.",
+        "Dört yatırımcı koltuğu yapısı disiplindir. Varlığın kendisi de o disiplindir.",
+        "Para normalleşiyor. Nadir olan davranış tutarlılığıdır.",
+      ]
+    : [
+        "Stand where the customer is already stopping. Convert flow; do not manufacture it.",
+        "Build a system any disciplined operator can run. If it requires a genius, it cannot be franchised.",
+        "Audit discipline as strictly as you audit profit. The score, not the wire, decides who scales.",
+        "Brand is not a graphic-design choice. Brand is a repeated promise.",
+        "The 4-investor seat structure is the discipline. The discipline is the asset.",
+        "Money is becoming normal. Behavioral consistency is the rarity.",
+      ];
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
+    <main className="relative min-h-screen bg-[#050505] text-white">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="The founder — Şevketullah Ölmez"
-        title="The architect of"
-        italicTail="repetition."
-        dek="A clinical rejection of emotional business models. Born in Ankara, shaped by displacement, disciplined in Edinburgh. One thesis: systems outlast individuals."
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "Kurucu — Şevketullah Ölmez" : "The founder — Şevketullah Ölmez"}
+        title={isTurkish ? "Tekrarın" : "The architect of"}
+        italicTail={isTurkish ? "mimarı." : "repetition."}
+        dek={
+          isTurkish
+            ? "Markanın kendisiyle aynı disiplinli görsel dil üzerinden sahnelenmiş bir kurucu profili: sakin, kontrollü ve editoryal."
+            : "A founder profile staged through the same disciplined visual language as the brand itself: quiet, controlled, and editorial."
+        }
         meta={[
-          { label: "Born", value: "12 Oct 1988" },
-          { label: "Roots", value: "Ankara" },
-          { label: "Desk", value: "Edinburgh" },
-          { label: "Bridge", value: "London / Istanbul" },
+          { label: isTurkish ? "Doğum" : "Born", value: isTurkish ? "12 Eki 1988" : "12 Oct 1988" },
+          { label: isTurkish ? "Kökler" : "Roots", value: "Ankara" },
+          { label: isTurkish ? "Masa" : "Desk", value: "Edinburgh" },
+          { label: isTurkish ? "Tez" : "Thesis", value: isTurkish ? "Ölçekten önce hikaye" : "Story before scale" },
         ]}
       />
 
-
-      {/* Geographies — vertical timeline */}
-      <section className="relative py-24 lg:py-32 bg-foreground/[0.015] border-t border-foreground/10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-12 gap-8 mb-20 lg:mb-28">
-            <div className="lg:col-span-8">
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Geographical influences
-              </span>
-              <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[18ch]">
-                Three cities. Three lessons.
-              </h2>
-            </div>
+      <section className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.editorial[0].src}
+              alt={olmezBrandAssets.editorial[0].alt}
+              width={900}
+              height={1200}
+              className="h-full w-full object-cover"
+              priority
+            />
           </div>
 
-          <ol className="relative max-w-[64rem] mx-auto pl-10 lg:pl-16">
-            <span className="absolute top-2 bottom-2 left-2 lg:left-4 w-px bg-foreground/15" />
-            {geographies.map((g) => (
-              <li key={g.place} className="relative pb-16 lg:pb-24 last:pb-0">
-                <span className="absolute -left-[34px] lg:-left-[44px] top-2 w-3 h-3 rounded-full bg-[#b8865a] border-2 border-background" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.22em] ember">
-                  {g.role}
-                </span>
-                <h3 className="mt-4 font-display text-3xl lg:text-5xl tracking-[-0.005em]">
-                  {g.place}
-                </h3>
-                <p className="mt-7 max-w-[60ch] text-lg lg:text-xl leading-[1.7] text-foreground/85">
-                  {g.body}
-                </p>
-              </li>
-            ))}
-          </ol>
+          <div className="flex flex-col justify-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Profil" : "Profile"}
+            </span>
+            <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+              {isTurkish
+                ? "Kişisel marka değil, sistem kurucusu olarak sunulan bir kurucu."
+                : "A founder presented as a system builder, not a personality brand."}
+            </h2>
+            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
+              {isTurkish
+                ? "Kurucu sayfası artık Ölmez amiralinin geri kalanı gibi okunuyor: azaltılmış palet, güçlü kapaklar ve daha sıkı bir editoryal çerçeve. Amaç mitoloji kurmak değil; odayı, yayını ve operasyon modelini şekillendiren düşünceyi netleştirmek."
+                : "The founder page now reads like the rest of the Ölmez flagship: reduced palette, strong covers, and a tighter editorial frame. The objective is not mythology. It is clarity about the thinking that shaped the room, the publication, and the operational model."}
+            </p>
+
+            <div className="mt-10 grid gap-5 sm:grid-cols-3">
+              {geographies.map((g) => (
+                <div key={g.place} className="border border-white/10 p-5">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
+                    {g.role}
+                  </p>
+                  <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
+                    {g.place}
+                  </h3>
+                  <p className="mt-3 text-sm leading-[1.75] text-white/62">
+                    {g.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Manifesto pullquote */}
-      <section className="relative border-t border-foreground/10 py-32 lg:py-48">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            The thesis
+      <section className="border-t border-white/10 bg-white/[0.02] py-28 lg:py-36">
+        <div className="mx-auto max-w-[1100px] px-6 text-center lg:px-12">
+          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+            {isTurkish ? "Tez" : "The thesis"}
           </span>
-          <blockquote className="mt-10 lg:mt-14 font-display italic text-5xl md:text-7xl lg:text-[120px] tracking-[-0.015em] leading-[1.0] max-w-[14ch] mx-auto">
-            &ldquo;I don&rsquo;t build restaurants. I build repetition.&rdquo;
+          <blockquote className="mx-auto mt-8 max-w-[11ch] font-display text-5xl tracking-[-0.04em] text-white md:text-7xl lg:text-[110px] lg:leading-[0.92]">
+            {isTurkish
+              ? "“Ben restoran kurmam. Tekrar kurarım.”"
+              : "“I don’t build restaurants. I build repetition.”"}
           </blockquote>
-          <span className="mt-12 block font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            — Şevketullah Ölmez · Edinburgh
-          </span>
+          <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.22em] text-[#e7bc8b]">
+            Şevketullah Ölmez · Edinburgh
+          </p>
         </div>
       </section>
 
-      {/* Operating principles */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-12 gap-8 mb-20 lg:mb-28">
-            <div className="lg:col-span-8">
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Operating principles
-              </span>
-              <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-                What the desk holds to.
-              </h2>
-            </div>
+      <section className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="max-w-3xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Operasyon ilkeleri" : "Operating principles"}
+            </span>
+            <h2 className="mt-6 font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              {isTurkish
+                ? "Kurucunun sistemin mutlaka taşıması gerektiğini söylediği şeyler."
+                : "What the founder insists the system must hold."}
+            </h2>
           </div>
 
-          <ol className="border-t border-foreground/15">
-            {principles.map((p, i) => (
+          <ol className="mt-14 border-t border-white/10">
+            {principles.map((principle, index) => (
               <li
-                key={p}
-                className="grid lg:grid-cols-[120px_1fr] gap-6 lg:gap-12 items-baseline py-10 lg:py-14 border-b border-foreground/15"
+                key={principle}
+                className="grid gap-5 border-b border-white/10 py-8 lg:grid-cols-[120px_1fr] lg:items-baseline lg:gap-10 lg:py-10"
               >
-                <span className="font-mono text-sm uppercase tracking-[0.22em] ember tabular-nums">
-                  /{String(i + 1).padStart(2, "0")}
+                <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#e7bc8b]">
+                  /{String(index + 1).padStart(2, "0")}
                 </span>
-                <p className="text-xl lg:text-2xl font-display leading-[1.35] tracking-[-0.005em] text-foreground/90 max-w-[60ch]">
-                  {p}
+                <p className="max-w-[58ch] font-display text-2xl tracking-[-0.03em] text-white/92 md:text-3xl">
+                  {principle}
                 </p>
               </li>
             ))}
           </ol>
+        </div>
+      </section>
 
-          <div className="mt-20 lg:mt-28 flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/magazine/the-founders-blueprint"
-              className="group inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-7 h-12 hover:bg-foreground/90 transition-colors"
-            >
-              Read the founder&rsquo;s blueprint
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/magazine"
-              className="inline-flex items-center justify-center gap-3 border border-foreground/25 text-foreground font-mono text-[11px] uppercase tracking-[0.22em] px-7 h-12 hover:bg-foreground/5 transition-colors"
-            >
-              All field notes
-            </Link>
+      <section className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16 lg:px-12">
+          <div className="flex flex-col justify-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "İleri okuma" : "Further reading"}
+            </span>
+            <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+              {isTurkish
+                ? "Kurucunun mantığı baskıda devam ediyor."
+                : "The founder’s logic continues in print."}
+            </h2>
+            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/66">
+              {isTurkish
+                ? "Field Notes arşivi tartışmanın geri kalanını taşır: tekrar neden önemlidir, lokasyon nasıl değerlendirilir ve Ölmez hissiyatı sistemden nerede ayırır."
+                : "The Field Notes archive carries the rest of the argument: why repetition matters, how location is evaluated, and where Ölmez separates mood from system."}
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href={withLocale("/magazine/the-founders-blueprint", locale)}
+                className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+              >
+                {isTurkish ? "Blueprint'i oku" : "Read the blueprint"}
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href={withLocale("/magazine", locale)}
+                className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
+              >
+                {isTurkish ? "Field Notes'u incele" : "Browse Field Notes"}
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.editorial[1].src}
+              alt={olmezBrandAssets.editorial[1].alt}
+              width={900}
+              height={1200}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>

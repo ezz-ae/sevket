@@ -6,6 +6,8 @@ import { brands, getBrand } from "@/lib/brands-data";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
@@ -47,21 +49,30 @@ const statusLabels: Record<string, string> = {
   closed: "Closed",
 };
 
-export default function OpportunitiesPage() {
+export default async function OpportunitiesPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="Active Investment Opportunities"
-        title="Capital Deployment"
-        italicTail="Opportunities."
-        dek="Active investment opportunities across our 5-brand ecosystem. Each opportunity includes pre-validated sites, certified operators, and 100% AFFAREM monitoring."
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "Aktif yatırım fırsatları" : "Active Investment Opportunities"}
+        title={isTurkish ? "Sermaye konuşlandırma" : "Capital Deployment"}
+        italicTail={isTurkish ? "fırsatları." : "Opportunities."}
+        dek={
+          isTurkish
+            ? "Beş markalı ekosistemimiz genelinde aktif yatırım fırsatları. Her fırsat ön doğrulaması yapılmış lokasyonlar, sertifikalı operatörler ve yüzde 100 AFFAREM izleme içerir."
+            : "Active investment opportunities across our 5-brand ecosystem. Each opportunity includes pre-validated sites, certified operators, and 100% AFFAREM monitoring."
+        }
         meta={[
-          { label: "Active Opportunities", value: opportunities.length.toString() },
-          { label: "Total Capital", value: "$14.5M+" },
-          { label: "Avg Payback", value: "26 months" },
-          { label: "Markets", value: "8 Regions" },
+          { label: isTurkish ? "Aktif fırsat" : "Active Opportunities", value: opportunities.length.toString() },
+          { label: isTurkish ? "Toplam sermaye" : "Total Capital", value: "$14.5M+" },
+          { label: isTurkish ? "Ort. geri ödeme" : "Avg Payback", value: isTurkish ? "26 ay" : "26 months" },
+          { label: isTurkish ? "Pazar" : "Markets", value: isTurkish ? "8 bölge" : "8 Regions" },
         ]}
       />
 
@@ -70,7 +81,7 @@ export default function OpportunitiesPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex overflow-x-auto gap-4 pb-2">
             <button className="flex-shrink-0 px-6 h-10 border border-foreground bg-foreground text-background font-mono text-[10px] uppercase tracking-[0.1em]">
-              All Opportunities ({opportunities.length})
+              {isTurkish ? "Tüm fırsatlar" : "All Opportunities"} ({opportunities.length})
             </button>
             {brands.map((brand) => {
               const count = opportunities.filter(
@@ -126,7 +137,13 @@ export default function OpportunitiesPage() {
                             className="px-3 h-7 inline-flex items-center font-mono text-[10px] uppercase tracking-[0.18em] text-white"
                             style={{ backgroundColor: statusColors[opp.status] }}
                           >
-                            {statusLabels[opp.status]}
+                            {isTurkish
+                              ? ({
+                                  open: "Açık",
+                                  limited: "Sınırlı",
+                                  closed: "Kapalı",
+                                }[opp.status] || statusLabels[opp.status])
+                              : statusLabels[opp.status]}
                           </span>
                           <span className="px-3 h-7 inline-flex items-center font-mono text-[10px] uppercase tracking-[0.18em] border border-foreground/20">
                             {opp.type}
@@ -146,7 +163,7 @@ export default function OpportunitiesPage() {
                             <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                             <div>
                               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
-                                Markets
+                                {isTurkish ? "Pazarlar" : "Markets"}
                               </p>
                               <p className="text-sm">{opp.states.join(", ")}</p>
                             </div>
@@ -155,7 +172,7 @@ export default function OpportunitiesPage() {
                             <Clock className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                             <div>
                               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
-                                Timeline
+                                {isTurkish ? "Zaman planı" : "Timeline"}
                               </p>
                               <p className="text-sm">{opp.timeline}</p>
                             </div>
@@ -164,7 +181,7 @@ export default function OpportunitiesPage() {
 
                         <div>
                           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                            Investment Highlights
+                            {isTurkish ? "Yatırım başlıkları" : "Investment Highlights"}
                           </p>
                           <div className="grid sm:grid-cols-2 gap-2">
                             {opp.highlights.map((highlight) => (
@@ -187,7 +204,7 @@ export default function OpportunitiesPage() {
                           <div className="space-y-6">
                             <div>
                               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                                Capital Required
+                                {isTurkish ? "Gereken sermaye" : "Capital Required"}
                               </p>
                               <p className="font-display text-3xl tracking-[-0.015em]">
                                 {opp.capitalRequired}
@@ -195,7 +212,7 @@ export default function OpportunitiesPage() {
                             </div>
                             <div>
                               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                                Target Return
+                                {isTurkish ? "Hedef getiri" : "Target Return"}
                               </p>
                               <p className="font-display text-xl tracking-[-0.005em]">
                                 {opp.targetReturn}
@@ -203,7 +220,7 @@ export default function OpportunitiesPage() {
                             </div>
                             <div>
                               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                                Minimum Investment
+                                {isTurkish ? "Minimum yatırım" : "Minimum Investment"}
                               </p>
                               <p className="font-display text-lg tracking-[-0.005em]">
                                 {opp.minimumInvestment}
@@ -213,7 +230,7 @@ export default function OpportunitiesPage() {
                             <div className="pt-4 border-t border-foreground/10">
                               <div className="flex items-center justify-between mb-2">
                                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                                  Allocation
+                                  {isTurkish ? "Tahsis" : "Allocation"}
                                 </p>
                                 <p className="text-sm font-mono">
                                   {opp.spotsAllocated}/{opp.spotsAvailable}
@@ -230,8 +247,7 @@ export default function OpportunitiesPage() {
                                 />
                               </div>
                               <p className="text-xs text-muted-foreground mt-2">
-                                {opp.spotsAvailable - opp.spotsAllocated} spots
-                                remaining
+                                {opp.spotsAvailable - opp.spotsAllocated} {isTurkish ? "slot kaldı" : "spots remaining"}
                               </p>
                             </div>
                           </div>
@@ -241,20 +257,20 @@ export default function OpportunitiesPage() {
 
                     <div className="flex flex-wrap gap-4 pt-8 border-t border-foreground/10">
                       <Link
-                        href="/contact"
+                        href={withLocale("/contact", locale)}
                         className="inline-flex items-center justify-center gap-2 text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
                         style={{
                           backgroundColor: brand?.theme.primary || "#8B5A3C",
                         }}
                       >
-                        Inquire About This Opportunity
+                        {isTurkish ? "Bu fırsat hakkında sor" : "Inquire About This Opportunity"}
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                       <Link
-                        href={`/brands/${opp.brand}`}
+                        href={withLocale(`/brands/${opp.brand}`, locale)}
                         className="inline-flex items-center justify-center gap-2 border border-foreground/25 text-foreground px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-foreground/5 transition-colors"
                       >
-                        View {brand?.name || "Brand"}
+                        {isTurkish ? "Gör" : "View"} {brand?.name || (isTurkish ? "Marka" : "Brand")}
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
                     </div>
@@ -270,30 +286,30 @@ export default function OpportunitiesPage() {
       <section className="relative border-t border-foreground/10 py-32 lg:py-48 bg-foreground/[0.015]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Capital Deployment Journey
+            {isTurkish ? "Sermaye konuşlandırma yolculuğu" : "Capital Deployment Journey"}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
-            Structured. Transparent. Disciplined.
+            {isTurkish ? "Yapılı. Şeffaf. Disiplinli." : "Structured. Transparent. Disciplined."}
           </h2>
           <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
-            Every opportunity follows our six-step deployment process. From
-            initial inquiry to operations launch, capital is deployed with
-            discipline.
+            {isTurkish
+              ? "Her fırsat altı adımlı konuşlandırma sürecimizi izler. İlk talepten operasyon açılışına kadar sermaye disiplinle konuşlandırılır."
+              : "Every opportunity follows our six-step deployment process. From initial inquiry to operations launch, capital is deployed with discipline."}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/investors"
+              href={withLocale("/investors", locale)}
               className="inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/90 transition-colors"
             >
-              View Investor Portal
+              {isTurkish ? "Yatırımcı portalını gör" : "View Investor Portal"}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href={withLocale("/contact", locale)}
               className="inline-flex items-center justify-center gap-3 border border-foreground/25 text-foreground font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
             >
-              Schedule Investment Call
+              {isTurkish ? "Yatırım görüşmesi planla" : "Schedule Investment Call"}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

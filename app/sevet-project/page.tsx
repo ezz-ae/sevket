@@ -17,9 +17,10 @@ export default function SevetProjectPage() {
       <Navigation forceScrolled />
       
       <PageHeader
+        eyebrow="Project dossier"
         title="The Sevet Ölmez Project"
-        subtitle="Engineering Global Shawarma Franchise Systems"
-        description="A sophisticated restaurant business infrastructure designed to transform food service into a measurable, repeatable, and scalable asset class."
+        italicTail="Engineering Global Shawarma Franchise Systems"
+        dek="A sophisticated restaurant business infrastructure designed to transform food service into a measurable, repeatable, and scalable asset class."
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

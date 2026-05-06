@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SiteLocale, withLocale } from "@/lib/site-locale";
 
 export function PageHeader({
   eyebrow,
@@ -7,7 +8,8 @@ export function PageHeader({
   italicTail,
   dek,
   meta,
-  backHref = "/",
+  locale = "default",
+  backHref,
   backLabel = "Return to landing",
 }: {
   eyebrow: string;
@@ -15,14 +17,17 @@ export function PageHeader({
   italicTail?: string;
   dek?: string;
   meta?: { label: string; value: string }[];
+  locale?: SiteLocale;
   backHref?: string;
   backLabel?: string;
 }) {
+  const resolvedBackHref = backHref ?? withLocale("/", locale);
+
   return (
     <header className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <Link
-          href={backHref}
+          href={resolvedBackHref}
           className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground transition-colors mb-12 lg:mb-16"
         >
           <ArrowLeft className="w-3.5 h-3.5" />

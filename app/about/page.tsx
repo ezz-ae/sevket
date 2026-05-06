@@ -1,190 +1,206 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { magazineIssues } from "@/lib/brand-detailed-data";
+import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
-export const metadata: Metadata = {
-  title: "About Ölmez — Mobility. Design. Future.",
-  description:
-    "Ölmez is redefining restaurant infrastructure and business systems. Built on vision, driven by purpose. Leadership, innovation, and global expansion.",
-};
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
 
-export default function AboutPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const localizedPath = withLocale("/about", locale);
+
+  return {
+    title: isTurkish
+      ? "Ölmez Hakkında — İş. Bir Sonraki Seviye İçin Kuruldu."
+      : "About Ölmez — Business. Built Next.",
+    description: isTurkish
+      ? "Ölmez'in premium profilini keşfedin: amiral oda, editoryal sistem, filo dili ve markanın arkasındaki operasyon standardı."
+      : "A premium profile of Ölmez: the flagship room, the editorial system, the fleet language, and the operating standard behind the brand.",
+    alternates: {
+      canonical: `${baseUrl}${localizedPath}`,
+    },
+    openGraph: {
+      title: isTurkish
+        ? "Ölmez Hakkında — İş. Bir Sonraki Seviye İçin Kuruldu."
+        : "About Ölmez — Business. Built Next.",
+      description: isTurkish
+        ? "Amiral ofis, yayın dili ve ölçek standardı üzerinden Ölmez kimliği."
+        : "The Ölmez identity through its flagship office, publishing language, and scale standard.",
+      url: `${baseUrl}${localizedPath}`,
+      type: "website",
+    },
+  };
+}
+
+export default async function AboutPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const olmezIssues = magazineIssues.filter((issue) => issue.brand === "olmez");
+  const principles = isTurkish
+    ? [
+        {
+          title: "Tasarım operasyonel anlam taşır",
+          body: "Ölmez marka ifadesini altyapı olarak ele alır. Oda, palet ve basılı sayı aynı ölçülü vaadi tekrar eder.",
+        },
+        {
+          title: "Ölçülülük kalıcılık sinyali verir",
+          body: "Görsel sistem bilinçli biçimde sakindir: siyah üstünde bakır, editoryal tipografi ve promosyon değil kurum hissi veren yüzeyler.",
+        },
+        {
+          title: "Hikaye ölçeği hazırlar",
+          body: "Rotalar, raporlar veya yatırımcı detaylarından önce amiral deneyimin neye inandığını ve neden güvenilmesi gerektiğini göstermesi gerekir.",
+        },
+      ]
+    : [
+        {
+          title: "Design carries operational meaning",
+          body: "Ölmez treats brand expression as infrastructure. The room, the palette, and the printed issue all reinforce the same measured promise.",
+        },
+        {
+          title: "Restraint signals permanence",
+          body: "The visual system is intentionally calm: copper against black, editorial typography, and surfaces that feel institutional instead of promotional.",
+        },
+        {
+          title: "Story prepares the scale",
+          body: "Before routes, filings, or investor detail, the flagship experience has to establish what the business stands for and why it should be trusted.",
+        },
+      ];
+  const offices = isTurkish
+    ? [
+        {
+          location: "Edinburgh",
+          role: "Amiral masa",
+          body: "Markanın standart olarak sahnelendiği yer: merkez, yayın masası ve diğer tüm yüzeylerin cevap verdiği oda.",
+        },
+        {
+          location: "İstanbul",
+          role: "Operasyon ritmi",
+          body: "Uygulamanın, pazar sezgisinin ve genişleme baskısının tekrar edilebilir bir sisteme çevrildiği nabız.",
+        },
+        {
+          location: "Amerika Birleşik Devletleri",
+          role: "Ölçek yüzeyi",
+          body: "Kimliği zayıflatmadan odanın dışına taşıyan filo varlığı ve hareket dili.",
+        },
+      ]
+    : [
+        {
+          location: "Edinburgh",
+          role: "Flagship desk",
+          body: "Where the brand is staged as a standard: headquarters, publication desk, and the room every other surface answers to.",
+        },
+        {
+          location: "Istanbul",
+          role: "Operational rhythm",
+          body: "The pulse of execution, market instinct, and expansion pressure translated into a repeatable system.",
+        },
+        {
+          location: "United States",
+          role: "Scale surface",
+          body: "Fleet presence and movement language that extends the identity beyond the room without diluting it.",
+        },
+      ];
+
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
+    <main className="relative min-h-screen bg-[#050505] text-white">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="About the brand"
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "Amiral markanın profili" : "About the flagship"}
         title="Ölmez"
-        italicTail="Mobility. Design. Future."
-        dek="We are redefining restaurant infrastructure and business systems. Built on vision. Driven by purpose. Every detail matters."
+        italicTail={isTurkish ? "İş. Bir sonraki seviye." : "Business. Built next."}
+        dek={
+          isTurkish
+            ? "Mekan, yayın ve hareket arasında editoryal, kalıcı ve ölçeklenebilir hissettirmek için kurulmuş disiplinli bir amiral marka."
+            : "A disciplined flagship brand built to feel editorial, permanent, and scalable across room, publication, and movement."
+        }
         meta={[
-          { label: "Founded", value: "2021" },
-          { label: "HQ", value: "Edinburgh" },
-          { label: "Team", value: "Global" },
-          { label: "Mission", value: "Repetition & Scale" },
+          { label: isTurkish ? "Kuruluş" : "Founded", value: "2021" },
+          { label: isTurkish ? "Masa" : "Desk", value: "Edinburgh" },
+          { label: isTurkish ? "Görsel kod" : "Visual code", value: isTurkish ? "Bakır / siyah" : "Copper / black" },
+          { label: isTurkish ? "Güncel sayı" : "Current issue", value: isTurkish ? "Sayı 12" : "Issue 12" },
         ]}
       />
 
-      {/* Brand Identity Section */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-6">
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Brand Foundation
-              </span>
-              <h2 className="mt-6 font-display text-4xl md:text-6xl tracking-[-0.015em] leading-[1.0] max-w-[18ch]">
-                Built on vision. Driven by purpose.
-              </h2>
-              <p className="mt-8 text-lg leading-[1.7] text-foreground/80 max-w-[60ch]">
-                Ölmez represents more than a name. It embodies a philosophy: systems outlast individuals. We don't build restaurants. We build the infrastructure that makes restaurants repeatable, profitable, and scalable.
-              </p>
-              <p className="mt-6 text-lg leading-[1.7] text-foreground/70 max-w-[60ch]">
-                Every car bearing our name, every office wall, every publication—they all tell the same story: discipline is the asset. Repetition is the strategy.
-              </p>
-            </div>
-            <div className="lg:col-span-6">
-              <div className="relative aspect-video bg-foreground/5 border border-foreground/15 rounded-lg overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=450&fit=crop"
-                  alt="Ölmez fleet and headquarters"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-            </div>
+      <section className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-12">
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.images.office.src}
+              alt={olmezBrandAssets.images.office.alt}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
           </div>
-        </div>
-      </section>
 
-      {/* Leadership Section */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="mb-20 lg:mb-28">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Leadership
+          <div className="flex flex-col justify-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Oda" : "The room"}
             </span>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              The architect of repetition.
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative aspect-square bg-foreground/5 border border-foreground/15 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop"
-                alt="Şevketullah Ölmez"
-                className="w-full h-full object-cover"
+            <div className="mt-8 w-36">
+              <Image
+                src={olmezBrandAssets.logos.copper.src}
+                alt={olmezBrandAssets.logos.copper.alt}
+                width={220}
+                height={70}
+                className="h-auto w-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             </div>
-
-            <div>
-              <h3 className="font-display text-4xl md:text-5xl tracking-[-0.015em] mb-6">
-                Şevketullah "Şevket" Ölmez
-              </h3>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground mb-8">
-                Founder & Chief Architect
-              </p>
-
-              <div className="space-y-6">
-                {[
-                  {
-                    label: "Born",
-                    value: "Ankara, Turkey · 12 October 1988",
-                  },
-                  {
-                    label: "Philosophy",
-                    value: "Systems outlast individuals. Discipline is the asset.",
-                  },
-                  {
-                    label: "Thesis",
-                    value: "I don't build restaurants. I build repetition.",
-                  },
-                  {
-                    label: "Operating From",
-                    value: "Edinburgh, Scotland · Istanbul, Turkey",
-                  },
-                ].map((item) => (
-                  <div key={item.label}>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                      {item.label}
-                    </p>
-                    <p className="text-lg leading-[1.6]">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/founder"
-                className="inline-flex items-center justify-center gap-3 mt-10 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-7 h-12 hover:bg-foreground/90 transition-colors"
-              >
-                Full founder profile
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
+            <h2 className="mt-8 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+              {isTurkish
+                ? "Amiral oda marka vaadinin bir parçasıdır."
+                : "The flagship room is part of the brand promise."}
+            </h2>
+            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
+              {isTurkish
+                ? "Ölmez önce bir büyüme aracı olarak değil, bir iş standardı olarak sunulur. Amiral oda önemlidir çünkü markanın gerilimi taşıyabildiğini gösterir: yumuşaklığa düşmeyen lüks, soğuklaşmayan yapı ve görsel yorgunluğa dönüşmeyen disiplin."
+                : "Ölmez is presented as a business standard before it is presented as a growth vehicle. The flagship room matters because it shows that the brand can hold tension: luxury without softness, structure without coldness, and discipline without visual fatigue."}
+            </p>
+            <p className="mt-6 max-w-[58ch] text-base leading-[1.85] text-white/60">
+              {isTurkish
+                ? "Ana ofis, kurucu anlatısı ve editoryal arşiv tek bir tezi doğrulamak için tasarlandı: kimlik, jenerikleşmeden sistem haline getirilebilir."
+                : "The main office, the founder narrative, and the editorial archive are designed to confirm one thesis: identity can be systemized without becoming generic."}
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="mb-20 lg:mb-28">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Principles
+      <section className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="max-w-3xl">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Prensipler" : "Principles"}
             </span>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[22ch]">
-              What we stand for.
+            <h2 className="mt-6 font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              {isTurkish
+                ? "Şablon değil, marka mimarisi."
+                : "A brand architecture, not a template."}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {[
-              {
-                title: "Discipline Over Genius",
-                description:
-                  "Build a system any disciplined operator can run. If it requires a genius, it cannot be franchised.",
-              },
-              {
-                title: "Repetition as Strategy",
-                description:
-                  "Stand where the customer is already stopping. Convert flow; do not manufacture it.",
-              },
-              {
-                title: "Audit Discipline",
-                description:
-                  "Audit discipline as strictly as you audit profit. The score, not the wire, decides who scales.",
-              },
-              {
-                title: "Brand is Promise",
-                description:
-                  "Brand is not a graphic-design choice. Brand is a repeated promise kept consistently.",
-              },
-              {
-                title: "Structure is Asset",
-                description:
-                  "The 4-investor seat structure is the discipline. The discipline is the asset.",
-              },
-              {
-                title: "Consistency Over Noise",
-                description:
-                  "Money is becoming normal. Behavioral consistency is the rarity—and your competitive edge.",
-              },
-            ].map((value) => (
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {principles.map((principle) => (
               <article
-                key={value.title}
-                className="border border-foreground/15 p-8 lg:p-10 bg-foreground/[0.015]"
+                key={principle.title}
+                className="border border-white/10 bg-black/30 p-8"
               >
-                <h3 className="font-display text-2xl tracking-[-0.005em] mb-4">
-                  {value.title}
+                <h3 className="font-display text-2xl tracking-[-0.03em] text-[#e7bc8b]">
+                  {principle.title}
                 </h3>
-                <p className="text-base leading-[1.75] text-foreground/75">
-                  {value.description}
+                <p className="mt-4 text-sm leading-[1.85] text-white/64">
+                  {principle.body}
                 </p>
               </article>
             ))}
@@ -192,232 +208,123 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global Operations Section */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="mb-20 lg:mb-28">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Global Presence
+      <section className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
+          <div className="flex flex-col justify-center">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Varlık" : "Presence"}
             </span>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Operating globally. Built locally.
+            <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+              {isTurkish
+                ? "Şehirler ve hareket boyunca tek görsel dil."
+                : "One visual language across cities and movement."}
             </h2>
+            <div className="mt-10 space-y-8">
+              {offices.map((office) => (
+                <div key={office.location} className="border-b border-white/10 pb-8 last:border-b-0 last:pb-0">
+                  <p className="font-display text-2xl tracking-[-0.03em] text-white">
+                    {office.location}
+                  </p>
+                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
+                    {office.role}
+                  </p>
+                  <p className="mt-4 max-w-[52ch] text-sm leading-[1.85] text-white/64">
+                    {office.body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            <div className="relative aspect-video bg-foreground/5 border border-foreground/15 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=450&fit=crop"
-                alt="Ölmez headquarters and operations"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </div>
-
-            <div>
-              <h3 className="font-display text-3xl tracking-[-0.015em] mb-8">
-                Headquarters & Operations
-              </h3>
-
-              <div className="space-y-8">
-                {[
-                  {
-                    location: "Edinburgh, Scotland",
-                    role: "Primary HQ",
-                    description: "Strategic center. Where every filing is dated, signed, and circulated.",
-                  },
-                  {
-                    location: "Istanbul, Turkey",
-                    role: "Operations Center",
-                    description: "Growth hub. Regional expansion and market development.",
-                  },
-                  {
-                    location: "London, UK",
-                    role: "Bridge Office",
-                    description: "Investor relations and capital coordination.",
-                  },
-                  {
-                    location: "US Network",
-                    role: "Fuel-stop Network",
-                    description: "Rapid growth markets across 12 territories.",
-                  },
-                ].map((office) => (
-                  <div key={office.location}>
-                    <h4 className="font-display text-xl tracking-[-0.005em] mb-2">
-                      {office.location}
-                    </h4>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                      {office.role}
-                    </p>
-                    <p className="text-foreground/70">{office.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.images.fleet.src}
+              alt={olmezBrandAssets.images.fleet.alt}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* Brand & Communications */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="mb-20 lg:mb-28">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Brand Expression
-            </span>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[24ch]">
-              Magazine & thought leadership.
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative aspect-[9/12] bg-foreground/5 border border-foreground/15 rounded-lg overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-150784272343-583f20270319?w=500&h=700&fit=crop"
-                alt="Ölmez Magazine"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            </div>
-
+      <section className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <h3 className="font-display text-3xl tracking-[-0.015em] mb-6">
-                Field Notes Publication
-              </h3>
-              <p className="text-lg leading-[1.7] text-foreground/80 mb-8">
-                Ölmez publishes quarterly Field Notes—a magazine exploring leadership, expansion strategy, design innovation, and the systems that scale.
-              </p>
-
-              <ul className="space-y-4 mb-10">
-                {[
-                  "Deep dives into operational discipline",
-                  "Case studies from the network",
-                  "Founder interviews and insights",
-                  "Market analysis and trends",
-                  "Design philosophy and standards",
-                  "Global expansion strategies",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-muted-foreground mt-1">→</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                href="/magazine"
-                className="inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-7 h-12 hover:bg-foreground/90 transition-colors"
-              >
-                Read Field Notes
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+                {isTurkish ? "Yayın" : "Publication"}
+              </span>
+              <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+                {isTurkish
+                  ? "Field Notes markayı yaşayan bir arşive dönüştürür."
+                  : "Field Notes turns the brand into a living archive."}
+              </h2>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Ölmez Standard */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="text-center mb-20 lg:mb-28">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Standard
-            </span>
-            <h2 className="mt-6 font-display text-5xl md:text-7xl lg:text-[120px] tracking-[-0.015em] leading-[1.0] max-w-[8ch] mx-auto">
-              The Ölmez Standard.
-            </h2>
-            <p className="mt-8 text-xl text-foreground/70 max-w-[60ch] mx-auto">
-              Crafted with precision. Built to lead.
-            </p>
+            <Link
+              href={withLocale("/magazine", locale)}
+              className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#e7bc8b] transition-colors hover:text-[#f3cf9b]"
+            >
+              {isTurkish ? "Arşivi aç" : "Open the archive"}
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {[
-              {
-                heading: "Design That Moves",
-                subheading: "Where aesthetics meet performance.",
-                items: [
-                  "Form follows discipline",
-                  "Every detail serves function",
-                  "Consistency across contexts",
-                  "Premium execution standards",
-                ],
-              },
-              {
-                heading: "Beyond Borders",
-                subheading: "Scaling innovation. Expanding opportunity.",
-                items: [
-                  "Multi-territory operation model",
-                  "Localized with global standards",
-                  "12+ territories and growing",
-                  "Cross-market knowledge sharing",
-                ],
-              },
-              {
-                heading: "Built to Lead",
-                subheading: "Operational excellence at every level.",
-                items: [
-                  "99.3% unit retention rate",
-                  "94.2% operational uptime",
-                  "30-month capital recovery",
-                  "18.4% average investor ROI",
-                ],
-              },
-            ].map((section) => (
-              <div
-                key={section.heading}
-                className="border border-foreground/15 p-8 lg:p-10 bg-background"
-              >
-                <h3 className="font-display text-2xl tracking-[-0.005em] mb-2">
-                  {section.heading}
-                </h3>
-                <p className="text-sm text-foreground/60 mb-6">
-                  {section.subheading}
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {olmezIssues.slice(0, 3).map((issue) => (
+              <article key={issue.id}>
+                <div className="overflow-hidden border border-white/10 bg-black">
+                  <Image
+                    src={issue.coverImage}
+                    alt={issue.title}
+                    width={900}
+                    height={1200}
+                    className="h-auto w-full object-cover"
+                  />
+                </div>
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  {issue.issueNumber} / {issue.date}
                 </p>
-                <ul className="space-y-3">
-                  {section.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-sm flex items-start gap-3 text-foreground/75"
-                    >
-                      <span className="text-muted-foreground mt-1">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
+                  {issue.title}
+                </h3>
+                <p className="mt-3 text-sm leading-[1.8] text-white/62">
+                  {issue.subtitle}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative border-t border-foreground/10 py-32 lg:py-48">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Get involved
+      <section className="border-t border-white/10 py-28 lg:py-36">
+        <div className="mx-auto max-w-[1100px] px-6 text-center lg:px-12">
+          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+            {isTurkish ? "Sonraki okumalar" : "Next reads"}
           </span>
-          <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
-            Join the network.
+          <h2 className="mt-8 font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+            {isTurkish
+              ? "Kurucu profiline ya da arşive devam edin."
+              : "Continue through the founder or the archive."}
           </h2>
-          <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
-            Whether you're an operator, investor, or partner, Ölmez offers a path to disciplined, profitable growth.
+          <p className="mx-auto mt-8 max-w-[58ch] text-base leading-[1.85] text-white/64">
+            {isTurkish
+              ? "Marka sayfası çerçeveyi kurar. Kurucu sayfası ve dergi arşivi arkasındaki düşünceyi açıklar."
+              : "The brand page sets the frame. The founder page and magazine issue archive explain the thinking behind it."}
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
             <Link
-              href="/analytics"
-              className="group inline-flex items-center justify-center gap-3 bg-[#8B5A3C] text-white px-8 h-13 py-4 font-mono text-xs uppercase tracking-[0.22em] hover:bg-[#a0674a] transition-colors"
+              href={withLocale("/founder", locale)}
+              className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
             >
-              View analytics & metrics
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              {isTurkish ? "Kurucuyu oku" : "Read the founder"}
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/founder"
-              className="inline-flex items-center justify-center gap-3 border border-foreground/25 text-foreground font-mono text-xs uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
+              href={withLocale("/magazine", locale)}
+              className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
             >
-              Founder's philosophy
-              <ArrowRight className="w-3.5 h-3.5" />
+              {isTurkish ? "Field Notes'u incele" : "Browse Field Notes"}
             </Link>
           </div>
         </div>

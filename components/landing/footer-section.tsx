@@ -1,169 +1,162 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
-const footerLinks = {
-  Platform: [
-    { name: "Doctrine",       href: "/#doctrine"    },
-    { name: "AFFAREM rooms",  href: "/#affarem"     },
-    { name: "Control layers", href: "/auditing#layers" },
-    { name: "Asset ladder",   href: "/#ladder"      },
-    { name: "Marketplace",    href: "/#marketplace" },
-  ],
-  Capital: [
-    { name: "Auditing console", href: "/auditing" },
-    { name: "Sample filing TX-GAS-014", href: "/filing/TX-GAS-014" },
-    { name: "4-investor framework", href: "/#ladder" },
-    { name: "Smart Discipline Score", href: "/auditing#score" },
-  ],
-  Operations: [
-    { name: "LiveOps coverage", href: "/auditing#liveops" },
-    { name: "Smart CCTV protocols", href: "/auditing#layers" },
-    { name: "Field Notes", href: "/magazine" },
-    { name: "Founder profile", href: "/founder" },
-  ],
-  Company: [
-    { name: "About Sevet Ölmez", href: "/founder" },
-    { name: "Edinburgh HQ",      href: "/founder" },
-    { name: "Field Notes",       href: "/magazine" },
-    { name: "Open filings",      href: "/#marketplace", badge: "Open" },
-  ],
-};
-
-const socialLinks = [
-  { name: "LinkedIn",  href: "#" },
-  { name: "Substack",  href: "#" },
-  { name: "Filings",   href: "#" },
-];
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight } from "lucide-react";
+import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { splitLocaleFromPath, withLocale } from "@/lib/site-locale";
 
 export function FooterSection() {
-  const [time, setTime] = useState<Date | null>(null);
-  useEffect(() => {
-    setTime(new Date());
-    const id = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(id);
-  }, []);
+  const pathname = usePathname();
+  const { locale } = splitLocaleFromPath(pathname);
+  const isTurkish = locale === "tr";
+  const footerLinks = {
+    [isTurkish ? "Hikaye" : "Story"]: [
+      { name: isTurkish ? "Ölmez Hakkında" : "About Ölmez", href: withLocale("/about", locale) },
+      { name: isTurkish ? "Kurucu Profili" : "Founder Profile", href: withLocale("/founder", locale) },
+      { name: isTurkish ? "Field Notes" : "Field Notes", href: withLocale("/magazine", locale) },
+      { name: isTurkish ? "İnsan Portalı" : "People Portal", href: withLocale("/people", locale) },
+      { name: isTurkish ? "Sosyal Sorumluluk" : "Social Responsibility", href: withLocale("/social-responsibility", locale) },
+      { name: isTurkish ? "Şirket Profili" : "Company Profile", href: withLocale("/company-profile", locale) },
+      { name: isTurkish ? "İletişim Masası" : "Contact Desk", href: withLocale("/contact", locale) },
+    ],
+    [isTurkish ? "Platform" : "Platform"]: [
+      { name: isTurkish ? "Doktrin" : "Doctrine", href: withLocale("/#doctrine", locale) },
+      { name: "AFFAREM", href: withLocale("/#affarem", locale) },
+      { name: isTurkish ? "Ölçek Modeli" : "Scale Model", href: withLocale("/#ladder", locale) },
+      { name: isTurkish ? "Ekosistem" : "Ecosystem", href: withLocale("/#marketplace", locale) },
+    ],
+    [isTurkish ? "Sermaye" : "Capital"]: [
+      { name: isTurkish ? "Raporlar ve Dosyalar" : "Reports & Filings", href: withLocale("/reports", locale) },
+      { name: isTurkish ? "Yatırımcı İlişkileri" : "Investor Relations", href: withLocale("/investors", locale) },
+      { name: isTurkish ? "Başarılar" : "Achievements", href: withLocale("/achievements", locale) },
+      { name: isTurkish ? "Fırsatlar" : "Opportunities", href: withLocale("/opportunities", locale) },
+      { name: isTurkish ? "Denetim Konsolu" : "Auditing Console", href: withLocale("/auditing", locale) },
+    ],
+  };
+  const quickLinks = [
+    { name: "Issue 12", href: withLocale("/brands/olmez/magazine", locale) },
+    { name: isTurkish ? "Son Hikaye" : "Latest Story", href: withLocale("/magazine/the-founders-blueprint", locale) },
+    { name: isTurkish ? "İnsanlar" : "People", href: withLocale("/people", locale) },
+    { name: isTurkish ? "Liderlik" : "Leadership", href: withLocale("/people/leadership", locale) },
+    { name: isTurkish ? "Marka Dosyası" : "Brand Deck", href: withLocale("/company-profile", locale) },
+  ];
 
   return (
-    <footer className="relative bg-black text-white">
-      {/* Edinburgh banner */}
-      <div className="relative w-full h-[260px] md:h-[340px] overflow-hidden">
-        <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Upscaled%20Image%20%2810%29-UnDKstODkIENp5xqTYUEpt0Sm8tNOw.png"
-          alt="Edinburgh stone-and-charcoal landscape"
-          className="w-full h-full object-cover object-center"
-          style={{ filter: "grayscale(0.85) brightness(0.55) contrast(1.05)" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+    <footer className="relative bg-[#050505] text-white">
+      <div className="relative overflow-hidden border-t border-white/10">
+        <div className="absolute inset-0">
+          <Image
+            src={olmezBrandAssets.images.fleet.src}
+            alt={olmezBrandAssets.images.fleet.alt}
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/40" />
 
-        {/* Manifesto overlay */}
-        <div className="absolute inset-0 flex items-end">
-          <div className="max-w-[1400px] mx-auto w-full px-6 lg:px-12 pb-10">
-            <span className="inline-flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.22em] text-white/55 mb-3">
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 py-20 lg:py-28">
+          <div className="max-w-3xl">
+            <div className="w-32 sm:w-40 mb-8">
+              <Image
+                src={olmezBrandAssets.logos.white.src}
+                alt={olmezBrandAssets.logos.white.alt}
+                width={220}
+                height={70}
+                className="w-full h-auto"
+              />
+            </div>
+            <span className="inline-flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.22em] text-white/55">
               <span className="w-10 h-px bg-[#b8865a]" />
-              Final canon declaration
+              {isTurkish ? "Son editoryal not" : "Final editorial note"}
             </span>
-            <p className="font-display text-2xl md:text-3xl lg:text-4xl leading-[1.15] tracking-[-0.01em] max-w-3xl text-pretty">
-              <span className="text-white">We do not sell food.</span>{" "}
-              <span className="text-white/55 italic">
-                We sell the system of repetition that makes food profitable.
+            <p className="mt-6 font-display text-3xl md:text-5xl lg:text-6xl tracking-[-0.02em] leading-[0.98] max-w-[12ch]">
+              {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
+              <span className="block italic text-white/60">
+                {isTurkish ? "Gürültü olmadan ölçekle." : "Scale without noise."}
               </span>
+            </p>
+            <p className="mt-6 max-w-[56ch] text-base md:text-lg leading-[1.8] text-white/70">
+              {isTurkish
+                ? "Ölmez, disiplinli restoran altyapısı için editoryal bir amiral gemisidir. Mekan, filo, yayın ve işletim sistemi aynı hikayeyi anlatır."
+                : "Ölmez is an editorial flagship for disciplined restaurant infrastructure. The room, the fleet, the publication, and the operating system all tell the same story."}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-        {/* Header strip */}
-        <div className="py-8 border-b border-white/10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] uppercase tracking-[0.22em] text-white/45">
-          <span className="flex items-center gap-3">
-            <span className="w-1.5 h-1.5 bg-[#b8865a] animate-pulse" />
-            <span className="text-white/70">AFFAREM Live</span>
-            <span>147 branches</span>
-          </span>
-          <span>{time ? `${time.toLocaleTimeString("en-GB")} BST · Edinburgh` : "—"}</span>
-        </div>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+        <div className="grid gap-14 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:py-20">
+          <div>
+            <div className="w-32 mb-8">
+              <Image
+                src={olmezBrandAssets.logos.copper.src}
+                alt={olmezBrandAssets.logos.copper.alt}
+                width={200}
+                height={64}
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="max-w-sm text-sm leading-[1.8] text-white/58">
+              {isTurkish
+                ? "Edinburgh masası. İstanbul ritmi. ABD hareketi. Tekrarlanabilirlik, tasarım disiplini ve operasyonel kontrol üzerine kurulu premium bir sistem."
+                : "Edinburgh desk. Istanbul rhythm. U.S. movement. A premium system built around repeatability, design restraint, and operational control."}
+            </p>
 
-        {/* Main footer */}
-        <div className="py-16 lg:py-20">
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
-            {/* Brand */}
-            <div className="col-span-2">
-              <a href="/" className="inline-block mb-8 w-40">
-                <Image
-                  src="/olmez-full-logo.svg"
-                  alt="Ölmez Franchise Systems - Restaurant Business Infrastructure"
-                  width={160}
-                  height={60}
-                  className="w-full h-auto"
-                />
-              </a>
-
-              <p className="text-white/55 leading-relaxed mb-6 max-w-sm text-sm">
-                Restaurant Business Infrastructure Company. We turn existing movement
-                into managed food assets. Edinburgh / Istanbul / U.S. fuel-stop network.
-              </p>
-
-              <address className="not-italic text-sm text-white/45 leading-relaxed mb-8 font-mono">
-                Ölmez Franchise Systems Ltd.<br />
-                Filing IV · Edinburgh, UK<br />
-                Founded by Şevketullah &ldquo;Şevket&rdquo; Ölmez<br />
-                <span className="text-white/35">Ankara · 12 October 1988</span>
-              </address>
-
-              <div className="flex gap-6">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-xs font-mono uppercase tracking-[0.18em] text-white/45 hover:text-[#b8865a] transition-colors flex items-center gap-1 group"
-                  >
-                    {link.name}
-                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                  </a>
-                ))}
-              </div>
+            <div className="mt-8 space-y-2 font-mono text-[11px] uppercase tracking-[0.18em] text-white/35">
+              <p>{isTurkish ? "Edinburgh merkezi" : "Edinburgh HQ"}</p>
+              <p>{isTurkish ? "Londra köprüsü / İstanbul operasyonları" : "London bridge / Istanbul operations"}</p>
+              <p>{isTurkish ? "2026 tarihli Field Notes" : "Field Notes dated 2026"}</p>
             </div>
 
-            {/* Link columns */}
-            {Object.entries(footerLinks).map(([title, links]) => (
-              <div key={title}>
-                <h3 className="text-[11px] font-mono uppercase tracking-[0.22em] text-white mb-6">{title}</h3>
-                <ul className="space-y-3.5">
-                  {links.map((link) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="text-sm text-white/55 hover:text-white transition-colors inline-flex items-center gap-2"
-                      >
-                        {link.name}
-                        {"badge" in link && link.badge && (
-                          <span className="text-[9px] font-mono uppercase tracking-[0.18em] px-1.5 py-0.5 bg-[#b8865a] text-black">
-                            {link.badge}
-                          </span>
-                        )}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="inline-flex items-center gap-2 border border-white/12 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70 transition-colors hover:border-[#b8865a] hover:text-white"
+                >
+                  {link.name}
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              ))}
+            </div>
           </div>
+
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/95">
+                {title}
+              </h3>
+              <ul className="mt-6 space-y-3.5">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/55 transition-colors hover:text-[#e9c092]"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="py-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-[0.22em] text-white/40">
-          <p>&copy; 2026 Ölmez Franchise Systems Ltd. · All rights reserved.</p>
-
-          <div className="flex flex-wrap items-center gap-6">
-            <span>Not pay-to-work</span>
-            <span>Discipline qualified</span>
-            <span className="flex items-center gap-2 text-[#b8865a]">
-              <span className="w-1.5 h-1.5 bg-[#b8865a]" />
-              Network operational
+        <div className="flex flex-col gap-4 border-t border-white/10 py-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35 md:flex-row md:items-center md:justify-between">
+          <p>
+            {isTurkish
+              ? "© 2026 Ölmez Franchise Systems Ltd. Tüm hakları saklıdır."
+              : "© 2026 Ölmez Franchise Systems Ltd. All rights reserved."}
+          </p>
+          <div className="flex flex-wrap items-center gap-5">
+            <span>{isTurkish ? "Editoryal amiral gemisi" : "Editorial flagship"}</span>
+            <span>{isTurkish ? "Disiplin onaylı" : "Discipline qualified"}</span>
+            <span className="text-[#b8865a]">
+              {isTurkish ? "Ağ operasyonel" : "Network operational"}
             </span>
           </div>
         </div>

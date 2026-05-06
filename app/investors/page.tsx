@@ -19,6 +19,8 @@ import {
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
@@ -59,21 +61,30 @@ const iconMap: Record<string, typeof Eye> = {
   Layers,
 };
 
-export default function InvestorsPage() {
+export default async function InvestorsPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="Investor Relations"
-        title="Capital Deployment with"
-        italicTail="Discipline."
-        dek="Strategic franchise investments backed by real-time operational visibility, structured payback schedules, and disciplined operator development. Every dollar explains itself through AFFAREM."
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "Yatırımcı ilişkileri" : "Investor Relations"}
+        title={isTurkish ? "Disiplinli" : "Capital Deployment with"}
+        italicTail={isTurkish ? "sermaye konuşlandırması." : "Discipline."}
+        dek={
+          isTurkish
+            ? "Gerçek zamanlı operasyon görünürlüğü, yapılandırılmış geri ödeme planları ve disiplinli operatör gelişimiyle desteklenen stratejik franchise yatırımları. Her dolar kendini AFFAREM üzerinden açıklar."
+            : "Strategic franchise investments backed by real-time operational visibility, structured payback schedules, and disciplined operator development. Every dollar explains itself through AFFAREM."
+        }
         meta={[
-          { label: "Deployed Capital", value: investorPortfolio.totalDeployedCapital },
-          { label: "Active Units", value: investorPortfolio.totalActiveUnits.toString() },
-          { label: "Avg Payback", value: investorPortfolio.averagePayback },
-          { label: "Success Rate", value: investorPortfolio.successRate },
+          { label: isTurkish ? "Konuşlanan sermaye" : "Deployed Capital", value: investorPortfolio.totalDeployedCapital },
+          { label: isTurkish ? "Aktif ünite" : "Active Units", value: investorPortfolio.totalActiveUnits.toString() },
+          { label: isTurkish ? "Ort. geri ödeme" : "Avg Payback", value: investorPortfolio.averagePayback },
+          { label: isTurkish ? "Başarı oranı" : "Success Rate", value: investorPortfolio.successRate },
         ]}
       />
 
@@ -82,10 +93,10 @@ export default function InvestorsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Portfolio Overview
+              {isTurkish ? "Portföy görünümü" : "Portfolio Overview"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Real numbers. Real assets.
+              {isTurkish ? "Gerçek rakamlar. Gerçek varlıklar." : "Real numbers. Real assets."}
             </h2>
           </div>
 
@@ -122,10 +133,10 @@ export default function InvestorsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Investment Tiers
+              {isTurkish ? "Yatırım katmanları" : "Investment Tiers"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[22ch]">
-              Four entry points. One philosophy.
+              {isTurkish ? "Dört giriş noktası. Tek felsefe." : "Four entry points. One philosophy."}
             </h2>
           </div>
 
@@ -213,11 +224,11 @@ export default function InvestorsPage() {
                 </div>
 
                 <Link
-                  href="/opportunities"
+                  href={withLocale("/opportunities", locale)}
                   className="inline-flex items-center justify-center gap-2 text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity w-full"
                   style={{ backgroundColor: tier.color }}
                 >
-                  Explore Opportunities
+                  {isTurkish ? "Fırsatları incele" : "Explore Opportunities"}
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -231,10 +242,10 @@ export default function InvestorsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Investor Privileges
+              {isTurkish ? "Yatırımcı ayrıcalıkları" : "Investor Privileges"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Built for transparent capital.
+              {isTurkish ? "Şeffaf sermaye için kuruldu." : "Built for transparent capital."}
             </h2>
           </div>
 
@@ -267,10 +278,10 @@ export default function InvestorsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Investment Journey
+              {isTurkish ? "Yatırım yolculuğu" : "Investment Journey"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Six structured steps.
+              {isTurkish ? "Altı yapılandırılmış adım." : "Six structured steps."}
             </h2>
           </div>
 
@@ -313,29 +324,30 @@ export default function InvestorsPage() {
       <section className="relative border-t border-foreground/10 py-32 lg:py-48">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Begin Your Investment
+            {isTurkish ? "Yatırıma başlayın" : "Begin Your Investment"}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
-            Disciplined capital. Disciplined returns.
+            {isTurkish ? "Disiplinli sermaye. Disiplinli getiri." : "Disciplined capital. Disciplined returns."}
           </h2>
           <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
-            Schedule a strategic briefing with our investment team. Receive
-            comprehensive due diligence package and direct access to founder Q&A.
+            {isTurkish
+              ? "Yatırım ekibimizle stratejik bilgilendirme planlayın. Kapsamlı durum tespiti paketi ve kurucu Soru-Cevap erişimi alın."
+              : "Schedule a strategic briefing with our investment team. Receive comprehensive due diligence package and direct access to founder Q&A."}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/opportunities"
+              href={withLocale("/opportunities", locale)}
               className="inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/90 transition-colors"
             >
-              View Opportunities
+              {isTurkish ? "Fırsatları gör" : "View Opportunities"}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href={withLocale("/contact", locale)}
               className="inline-flex items-center justify-center gap-3 border border-foreground/25 text-foreground font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
             >
-              Contact Investment Team
+              {isTurkish ? "Yatırım ekibiyle iletişime geç" : "Contact Investment Team"}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

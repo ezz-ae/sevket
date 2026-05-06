@@ -11,6 +11,8 @@ import {
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale } from "@/lib/site-locale";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
@@ -146,21 +148,30 @@ const inquiryTypes = [
   },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+
   return (
     <main className="relative min-h-screen bg-background text-foreground">
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow="Get in Touch"
-        title="Connect With"
-        italicTail="Ölmez."
-        dek="Four global offices. Six departments. One disciplined organization. Reach out for investment opportunities, franchise development, operator training, or strategic partnerships."
+        locale={locale}
+        backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
+        eyebrow={isTurkish ? "İletişim" : "Get in Touch"}
+        title={isTurkish ? "Ölmez ile" : "Connect With"}
+        italicTail={isTurkish ? "bağlantı kurun." : "Ölmez."}
+        dek={
+          isTurkish
+            ? "Dört global ofis. Altı departman. Tek disiplinli organizasyon. Yatırım fırsatları, franchise geliştirme, operatör eğitimi veya stratejik ortaklıklar için bize ulaşın."
+            : "Four global offices. Six departments. One disciplined organization. Reach out for investment opportunities, franchise development, operator training, or strategic partnerships."
+        }
         meta={[
-          { label: "Global Offices", value: "4" },
-          { label: "Time Zones", value: "5" },
-          { label: "Languages", value: "EN/TR/AR" },
-          { label: "Response Time", value: "<24h" },
+          { label: isTurkish ? "Global ofis" : "Global Offices", value: "4" },
+          { label: isTurkish ? "Saat dilimi" : "Time Zones", value: "5" },
+          { label: isTurkish ? "Diller" : "Languages", value: "EN/TR/AR" },
+          { label: isTurkish ? "Yanıt süresi" : "Response Time", value: "<24h" },
         ]}
       />
 
@@ -169,10 +180,10 @@ export default function ContactPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              How Can We Help
+              {isTurkish ? "Nasıl yardımcı olabiliriz" : "How Can We Help"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Direct your inquiry.
+              {isTurkish ? "Talebinizi yönlendirin." : "Direct your inquiry."}
             </h2>
           </div>
 
@@ -206,10 +217,10 @@ export default function ContactPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Global Presence
+              {isTurkish ? "Global varlık" : "Global Presence"}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Four offices. One mission.
+              {isTurkish ? "Dört ofis. Tek misyon." : "Four offices. One mission."}
             </h2>
           </div>
 
@@ -264,7 +275,7 @@ export default function ContactPage() {
 
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                    Departments
+                    {isTurkish ? "Departmanlar" : "Departments"}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {office.departments.map((dept) => (
@@ -289,33 +300,35 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Direct Contact
+                {isTurkish ? "Doğrudan iletişim" : "Direct Contact"}
               </span>
               <h2 className="mt-6 font-display text-4xl md:text-5xl lg:text-6xl tracking-[-0.015em] leading-[1.1] max-w-[18ch] mb-8">
-                Send us a message.
+                {isTurkish ? "Bize mesaj gönderin." : "Send us a message."}
               </h2>
               <p className="text-foreground/70 leading-[1.7] mb-8">
-                Use the form to send a direct inquiry. Our team will respond
-                within 24 hours during business days. For urgent matters, use
-                direct office phone numbers above.
+                {isTurkish
+                  ? "Doğrudan talep göndermek için formu kullanın. Ekibimiz iş günlerinde 24 saat içinde yanıt verir. Acil konular için yukarıdaki doğrudan ofis telefonlarını kullanın."
+                  : "Use the form to send a direct inquiry. Our team will respond within 24 hours during business days. For urgent matters, use direct office phone numbers above."}
               </p>
 
               <div className="space-y-6 pt-6 border-t border-foreground/10">
                 <div className="flex items-start gap-4">
                   <Clock className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-display text-lg mb-1">Response Time</p>
+                    <p className="font-display text-lg mb-1">{isTurkish ? "Yanıt süresi" : "Response Time"}</p>
                     <p className="text-sm text-foreground/60">
-                      Within 24 hours for standard inquiries
+                      {isTurkish ? "Standart talepler için 24 saat içinde" : "Within 24 hours for standard inquiries"}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Building2 className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-display text-lg mb-1">Office Hours</p>
+                    <p className="font-display text-lg mb-1">{isTurkish ? "Ofis saatleri" : "Office Hours"}</p>
                     <p className="text-sm text-foreground/60">
-                      Monday - Friday, 9:00 AM - 6:00 PM (Local Time)
+                      {isTurkish
+                        ? "Pazartesi - Cuma, 09:00 - 18:00 (Yerel Saat)"
+                        : "Monday - Friday, 9:00 AM - 6:00 PM (Local Time)"}
                     </p>
                   </div>
                 </div>
@@ -326,40 +339,40 @@ export default function ContactPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
-                    First Name
+                    {isTurkish ? "Ad" : "First Name"}
                   </label>
                   <input
                     type="text"
                     className="w-full px-4 h-12 border border-foreground/25 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/50"
-                    placeholder="John"
+                    placeholder={isTurkish ? "Adınız" : "John"}
                   />
                 </div>
                 <div>
                   <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
-                    Last Name
+                    {isTurkish ? "Soyad" : "Last Name"}
                   </label>
                   <input
                     type="text"
                     className="w-full px-4 h-12 border border-foreground/25 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/50"
-                    placeholder="Smith"
+                    placeholder={isTurkish ? "Soyadınız" : "Smith"}
                   />
                 </div>
               </div>
 
               <div>
                 <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
-                  Email
+                  {isTurkish ? "E-posta" : "Email"}
                 </label>
                 <input
                   type="email"
                   className="w-full px-4 h-12 border border-foreground/25 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/50"
-                  placeholder="your@email.com"
+                  placeholder={isTurkish ? "siz@email.com" : "your@email.com"}
                 />
               </div>
 
               <div>
                 <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
-                  Inquiry Type
+                  {isTurkish ? "Talep türü" : "Inquiry Type"}
                 </label>
                 <select className="w-full px-4 h-12 border border-foreground/25 bg-background text-foreground focus:outline-none focus:border-foreground/50">
                   <option>Investment Inquiry</option>
@@ -373,12 +386,12 @@ export default function ContactPage() {
 
               <div>
                 <label className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2 block">
-                  Message
+                  {isTurkish ? "Mesaj" : "Message"}
                 </label>
                 <textarea
                   rows={6}
                   className="w-full px-4 py-3 border border-foreground/25 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/50 resize-none"
-                  placeholder="Tell us about your inquiry..."
+                  placeholder={isTurkish ? "Talebinizi anlatın..." : "Tell us about your inquiry..."}
                 />
               </div>
 
@@ -386,7 +399,7 @@ export default function ContactPage() {
                 type="submit"
                 className="inline-flex items-center justify-center gap-2 bg-foreground text-background px-8 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-foreground/90 transition-colors w-full"
               >
-                Send Message
+                {isTurkish ? "Mesaj gönder" : "Send Message"}
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </form>

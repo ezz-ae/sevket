@@ -4,6 +4,9 @@ import { Instrument_Sans, Instrument_Serif, JetBrains_Mono } from 'next/font/goo
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { organizationSchema } from './schema'
+import { LocaleNotice } from '@/components/site/locale-notice'
+import { getLocaleLang } from '@/lib/site-locale'
+import { getRequestLocale } from '@/lib/server-locale'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.franchise.systems'
 
@@ -50,7 +53,6 @@ export const metadata: Metadata = {
     address: false,
   },
   metadataBase: new URL(baseUrl),
-  canonical: `${baseUrl}/`,
   openGraph: {
     title: 'Ölmez Franchise Systems | Restaurant Franchise Infrastructure',
     description: 'Build disciplined restaurant businesses. Franchise systems with operational control, capital recovery tracking, and investor management.',
@@ -94,23 +96,26 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseUrl}/`,
     languages: {
-      'en-US': `${baseUrl}/`,
+      en: `${baseUrl}/`,
+      'en-GB': `${baseUrl}/uk/`,
+      'en-US': `${baseUrl}/us/`,
       'tr-TR': `${baseUrl}/tr/`,
+      'ru-RU': `${baseUrl}/ru/`,
     },
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <html lang="en" className="bg-background">
-      <head>
-        {/* Canonical URL */}
-        <link rel="canonical" href={`${baseUrl}/`} />
+  const locale = await getRequestLocale()
+  const lang = getLocaleLang(locale)
 
+  return (
+    <html lang={lang} className="bg-background">
+      <head>
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -128,11 +133,12 @@ export default function RootLayout({
 
         {/* Additional SEO Meta Tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Ölmez" />
 
         {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* Manifest */}
@@ -143,6 +149,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
       </head>
       <body className={`${instrumentSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <LocaleNotice locale={locale} />
         {children}
         <Analytics />
       </body>
