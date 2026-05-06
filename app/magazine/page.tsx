@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { articles, series } from "@/lib/magazine-data";
 
 export const metadata: Metadata = {
-  title: "Field Notes · SevetTeam Magazine",
+  title: "Field Notes · Ölmez Franchise Systems Magazine",
   description:
     "Strategic essays from Edinburgh on systems, discipline, and the architecture of repetition. The Franchise Architect series and beyond.",
 };

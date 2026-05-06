@@ -108,7 +108,7 @@ export function FooterSection() {
               </p>
 
               <address className="not-italic text-sm text-white/45 leading-relaxed mb-8 font-mono">
-                Ölmez Ltd.<br />
+                Ölmez Franchise Systems Ltd.<br />
                 Filing IV · Edinburgh, UK<br />
                 Founded by Şevketullah &ldquo;Şevket&rdquo; Ölmez<br />
                 <span className="text-white/35">Ankara · 12 October 1988</span>
@@ -156,7 +156,7 @@ export function FooterSection() {
 
         {/* Bottom bar */}
         <div className="py-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-[0.22em] text-white/40">
-          <p>&copy; 2026 SevetTeam Ltd. · All rights reserved.</p>
+          <p>&copy; 2026 Ölmez Franchise Systems Ltd. · All rights reserved.</p>
 
           <div className="flex flex-wrap items-center gap-6">
             <span>Not pay-to-work</span>

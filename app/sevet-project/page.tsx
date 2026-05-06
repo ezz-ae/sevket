@@ -6,7 +6,7 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
 
 export const metadata: Metadata = {
-  title: "The Sevet Ölmez Project · SevetTeam",
+  title: "The Sevet Ölmez Project · Ölmez Franchise Systems",
   description:
     "Engineering Global Shawarma Franchise Systems: A sophisticated restaurant business infrastructure transforming food service into a disciplined, scalable asset class.",
 };
@@ -29,7 +29,7 @@ export default function SevetProjectPage() {
           <h2 className="text-3xl font-serif font-bold mb-6">Executive Summary</h2>
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
-              The Sevet Ölmez Project outlines a sophisticated restaurant business infrastructure designed to transform the traditional food service model into a measurable, repeatable, and scalable asset class. At the center of this ecosystem is SevetTeam, a parent company founded by Turkish-British entrepreneur Sevet Ölmez (Şevketullah Ölmez). Unlike traditional restaurant companies that focus on culinary flair, SevetTeam functions as a "restaurant business company," prioritizing operational control, unit economics, and data-driven management.
+              The Sevet Ölmez Project outlines a sophisticated restaurant business infrastructure designed to transform the traditional food service model into a measurable, repeatable, and scalable asset class. At the center of this ecosystem is Ölmez Franchise Systems, a parent company founded by Turkish-British entrepreneur Sevet Ölmez (Şevketullah Ölmez). Unlike traditional restaurant companies that focus on culinary flair, Ölmez Franchise Systems functions as a "restaurant business company," prioritizing operational control, unit economics, and data-driven management.
             </p>
             <p>
               The project's signature strategy involves placing compact shawarma franchise units inside U.S. gas stations to leverage existing traffic rather than attempting to generate new demand. These units are managed through AFFAREM, a proprietary control system that integrates remote monitoring, smart CCTV, and a unique "Smart Discipline Score" to ensure accountability. With a diverse entry ladder ranging from $1,000 micro-starts to $245,000 premium units, the project aims to turn food service into a disciplined system where every branch must justify its existence through financial transparency and capital recovery.
@@ -41,7 +41,7 @@ export default function SevetProjectPage() {
         <section className="mb-16 pb-16 border-b border-border">
           <h2 className="text-3xl font-serif font-bold mb-6">Founder Profile: Sevet Ölmez</h2>
           <p className="text-base leading-relaxed text-muted-foreground mb-8">
-            The business philosophy of SevetTeam is deeply rooted in the personal history and psychological framework of its founder.
+            The business philosophy of Ölmez Franchise Systems is deeply rooted in the personal history and psychological framework of its founder.
           </p>
 
           <div className="space-y-8">
@@ -89,11 +89,11 @@ export default function SevetProjectPage() {
           </div>
         </section>
 
-        {/* SevetTeam Ecosystem */}
+        {/* Ölmez Franchise Systems Ecosystem */}
         <section className="mb-16 pb-16 border-b border-border">
-          <h2 className="text-3xl font-serif font-bold mb-6">The SevetTeam Ecosystem</h2>
+          <h2 className="text-3xl font-serif font-bold mb-6">The Ölmez Franchise Systems Ecosystem</h2>
           <p className="text-base leading-relaxed text-muted-foreground mb-8">
-            SevetTeam is structured into three distinct layers that balance brand authority with high-yield scalability.
+            Ölmez Franchise Systems is structured into three distinct layers that balance brand authority with high-yield scalability.
           </p>
 
           <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
@@ -116,7 +116,7 @@ export default function SevetProjectPage() {
                 The primary scalable product. Compact units are placed inside high-traffic U.S. gas stations with a strictly limited menu (shawarma, wraps, bowls, fries).
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground italic">
-                The Logic: Gas stations already sell movement and have built-in traffic. SevetTeam places food where customers are already pausing.
+                The Logic: Gas stations already sell movement and have built-in traffic. Ölmez Franchise Systems places food where customers are already pausing.
               </p>
             </div>
 
@@ -136,7 +136,7 @@ export default function SevetProjectPage() {
         <section className="mb-16 pb-16 border-b border-border">
           <h2 className="text-3xl font-serif font-bold mb-6">Technical Infrastructure: The AFFAREM System</h2>
           <p className="text-base leading-relaxed text-muted-foreground mb-8">
-            AFFAREM is the proprietary "Operating Room" of SevetTeam. It serves as the interface between investors, managers, and the physical branches.
+            AFFAREM is the proprietary "Operating Room" of Ölmez Franchise Systems. It serves as the interface between investors, managers, and the physical branches.
           </p>
 
           <div className="mb-8">
@@ -182,7 +182,7 @@ export default function SevetProjectPage() {
           <div>
             <h3 className="text-xl font-serif font-semibold mb-4">The Smart Discipline Score</h3>
             <p className="text-base leading-relaxed text-muted-foreground mb-4">
-              In the SevetTeam model, discipline is valued more than wealth. Every account (investor, operator, or partner) is assigned a Smart Discipline Score based on behavior rather than credit.
+              In the Ölmez Franchise Systems model, discipline is valued more than wealth. Every account (investor, operator, or partner) is assigned a Smart Discipline Score based on behavior rather than credit.
             </p>
             <ul className="space-y-3 text-base leading-relaxed text-muted-foreground pl-6 border-l-2 border-primary">
               <li><span className="font-semibold">Metrics:</span> Reporting accuracy, meeting attendance, transparency with problems, and response speed.</li>
@@ -195,7 +195,7 @@ export default function SevetProjectPage() {
         <section className="mb-16 pb-16 border-b border-border">
           <h2 className="text-3xl font-serif font-bold mb-6">Financial and Operational Models</h2>
           <p className="text-base leading-relaxed text-muted-foreground mb-8">
-            SevetTeam operates on scenario-based modeling rather than guaranteed profits.
+            Ölmez Franchise Systems operates on scenario-based modeling rather than guaranteed profits.
           </p>
 
           <div className="mb-8">
@@ -312,11 +312,11 @@ export default function SevetProjectPage() {
           <div>
             <h3 className="text-xl font-serif font-semibold mb-4">LiveOps Intervention</h3>
             <p className="text-base leading-relaxed text-muted-foreground mb-4">
-              SevetTeam offers a paid "LiveOps Review" for units that fall below performance thresholds. This includes:
+              Ölmez Franchise Systems offers a paid "LiveOps Review" for units that fall below performance thresholds. This includes:
             </p>
             <ul className="space-y-3 text-base leading-relaxed text-muted-foreground pl-6 border-l-2 border-primary">
               <li><span className="font-semibold">Remote LiveOps:</span> Two daily video calls and remote accountant review.</li>
-              <li><span className="font-semibold">On-Site LiveOps:</span> A SevetTeam manager travels to the location for direct operational intervention, inventory correction, and staff retraining.</li>
+              <li><span className="font-semibold">On-Site LiveOps:</span> A Ölmez Franchise Systems manager travels to the location for direct operational intervention, inventory correction, and staff retraining.</li>
             </ul>
           </div>
         </section>
@@ -366,7 +366,7 @@ export default function SevetProjectPage() {
       {/* CTA Section */}
       <section className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mb-16">
         <div className="bg-primary/5 border border-primary/20 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-serif font-bold mb-4">Learn More About SevetTeam</h3>
+          <h3 className="text-2xl font-serif font-bold mb-4">Learn More About Ölmez Franchise Systems</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Explore our auditing systems, marketplace, and founder philosophy to understand how we're transforming food service into disciplined, scalable systems.
           </p>

@@ -13,9 +13,9 @@ import {
 } from "@/lib/auditing-data";
 
 export const metadata: Metadata = {
-  title: "Auditing · SevetTeam Operations Console",
+  title: "Auditing · Ölmez Franchise Systems Operations Console",
   description:
-    "Eight control layers. Smart Discipline Score. LiveOps coverage. The full audit chain attached to every SevetTeam filing — published from Edinburgh.",
+    "Eight control layers. Smart Discipline Score. LiveOps coverage. The full audit chain attached to every Ölmez Franchise Systems filing — published from Edinburgh.",
 };
 
 export default function AuditingPage() {

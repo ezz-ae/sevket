@@ -6,9 +6,9 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
 
 export const metadata: Metadata = {
-  title: "The Founder · Şevketullah Ölmez — SevetTeam",
+  title: "The Founder · Şevketullah Ölmez — Ölmez Franchise Systems",
   description:
-    "I don't build restaurants — I build repetition. The founder profile of Şevketullah Ölmez, architect of SevetTeam's disciplined franchise infrastructure.",
+    "I don't build restaurants — I build repetition. The founder profile of Şevketullah Ölmez, architect of Ölmez Franchise Systems's disciplined franchise infrastructure.",
 };
 
 

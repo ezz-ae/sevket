@@ -21,9 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'SevetTeam — Restaurant Business Infrastructure',
+  title: 'Ölmez Franchise Systems — Restaurant Business Infrastructure',
   description:
-    'We do not build restaurants. We build repetition. SevetTeam is the operating interface that turns existing traffic into managed food assets — governed by AFFAREM, scored by discipline, recovered in 2.5 years.',
+    'We do not build restaurants. We build repetition. Ölmez is the operating interface that turns existing traffic into managed food assets — governed by AFFAREM, scored by discipline, recovered in 2.5 years.',
   generator: 'v0.app',
 }
 

@@ -40,9 +40,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { code } = await params;
   const o = getFiling(code);
-  if (!o) return { title: "Filing not found · SevetTeam" };
+  if (!o) return { title: "Filing not found · Ölmez Franchise Systems" };
   return {
-    title: `${o.code} · ${o.city}, ${o.state} — SevetTeam Filing`,
+    title: `${o.code} · ${o.city}, ${o.state} — Ölmez Franchise Systems Filing`,
     description: `${o.tier} tier · ${o.corridor}. Total capital ${fmtMoney(o.capital)}, payback ${o.paybackMonths} months. Filed and dated at Edinburgh.`,
   };
 }
@@ -271,7 +271,7 @@ export default async function FilingPage({
                 <KV k="Discipline floor" v={`${filing.disciplineFloor} / 100`} />
                 <KV
                   k="Each seat must"
-                  v="Take shifts as Manager-Operator OR commit a SevetTeam-trained pro manager"
+                  v="Take shifts as Manager-Operator OR commit a Ölmez Franchise Systems-trained pro manager"
                 />
                 <KV k="Asset darkness" v="Never permitted at any tier" />
               </div>
