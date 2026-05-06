@@ -24,22 +24,22 @@ export function PageHeader({
   const resolvedBackHref = backHref ?? withLocale("/", locale);
 
   return (
-    <header className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
+    <header className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-24">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <Link
           href={resolvedBackHref}
-          className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground hover:text-foreground transition-colors mb-12 lg:mb-16"
+          className="mb-10 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground lg:mb-12"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           {backLabel}
         </Link>
 
-        <span className="inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.22em] text-muted-foreground mb-10">
+        <span className="mb-8 inline-flex items-center gap-3 text-xs font-mono uppercase tracking-[0.22em] text-muted-foreground">
           <span className="w-10 h-px bg-[#b8865a]" />
           {eyebrow}
         </span>
 
-        <h1 className="font-display tracking-[-0.015em] leading-[0.95] text-5xl md:text-7xl lg:text-[120px]">
+        <h1 className="max-w-[12ch] font-display text-4xl leading-[0.98] tracking-[-0.03em] md:text-6xl lg:text-[88px]">
           {title}
           {italicTail && (
             <>
@@ -50,24 +50,24 @@ export function PageHeader({
         </h1>
 
         {dek && (
-          <p className="mt-10 lg:mt-14 max-w-[68ch] text-lg lg:text-xl text-muted-foreground leading-[1.7]">
+          <p className="mt-8 max-w-[60ch] text-base leading-[1.75] text-muted-foreground lg:mt-10 lg:text-lg">
             {dek}
           </p>
         )}
 
         {meta && meta.length > 0 && (
-          <dl className="mt-16 lg:mt-20 grid grid-cols-2 md:grid-cols-4 border-t border-foreground/10">
-            {meta.map((m, i) => (
+          <dl className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-foreground/10 bg-foreground/10 md:grid-cols-4 lg:mt-14">
+            {meta.map((m) => (
               <div
                 key={m.label}
-                className={`py-6 lg:py-8 ${
-                  i < meta.length - 1 ? "md:border-r border-foreground/10" : ""
-                } ${i < 2 ? "border-b md:border-b-0 border-foreground/10" : ""}`}
+                className="min-h-[7rem] bg-background/72 px-4 py-5 backdrop-blur-sm lg:px-5 lg:py-6"
               >
                 <dt className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                   {m.label}
                 </dt>
-                <dd className="mt-2 font-display text-2xl lg:text-3xl tracking-tight">{m.value}</dd>
+                <dd className="mt-3 font-display text-xl tracking-tight lg:text-2xl">
+                  {m.value}
+                </dd>
               </div>
             ))}
           </dl>

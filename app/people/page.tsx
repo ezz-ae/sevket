@@ -47,6 +47,18 @@ export default async function PeoplePage() {
           "linear-gradient(180deg, #170f0b 0%, #050505 38%, #121712 100%)",
       }}
     >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-80 animate-[gradient-shift_20s_ease-in-out_infinite]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 18% 16%, rgba(184, 134, 90, 0.18), transparent 24%), radial-gradient(circle at 78% 24%, rgba(65, 95, 72, 0.16), transparent 22%), radial-gradient(circle at 62% 78%, rgba(160, 103, 74, 0.12), transparent 26%)",
+            backgroundSize: "180% 180%",
+          }}
+        />
+        <div className="absolute -left-24 top-32 h-[26rem] w-[26rem] rounded-full bg-[#b8865a]/12 blur-3xl animate-[orb-drift_24s_ease-in-out_infinite]" />
+        <div className="absolute right-[-8rem] top-[28rem] h-[24rem] w-[24rem] rounded-full bg-[#36543d]/14 blur-3xl animate-[orb-drift_20s_ease-in-out_infinite]" />
+      </div>
       <Navigation />
       <PeoplePortal locale={locale} />
       <FooterSection />

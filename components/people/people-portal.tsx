@@ -134,27 +134,35 @@ export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
         </div>
         <div className="absolute inset-0 bg-black/75" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-black/72 to-black/45" />
+        <div
+          className="absolute inset-0 opacity-80 animate-[gradient-shift_18s_ease-in-out_infinite]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 12% 20%, rgba(184, 134, 90, 0.18), transparent 24%), radial-gradient(circle at 74% 16%, rgba(60, 92, 70, 0.14), transparent 20%), radial-gradient(circle at 78% 76%, rgba(160, 103, 74, 0.12), transparent 24%)",
+            backgroundSize: "180% 180%",
+          }}
+        />
         <div className="absolute inset-y-0 right-[-4%] hidden w-[42rem] lg:block">
           <Image
             src={olmezBrandAssets.logos.copper.src}
             alt={olmezBrandAssets.logos.copper.alt}
             fill
-            className="object-contain opacity-[0.12]"
+            className="object-contain opacity-[0.08]"
           />
         </div>
 
-        <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-32">
-          <div className="max-w-4xl">
+        <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
+          <div className="max-w-3xl">
             <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/58">
               <span className="h-px w-10 bg-[#b8865a]" />
               {isTurkish ? "İnsan açılış sayfası" : "People landing page"}
             </span>
-            <h1 className="mt-8 max-w-[12ch] font-display text-[clamp(3.2rem,8vw,7.6rem)] leading-[0.9] tracking-[-0.04em]">
+            <h1 className="mt-8 max-w-[10.5ch] font-display text-[clamp(2.9rem,6.6vw,6rem)] leading-[0.94] tracking-[-0.04em]">
               {isTurkish
                 ? "Ölmez için insan kaynakları portalı."
                 : "The human resourcing portal for Ölmez."}
             </h1>
-            <p className="mt-8 max-w-[60ch] text-base leading-[1.85] text-white/70 md:text-lg">
+            <p className="mt-7 max-w-[54ch] text-base leading-[1.8] text-white/72 md:text-lg">
               {isTurkish
                 ? "Türkiye, Amerika Birleşik Devletleri ve Birleşik Krallık genelinde işe alım yapıyoruz. Bu tam kapsamlı bir insan portalıdır: kültür, ofis bağlamı ve misafirperverlik, operasyon, lojistik, büyüme, finans ve yapay zeka destekli ofis sistemleri içinde 48 aktif tam zamanlı rol."
                 : "Hiring across Turkey, the United States, and the United Kingdom. This is a full people portal: culture, office context, and 48 live full-time roles across hospitality, operations, logistics, growth, finance, and AI-enabled office systems."}
@@ -177,14 +185,17 @@ export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
             </div>
           </div>
 
-          <div className="mt-16 grid gap-6 border-t border-white/10 pt-8 md:grid-cols-4">
+          <div className="mt-12 grid gap-4 md:grid-cols-4">
             {[
               { label: isTurkish ? "Global ekip" : "Global team", value: "2,700+" },
               { label: isTurkish ? "Servis edilen öğün" : "Meals served", value: "405 / min" },
               { label: isTurkish ? "Açık tam zamanlı rol" : "Open full-time roles", value: String(peopleOpenings.length) },
               { label: isTurkish ? "BK ofis rolü" : "UK office roles", value: String(ukOfficeCount) },
             ].map((stat) => (
-              <div key={stat.label}>
+              <div
+                key={stat.label}
+                className="border border-white/12 bg-black/24 p-5 backdrop-blur-sm"
+              >
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">
                   {stat.label}
                 </p>
@@ -199,8 +210,16 @@ export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
 
       <section
         id="culture"
-        className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32"
+        className="relative overflow-hidden border-t border-white/10 bg-white/[0.02] py-24 lg:py-32"
       >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70 animate-[gradient-shift_20s_ease-in-out_infinite]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 18% 18%, rgba(184, 134, 90, 0.12), transparent 24%), radial-gradient(circle at 82% 28%, rgba(53, 84, 61, 0.14), transparent 22%)",
+            backgroundSize: "180% 180%",
+          }}
+        />
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
             <div>

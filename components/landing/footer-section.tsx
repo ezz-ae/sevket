@@ -72,7 +72,7 @@ export function FooterSection() {
               <span className="w-10 h-px bg-[#b8865a]" />
               {isTurkish ? "Son editoryal not" : "Final editorial note"}
             </span>
-            <p className="mt-6 font-display text-3xl md:text-5xl lg:text-6xl tracking-[-0.02em] leading-[0.98] max-w-[12ch]">
+            <p className="mt-6 font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.02] max-w-[13ch]">
               {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
               <span className="block italic text-white/60">
                 {isTurkish ? "Gürültü olmadan ölçekle." : "Scale without noise."}
@@ -90,15 +90,10 @@ export function FooterSection() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid gap-14 py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:py-20">
           <div>
-            <div className="w-32 mb-8">
-              <Image
-                src={olmezBrandAssets.logos.copper.src}
-                alt={olmezBrandAssets.logos.copper.alt}
-                width={200}
-                height={64}
-                className="w-full h-auto"
-              />
-            </div>
+            <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white/44">
+              <span className="w-8 h-px bg-[#b8865a]" />
+              {isTurkish ? "Marka masası" : "Brand desk"}
+            </span>
             <p className="max-w-sm text-sm leading-[1.8] text-white/58">
               {isTurkish
                 ? "Edinburgh masası. İstanbul ritmi. ABD hareketi. Tekrarlanabilirlik, tasarım disiplini ve operasyonel kontrol üzerine kurulu premium bir sistem."
