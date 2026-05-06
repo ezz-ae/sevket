@@ -40,6 +40,61 @@ export default async function Home() {
   const ecosystemBrands = localizedBrands.filter((brand) => brand.slug !== "olmez");
   const totalUnits = localizedBrands.reduce((sum, brand) => sum + brand.unitCount, 0);
   const olmezIssues = magazineIssues.filter((issue) => issue.brand === "olmez");
+  const editorialShowcase = [
+    {
+      id: "issue-12",
+      href: withLocale("/magazine", locale),
+      image: olmezIssues[0]?.coverImage ?? olmezBrandAssets.editorial[0].src,
+      issueLabel: olmezIssues[0]?.issueNumber ?? "Issue 12",
+      date: olmezIssues[0]?.date ?? "Mid 2026",
+      title: olmezIssues[0]?.title ?? "The Mid-2026 Blueprint",
+      description:
+        olmezIssues[0]?.description ??
+        "An in-depth look at the strategic blueprint guiding Ölmez through 2026.",
+    },
+    isTurkish
+      ? {
+          id: "press-dialogue",
+          href: withLocale("/founder", locale),
+          image: "/brand-library/olmez-business-today-interview.png",
+          issueLabel: "Basın diyaloğu",
+          date: "2026",
+          title: "Business Today röportajı",
+          description:
+            "Kurucunun kamuya açık anlatısını, sistem dilini ve markanın dışarıya nasıl konuştuğunu gösteren editoryal kare.",
+        }
+      : {
+          id: "press-dialogue",
+          href: withLocale("/founder", locale),
+          image: "/brand-library/olmez-business-today-interview.png",
+          issueLabel: "Press dialogue",
+          date: "2026",
+          title: "Business Today Interview",
+          description:
+            "An editorial frame showing how the founder speaks publicly about systems, discipline, and the external voice of the brand.",
+        },
+    isTurkish
+      ? {
+          id: "stage-conversation",
+          href: withLocale("/company-profile", locale),
+          image: "/brand-library/olmez-founder-panel-stage.png",
+          issueLabel: "Sahne konuşması",
+          date: "2026",
+          title: "Canlı sahne oturumu",
+          description:
+            "Kurumsal görünürlük, liderlik duruşu ve yatırımcı güvenini taşıyan sahne anı; tekrar eden kapak görseli yerine gerçek bağlam.",
+        }
+      : {
+          id: "stage-conversation",
+          href: withLocale("/company-profile", locale),
+          image: "/brand-library/olmez-founder-panel-stage.png",
+          issueLabel: "Stage conversation",
+          date: "2026",
+          title: "Live Stage Session",
+          description:
+            "A live brand moment carrying leadership posture, investor trust, and institutional presence instead of another duplicated cover.",
+        },
+  ];
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
@@ -228,33 +283,33 @@ export default async function Home() {
           </div>
 
           <div className="mt-14 grid gap-8 lg:grid-cols-[1.15fr_1fr_1fr]">
-            {olmezIssues.slice(0, 3).map((issue, index) => (
+            {editorialShowcase.map((item, index) => (
               <article
-                key={issue.id}
+                key={item.id}
                 className={`group ${
                   index === 0 ? "lg:col-span-1" : ""
                 }`}
               >
-                <Link href={withLocale("/magazine", locale)} className="block">
+                <Link href={item.href} className="block">
                   <div className="relative overflow-hidden border border-white/10 bg-black">
                     <Image
-                      src={issue.coverImage}
-                      alt={issue.title}
+                      src={item.image}
+                      alt={item.title}
                       width={900}
                       height={1200}
                       className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                   </div>
                   <div className="mt-5 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.18em] text-white/42">
-                    <span>{issue.issueNumber}</span>
+                    <span>{item.issueLabel}</span>
                     <span className="text-white/22">/</span>
-                    <span>{issue.date}</span>
+                    <span>{item.date}</span>
                   </div>
                   <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
-                    {issue.title}
+                    {item.title}
                   </h3>
                   <p className="mt-3 max-w-[36ch] text-sm leading-[1.8] text-white/62">
-                    {issue.description}
+                    {item.description}
                   </p>
                 </Link>
               </article>
