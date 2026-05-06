@@ -4,14 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
-  { name: "Filings",   href: "/#marketplace"    },
-  { name: "Auditing",  href: "/auditing"        },
-  { name: "Project",   href: "/sevet-project"   },
-  { name: "Doctrine",  href: "/#doctrine"       },
-  { name: "Magazine",  href: "/magazine"        },
-  { name: "Founder",   href: "/founder"         },
+  { name: "Filings",    href: "/#marketplace"    },
+  { name: "Auditing",   href: "/auditing"        },
+  { name: "Analytics",  href: "/analytics"       },
+  { name: "Project",    href: "/sevet-project"   },
+  { name: "Doctrine",   href: "/#doctrine"       },
+  { name: "Magazine",   href: "/magazine"        },
+  { name: "Founder",    href: "/founder"         },
 ];
 
 export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean }) {
@@ -52,27 +54,21 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <span
-              aria-hidden="true"
-              className={`inline-block w-2 h-2 rounded-full bg-[#b8865a] transition-all duration-500 ${
-                isScrolled ? "scale-100" : "scale-110"
-              }`}
-            />
-            <span
-              className={`font-display tracking-[0.02em] transition-all duration-500 ${
-                isScrolled ? "text-lg text-foreground" : "text-xl text-white"
+          <Link href="/" className="flex items-center gap-2 group shrink-0">
+            <div
+              className={`transition-all duration-500 ${
+                isScrolled ? "w-24 h-8" : "w-28 h-10"
               }`}
             >
-              SEVETTEAM
-            </span>
-            <span
-              className={`hidden sm:inline font-mono uppercase tracking-[0.2em] transition-all duration-500 ${
-                isScrolled ? "text-[9px] text-muted-foreground" : "text-[10px] text-white/50"
-              }`}
-            >
-              Edinburgh / Istanbul
-            </span>
+              <Image
+                src="/olmez-logo.svg"
+                alt="Ölmez"
+                width={112}
+                height={40}
+                priority
+                className="w-full h-full object-contain"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

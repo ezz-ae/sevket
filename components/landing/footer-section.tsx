@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const footerLinks = {
   Platform: [
@@ -91,9 +92,14 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
             {/* Brand */}
             <div className="col-span-2">
-              <a href="#" className="inline-flex items-center gap-2.5 mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#b8865a]" />
-                <span className="text-2xl font-display tracking-[0.02em]">SEVETTEAM</span>
+              <a href="#" className="inline-block mb-8 w-32">
+                <Image
+                  src="/olmez-logo.svg"
+                  alt="Ölmez"
+                  width={128}
+                  height={48}
+                  className="w-full h-auto"
+                />
               </a>
 
               <p className="text-white/55 leading-relaxed mb-6 max-w-sm text-sm">
@@ -102,9 +108,9 @@ export function FooterSection() {
               </p>
 
               <address className="not-italic text-sm text-white/45 leading-relaxed mb-8 font-mono">
-                SevetTeam Ltd.<br />
+                Ölmez Ltd.<br />
                 Filing IV · Edinburgh, UK<br />
-                Founded by Şevketullah &ldquo;Sevet&rdquo; Ölmez<br />
+                Founded by Şevketullah &ldquo;Şevket&rdquo; Ölmez<br />
                 <span className="text-white/35">Ankara · 12 October 1988</span>
               </address>
 

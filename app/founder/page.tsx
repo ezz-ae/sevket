@@ -11,23 +11,6 @@ export const metadata: Metadata = {
     "I don't build restaurants — I build repetition. The founder profile of Şevketullah Ölmez, architect of SevetTeam's disciplined franchise infrastructure.",
 };
 
-const identities = [
-  {
-    name: "Şevketullah Ölmez",
-    knownAs: "Legal name",
-    context: "Carried into every contract, every filing, every signed lease. The name in the file room.",
-  },
-  {
-    name: "Şevket Ölmez",
-    knownAs: "Business identity",
-    context: "The streamlined operator. Spoken in design sessions and on accountancy calls.",
-  },
-  {
-    name: "Sevet Ölmez",
-    knownAs: "The understood name",
-    context: "The private identity known by those who understand the machine. Used by the team when the line is awake.",
-  },
-];
 
 const geographies = [
   {
@@ -74,45 +57,6 @@ export default function FounderPage() {
         ]}
       />
 
-      {/* Identity tiers */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-12 gap-8 mb-20 lg:mb-28">
-            <div className="lg:col-span-8">
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Identity and context
-              </span>
-              <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-                One name, known as.
-              </h2>
-            </div>
-            <div className="lg:col-span-4 lg:pt-6">
-              <p className="text-lg leading-[1.7] text-muted-foreground max-w-[44ch]">
-                One person. Multiple contexts. Each name serves a distinct function: legal, operational, and internal.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {identities.map((id) => (
-              <article
-                key={id.name}
-                className="border border-foreground/15 p-8 lg:p-10 bg-foreground/[0.015]"
-              >
-                <h3 className="font-display text-3xl lg:text-4xl tracking-[-0.005em]">
-                  {id.name}
-                </h3>
-                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                  Known as: <span className="text-foreground">{id.knownAs}</span>
-                </p>
-                <p className="mt-6 text-base leading-[1.75] text-foreground/80">
-                  {id.context}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Geographies — vertical timeline */}
       <section className="relative py-24 lg:py-32 bg-foreground/[0.015] border-t border-foreground/10">

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140" width="400" height="140" fill="none">
+  <!-- Decorative flourish on top -->
+  <path d="M 80 25 Q 95 15, 110 20 Q 125 25, 120 35" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- Ölmez text -->
+  <g fill="white">
+    <!-- Ö -->
+    <ellipse cx="65" cy="80" rx="28" ry="38"/>
+    <ellipse cx="65" cy="80" rx="18" ry="28" fill="white"/>
+    <!-- Two dots above Ö -->
+    <circle cx="50" cy="45" r="4"/>
+    <circle cx="80" cy="45" r="4"/>
+
+    <!-- l -->
+    <rect x="115" y="45" width="8" height="70" rx="4"/>
+
+    <!-- m -->
+    <path d="M 145 115 L 145 65 Q 145 50, 160 50 Q 170 50, 175 60 L 175 115 M 175 60 Q 175 50, 190 50 Q 200 50, 205 60 L 205 115" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- e -->
+    <path d="M 245 115 L 245 65 Q 245 50, 260 50 Q 280 50, 280 70 L 250 70 Q 250 60, 260 60 Q 275 60, 275 75 L 250 75 Q 250 95, 265 105 Q 275 115, 285 115" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- z -->
+    <path d="M 310 50 L 355 50 L 320 110 L 355 110" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>
