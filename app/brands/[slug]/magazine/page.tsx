@@ -7,6 +7,8 @@ import { brandMagazine, magazineIssues } from "@/lib/brand-detailed-data";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale } from "@/lib/site-locale";
 import { ArrowRight, BookOpen, Download } from "lucide-react";
 
 const baseUrl =
@@ -22,21 +24,32 @@ export async function generateMetadata({
   params,
 }: BrandMagazinePageProps): Promise<Metadata> {
   const brand = getBrand(params.slug);
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const localizedPath = isTurkish ? `/tr/brands/${params.slug}/magazine` : `/brands/${params.slug}/magazine`;
 
   if (!brand) {
-    return { title: "Brand Not Found" };
+    return { title: isTurkish ? "Marka Bulunamadı" : "Brand Not Found" };
   }
 
   return {
-    title: `${brand.name} Magazine — Field Notes & Strategic Insights`,
-    description: `Field Notes and industry insights from ${brand.name}. Operator spotlights, best practices, and strategic analysis.`,
+    title: isTurkish
+      ? `${brand.name} Dergi — Field Notes ve Stratejik İçgörüler`
+      : `${brand.name} Magazine — Field Notes & Strategic Insights`,
+    description: isTurkish
+      ? `${brand.name} ağından Field Notes ve sektör içgörüleri. Operatör spotlights, en iyi uygulamalar ve stratejik analiz.`
+      : `Field Notes and industry insights from ${brand.name}. Operator spotlights, best practices, and strategic analysis.`,
     openGraph: {
-      title: `${brand.name} Magazine — Field Notes & Strategic Insights`,
-      description: `${brand.name} magazine featuring operator spotlights, industry analysis, and best practices.`,
-      url: `${baseUrl}/brands/${brand.slug}/magazine`,
+      title: isTurkish
+        ? `${brand.name} Dergi — Field Notes ve Stratejik İçgörüler`
+        : `${brand.name} Magazine — Field Notes & Strategic Insights`,
+      description: isTurkish
+        ? `${brand.name} dergisi: operatör spotlights, sektör analizi ve en iyi uygulamalar.`
+        : `${brand.name} magazine featuring operator spotlights, industry analysis, and best practices.`,
+      url: `${baseUrl}${localizedPath}`,
     },
     alternates: {
-      canonical: `${baseUrl}/brands/${brand.slug}/magazine`,
+      canonical: `${baseUrl}${localizedPath}`,
     },
   };
 }
@@ -51,10 +64,67 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
+export default async function BrandMagazinePage({ params }: BrandMagazinePageProps) {
   const brand = getBrand(params.slug);
   const articles = brandMagazine[params.slug] || [];
   const issues = magazineIssues.filter((issue) => issue.brand === params.slug);
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const ui = isTurkish
+    ? {
+        eyebrow: `${brand?.name ?? ""} Dergi`,
+        title: "Field Notes",
+        italicTail: "ve İçgörüler.",
+        dek: `${brand?.name ?? ""} ağından operatör spotlights, sektör analizi ve en iyi uygulamalar. Gerçek operasyonlardan gelen gerçek içgörüler.`,
+        latestIssue: "Son sayı",
+        articles: "Makaleler",
+        updated: "Güncellenme",
+        weekly: "Haftalık",
+        currentIssue: "Güncel sayı",
+        onCover: "Kapakta",
+        pages: "sayfa",
+        inThisIssue: "Bu sayıda",
+        readIssue: "Sayıyı oku",
+        downloadPdf: "PDF indir",
+        pastIssues: "Geçmiş sayılar",
+        archive: "Arşiv",
+        featuredArticle: "Öne çıkan makale",
+        by: "Yazan",
+        readArticle: "Makaleyi oku",
+        allArticles: "Tüm Makaleler",
+        stayUpdated: "Güncel kalın",
+        subscribeTitle: `${brand?.name ?? ""} dergisine abone olun.`,
+        subscribeDek: `${brand?.name ?? ""} ağından haftalık yeni makaleler alın. Operatör içgörüleri, pazar analizi ve stratejik güncellemeler.`,
+        emailPlaceholder: "eposta@ornek.com",
+        subscribe: "Abone ol",
+      }
+    : {
+        eyebrow: `${brand?.name ?? ""} Magazine`,
+        title: "Field Notes",
+        italicTail: "& Insights.",
+        dek: `Operator spotlights, industry analysis, and best practices from the ${brand?.name ?? ""} network. Real insights from real operations.`,
+        latestIssue: "Latest Issue",
+        articles: "Articles",
+        updated: "Updated",
+        weekly: "Weekly",
+        currentIssue: "Current Issue",
+        onCover: "On the Cover",
+        pages: "pages",
+        inThisIssue: "In This Issue",
+        readIssue: "Read Issue",
+        downloadPdf: "Download PDF",
+        pastIssues: "Past Issues",
+        archive: "Archive",
+        featuredArticle: "Featured Article",
+        by: "By",
+        readArticle: "Read Article",
+        allArticles: "All Articles",
+        stayUpdated: "Stay Updated",
+        subscribeTitle: `Subscribe to ${brand?.name ?? ""} Magazine.`,
+        subscribeDek: `Get new articles delivered weekly. Operator insights, market analysis, and strategic updates from the ${brand?.name ?? ""} network.`,
+        emailPlaceholder: "your@email.com",
+        subscribe: "Subscribe",
+      };
 
   if (!brand) {
     notFound();
@@ -83,27 +153,31 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow={`${brand.name} Magazine`}
-        title="Field Notes"
-        italicTail="& Insights."
-        dek={`Operator spotlights, industry analysis, and best practices from the ${brand.name} network. Real insights from real operations.`}
+        locale={locale}
+        eyebrow={ui.eyebrow}
+        title={ui.title}
+        italicTail={ui.italicTail}
+        dek={ui.dek}
         meta={[
-          { label: "Latest Issue", value: latestIssue?.issueNumber || "Issue 1" },
-          { label: "Articles", value: articles.length.toString() },
-          { label: "Updated", value: "Weekly" },
+          { label: ui.latestIssue, value: latestIssue?.issueNumber || "Issue 1" },
+          { label: ui.articles, value: articles.length.toString() },
+          { label: ui.updated, value: ui.weekly },
         ]}
       />
 
       {/* Featured Cover Issue */}
       {latestIssue && (
-        <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.02]">
+        <section
+          className="relative border-t border-foreground/10 py-24 lg:py-32"
+          style={{ backgroundColor: `${brand.theme.primary}10` }}
+        >
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="mb-12">
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Current Issue
+                {ui.currentIssue}
               </span>
               <h2 className="mt-6 font-display text-4xl md:text-5xl tracking-[-0.015em]">
-                On the Cover
+                {ui.onCover}
               </h2>
             </div>
 
@@ -135,7 +209,7 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
                   </span>
                   <span className="text-muted-foreground">·</span>
                   <span className="font-mono text-[11px] text-muted-foreground">
-                    {latestIssue.pages} pages
+                    {latestIssue.pages} {ui.pages}
                   </span>
                 </div>
 
@@ -153,7 +227,7 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
 
                 <div className="mb-10">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
-                    In This Issue
+                    {ui.inThisIssue}
                   </p>
                   <ul className="grid sm:grid-cols-2 gap-3">
                     {latestIssue.featuredHeadlines.map((headline) => (
@@ -179,11 +253,11 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
                     className="inline-flex items-center justify-center gap-2 text-white px-8 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
                   >
                     <BookOpen className="w-4 h-4" />
-                    Read Issue
+                    {ui.readIssue}
                   </button>
                   <button className="inline-flex items-center justify-center gap-2 border border-foreground/25 text-foreground px-8 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-foreground/5 transition-colors">
                     <Download className="w-4 h-4" />
-                    Download PDF
+                    {ui.downloadPdf}
                   </button>
                 </div>
               </div>
@@ -198,10 +272,10 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="mb-16">
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Past Issues
+                {ui.pastIssues}
               </span>
               <h2 className="mt-6 font-display text-4xl md:text-5xl tracking-[-0.015em]">
-                Archive
+                {ui.archive}
               </h2>
             </div>
 
@@ -248,11 +322,14 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
 
       {/* Featured Article */}
       {featuredArticle && (
-        <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
+        <section
+          className="relative border-t border-foreground/10 py-24 lg:py-32"
+          style={{ backgroundColor: `${brand.theme.secondary}0d` }}
+        >
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
             <div className="mb-12">
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-                Featured Article
+                {ui.featuredArticle}
               </span>
             </div>
 
@@ -278,7 +355,7 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
                 <div className="flex items-center gap-6 text-sm text-muted-foreground mb-8">
                   {featuredArticle.author && (
                     <>
-                      <span>By {featuredArticle.author}</span>
+                      <span>{ui.by} {featuredArticle.author}</span>
                       <span>·</span>
                     </>
                   )}
@@ -291,7 +368,7 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
                   style={{ backgroundColor: brand.theme.primary }}
                   className="inline-flex items-center justify-center gap-2 text-white px-8 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
                 >
-                  Read Article
+                  {ui.readArticle}
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -305,7 +382,7 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <h2 className="font-display text-4xl md:text-5xl tracking-[-0.015em]">
-              All Articles
+              {ui.allArticles}
             </h2>
             <div className="h-px bg-foreground/10 mt-6" />
           </div>
@@ -354,7 +431,10 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
       </section>
 
       {/* Subscribe CTA */}
-      <section className="relative border-t border-foreground/10 py-32 lg:py-48 bg-foreground/[0.015]">
+      <section
+        className="relative border-t border-foreground/10 py-32 lg:py-48"
+        style={{ backgroundColor: `${brand.theme.accent}0b` }}
+      >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <div className="inline-flex items-center justify-center gap-3 mb-8">
             <BookOpen
@@ -362,28 +442,27 @@ export default function BrandMagazinePage({ params }: BrandMagazinePageProps) {
               style={{ color: brand.theme.primary }}
             />
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Stay Updated
+              {ui.stayUpdated}
             </span>
           </div>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
-            Subscribe to {brand.name} Magazine.
+            {ui.subscribeTitle}
           </h2>
           <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
-            Get new articles delivered weekly. Operator insights, market analysis,
-            and strategic updates from the {brand.name} network.
+            {ui.subscribeDek}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-[500px] mx-auto">
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder={ui.emailPlaceholder}
               className="flex-1 px-6 h-12 border border-foreground/25 bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/50"
             />
             <button
               style={{ backgroundColor: brand.theme.primary }}
               className="inline-flex items-center justify-center gap-2 text-white px-8 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
             >
-              Subscribe
+              {ui.subscribe}
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

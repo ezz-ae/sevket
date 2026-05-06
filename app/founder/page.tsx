@@ -96,7 +96,13 @@ export default async function FounderPage() {
         "Money is becoming normal. Behavioral consistency is the rarity.",
       ];
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #180f0b 0%, #050505 38%, #10100f 100%)",
+      }}
+    >
       <Navigation forceScrolled />
 
       <PageHeader

@@ -6,6 +6,8 @@ import { brandReports } from "@/lib/brand-detailed-data";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { getRequestLocale } from "@/lib/server-locale";
+import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 import { Download, FileText, ArrowRight, TrendingUp } from "lucide-react";
 
 const baseUrl =
@@ -21,14 +23,21 @@ export async function generateMetadata({
   params,
 }: BrandReportsPageProps): Promise<Metadata> {
   const brand = getBrand(params.slug);
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const localizedPath = withLocale(`/brands/${params.slug}/reports`, locale);
 
   if (!brand) {
-    return { title: "Brand Not Found" };
+    return { title: isTurkish ? "Marka Bulunamadı" : "Brand Not Found" };
   }
 
   return {
-    title: `${brand.name} Reports & Analytics — H1 2026 Performance`,
-    description: `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.deployedCapital} deployed capital.`,
+    title: isTurkish
+      ? `${brand.name} Raporlar ve Analitik — H1 2026 Performansı`
+      : `${brand.name} Reports & Analytics — H1 2026 Performance`,
+    description: isTurkish
+      ? `${brand.name} için stratejik raporlar, performans verileri ve operasyonel metrikler. ${brand.unitCount} aktif ünite, ${brand.deployedCapital} konuşlanan sermaye.`
+      : `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.deployedCapital} deployed capital.`,
     keywords: [
       brand.name,
       "franchise reports",
@@ -38,12 +47,16 @@ export async function generateMetadata({
       "Ölmez ecosystem",
     ],
     openGraph: {
-      title: `${brand.name} Reports & Analytics`,
-      description: `${brand.name} strategic reports and performance data.`,
-      url: `${baseUrl}/brands/${brand.slug}/reports`,
+      title: isTurkish
+        ? `${brand.name} Raporlar ve Analitik`
+        : `${brand.name} Reports & Analytics`,
+      description: isTurkish
+        ? `${brand.name} stratejik raporları ve performans verileri.`
+        : `${brand.name} strategic reports and performance data.`,
+      url: `${baseUrl}${localizedPath}`,
     },
     alternates: {
-      canonical: `${baseUrl}/brands/${brand.slug}/reports`,
+      canonical: `${baseUrl}${localizedPath}`,
     },
   };
 }
@@ -58,9 +71,84 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function BrandReportsPage({ params }: BrandReportsPageProps) {
+export default async function BrandReportsPage({ params }: BrandReportsPageProps) {
   const brand = getBrand(params.slug);
   const report = brandReports[params.slug];
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+  const ui = isTurkish
+    ? {
+        eyebrow: `${brand?.name ?? ""} Raporları`,
+        title: "Stratejik",
+        italicTail: "Dokümantasyon.",
+        dek: `${brand?.name ?? ""} için çeyreklik ve yıllık raporlar. Performans metrikleri, sermaye takibi ve operasyonel istihbarat.`,
+        latestReport: "Son rapor",
+        activeUnits: "Aktif ünite",
+        deployedCapital: "Konuşlanan sermaye",
+        onTarget: "Hedefte",
+        featuredReport: "Öne çıkan rapor",
+        numbersClaim: "Her sayı kendini açıklar.",
+        strategicReport: "Stratejik Rapor",
+        strategicPillars: "Stratejik sütunlar",
+        keyMetrics: "Ana metrikler",
+        avgDailyGain: "Ort. günlük kazanç",
+        paybackTarget: "Geri ödeme hedefi",
+        downloadFull: "Tam raporu indir",
+        unitPerformance: "Ünite performans katmanları",
+        class: "Sınıf",
+        dailyGain: "Günlük kazanç",
+        status: "Durum",
+        eligibility: "Uygunluk",
+        count: "Adet",
+        amount: "Tutar",
+        revenueArchitecture: "Gelir Mimarisi",
+        recurring: "Tekrarlı",
+        strategicRoadmap: "Stratejik yol haritası",
+        target: "Hedef",
+        mandate: "Stratejik mandat",
+        corePhilosophy: "Temel felsefe",
+        brandCenter: "Marka merkezi",
+        explore: `${brand?.name ?? ""} markasını keşfedin.`,
+        overview: "Marka özeti",
+        events: "Etkinlik takvimi",
+        magazine: "Dergi",
+      }
+    : {
+        eyebrow: `${brand?.name ?? ""} Reports`,
+        title: "Strategic",
+        italicTail: "Documentation.",
+        dek: `Quarterly and annual reports for ${brand?.name ?? ""}. Performance metrics, capital deployment tracking, and operational intelligence.`,
+        latestReport: "Latest Report",
+        activeUnits: "Active Units",
+        deployedCapital: "Deployed Capital",
+        onTarget: "On-Target",
+        featuredReport: "Featured Report",
+        numbersClaim: "Every number explains itself.",
+        strategicReport: "Strategic Report",
+        strategicPillars: "Strategic Pillars",
+        keyMetrics: "Key Metrics",
+        avgDailyGain: "Avg Daily Gain",
+        paybackTarget: "Payback Target",
+        downloadFull: "Download Full Report",
+        unitPerformance: "Unit Performance Tiers",
+        class: "Class",
+        dailyGain: "Daily Gain",
+        status: "Status",
+        eligibility: "Eligibility",
+        count: "Count",
+        amount: "Amount",
+        revenueArchitecture: "Revenue Architecture",
+        recurring: "Recurring",
+        strategicRoadmap: "Strategic Roadmap",
+        target: "Target",
+        mandate: "Strategic Mandate",
+        corePhilosophy: "Core Philosophy",
+        brandCenter: "Brand Center",
+        explore: `Explore ${brand?.name ?? ""}.`,
+        overview: "Brand Overview",
+        events: "Events Calendar",
+        magazine: "Magazine",
+      };
 
   if (!brand || !report) {
     notFound();
@@ -71,27 +159,33 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
       <Navigation forceScrolled />
 
       <PageHeader
-        eyebrow={`${brand.name} Reports`}
-        title="Strategic"
-        italicTail="Documentation."
-        dek={`Quarterly and annual reports for ${brand.name}. Performance metrics, capital deployment tracking, and operational intelligence.`}
+        locale={locale}
+        eyebrow={ui.eyebrow}
+        title={ui.title}
+        italicTail={ui.italicTail}
+        dek={ui.dek}
         meta={[
-          { label: "Latest Report", value: report.quarter },
-          { label: "Active Units", value: report.portfolioMetrics.activeUnits.toString() },
-          { label: "Deployed Capital", value: report.portfolioMetrics.deployedCapital },
-          { label: "On-Target", value: report.portfolioMetrics.meetsOrExceedsTarget },
+          { label: ui.latestReport, value: report.quarter },
+          { label: ui.activeUnits, value: report.portfolioMetrics.activeUnits.toString() },
+          { label: ui.deployedCapital, value: report.portfolioMetrics.deployedCapital },
+          { label: ui.onTarget, value: report.portfolioMetrics.meetsOrExceedsTarget },
         ]}
       />
 
       {/* Featured Report */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
+      <section
+        className="relative border-t border-foreground/10 py-24 lg:py-32"
+        style={{
+          backgroundImage: `linear-gradient(180deg, ${brand.theme.primary}12 0%, transparent 100%)`,
+        }}
+      >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-16">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Featured Report
+              {ui.featuredReport}
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch]">
-              Every number explains itself.
+              {ui.numbersClaim}
             </h2>
           </div>
 
@@ -102,7 +196,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                   <FileText className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                      Strategic Report · {report.quarter}
+                      {ui.strategicReport} · {report.quarter}
                     </p>
                     <h3 className="font-display text-2xl lg:text-3xl tracking-[-0.005em] mb-3">
                       {report.title}
@@ -115,7 +209,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
 
                 <div className="mb-6">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
-                    Strategic Pillars
+                    {ui.strategicPillars}
                   </p>
                   <div className="space-y-4">
                     {report.executiveSummary.pillars.map((pillar) => (
@@ -143,35 +237,35 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                 <div className="space-y-4">
                   <div className="border border-foreground/15 p-6 bg-background">
                     <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-4">
-                      Key Metrics
+                      {ui.keyMetrics}
                     </p>
                     <div className="space-y-3">
                       <div>
-                        <p className="text-foreground/60 text-xs">Active Units</p>
+                        <p className="text-foreground/60 text-xs">{ui.activeUnits}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
                           {report.portfolioMetrics.activeUnits}
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60 text-xs">Deployed Capital</p>
+                        <p className="text-foreground/60 text-xs">{ui.deployedCapital}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
                           {report.portfolioMetrics.deployedCapital}
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60 text-xs">Avg Daily Gain</p>
+                        <p className="text-foreground/60 text-xs">{ui.avgDailyGain}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
                           {report.portfolioMetrics.avgDailyGain}
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60 text-xs">Payback Target</p>
+                        <p className="text-foreground/60 text-xs">{ui.paybackTarget}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
                           {report.portfolioMetrics.targetPayback}
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60 text-xs">On Target</p>
+                        <p className="text-foreground/60 text-xs">{ui.onTarget}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
                           {report.portfolioMetrics.meetsOrExceedsTarget}
                         </p>
@@ -184,7 +278,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                     className="w-full inline-flex items-center justify-center gap-2 text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
                   >
                     <Download className="w-4 h-4" />
-                    Download Full Report
+                    {ui.downloadFull}
                   </button>
 
                   <p className="text-center text-xs text-foreground/50">
@@ -198,10 +292,13 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
       </section>
 
       {/* Unit Performance Tiers */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
+      <section
+        className="relative border-t border-foreground/10 py-24 lg:py-32"
+        style={{ backgroundColor: `${brand.theme.secondary}0d` }}
+      >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <h2 className="font-display text-4xl md:text-5xl tracking-[-0.015em] mb-6">
-            Unit Performance Tiers
+            {ui.unitPerformance}
           </h2>
           <p className="text-foreground/70 text-base lg:text-lg mb-16 max-w-[55ch]">
             {report.unitPerformanceTiering.description}
@@ -212,19 +309,19 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
               <thead>
                 <tr className="border-b border-foreground/15">
                   <th className="text-left py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    Class
+                    {ui.class}
                   </th>
                   <th className="text-left py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    Daily Gain
+                    {ui.dailyGain}
                   </th>
                   <th className="text-left py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    Status
+                    {ui.status}
                   </th>
                   <th className="text-left py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    Eligibility
+                    {ui.eligibility}
                   </th>
                   <th className="text-right py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                    Count
+                    {ui.count}
                   </th>
                   <th className="text-right py-4 px-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                     %
@@ -265,7 +362,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
       <section className="relative border-t border-foreground/10 py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <h2 className="font-display text-4xl md:text-5xl tracking-[-0.015em] mb-16">
-            Revenue Architecture
+            {ui.revenueArchitecture}
           </h2>
 
           <div className="space-y-4">
@@ -291,7 +388,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                     </h3>
                     {layer.recurring && (
                       <span className="px-2 h-5 text-[9px] uppercase tracking-[0.1em] border border-foreground/20 inline-flex items-center">
-                        Recurring
+                        {ui.recurring}
                       </span>
                     )}
                   </div>
@@ -301,7 +398,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                 </div>
                 <div className="lg:col-span-4 lg:text-right">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                    Amount
+                    {ui.amount}
                   </p>
                   <p className="font-display text-xl tracking-[-0.005em]">
                     {layer.amount}
@@ -314,10 +411,13 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
       </section>
 
       {/* H2 Roadmap */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
+      <section
+        className="relative border-t border-foreground/10 py-24 lg:py-32"
+        style={{ backgroundColor: `${brand.theme.primary}0c` }}
+      >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Strategic Roadmap
+            {ui.strategicRoadmap}
           </span>
           <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[18ch] mb-8">
             {report.h2Roadmap.title}
@@ -350,7 +450,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
                 </p>
                 <div className="pt-4 border-t border-foreground/10">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
-                    Target
+                    {ui.target}
                   </p>
                   <p className="font-display text-base">{priority.target}</p>
                 </div>
@@ -360,7 +460,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
 
           <div className="mt-16 p-8 border border-foreground/15 bg-foreground text-background text-center">
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-background/60 mb-4">
-              Strategic Mandate
+              {ui.mandate}
             </p>
             <p className="font-display text-2xl lg:text-3xl tracking-[-0.005em]">
               "{report.h2Roadmap.mandate}"
@@ -374,7 +474,7 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="max-w-[60ch] mx-auto text-center">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Core Philosophy
+              {ui.corePhilosophy}
             </span>
             <blockquote className="mt-10 font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.015em] leading-[1.3] mb-8 italic">
               "{report.corePhilosophy.quote}"
@@ -387,36 +487,39 @@ export default function BrandReportsPage({ params }: BrandReportsPageProps) {
       </section>
 
       {/* CTA */}
-      <section className="relative border-t border-foreground/10 py-32 lg:py-48 bg-foreground/[0.015]">
+      <section
+        className="relative border-t border-foreground/10 py-32 lg:py-48"
+        style={{ backgroundColor: `${brand.theme.accent}0b` }}
+      >
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Brand Center
+            {ui.brandCenter}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[18ch] mx-auto mb-8">
-            Explore {brand.name}.
+            {ui.explore}
           </h2>
 
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href={`/brands/${brand.slug}`}
+              href={withLocale(`/brands/${brand.slug}`, locale)}
               style={{ backgroundColor: brand.theme.primary }}
               className="inline-flex items-center justify-center gap-3 text-white font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:opacity-90 transition-opacity"
             >
-              Brand Overview
+              {ui.overview}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href={`/brands/${brand.slug}/events`}
+              href={withLocale(`/brands/${brand.slug}/events`, locale)}
               className="inline-flex items-center justify-center gap-3 border border-foreground/25 font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
             >
-              Events Calendar
+              {ui.events}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href={`/brands/${brand.slug}/magazine`}
+              href={withLocale(`/brands/${brand.slug}/magazine`, locale)}
               className="inline-flex items-center justify-center gap-3 border border-foreground/25 font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
             >
-              Magazine
+              {ui.magazine}
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

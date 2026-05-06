@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { brands } from "@/lib/brands-data";
+import { localizeBrands } from "@/lib/brand-copy";
 import { brandPortals } from "@/lib/brand-portal-data";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
@@ -10,16 +11,25 @@ import { ArrowRight } from "lucide-react";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
-export const metadata: Metadata = {
-  title: "Brands & Systems — Ölmez Ecosystem",
-  description:
-    "Five complementary brands operating within the Ölmez Franchise Systems ecosystem. From premium restaurants to smart operations technology.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  const isTurkish = isTurkishLocale(locale);
+
+  return {
+    title: isTurkish
+      ? "Markalar ve Sistemler — Ölmez Ekosistemi"
+      : "Brands & Systems — Ölmez Ecosystem",
+    description: isTurkish
+      ? "Ölmez Franchise Systems ekosisteminde çalışan beş tamamlayıcı marka. Premium restoranlardan akıllı operasyon teknolojisine kadar uzanan yapı."
+      : "Five complementary brands operating within the Ölmez Franchise Systems ecosystem. From premium restaurants to smart operations technology.",
+  };
+}
 
 export default async function BrandsPage() {
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
-  const totalUnits = brands.reduce((sum, brand) => sum + brand.unitCount, 0);
+  const localizedBrands = localizeBrands(brands, locale);
+  const totalUnits = localizedBrands.reduce((sum, brand) => sum + brand.unitCount, 0);
   const totalCapital = "$30.9M";
 
   return (
@@ -58,7 +68,7 @@ export default async function BrandsPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {brands.map((brand, index) => (
+            {localizedBrands.map((brand, index) => (
               <Link
                 key={brand.id}
                 href={withLocale(`/brands/${brand.slug}`, locale)}

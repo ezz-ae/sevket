@@ -40,7 +40,13 @@ export default async function PeoplePage() {
   const locale = await getRequestLocale();
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen overflow-x-hidden text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #170f0b 0%, #050505 38%, #121712 100%)",
+      }}
+    >
       <Navigation />
       <PeoplePortal locale={locale} />
       <FooterSection />

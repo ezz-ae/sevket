@@ -89,7 +89,13 @@ export default async function SocialResponsibilityPage() {
   ];
 
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #18110d 0%, #0e1510 55%, #050505 100%)",
+      }}
+    >
       <Navigation forceScrolled />
 
       <PageHeader

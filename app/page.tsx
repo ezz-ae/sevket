@@ -5,6 +5,7 @@ import { Navigation } from "@/components/landing/navigation";
 import { HeroSection } from "@/components/landing/hero-section";
 import { FooterSection } from "@/components/landing/footer-section";
 import { brands } from "@/lib/brands-data";
+import { localizeBrands } from "@/lib/brand-copy";
 import { magazineIssues } from "@/lib/brand-detailed-data";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { withLocale } from "@/lib/site-locale";
@@ -34,9 +35,10 @@ const scaleSignals = [
 export default async function Home() {
   const locale = await getRequestLocale();
   const isTurkish = locale === "tr";
-  const olmez = brands.find((brand) => brand.slug === "olmez");
-  const ecosystemBrands = brands.filter((brand) => brand.slug !== "olmez");
-  const totalUnits = brands.reduce((sum, brand) => sum + brand.unitCount, 0);
+  const localizedBrands = localizeBrands(brands, locale);
+  const olmez = localizedBrands.find((brand) => brand.slug === "olmez");
+  const ecosystemBrands = localizedBrands.filter((brand) => brand.slug !== "olmez");
+  const totalUnits = localizedBrands.reduce((sum, brand) => sum + brand.unitCount, 0);
   const olmezIssues = magazineIssues.filter((issue) => issue.brand === "olmez");
 
   return (

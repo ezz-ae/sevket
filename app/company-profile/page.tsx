@@ -144,7 +144,13 @@ export default async function CompanyProfilePage() {
   const isTurkish = isTurkishLocale(locale);
 
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #1b130f 0%, #050505 30%, #10140f 100%)",
+      }}
+    >
       <Navigation forceScrolled />
 
       <PageHeader

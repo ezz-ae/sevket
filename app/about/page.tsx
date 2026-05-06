@@ -111,7 +111,13 @@ export default async function AboutPage() {
       ];
 
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #1a120d 0%, #050505 34%, #101510 100%)",
+      }}
+    >
       <Navigation forceScrolled />
 
       <PageHeader

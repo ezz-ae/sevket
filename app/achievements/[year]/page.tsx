@@ -68,7 +68,13 @@ export default async function AchievementYearPage({
   const isTurkish = isTurkishLocale(locale);
 
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        background:
+          "linear-gradient(180deg, #1a120d 0%, #10150f 60%, #050505 100%)",
+      }}
+    >
       <Navigation forceScrolled />
 
       <PageHeader
