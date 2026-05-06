@@ -14,18 +14,19 @@ const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
 
 interface BrandReportsPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: BrandReportsPageProps): Promise<Metadata> {
-  const brand = getBrand(params.slug);
+  const { slug } = await params;
+  const brand = getBrand(slug);
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
-  const localizedPath = withLocale(`/brands/${params.slug}/reports`, locale);
+  const localizedPath = withLocale(`/brands/${slug}/reports`, locale);
 
   if (!brand) {
     return { title: isTurkish ? "Marka Bulunamadı" : "Brand Not Found" };
@@ -72,8 +73,9 @@ export async function generateStaticParams() {
 }
 
 export default async function BrandReportsPage({ params }: BrandReportsPageProps) {
-  const brand = getBrand(params.slug);
-  const report = brandReports[params.slug];
+  const { slug } = await params;
+  const brand = getBrand(slug);
+  const report = brandReports[slug];
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
   const ui = isTurkish

@@ -22,9 +22,9 @@ import { localizeBrand, localizeBrands } from "@/lib/brand-copy";
 import { brandPortals, type BrandPortalCard, type BrandPortalLink } from "@/lib/brand-portal-data";
 
 interface BrandPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const portalSections = [
@@ -49,12 +49,13 @@ const linkIcons = {
 export async function generateMetadata({
   params,
 }: BrandPageProps): Promise<Metadata> {
-  const sourceBrand = getBrand(params.slug);
-  const portal = brandPortals[params.slug];
+  const { slug } = await params;
+  const sourceBrand = getBrand(slug);
+  const portal = brandPortals[slug];
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
   const brand = sourceBrand ? localizeBrand(sourceBrand, locale) : undefined;
-  const localizedPath = withLocale(`/brands/${params.slug}`, locale);
+  const localizedPath = withLocale(`/brands/${slug}`, locale);
 
   if (!brand || !portal) {
     return {
@@ -141,8 +142,9 @@ function PortalCardsSection({
 }
 
 export default async function BrandPage({ params }: BrandPageProps) {
-  const sourceBrand = getBrand(params.slug);
-  const portal = brandPortals[params.slug];
+  const { slug } = await params;
+  const sourceBrand = getBrand(slug);
+  const portal = brandPortals[slug];
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
   const brand = sourceBrand ? localizeBrand(sourceBrand, locale) : undefined;

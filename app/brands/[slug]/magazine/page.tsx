@@ -15,18 +15,19 @@ const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
 
 interface BrandMagazinePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: BrandMagazinePageProps): Promise<Metadata> {
-  const brand = getBrand(params.slug);
+  const { slug } = await params;
+  const brand = getBrand(slug);
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
-  const localizedPath = isTurkish ? `/tr/brands/${params.slug}/magazine` : `/brands/${params.slug}/magazine`;
+  const localizedPath = isTurkish ? `/tr/brands/${slug}/magazine` : `/brands/${slug}/magazine`;
 
   if (!brand) {
     return { title: isTurkish ? "Marka Bulunamadı" : "Brand Not Found" };
@@ -65,9 +66,10 @@ export async function generateStaticParams() {
 }
 
 export default async function BrandMagazinePage({ params }: BrandMagazinePageProps) {
-  const brand = getBrand(params.slug);
-  const articles = brandMagazine[params.slug] || [];
-  const issues = magazineIssues.filter((issue) => issue.brand === params.slug);
+  const { slug } = await params;
+  const brand = getBrand(slug);
+  const articles = brandMagazine[slug] || [];
+  const issues = magazineIssues.filter((issue) => issue.brand === slug);
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
   const ui = isTurkish

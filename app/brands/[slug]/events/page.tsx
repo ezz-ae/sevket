@@ -14,18 +14,19 @@ const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
 
 interface BrandEventsPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({
   params,
 }: BrandEventsPageProps): Promise<Metadata> {
-  const brand = getBrand(params.slug);
+  const { slug } = await params;
+  const brand = getBrand(slug);
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
-  const localizedPath = withLocale(`/brands/${params.slug}/events`, locale);
+  const localizedPath = withLocale(`/brands/${slug}/events`, locale);
 
   if (!brand) {
     return { title: isTurkish ? "Marka Bulunamadı" : "Brand Not Found" };
@@ -64,8 +65,9 @@ export async function generateStaticParams() {
 }
 
 export default async function BrandEventsPage({ params }: BrandEventsPageProps) {
-  const brand = getBrand(params.slug);
-  const events = brandEvents[params.slug];
+  const { slug } = await params;
+  const brand = getBrand(slug);
+  const events = brandEvents[slug];
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
   const dateLocale = isTurkish ? "tr-TR" : "en-US";
