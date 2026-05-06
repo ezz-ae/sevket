@@ -1,0 +1,75 @@
+{
+  "name": "Ölmez Franchise Systems",
+  "short_name": "Ölmez",
+  "description": "Restaurant franchise systems and infrastructure. Build disciplined food business assets with AFFAREM operational control.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#8B5A3C",
+  "categories": ["business", "food"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/olmez-full-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Analytics",
+      "short_name": "Analytics",
+      "description": "View business analytics and metrics",
+      "url": "/analytics",
+      "icons": [
+        {
+          "src": "/olmez-full-logo.svg",
+          "sizes": "any"
+        }
+      ]
+    },
+    {
+      "name": "Founder Profile",
+      "short_name": "Founder",
+      "description": "Learn about Şevketullah Ölmez",
+      "url": "/founder",
+      "icons": [
+        {
+          "src": "/olmez-full-logo.svg",
+          "sizes": "any"
+        }
+      ]
+    },
+    {
+      "name": "Field Notes",
+      "short_name": "Magazine",
+      "description": "Read strategic essays and insights",
+      "url": "/magazine",
+      "icons": [
+        {
+          "src": "/olmez-full-logo.svg",
+          "sizes": "any"
+        }
+      ]
+    }
+  ]
+}

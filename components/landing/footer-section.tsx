@@ -92,12 +92,12 @@ export function FooterSection() {
           <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
             {/* Brand */}
             <div className="col-span-2">
-              <a href="#" className="inline-block mb-8 w-32">
+              <a href="/" className="inline-block mb-8 w-40">
                 <Image
-                  src="/olmez-logo.svg"
-                  alt="Ölmez"
-                  width={128}
-                  height={48}
+                  src="/olmez-full-logo.svg"
+                  alt="Ölmez Franchise Systems - Restaurant Business Infrastructure"
+                  width={160}
+                  height={60}
                   className="w-full h-auto"
                 />
               </a>

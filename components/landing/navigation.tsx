@@ -57,14 +57,14 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
           <Link href="/" className="flex items-center gap-2 group shrink-0">
             <div
               className={`transition-all duration-500 ${
-                isScrolled ? "w-24 h-8" : "w-28 h-10"
+                isScrolled ? "w-32 h-10" : "w-40 h-14"
               }`}
             >
               <Image
-                src="/olmez-logo.svg"
-                alt="Ölmez"
-                width={112}
-                height={40}
+                src="/olmez-full-logo.svg"
+                alt="Ölmez Franchise Systems - Restaurant Business Infrastructure"
+                width={200}
+                height={70}
                 priority
                 className="w-full h-full object-contain"
               />

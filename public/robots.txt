@@ -1,0 +1,33 @@
+# Ölmez Franchise Systems - SEO Robots File
+# Allow all search engines to crawl and index
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /.next
+Disallow: /node_modules
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://olmez.franchise.systems/sitemap.xml
+
+# Crawl delay for other bots
+User-agent: *
+Crawl-delay: 1
+Request-rate: 1/1s
+
+# Block bad bots
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Disallow: /
