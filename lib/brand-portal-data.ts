@@ -657,9 +657,9 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       body:
         "AFFAREM is the internal branch and franchise management layer of the SevetTeam ecosystem: the operating room that tracks setup, operators, compliance, sales, field behavior, and payback visibility inside one controlled system. Primary interface: affarem.olmez.us.",
       image: image(
-        "/brand-library/affarem-investor-reporting-dashboard.png",
-        "AFFAREM investor reporting dashboard with branch and account controls",
-        "AFFAREM investor reporting dashboard"
+        "/affarem-logo.svg",
+        "AFFAREM Invest Manage Grow logo",
+        "AFFAREM logo"
       ),
     },
     branchesIntro:
