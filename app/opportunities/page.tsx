@@ -47,9 +47,9 @@ const statusColors: Record<string, string> = {
 };
 
 const statusLabels: Record<string, string> = {
-  open: "Available",
+  open: "Invest",
   limited: "Under Review",
-  closed: "Reserved",
+  closed: "In Process",
 };
 
 export default async function OpportunitiesPage() {
@@ -206,9 +206,9 @@ export default async function OpportunitiesPage() {
                           >
                             {isTurkish
                               ? ({
-                                  open: "Mevcut",
+                                  open: "Yatır",
                                   limited: "İncelemede",
-                                  closed: "Rezerve",
+                                  closed: "Süreçte",
                                 }[opp.status] || statusLabels[opp.status])
                               : statusLabels[opp.status]}
                           </span>

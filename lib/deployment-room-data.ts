@@ -197,10 +197,10 @@ export const deploymentLocations: DeploymentLocation[] = [
 ];
 
 export const statusMeta: Record<DeploymentStatus, { label: string; color: string; pulse: boolean }> = {
-  available: { label: "Available", color: "#1B5E20", pulse: true },
+  available: { label: "Invest", color: "#1B5E20", pulse: true },
   "under-review": { label: "Under Review", color: "#D4A574", pulse: false },
-  reserved: { label: "Reserved", color: "#2E5C7F", pulse: false },
-  deployed: { label: "Operational", color: "#8B3A3A", pulse: false },
+  reserved: { label: "In Process", color: "#2E5C7F", pulse: false },
+  deployed: { label: "Open Soon", color: "#8B3A3A", pulse: false },
 };
 
 // ─── Unit Viewer Hotspots ──────────────────────────────────────────────────
@@ -538,10 +538,10 @@ export const investorRoles: InvestorRole[] = [
 export function localizeStatus(status: DeploymentStatus, isTurkish: boolean): string {
   if (!isTurkish) return statusMeta[status].label;
   const map: Record<DeploymentStatus, string> = {
-    available: "Açık",
+    available: "Yatır",
     "under-review": "İncelemede",
-    reserved: "Rezerve",
-    deployed: "Operasyonel",
+    reserved: "Süreçte",
+    deployed: "Yakında Açılıyor",
   };
   return map[status];
 }
