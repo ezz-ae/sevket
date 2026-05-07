@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X, Languages } from "lucide-react";
 import Image from "next/image";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { SiteLocale, splitLocaleFromPath, swapLocaleInPath, withLocale } from "@/lib/site-locale";
@@ -53,17 +53,17 @@ const navGroups: NavGroup[] = [
     label: { default: "Invest", tr: "Yatır" },
     href: "/investors",
     primary: {
-      href: "/deployment-room",
-      label: { default: "Investor Review Room", tr: "Yatırımcı İnceleme Odası" },
-      description: { default: "Inspect a Shawarma Time unit before you invest. Powered by AFFAREM.", tr: "Yatırım yapmadan önce bir Shawarma Time ünitesini inceleyin. Powered by AFFAREM." },
-      hint: { default: "Featured", tr: "Öne çıkan" },
+      href: "/investors/dashboard",
+      label: { default: "AFFAREM Investor Dashboard", tr: "AFFAREM Yatırımcı Paneli" },
+      description: { default: "Wallet, payouts, branch performance, agreements, KYC, tax, and live chat — in one account.", tr: "Cüzdan, ödemeler, şube performansı, sözleşmeler, KYC, vergi ve canlı sohbet — tek hesapta." },
+      hint: { default: "Live", tr: "Canlı" },
     },
     columns: [
       {
         heading: { default: "Enter the system", tr: "Sisteme gir" },
         items: [
           { href: "/junior-investor-program", label: { default: "Junior Investor Program", tr: "Junior Yatırımcı Programı" }, description: { default: "Pool of 50 units · $1K–$12K · 6-month subscription.", tr: "50 ünitelik havuz · $1K–$12K · 6 aylık abonelik." }, hint: { default: "New", tr: "Yeni" } },
-          { href: "/opportunities", label: { default: "Active Opportunities", tr: "Aktif Fırsatlar" }, description: { default: "Open seats across 5 brands and 18 markets.", tr: "5 marka, 18 pazarda açık koltuklar." } },
+          { href: "/opportunities", label: { default: "Active Opportunities", tr: "Aktif Fırsatlar" }, description: { default: "Open seats across the brand network.", tr: "Marka ağında açık koltuklar." } },
           { href: "/deployment-room", label: { default: "Investor Review Room", tr: "Yatırımcı İnceleme Odası" }, description: { default: "Hotspot inspection of the unit before opening day.", tr: "Açılış gününden önce ünite incelemesi." } },
           { href: "/filing", label: { default: "Filings Marketplace", tr: "Dosya Pazarı" }, description: { default: "Corridor filings with seat structure and disclosures.", tr: "Koridor dosyaları ve koltuk yapıları." } },
         ],
@@ -71,8 +71,8 @@ const navGroups: NavGroup[] = [
       {
         heading: { default: "After you invest", tr: "Yatırımdan sonra" },
         items: [
+          { href: "/investors/dashboard", label: { default: "AFFAREM Dashboard", tr: "AFFAREM Paneli" }, description: { default: "Wallet, agreements, payouts, tax, and live chat.", tr: "Cüzdan, sözleşmeler, ödemeler, vergi ve canlı sohbet." }, hint: { default: "Live", tr: "Canlı" } },
           { href: "/investors", label: { default: "Investor Portal", tr: "Yatırımcı Portalı" }, description: { default: "Capital tiers, briefings, and qualification.", tr: "Sermaye katmanları, brifingler ve nitelik." } },
-          { href: "/investors/dashboard", label: { default: "AFFAREM Dashboard", tr: "AFFAREM Paneli" }, description: { default: "Wallet, agreements, payouts, tax, and live chat.", tr: "Cüzdan, sözleşmeler, ödemeler, vergi ve canlı sohbet." }, hint: { default: "Preview", tr: "Önizleme" } },
           { href: "/reports", label: { default: "Reports & Filings", tr: "Raporlar ve Dosyalar" }, description: { default: "Quarterly filings, audits, and brand reports.", tr: "Üç aylık dosyalar, denetimler ve marka raporları." } },
           { href: "/investor-responsibility", label: { default: "Investor Responsibility", tr: "Yatırımcı Sorumluluğu" }, description: { default: "Global Funding Department · 0.5% of distribution.", tr: "Global Funding Department · dağıtımın %0,5'i." } },
         ],
@@ -131,8 +131,6 @@ const navGroups: NavGroup[] = [
 
 const localeOptions: { locale: SiteLocale; label: string }[] = [
   { locale: "default", label: "EN" },
-  { locale: "uk", label: "UK" },
-  { locale: "us", label: "US" },
   { locale: "tr", label: "TR" },
 ];
 
@@ -162,6 +160,16 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
     setOpenGroupId(null);
     setIsMobileMenuOpen(false);
   }, [pathname]);
+
+  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const original = document.body.style.overflow;
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : original;
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [isMobileMenuOpen]);
 
   const useSolidChrome = isScrolled || isMobileMenuOpen || openGroupId !== null;
   const logo = useSolidChrome ? olmezBrandAssets.logos.copper : olmezBrandAssets.logos.white;
@@ -203,25 +211,29 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
   return (
     <header
       className={`fixed z-50 transition-all duration-500 ${
-        isScrolled ? "top-4 left-4 right-4" : "top-0 left-0 right-0"
+        isScrolled ? "top-3 left-3 right-3 lg:top-4 lg:left-4 lg:right-4" : "top-0 left-0 right-0"
       }`}
     >
       <nav
         className={`mx-auto transition-all duration-500 ${
           useSolidChrome
-            ? "bg-[#080808]/90 backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)] max-w-[1320px]"
+            ? "bg-[#080808]/92 backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.4)] max-w-[1320px]"
             : "bg-transparent max-w-[1440px]"
         }`}
         onMouseLeave={scheduleClose}
       >
         <div
-          className={`flex items-center justify-between transition-all duration-500 px-6 lg:px-8 ${
-            isScrolled ? "h-14" : "h-20"
+          className={`flex items-center justify-between transition-all duration-500 px-4 sm:px-6 lg:px-8 ${
+            isScrolled ? "h-14" : "h-16 sm:h-20"
           }`}
         >
           {/* Logo */}
           <Link href={withLocale("/", locale)} className="flex shrink-0 items-center gap-2">
-            <div className={`transition-all duration-500 ${isScrolled ? "w-32 h-10" : "w-40 h-14"}`}>
+            <div
+              className={`transition-all duration-500 ${
+                isScrolled ? "w-28 h-9 sm:w-32 sm:h-10" : "w-32 h-11 sm:w-40 sm:h-14"
+              }`}
+            >
               <Image
                 src={logo.src}
                 alt={logo.alt}
@@ -234,7 +246,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-2">
+          <div className="hidden md:flex items-center gap-0.5 lg:gap-1">
             {groupViews.map((group) => {
               const open = openGroupId === group.id;
               return (
@@ -250,7 +262,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
                 >
                   <Link
                     href={group.href ? withLocale(group.href, locale) : "#"}
-                    className={`group relative inline-flex h-9 items-center gap-1.5 px-3 font-mono text-[11px] uppercase tracking-[0.16em] transition-colors duration-200 ${
+                    className={`group relative inline-flex h-9 items-center gap-1 px-2.5 lg:px-3 font-mono text-[10.5px] lg:text-[11px] uppercase tracking-[0.14em] lg:tracking-[0.16em] transition-colors duration-200 ${
                       useSolidChrome
                         ? group.active || open
                           ? "text-white"
@@ -269,7 +281,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
                       />
                     )}
                     <span
-                      className={`absolute inset-x-3 -bottom-0.5 h-px transition-all ${
+                      className={`absolute inset-x-2 -bottom-0.5 h-px transition-all ${
                         group.active || open ? "opacity-100" : "opacity-0"
                       } ${useSolidChrome ? "bg-[#b8865a]" : "bg-white"}`}
                     />
@@ -313,7 +325,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
                               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/35">
                                 {tx(column.heading)}
                               </p>
-                              <ul className="mt-3 space-y-2">
+                              <ul className="mt-3 space-y-1">
                                 {column.items.map((item) => (
                                   <li key={item.href}>
                                     <Link
@@ -355,7 +367,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
             {/* Direct Contact */}
             <Link
               href={withLocale("/contact", locale)}
-              className={`relative inline-flex h-9 items-center gap-1.5 px-3 font-mono text-[11px] uppercase tracking-[0.16em] transition-colors duration-200 ${
+              className={`relative inline-flex h-9 items-center px-2.5 lg:px-3 font-mono text-[10.5px] lg:text-[11px] uppercase tracking-[0.14em] lg:tracking-[0.16em] transition-colors duration-200 ${
                 useSolidChrome
                   ? path === "/contact"
                     ? "text-white"
@@ -371,38 +383,27 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
             {/* Primary CTA — Open Account */}
             <Link
               href={withLocale("/junior-investor-program", locale)}
-              className="ml-2 inline-flex h-9 items-center gap-2 bg-[#b8865a] px-4 font-mono text-[10px] uppercase tracking-[0.2em] text-black transition-colors hover:bg-[#d7ad7a]"
+              className="ml-1.5 lg:ml-2 inline-flex h-9 items-center gap-2 bg-[#b8865a] px-3.5 lg:px-4 font-mono text-[10px] uppercase tracking-[0.18em] lg:tracking-[0.2em] text-black transition-colors hover:bg-[#d7ad7a] whitespace-nowrap"
             >
-              {isTurkish ? "Hesap aç" : "Open Account"}
+              {isTurkish ? "Hesap Aç" : "Open Account"}
               <ArrowUpRight className="h-3 w-3" />
             </Link>
 
-            {/* Locale switcher */}
-            <div className="ml-2 flex items-center gap-1 border-l border-white/10 pl-3">
-              {localeOptions.map((option) => {
-                const targetHref = swapLocaleInPath(pathname, option.locale);
-                const active = locale === option.locale;
-                return (
-                  <Link
-                    key={option.label}
-                    href={targetHref}
-                    className={`inline-flex h-7 items-center border px-2 font-mono text-[9px] uppercase tracking-[0.16em] transition-colors ${
-                      active
-                        ? "border-[#b8865a] bg-[#b8865a] text-black"
-                        : "border-white/10 text-white/55 hover:border-white/28 hover:text-white"
-                    }`}
-                  >
-                    {option.label}
-                  </Link>
-                );
-              })}
-            </div>
+            {/* Locale toggle (desktop only) — single-button switch between EN and TR */}
+            <Link
+              href={swapLocaleInPath(pathname, isTurkish ? "default" : "tr")}
+              aria-label={isTurkish ? "Switch to English" : "Türkçe'ye geç"}
+              className="ml-1.5 lg:ml-2 inline-flex h-9 items-center gap-1.5 border border-white/14 px-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/68 transition-colors hover:border-[#b8865a] hover:text-white"
+            >
+              <Languages className="h-3 w-3" />
+              {isTurkish ? "EN" : "TR"}
+            </Link>
           </div>
 
           {/* Mobile button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-white"
+            className="md:hidden -mr-2 inline-flex h-10 w-10 items-center justify-center text-white"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -416,65 +417,78 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex h-full flex-col overflow-y-auto px-6 pt-24 pb-10">
-          <div className="w-32">
-            <Image
-              src={olmezBrandAssets.logos.copper.src}
-              alt={olmezBrandAssets.logos.copper.alt}
-              width={180}
-              height={60}
-              className="h-auto w-full"
-            />
+        <div className="flex h-full flex-col overflow-y-auto px-5 pt-6 pb-10">
+          {/* Header row inside the mobile menu — logo + close */}
+          <div className="flex items-center justify-between">
+            <div className="w-28">
+              <Image
+                src={olmezBrandAssets.logos.copper.src}
+                alt={olmezBrandAssets.logos.copper.alt}
+                width={180}
+                height={60}
+                className="h-auto w-full"
+              />
+            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="-mr-2 inline-flex h-10 w-10 items-center justify-center text-white/80"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
           </div>
 
+          {/* Primary mobile CTA */}
           <Link
             href={withLocale("/junior-investor-program", locale)}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 inline-flex h-12 items-center justify-center gap-2 bg-[#b8865a] px-5 font-mono text-[11px] uppercase tracking-[0.22em] text-black"
+            className="mt-6 inline-flex h-12 items-center justify-center gap-2 bg-[#b8865a] px-5 font-mono text-[11px] uppercase tracking-[0.22em] text-black"
           >
-            {isTurkish ? "Hesap aç" : "Open Investor Account"}
+            {isTurkish ? "Yatırımcı Hesabı Aç" : "Open Investor Account"}
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
 
-          <div className="mt-10 flex-1 space-y-9">
+          {/* Quick action chips */}
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            <Link
+              href={withLocale("/investors/dashboard", locale)}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="border border-white/12 px-3 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-white/85"
+            >
+              {isTurkish ? "Panel" : "Dashboard"}
+            </Link>
+            <Link
+              href={withLocale("/opportunities", locale)}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="border border-white/12 px-3 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-white/85"
+            >
+              {isTurkish ? "Fırsatlar" : "Invest"}
+            </Link>
+            <Link
+              href={withLocale("/deployment-room", locale)}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="border border-white/12 px-3 py-3 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-white/85"
+            >
+              {isTurkish ? "İnceleme" : "Review"}
+            </Link>
+          </div>
+
+          <div className="mt-8 flex-1 space-y-7">
             {navGroups.map((group) => (
               <section key={group.id}>
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#e9c092]">
                   {tx(group.label)}
                 </p>
-                {group.primary && (
+                {group.href && (
                   <Link
-                    href={withLocale(group.primary.href, locale)}
+                    href={withLocale(group.href, locale)}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="mt-3 block border border-[#b8865a]/35 bg-[#b8865a]/10 p-4"
+                    className="mt-2 block py-2 font-display text-2xl tracking-[-0.02em] text-white"
                   >
-                    <div className="flex items-center gap-2">
-                      {group.primary.hint && (
-                        <span className="inline-flex h-5 items-center bg-[#b8865a] px-2 font-mono text-[9px] uppercase tracking-[0.18em] text-black">
-                          {tx(group.primary.hint)}
-                        </span>
-                      )}
-                      <span className="font-display text-lg tracking-[-0.02em] text-white">
-                        {tx(group.primary.label)}
-                      </span>
-                    </div>
-                    {group.primary.description && (
-                      <p className="mt-2 text-xs leading-[1.55] text-white/65">
-                        {tx(group.primary.description)}
-                      </p>
-                    )}
+                    {tx(group.label)} {isTurkish ? "Ana" : "Hub"} →
                   </Link>
                 )}
-                <div className="mt-3 grid gap-1">
-                  {group.href && (
-                    <Link
-                      href={withLocale(group.href, locale)}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block py-2 font-display text-2xl tracking-[-0.02em] text-white"
-                    >
-                      {tx(group.label)} {isTurkish ? "Ana" : "Hub"} →
-                    </Link>
-                  )}
+                <div className="mt-1 grid">
                   {group.columns?.flatMap((column) => column.items).map((item) => (
                     <Link
                       key={item.href}
@@ -498,7 +512,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#e9c092]">
                 {isTurkish ? "Doğrudan" : "Direct"}
               </p>
-              <div className="mt-3 grid gap-1">
+              <div className="mt-2 grid">
                 <Link
                   href={withLocale("/contact", locale)}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -525,30 +539,11 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
             </section>
           </div>
 
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/38">
-              Locale
-            </p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {localeOptions.map((option) => (
-                <Link
-                  key={option.label}
-                  href={swapLocaleInPath(pathname, option.locale)}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`inline-flex h-9 items-center border px-3 font-mono text-[10px] uppercase tracking-[0.18em] ${
-                    locale === option.locale
-                      ? "border-[#b8865a] bg-[#b8865a] text-black"
-                      : "border-white/12 text-white/68"
-                  }`}
-                >
-                  {option.label}
-                </Link>
-              ))}
-            </div>
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/45">
+          <div className="mt-8 border-t border-white/10 pt-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/45">
               {isTurkish ? "Edinburgh merkezi · İstanbul / Londra köprüsü" : "Edinburgh HQ · Istanbul / London bridge"}
             </p>
-            <p className="mt-2 font-mono text-[11px] text-white/38">
+            <p className="mt-1 font-mono text-[11px] text-white/38">
               {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
             </p>
           </div>

@@ -97,10 +97,7 @@ export const metadata: Metadata = {
     canonical: `${baseUrl}/`,
     languages: {
       en: `${baseUrl}/`,
-      'en-GB': `${baseUrl}/uk/`,
-      'en-US': `${baseUrl}/us/`,
       'tr-TR': `${baseUrl}/tr/`,
-      'ru-RU': `${baseUrl}/ru/`,
     },
   },
 }

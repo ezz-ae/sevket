@@ -1,4 +1,4 @@
-export const localePrefixes = ["uk", "us", "tr", "ru"] as const;
+export const localePrefixes = ["tr"] as const;
 export type LocalePrefix = (typeof localePrefixes)[number];
 export type SiteLocale = "default" | LocalePrefix;
 
@@ -15,14 +15,8 @@ export function normalizeLocale(value?: string | null): SiteLocale {
 
 export function getLocaleLang(locale: SiteLocale) {
   switch (locale) {
-    case "uk":
-      return "en-GB";
-    case "us":
-      return "en-US";
     case "tr":
       return "tr-TR";
-    case "ru":
-      return "ru-RU";
     default:
       return "en";
   }
@@ -62,16 +56,5 @@ export function swapLocaleInPath(pathname: string, targetLocale: SiteLocale) {
 }
 
 export function getLocaleLabel(locale: SiteLocale) {
-  switch (locale) {
-    case "uk":
-      return "UK";
-    case "us":
-      return "US";
-    case "tr":
-      return "TR";
-    case "ru":
-      return "RU";
-    default:
-      return "EN";
-  }
+  return locale === "tr" ? "TR" : "EN";
 }

@@ -8,7 +8,7 @@ import { deploymentLocations } from '@/lib/deployment-room-data'
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.us'
 
-const localizedPrefixes = ['', '/uk', '/us', '/tr'] as const
+const localizedPrefixes = ['', '/tr'] as const
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]['changeFrequency']>
 

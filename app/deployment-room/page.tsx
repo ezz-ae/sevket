@@ -51,8 +51,6 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: `${baseUrl}${canonicalPath}`,
       languages: {
         en: `${baseUrl}/deployment-room`,
-        "en-GB": `${baseUrl}/uk/deployment-room`,
-        "en-US": `${baseUrl}/us/deployment-room`,
         "tr-TR": `${baseUrl}/tr/deployment-room`,
       },
     },
