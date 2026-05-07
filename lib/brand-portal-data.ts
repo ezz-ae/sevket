@@ -253,7 +253,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       {
         href: "/brands/olmez/reports",
         label: "Reports Hub",
-        description: "Strategic reports, capital deployment, and performance tiers.",
+        description: "Strategic reports, capital allocation, and performance tiers.",
         kind: "reports",
       },
       {
@@ -719,7 +719,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
         title: "Core branch-management license",
         eyebrow: "Platform seat",
         body:
-          "The standard deployment gives a unit the reporting, stakeholder coordination, and live branch visibility needed to function as an asset rather than a loose restaurant.",
+          "The standard installation gives a unit the reporting, stakeholder coordination, and live branch visibility needed to function as an asset rather than a loose restaurant.",
         metric: "Per-unit recurring revenue",
       },
       {
@@ -730,7 +730,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
         metric: "Remote control layer",
       },
       {
-        title: "Enterprise corridor deployment",
+        title: "Enterprise corridor rollout",
         eyebrow: "Multi-site integration",
         body:
           "Built for brands and territories that need portfolio comparison, corridor review, and shared branch visibility across multiple operators and investors.",
@@ -1001,7 +1001,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       {
         href: "/brands/disciplina/reports",
         label: "Reports Hub",
-        description: "Program growth, graduation movement, and support deployment.",
+        description: "Program growth, graduation movement, and support allocation.",
         kind: "reports",
       },
       {

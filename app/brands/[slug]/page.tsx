@@ -204,7 +204,7 @@ export default async function BrandPage({ params }: BrandPageProps) {
     : {
         reports: {
           label: "Reports Hub",
-          description: "Strategic reports, capital deployment, and performance tiers.",
+          description: "Strategic reports, capital allocation, and performance tiers.",
         },
         events: {
           label: "Events Calendar",

@@ -102,12 +102,12 @@ const events = [
         icon: MapPin,
         attendees: 40,
         description:
-          "40-unit U.S. expansion plan with site selection criteria, territory assignment, capital deployment timeline, and LiveOps readiness.",
+          "40-unit U.S. expansion plan with site selection criteria, territory assignment, capital allocation timeline, and LiveOps readiness.",
         agenda: [
           "40-unit U.S. expansion strategic plan",
           "Gas station site selection criteria and analysis",
           "Territory assignment process and logistics",
-          "Capital deployment timeline and milestones",
+          "Capital allocation timeline and milestones",
           "LiveOps infrastructure and remote management readiness",
         ],
       },
@@ -115,14 +115,14 @@ const events = [
         id: 5,
         date: "20",
         dayOfWeek: "Monday",
-        title: "Smart CCTV & Remote Control Layer Deployment Seminar",
+        title: "Smart CCTV & Remote Control Layer Seminar",
         time: "11:00 GMT",
         location: "Edinburgh HQ + Virtual",
         category: "Technology Briefing",
         icon: Zap,
         attendees: 60,
         description:
-          "100% remote visibility architecture deployment with real-time operational monitoring and investor dashboard access.",
+          "100% remote visibility architecture with real-time operational monitoring and investor dashboard access.",
         agenda: [
           "Smart CCTV system overview and architecture",
           "100% remote visibility for investors",
@@ -198,7 +198,7 @@ const events = [
         agenda: [
           "European market analysis and opportunities",
           "Regulatory framework by territory",
-          "Capital requirements and deployment",
+          "Capital requirements and allocation",
           "Partner network development",
           "Timeline and milestone planning",
         ],
@@ -392,7 +392,7 @@ export default function EventsPage() {
               {
                 title: "Strategic Briefings",
                 description:
-                  "Senior leadership and partner meetings focused on market expansion, technology deployment, and long-term strategic planning.",
+                  "Senior leadership and partner meetings focused on market expansion, technology rollout, and long-term strategic planning.",
               },
               {
                 title: "Conferences & Summits",

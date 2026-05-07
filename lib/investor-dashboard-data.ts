@@ -48,8 +48,16 @@ export const mockInvestor = {
 
 // ─── Overview ──────────────────────────────────────────────────────────────
 
-export const overviewKpis = [
-  { label: "Total deployed", value: "$48,500", delta: "+$5,000", deltaTone: "up" as const, hint: "Across 1 branch + 1 pool" },
+type DeltaTone = "up" | "down" | "neutral";
+
+export const overviewKpis: {
+  label: string;
+  value: string;
+  delta: string;
+  deltaTone: DeltaTone;
+  hint: string;
+}[] = [
+  { label: "Total allocated", value: "$48,500", delta: "+$5,000", deltaTone: "up" as const, hint: "Across 1 branch + 1 pool" },
   { label: "Eligible distribution (week)", value: "$1,184", delta: "+12%", deltaTone: "up" as const, hint: "Tuesday + Friday cycles" },
   { label: "Wallet balance", value: "$2,742.50", delta: "Available", deltaTone: "neutral" as const, hint: "Across bank, prepaid, crypto" },
   { label: "Smart Discipline Score", value: "92/100", delta: "Class A", deltaTone: "up" as const, hint: "Updated after every shift" },

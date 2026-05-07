@@ -26,10 +26,10 @@ export function ApplyForm({
       <div className="border border-[#b8865a]/40 bg-[#b8865a]/10 p-8">
         <CheckCircle2 className="h-6 w-6 text-[#b8865a]" />
         <h2 className="mt-5 font-display text-3xl tracking-[-0.03em] text-white">
-          Application draft received.
+          Application received for review.
         </h2>
         <p className="mt-4 max-w-[58ch] text-sm leading-[1.8] text-white/68">
-          The local demo confirms the form route and fields. In production, this submission should connect to the People Office queue, applicant storage, and confirmation email workflow.
+          The People Office has the role details, contact information, and attached file needed to review the application.
         </p>
       </div>
     );

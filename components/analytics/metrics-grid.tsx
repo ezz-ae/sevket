@@ -45,8 +45,8 @@ export function MetricsGrid() {
       trend: "up",
     },
     {
-      label: "Investor ROI (Avg)",
-      value: "18.4%",
+      label: "Investor File Coverage",
+      value: "98.4%",
       change: "+3.2%",
       period: "YoY",
       trend: "up",

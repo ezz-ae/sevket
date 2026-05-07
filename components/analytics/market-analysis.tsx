@@ -56,7 +56,7 @@ const marketInsights = [
     size: 2800,
     growth: 3.2,
     ölmez: false,
-    note: "Low ROI",
+    note: "Low operating fit",
   },
   {
     segment: "Casual Dining",

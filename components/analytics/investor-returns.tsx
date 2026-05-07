@@ -52,10 +52,10 @@ const cohortPerformance = [
 export function InvestorReturns() {
   return (
     <div className="space-y-16">
-      {/* Return Comparison by Cohort */}
+      {/* Investor cohort review */}
       <div className="border border-foreground/15 p-8 lg:p-12 bg-foreground/[0.015]">
         <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-8">
-          Returns by Investor Cohort
+          Investor cohort signals
         </h3>
         <ResponsiveContainer width="100%" height={350}>
           <BarChart data={returnData}>
@@ -75,22 +75,22 @@ export function InvestorReturns() {
               yAxisId="left"
               dataKey="annualReturn"
               fill="#8B5A3C"
-              name="Annual Return %"
+              name="Annual review signal"
             />
             <Bar
               yAxisId="left"
               dataKey="cumulative"
               fill="rgba(217, 176, 121, 0.8)"
-              name="Cumulative Return %"
+              name="Cumulative recovery signal"
             />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Capital Deployment */}
+      {/* Capital allocation */}
       <div className="border border-foreground/15 p-8 lg:p-12 bg-foreground/[0.015]">
         <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-8">
-          Capital Deployment Timeline
+          Capital allocation timeline
         </h3>
         <ResponsiveContainer width="100%" height={350}>
           <LineChart data={capitalDeployment}>
@@ -113,7 +113,7 @@ export function InvestorReturns() {
               stroke="#8B5A3C"
               strokeWidth={2}
               dot={{ fill: "#8B5A3C", r: 4 }}
-              name="Capital Deployed"
+              name="Capital Allocated"
             />
             <Line
               yAxisId="left"
@@ -141,7 +141,7 @@ export function InvestorReturns() {
       {/* Cohort Performance Table */}
       <div className="border border-foreground/15 p-8 lg:p-12 bg-foreground/[0.015]">
         <h3 className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-8">
-          Investment Cohort Performance
+          Investor cohort review
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -154,7 +154,7 @@ export function InvestorReturns() {
                   Investors
                 </th>
                 <th className="text-right py-4 px-4 font-mono text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
-                  Avg Return
+                  Avg review signal
                 </th>
                 <th className="text-right py-4 px-4 font-mono text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
                   Retention
@@ -201,7 +201,7 @@ export function InvestorReturns() {
         {[
           { label: "Total Capital Raised", value: "$18.2M", color: "text-blue-500/70" },
           {
-            label: "Avg Annual Return",
+            label: "Avg Annual Review Signal",
             value: "18.4%",
             color: "text-green-500/70",
           },

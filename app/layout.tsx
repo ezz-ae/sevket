@@ -26,6 +26,15 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains'
 });
 
+const siteVerification = {
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : {}),
+  ...(process.env.NEXT_PUBLIC_YANDEX_VERIFICATION
+    ? { yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION }
+    : {}),
+};
+
 export const metadata: Metadata = {
   title: 'Ölmez Franchise Systems | Restaurant Franchise Infrastructure & Operations',
   description:
@@ -89,10 +98,7 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  verification: {
-    google: 'google-site-verification-code',
-    yandex: 'yandex-verification-code',
-  },
+  ...(Object.keys(siteVerification).length > 0 ? { verification: siteVerification } : {}),
   alternates: {
     canonical: `${baseUrl}/`,
     languages: {

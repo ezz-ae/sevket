@@ -17,7 +17,7 @@ export function TalentForm() {
         <CheckCircle2 className="h-6 w-6 text-[#b8865a]" />
         <h2 className="mt-5 font-display text-3xl tracking-[-0.03em] text-white">Your talent note is ready for review.</h2>
         <p className="mt-4 max-w-[58ch] text-sm leading-[1.8] text-white/68">
-          In production, this should create a Talent Room record, notify people@olmez.us, and attach the uploaded file to the review queue.
+          The People Office has the information needed to review your note and contact you through the details provided.
         </p>
       </div>
     );

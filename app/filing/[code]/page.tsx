@@ -302,7 +302,7 @@ export default async function FilingPage({
 
             <FilingBlock
               icon={<CalendarRange className="w-3.5 h-3.5" />}
-              eyebrow="06 — Deployment timeline"
+              eyebrow="06 — Opening timeline"
               title="From qualification to steady-state."
             >
               <ol className="relative pl-8 space-y-9 lg:space-y-12">

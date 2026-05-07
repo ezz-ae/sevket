@@ -119,7 +119,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         eyebrow: `${brand?.name ?? ""} Reports`,
         title: "Strategic",
         italicTail: "Documentation.",
-        dek: `Quarterly and annual reports for ${brand?.name ?? ""}. Performance metrics, capital deployment tracking, and operational intelligence.`,
+        dek: `Quarterly and annual reports for ${brand?.name ?? ""}. Performance metrics, capital allocation tracking, and operational intelligence.`,
         latestReport: "Latest Report",
         activeUnits: "Active Units",
         deployedCapital: "Tracked Capital",

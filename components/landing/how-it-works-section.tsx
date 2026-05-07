@@ -19,7 +19,7 @@ const rooms = [
   {
     number: "02",
     title: "Design Session Room",
-    role: "Pre-deployment review",
+    role: "Pre-opening review",
     description:
       "Live, blueprint-on-screen sessions with investors before a single screw is installed. Equipment placement, queue geometry and electrical loads are negotiated here — not on site.",
     metric: { label: "Sessions held this quarter", value: "204" },

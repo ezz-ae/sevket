@@ -136,10 +136,10 @@ export default function AnalyticsPage() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Capital returns
+              Capital reporting
             </span>
             <h2 className="mt-6 font-display text-4xl md:text-5xl tracking-[-0.015em] leading-[1.0]">
-              Investor Returns & Capital Deployment.
+              Investor Reporting & Capital Allocation.
             </h2>
           </div>
 

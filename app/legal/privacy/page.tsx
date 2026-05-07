@@ -53,7 +53,7 @@ export default async function PrivacyPage() {
         },
         {
           title: "Why we process it",
-          body: "Data powers the AFFAREM operational control layer, supports capital deployment decisions, satisfies reporting obligations, and improves service quality.",
+          body: "Data powers the AFFAREM operational control layer, supports capital allocation decisions, satisfies reporting obligations, and improves service quality.",
         },
         {
           title: "Third parties",

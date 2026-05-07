@@ -169,7 +169,7 @@ export default function InvestorResponsibilityPage() {
             </h2>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
-                "No guaranteed ROI.",
+                "No guaranteed return.",
                 "No risk-free participation.",
                 "No automatic profit.",
                 "No fixed return unless a signed legal instrument explicitly says so.",

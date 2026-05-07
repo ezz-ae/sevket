@@ -338,7 +338,7 @@ export const shawarmerEvents = [
     agenda: [
       "H1 2026 market expansion results",
       "Unit economics and profitability analysis",
-      "Capital deployment and ROI tracking",
+      "Capital allocation and performance tracking",
       "H2 2026 growth trajectory",
       "Risk mitigation and quality assurance",
     ],

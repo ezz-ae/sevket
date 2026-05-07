@@ -294,7 +294,7 @@ export const shawarmerReport: BrandReport = {
     priorities: [
       { initiative: "Corridor Expansion", description: "Secure 40 additional high-traffic fuel stops", target: "20 states by end of 2026" },
       { initiative: "Quality Standardization", description: "Unified preparation protocols", target: "100% consistency by Q4" },
-      { initiative: "Smart Discipline Integration", description: "Full AFFAREM suite deployment", target: "All 82+ planned units" },
+      { initiative: "Smart Discipline Integration", description: "Full AFFAREM suite rollout", target: "All 82+ planned units" },
     ],
   },
   corePhilosophy: {
@@ -481,14 +481,14 @@ export const brandEvents: Record<string, BrandEvent[]> = {
   olmez: [
     { id: 1, title: "H1 2026 Investor Briefing & Strategic Roadmap", date: new Date("2026-06-15"), time: "14:00 GMT", location: "Edinburgh HQ + Virtual", type: "Investor Briefing", capacity: 50, registered: 42, agenda: ["H1 2026 performance review", "Unit economics deep dive", "Capital recovery tracking", "H2 2026 expansion targets"] },
     { id: 2, title: "Micro-Start Program Launch", date: new Date("2026-06-22"), time: "10:00 GMT", location: "Istanbul Training Center", type: "Operator Workshop", capacity: 30, registered: 28, agenda: ["$1,000-$2,000 program overview", "Operator development pathway", "Smart Discipline training", "AFFAREM walkthrough"] },
-    { id: 3, title: "U.S. Gas Station Corridor Expansion", date: new Date("2026-07-08"), time: "16:00 EST", location: "New York + Virtual", type: "Territory Briefing", capacity: 40, registered: 35, agenda: ["40-unit U.S. expansion plan", "Site selection criteria", "Territory assignment", "Capital deployment timeline"] },
-    { id: 4, title: "Smart CCTV Deployment Seminar", date: new Date("2026-07-20"), time: "11:00 GMT", location: "Edinburgh HQ + Virtual", type: "Technology Briefing", capacity: 60, registered: 58, agenda: ["100% remote visibility architecture", "Smart CCTV system", "Real-time monitoring", "Investor dashboard access"] },
+    { id: 3, title: "U.S. Gas Station Corridor Expansion", date: new Date("2026-07-08"), time: "16:00 EST", location: "New York + Virtual", type: "Territory Briefing", capacity: 40, registered: 35, agenda: ["40-unit U.S. expansion plan", "Site selection criteria", "Territory assignment", "Capital allocation timeline"] },
+    { id: 4, title: "Smart CCTV Control Seminar", date: new Date("2026-07-20"), time: "11:00 GMT", location: "Edinburgh HQ + Virtual", type: "Technology Briefing", capacity: 60, registered: 58, agenda: ["100% remote visibility architecture", "Smart CCTV system", "Real-time monitoring", "Investor dashboard access"] },
     { id: 5, title: "Franchise Holder Summer Conference", date: new Date("2026-08-05"), time: "10:00 GMT", location: "Edinburgh HQ", type: "Annual Conference", capacity: 150, registered: 124, agenda: ["Founder strategic vision", "Advanced operator workshops", "Best practice sessions", "Awards ceremony"] },
   ],
   shawarmer: [
     { id: 1, title: "SHAWARMA TIME Texas & Oklahoma Territory Briefing", date: new Date("2026-07-12"), time: "14:00 CST", location: "Dallas + Virtual", type: "Territory Briefing", capacity: 35, registered: 28, agenda: ["Texas & Oklahoma market opportunity", "Site selection for fuel corridors", "Unit economics", "Operator recruitment"] },
     { id: 2, title: "SHAWARMA TIME Operator Excellence Summit", date: new Date("2026-08-19"), time: "10:00 GMT", location: "Istanbul Training Center", type: "Training Summit", capacity: 50, registered: 42, agenda: ["Heritage shawarma masterclass", "Meat sourcing standards", "Efficiency techniques", "Smart Discipline training"] },
-    { id: 3, title: "SHAWARMA TIME H1 Performance Review", date: new Date("2026-09-05"), time: "15:00 EDT", location: "New York + Virtual", type: "Investor Briefing", capacity: 40, registered: 32, agenda: ["H1 market expansion results", "Unit economics analysis", "Capital deployment ROI", "H2 growth trajectory"] },
+    { id: 3, title: "SHAWARMA TIME H1 Performance Review", date: new Date("2026-09-05"), time: "15:00 EDT", location: "New York + Virtual", type: "Investor Briefing", capacity: 40, registered: 32, agenda: ["H1 market expansion results", "Unit economics analysis", "Capital allocation review", "H2 growth trajectory"] },
     { id: 4, title: "California & West Coast Launch", date: new Date("2026-10-15"), time: "13:00 PST", location: "Los Angeles + Virtual", type: "Market Launch", capacity: 45, registered: 38, agenda: ["West Coast market entry", "Premium fuel corridor strategy", "Local supply chain", "Operator partnerships"] },
   ],
   turkishpide: [
@@ -498,7 +498,7 @@ export const brandEvents: Record<string, BrandEvent[]> = {
   ],
   affarem: [
     { id: 1, title: "AFFAREM 4.0 Platform Launch", date: new Date("2026-07-25"), time: "15:00 GMT", location: "London Tech Hub + Virtual", type: "Product Launch", capacity: 80, registered: 72, agenda: ["AI predictive analytics", "Mobile investor app preview", "Universal adoption rollout", "Live demo session"] },
-    { id: 2, title: "Smart CCTV Integration Workshop", date: new Date("2026-08-14"), time: "10:00 GMT", location: "Edinburgh HQ", type: "Technology Workshop", capacity: 50, registered: 45, agenda: ["Smart CCTV architecture", "Edge computing deployment", "Real-time analytics", "Privacy & compliance"] },
+    { id: 2, title: "Smart CCTV Integration Workshop", date: new Date("2026-08-14"), time: "10:00 GMT", location: "Edinburgh HQ", type: "Technology Workshop", capacity: 50, registered: 45, agenda: ["Smart CCTV architecture", "Edge computing rollout", "Real-time analytics", "Privacy & compliance"] },
     { id: 3, title: "Investor Dashboard Demo Day", date: new Date("2026-09-22"), time: "14:00 GMT", location: "Virtual", type: "Investor Demo", capacity: 100, registered: 87, agenda: ["Real-time portfolio views", "Capital recovery tracking", "Performance benchmarking", "Custom reporting"] },
   ],
   disciplina: [
