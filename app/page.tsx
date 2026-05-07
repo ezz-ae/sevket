@@ -45,8 +45,8 @@ const brandImageMap: Record<string, { src: string; alt: string }> = {
     alt: "Turkish PIDE Co. bakery floor study",
   },
   affarem: {
-    src: "/brand-library/affarem-revenue-briefing.png",
-    alt: "AFFAREM revenue control briefing",
+    src: "/brand-library/affarem-investor-reporting-dashboard.png",
+    alt: "AFFAREM investor reporting dashboard",
   },
   disciplina: {
     src: "/brand-library/olmez-image-may-6-2026-03-47-58-pm-5.png",

@@ -73,17 +73,6 @@ export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
               {isTurkish ? "Restoran iş şirketi" : "Restaurant business company"}
             </span>
 
-            <div className="mt-8 w-44 sm:w-52 lg:w-60">
-              <Image
-                src={olmezBrandAssets.logos.white.src}
-                alt={olmezBrandAssets.logos.white.alt}
-                width={360}
-                height={112}
-                priority
-                className="h-auto w-full"
-              />
-            </div>
-
             <h1 className="mt-8 max-w-[13ch] font-display text-[clamp(2.9rem,6.2vw,6rem)] leading-[0.94] tracking-[-0.04em] text-balance">
               {isTurkish
                 ? "Yemek markaları, yatırımcı kontrolü ve şube operasyonu tek sistemde."

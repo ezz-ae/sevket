@@ -102,8 +102,8 @@ export default async function OpportunitiesPage() {
               },
               {
                 image: {
-                  src: "/brand-library/affarem-revenue-briefing.png",
-                  alt: "AFFAREM revenue briefing",
+                  src: "/brand-library/affarem-investor-reporting-dashboard.png",
+                  alt: "AFFAREM investor reporting dashboard",
                 },
                 tag: "AFFAREM",
                 label: isTurkish ? "Kontrol katmanı" : "Control layer",
