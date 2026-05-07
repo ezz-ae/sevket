@@ -7,10 +7,19 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { TalentForm } from "@/components/talents/talent-form";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
+
 export const metadata: Metadata = {
-  title: "Talents — Ölmez",
+  title: "Talent Room — Ölmez",
   description:
     "A direct route for people with talent, ideas, partnerships, branch interest, AFFAREM contribution, or unusual opportunities.",
+  alternates: { canonical: `${baseUrl}/talents` },
+  openGraph: {
+    title: "Talent Room — Ölmez",
+    description: "Submit a talent, idea, or unusual opportunity. Reviewed by the People Office at people@olmez.us.",
+    url: `${baseUrl}/talents`,
+    type: "website",
+  },
 };
 
 export default function TalentsPage() {

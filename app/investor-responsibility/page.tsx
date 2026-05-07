@@ -5,10 +5,19 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
+
 export const metadata: Metadata = {
   title: "Investor Responsibility — Ölmez / AFFAREM",
   description:
-    "A clear explanation of investor responsibility inside the Ölmez controlled food-business system.",
+    "A clear explanation of investor responsibility inside the Ölmez controlled food-business system: starter, junior, branch, four-investor, and operator obligations.",
+  alternates: { canonical: `${baseUrl}/investor-responsibility` },
+  openGraph: {
+    title: "Investor Responsibility — Ölmez / AFFAREM",
+    description: "Responsibility precedes return. Read the structured obligations of every investor tier.",
+    url: `${baseUrl}/investor-responsibility`,
+    type: "website",
+  },
 };
 
 const responsibilityBlocks = [

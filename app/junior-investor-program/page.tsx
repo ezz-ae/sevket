@@ -7,10 +7,19 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { JuniorCalculator } from "@/components/investors/junior-calculator";
 import { olmezBrandAssets, shawarmaTimeAssets } from "@/lib/olmez-brand-assets";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
+
 export const metadata: Metadata = {
   title: "Junior Investor Program — Ölmez / AFFAREM",
   description:
-    "Junior Investor Pools let new investors enter a shared pool of 50 Shawerma Time restaurant units before applying for larger opportunities.",
+    "Junior Investor Pools let new investors enter a shared pool of 50 Shawerma Time restaurant units before applying for larger opportunities. $1K–$12K, 6-month subscription, twice-weekly distribution.",
+  alternates: { canonical: `${baseUrl}/junior-investor-program` },
+  openGraph: {
+    title: "Junior Investor Program — Ölmez / AFFAREM",
+    description: "Start inside the system before choosing a branch. $1K–$12K starter pool with twice-weekly distribution.",
+    url: `${baseUrl}/junior-investor-program`,
+    type: "website",
+  },
 };
 
 export default function JuniorInvestorProgramPage() {

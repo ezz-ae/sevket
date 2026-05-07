@@ -6,10 +6,19 @@ import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
+
 export const metadata: Metadata = {
   title: "Global Ölmez Funding Department — Social Responsibility",
   description:
-    "The Global Ölmez Funding Department begins in October 2026 as a structured infrastructure responsibility system supported by eligible investor distributions.",
+    "The Global Ölmez Funding Department begins in October 2026: 0.5% of distributions, supporting infrastructure expansion in Saudi Arabia, Greece, and Jordan, with $50M projected by end of 2028.",
+  alternates: { canonical: `${baseUrl}/social-responsibility/global-funding` },
+  openGraph: {
+    title: "Global Ölmez Funding Department",
+    description: "October 2026 launch · 0.5% of investor distribution · Saudi Arabia, Greece, Jordan first.",
+    url: `${baseUrl}/social-responsibility/global-funding`,
+    type: "website",
+  },
 };
 
 export default function GlobalFundingPage() {

@@ -382,29 +382,35 @@ export default async function Home() {
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
-                  href={withLocale("/deployment-room", locale)}
+                  href={withLocale("/junior-investor-program", locale)}
                   className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
                 >
-                  {isTurkish ? "Ünite inceleme odasını aç" : "Open the Unit Review Room"}
+                  {isTurkish ? "Yatırımcı hesabı aç" : "Open investor account"}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href={withLocale("/investors/dashboard", locale)}
+                  className="inline-flex h-12 items-center gap-3 border border-[#b8865a]/45 bg-[#b8865a]/12 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#b8865a]/20"
+                >
+                  {isTurkish ? "AFFAREM panelini gör" : "Preview AFFAREM dashboard"}
+                </Link>
+                <Link
+                  href={withLocale("/deployment-room", locale)}
+                  className="inline-flex h-12 items-center gap-3 border border-white/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/85 transition-colors hover:border-white/45 hover:bg-white/5"
+                >
+                  {isTurkish ? "İnceleme odasını aç" : "Open Review Room"}
                 </Link>
                 <Link
                   href={withLocale("/opportunities", locale)}
                   className="inline-flex h-12 items-center gap-3 border border-white/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/85 transition-colors hover:border-white/45 hover:bg-white/5"
                 >
-                  {isTurkish ? "Tüm fırsatları gör" : "See all opportunities"}
-                </Link>
-                <Link
-                  href={withLocale("/investors", locale)}
-                  className="inline-flex h-12 items-center gap-3 border border-white/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/85 transition-colors hover:border-white/45 hover:bg-white/5"
-                >
-                  {isTurkish ? "Yatırımcı portalı" : "Investor portal"}
+                  {isTurkish ? "Fırsatlar" : "Opportunities"}
                 </Link>
               </div>
               <p className="mt-5 max-w-[58ch] font-mono text-[10px] uppercase tracking-[0.18em] text-[#e9c092]">
                 {isTurkish
-                  ? "Yeni · Şawarma Time Yatırımcı Konuşlandırma Odası — Powered by AFFAREM"
-                  : "New · Shawarma Time Investor Review Room — Powered by AFFAREM"}
+                  ? "Junior $1K — inceleme odası — AFFAREM paneli · Powered by AFFAREM"
+                  : "Junior from $1K — unit review room — AFFAREM dashboard · Powered by AFFAREM"}
               </p>
             </div>
 

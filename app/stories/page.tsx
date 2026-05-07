@@ -8,10 +8,19 @@ import { LivePageCount } from "@/components/shared/live-page-count";
 import { stories } from "@/lib/stories-data";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
+
 export const metadata: Metadata = {
   title: "Stories — Ölmez",
   description:
     "Human stories from the Ölmez ecosystem: early workers, managers, interns, junior investors, operators, kitchen staff, and training graduates.",
+  alternates: { canonical: `${baseUrl}/stories` },
+  openGraph: {
+    title: "Stories — Ölmez",
+    description: "From 5 people to nearly 3,000 — the same system. Read the human side of the Ölmez build.",
+    url: `${baseUrl}/stories`,
+    type: "website",
+  },
 };
 
 export default function StoriesPage() {
