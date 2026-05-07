@@ -19,7 +19,7 @@ const profileChapters = [
     title: "The Architecture of Impact",
     body: [
       "Ölmez presents itself as a restaurant business company, not a mood-driven hospitality label. The company profile starts from that distinction: brand authority, food assets, people systems, and measurable responsibility have to read as one structure.",
-      "This document is built as a ten-section editorial profile using only the company’s local image archive. It positions Ölmez as a business infrastructure story with visual discipline, not a generic franchise brochure.",
+      "The profile is written as a public company document: concise enough for partners, concrete enough for investors, and visual enough for talent, media, and internal teams to understand the operating story.",
     ],
     image: olmezBrandAssets.images.office,
   },

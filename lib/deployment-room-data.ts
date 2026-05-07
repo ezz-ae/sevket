@@ -200,7 +200,7 @@ export const statusMeta: Record<DeploymentStatus, { label: string; color: string
   available: { label: "Available", color: "#1B5E20", pulse: true },
   "under-review": { label: "Under Review", color: "#D4A574", pulse: false },
   reserved: { label: "Reserved", color: "#2E5C7F", pulse: false },
-  deployed: { label: "Deployed", color: "#8B3A3A", pulse: false },
+  deployed: { label: "Operational", color: "#8B3A3A", pulse: false },
 };
 
 // ─── Unit Viewer Hotspots ──────────────────────────────────────────────────
@@ -541,7 +541,7 @@ export function localizeStatus(status: DeploymentStatus, isTurkish: boolean): st
     available: "Açık",
     "under-review": "İncelemede",
     reserved: "Rezerve",
-    deployed: "Konuşlandırıldı",
+    deployed: "Operasyonel",
   };
   return map[status];
 }

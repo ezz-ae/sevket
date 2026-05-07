@@ -128,8 +128,8 @@ export default async function FounderPage() {
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
           <div className="relative overflow-hidden border border-white/10 bg-black">
             <Image
-              src={olmezBrandAssets.founder.leatherOffice.src}
-              alt={olmezBrandAssets.founder.leatherOffice.alt}
+              src={olmezBrandAssets.founder.current.src}
+              alt={olmezBrandAssets.founder.current.alt}
               width={900}
               height={1200}
               className="h-full w-full object-cover"
@@ -144,12 +144,12 @@ export default async function FounderPage() {
             <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
               {isTurkish
                 ? "Kişisel marka değil, sistem kurucusu olarak sunulan bir kurucu."
-                : "A founder presented as a system builder, not a personality brand."}
+                : "The founder voice behind a controlled restaurant business company."}
             </h2>
             <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
               {isTurkish
                 ? "Kurucu sayfası artık Ölmez amiralinin geri kalanı gibi okunuyor: azaltılmış palet, güçlü kapaklar ve daha sıkı bir editoryal çerçeve. Amaç mitoloji kurmak değil; odayı, yayını ve operasyon modelini şekillendiren düşünceyi netleştirmek."
-                : "The founder page now reads like the rest of the Ölmez flagship: reduced palette, strong covers, and a tighter editorial frame. The objective is not mythology. It is clarity about the thinking that shaped the room, the publication, and the operational model."}
+                : "Sevet Ölmez is used here as the public operating voice of the platform: direct about responsibility, cautious about investment language, and focused on the system that turns food operations into controlled business infrastructure."}
             </p>
 
             <div className="mt-10 grid gap-5 sm:grid-cols-3">

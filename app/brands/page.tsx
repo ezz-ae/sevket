@@ -50,7 +50,7 @@ export default async function BrandsPage() {
         meta={[
           { label: isTurkish ? "Marka" : "Brands", value: "5" },
           { label: isTurkish ? "Toplam ünite" : "Total Units", value: totalUnits.toString() },
-          { label: isTurkish ? "Konuşlanan sermaye" : "Deployed Capital", value: totalCapital },
+          { label: isTurkish ? "İzlenen sermaye" : "Tracked Capital", value: totalCapital },
           { label: isTurkish ? "Pazar" : "Markets", value: "15+" },
         ]}
       />
@@ -189,7 +189,7 @@ export default async function BrandsPage() {
           <div className="grid md:grid-cols-4 gap-8">
             {[
               {
-                label: isTurkish ? "Toplam konuşlanan sermaye" : "Total Deployed Capital",
+                label: isTurkish ? "Toplam izlenen sermaye" : "Total Tracked Capital",
                 value: "$30.9M",
                 description: isTurkish ? "Beş markanın tamamında" : "Across all five brands",
               },

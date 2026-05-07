@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight, Mail, MapPin, Phone, Globe2 } from "lucide-react";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { splitLocaleFromPath, withLocale } from "@/lib/site-locale";
+import { LivePageCount } from "@/components/shared/live-page-count";
 
 export function FooterSection() {
   const pathname = usePathname();
@@ -27,9 +28,11 @@ export function FooterSection() {
     },
     {
       title: isTurkish ? "Sermaye" : "Capital",
-      eyebrow: isTurkish ? "Sermaye konuşlandırma" : "Capital deployment",
+      eyebrow: isTurkish ? "Yatırım erişimi" : "Investment access",
       links: [
-        { name: isTurkish ? "Konuşlandırma Odası" : "Deployment Room", href: withLocale("/deployment-room", locale), hint: isTurkish ? "Yeni" : "New" },
+        { name: isTurkish ? "Junior yatırımcı" : "Junior Investor", href: withLocale("/junior-investor-program", locale), hint: isTurkish ? "Yeni" : "New" },
+        { name: isTurkish ? "Yatırımcı sorumluluğu" : "Investor Responsibility", href: withLocale("/investor-responsibility", locale) },
+        { name: isTurkish ? "Ünite inceleme odası" : "Unit Review Room", href: withLocale("/deployment-room", locale), hint: isTurkish ? "Yeni" : "New" },
         { name: isTurkish ? "Aktif fırsatlar" : "Active Opportunities", href: withLocale("/opportunities", locale), hint: isTurkish ? "5 açık" : "5 open" },
         { name: isTurkish ? "Yatırımcı portalı" : "Investor Portal", href: withLocale("/investors", locale) },
         { name: isTurkish ? "Yatırım katmanları" : "Capital tiers", href: withLocale("/investors#tiers", locale) },
@@ -48,8 +51,11 @@ export function FooterSection() {
         { name: isTurkish ? "Şirket Profili" : "Company Profile", href: withLocale("/company-profile", locale) },
         { name: isTurkish ? "Field Notes — Dergi" : "Field Notes — Magazine", href: withLocale("/magazine", locale) },
         { name: isTurkish ? "İnsanlar" : "People", href: withLocale("/people", locale) },
+        { name: isTurkish ? "Yetenekler" : "Talents", href: withLocale("/talents", locale) },
+        { name: isTurkish ? "Hikayeler" : "Stories", href: withLocale("/stories", locale) },
         { name: isTurkish ? "Liderlik" : "Leadership", href: withLocale("/people/leadership", locale) },
         { name: isTurkish ? "Sosyal Sorumluluk" : "Social Responsibility", href: withLocale("/social-responsibility", locale) },
+        { name: isTurkish ? "Global fon departmanı" : "Global Funding Department", href: withLocale("/social-responsibility/global-funding", locale) },
         { name: isTurkish ? "Sevet Projesi" : "Sevet Project", href: withLocale("/sevet-project", locale) },
       ],
     },
@@ -69,7 +75,7 @@ export function FooterSection() {
   ];
 
   const featuredIssues = [
-    { name: isTurkish ? "Konuşlandırma Odası" : "Investor Deployment Room", href: withLocale("/deployment-room", locale) },
+    { name: isTurkish ? "Ünite inceleme odası" : "Investor Review Room", href: withLocale("/deployment-room", locale) },
     { name: "Issue 12 — The Mid-2026 Blueprint", href: withLocale("/brands/olmez/magazine", locale) },
     { name: "Issue 11.5 — Top Turkey Businessmen", href: withLocale("/magazine", locale) },
     { name: isTurkish ? "Son makale: §1" : "Latest essay: §1", href: withLocale("/magazine/the-founders-blueprint", locale) },
@@ -165,15 +171,17 @@ export function FooterSection() {
               <ul className="mt-6 space-y-4 text-sm text-white/75">
                 <li className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-[#b8865a]" />
-                  <a href="mailto:desk@olmez.us" className="hover:text-white transition-colors">desk@olmez.us</a>
+                  <a href="mailto:hello@olmez.us" className="hover:text-white transition-colors">hello@olmez.us</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-[#b8865a]" />
-                  <a href="mailto:investors@olmez.us" className="hover:text-white transition-colors">investors@olmez.us</a>
+                  <a href="mailto:people@olmez.us" className="hover:text-white transition-colors">people@olmez.us</a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="h-4 w-4 text-[#b8865a]" />
-                  <span>{isTurkish ? "Yatırımcı hattı 09:00 – 18:00 BST" : "Investor desk 09:00 – 18:00 BST"}</span>
+                  <a href="tel:+18336656398" className="hover:text-white transition-colors">
+                    {isTurkish ? "Hotline +1 833 665 6398" : "Hotline +1 833 665 6398"}
+                  </a>
                 </li>
               </ul>
               <Link
@@ -275,11 +283,14 @@ export function FooterSection() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-white/10 py-8 font-mono text-[11px] uppercase tracking-[0.2em] text-white/35 md:flex-row md:items-center md:justify-between">
-          <p>
-            {isTurkish
-              ? "© 2026 Ölmez Franchise Systems Ltd. Tüm hakları saklıdır."
-              : "© 2026 Ölmez Franchise Systems Ltd. All rights reserved."}
-          </p>
+          <div className="flex flex-col gap-2">
+            <p>
+              {isTurkish
+                ? "© 2026 Ölmez Franchise Systems Ltd. Tüm hakları saklıdır."
+                : "© 2026 Ölmez Franchise Systems Ltd. All rights reserved."}
+            </p>
+            <LivePageCount label={isTurkish ? "Bu sayfadaki kişiler" : "People on this page now"} />
+          </div>
           <div className="flex flex-wrap items-center gap-5">
             {legalLinks.map((link) => (
               <Link key={link.name} href={link.href} className="hover:text-white transition-colors">

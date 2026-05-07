@@ -32,10 +32,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: isTurkish
       ? "Yatırımcı Konuşlandırma Odası — Shawarma Time | Ölmez"
-      : "Investor Deployment Room — Shawarma Time | Ölmez",
+      : "Investor Review Room — Shawarma Time | Ölmez",
     description: isTurkish
       ? "Yatırım yapmadan önce SHAWARMA TIME yakıt durağı restoran ünitesini inceleyin: ABD lokasyon haritası, tezgâh ve mutfak inceleme noktaları, altı evreli konuşlandırma planı, üç senaryolu hesaplayıcı ve AFFAREM ile haftada iki kez dağıtım. Powered by AFFAREM."
-      : "Inspect a SHAWARMA TIME gas-station restaurant unit before you invest: US opportunity map, counter and kitchen hotspots, six-phase deployment plan, three-scenario calculator, and twice-weekly distribution through AFFAREM Investor Reporting. Powered by AFFAREM.",
+      : "Inspect a SHAWARMA TIME gas-station restaurant unit before you invest: US opportunity map, counter and kitchen hotspots, six-phase opening plan, three-scenario calculator, and twice-weekly distribution review through AFFAREM Investor Reporting. Powered by AFFAREM.",
     keywords: [
       "investor deployment room",
       "starter investment",
@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: isTurkish
         ? "Yatırımcı Konuşlandırma Odası — Shawarma Time"
-        : "Investor Deployment Room — Shawarma Time",
+        : "Investor Review Room — Shawarma Time",
       description: isTurkish
         ? "Şubeyi açmadan inceleyin: ABD haritası, ünite gezgini, finansal katman, AFFAREM kontrol katmanı ve haftada iki kez dağıtım."
         : "Step inside the opportunity before you fund it: US map, unit explorer, financial overlay, AFFAREM control layer, and twice-weekly distribution.",
@@ -72,7 +72,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${baseUrl}/brand-library/deployment-room-unit-explorer.png`,
           width: 1600,
           height: 1000,
-          alt: "Investor Deployment Room — Shawarma Time Unit Explorer",
+          alt: "Investor Review Room — Shawarma Time Unit Explorer",
           type: "image/png",
         },
       ],
@@ -81,10 +81,10 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: isTurkish
         ? "Yatırımcı Konuşlandırma Odası — Shawarma Time"
-        : "Investor Deployment Room — Shawarma Time",
+        : "Investor Review Room — Shawarma Time",
       description: isTurkish
         ? "Şubeyi açmadan inceleyin. AFFAREM ile haftada iki kez dağıtım."
-        : "Inspect the unit before deployment. Twice-weekly distribution through AFFAREM.",
+        : "Inspect the unit before opening. Twice-weekly distribution review through AFFAREM.",
       images: [`${baseUrl}/brand-library/deployment-room-unit-explorer.png`],
     },
   };
@@ -104,7 +104,7 @@ export default async function DeploymentRoomPage() {
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: baseUrl },
     { name: "Investors", url: `${baseUrl}/investors` },
-    { name: "Investor Deployment Room", url: `${baseUrl}/deployment-room` },
+    { name: "Investor Review Room", url: `${baseUrl}/deployment-room` },
   ]);
 
   return (
@@ -124,7 +124,7 @@ export default async function DeploymentRoomPage() {
         <div className="absolute inset-0 opacity-[0.16]">
           <Image
             src="/brand-library/deployment-room-unit-explorer.png"
-            alt="Investor Deployment Room — Unit Explorer mockup"
+            alt="Investor Review Room — Unit Explorer mockup"
             fill
             priority
             className="object-cover object-center"
@@ -145,7 +145,7 @@ export default async function DeploymentRoomPage() {
             <div>
               <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#e9c092]">
                 <span className="h-px w-10 bg-[#b8865a]" />
-                {isTurkish ? "Yatırımcı Konuşlandırma Odası" : "Investor Deployment Room"}
+                {isTurkish ? "Yatırımcı İnceleme Odası" : "Investor Review Room"}
               </span>
               <h1 className="mt-8 max-w-[16ch] font-display text-[clamp(2.6rem,5.5vw,5.4rem)] leading-[0.94] tracking-[-0.04em] text-balance">
                 {isTurkish ? (
@@ -162,8 +162,8 @@ export default async function DeploymentRoomPage() {
               </h1>
               <p className="mt-7 max-w-[58ch] text-base leading-[1.85] text-white/72 md:text-lg">
                 {isTurkish
-                  ? "Ölmez Yatırımcı Konuşlandırma Odası, yatırımcıların bir SHAWARMA TIME yakıt durağı restoran ünitesini açılmadan önce incelemesine izin verir. Lokasyona bak, tezgâhı incele, mutfağı çöz, ekip yapısını gör, sayıları analiz et ve AFFAREM raporlama önizlemesini takip et. Bu bir broşür değil; kontrollü bir yatırım inceleme katmanıdır."
-                  : "The Ölmez Investor Deployment Room lets investors explore a SHAWARMA TIME gas-station restaurant unit before deployment. View the location, inspect the counter, understand the kitchen, review staffing, study the numbers, and follow the launch from opportunity to opening day. This is not a brochure — it is a controlled investment inspection layer."}
+                  ? "Ölmez Yatırımcı İnceleme Odası, yatırımcıların bir SHAWARMA TIME yakıt durağı restoran ünitesini açılmadan önce incelemesine izin verir. Lokasyona bak, tezgâhı incele, mutfağı çöz, ekip yapısını gör, sayıları analiz et ve AFFAREM raporlama önizlemesini takip et."
+                  : "The Ölmez Investor Review Room lets investors explore a SHAWARMA TIME gas-station restaurant unit before opening. View the location, inspect the counter, understand the kitchen, review staffing, study the numbers, and follow the launch from opportunity to opening day through a controlled investment inspection layer."}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link
@@ -183,7 +183,7 @@ export default async function DeploymentRoomPage() {
                   href="#calculator"
                   className="inline-flex h-12 items-center gap-3 border border-white/18 bg-black/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/85 transition-colors hover:border-white/35 hover:bg-white/5"
                 >
-                  {isTurkish ? "Geri ödemeyi hesapla" : "Calculate payback"}
+                  {isTurkish ? "Aralığı hesapla" : "Estimate range"}
                 </Link>
                 <Link
                   href={withLocale("/contact", locale)}
@@ -211,7 +211,7 @@ export default async function DeploymentRoomPage() {
             <div className="relative overflow-hidden border border-white/10 bg-black/40 backdrop-blur-md">
               <Image
                 src="/brand-library/deployment-room-unit-explorer.png"
-                alt="Investor Deployment Room — Unit Explorer mockup"
+                alt="Investor Review Room — Unit Explorer mockup"
                 width={1200}
                 height={800}
                 className="h-auto w-full"
@@ -270,7 +270,7 @@ export default async function DeploymentRoomPage() {
           <div className="mt-14 relative aspect-[16/9] overflow-hidden border border-white/10 bg-black">
             <Image
               src="/brand-library/deployment-room-us-map.png"
-              alt="United States opportunity map — SHAWARMA TIME corridor deployments"
+              alt="United States opportunity map — SHAWARMA TIME corridor openings"
               fill
               sizes="(max-width: 1024px) 100vw, 75vw"
               className="object-cover object-center opacity-90"
@@ -374,7 +374,7 @@ export default async function DeploymentRoomPage() {
           <p className="mt-10 max-w-[60ch] text-sm leading-[1.7] text-white/55">
             {isTurkish
               ? "Bu, bir 360 yürüyüş veya dijital ikiz değildir; bilinçli olarak bir inceleme paneli olarak inşa edilmiştir. Amaç gösteri değil; her yüzeyi karara bağlanabilir bir bilgi katmanına dönüştürmektir."
-              : "This is not a 360 walkthrough or a digital twin — it is intentionally an inspection panel. The goal is not spectacle; it is to turn every surface into decision-grade information."}
+              : "The inspection panel is built for decision-grade information: counter flow, kitchen logic, equipment, staff positions, reporting points, and the parts of the unit an investor needs to understand before a branch opens."}
           </p>
         </div>
       </section>
@@ -385,7 +385,7 @@ export default async function DeploymentRoomPage() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#e9c092]">
-                {isTurkish ? "3 — Konuşlandırma planı" : "3 — Deployment plan"}
+                {isTurkish ? "3 — Açılış planı" : "3 — Opening plan"}
               </span>
               <h2 className="mt-6 font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
                 {isTurkish ? "Fırsattan açılış gününe altı evre." : "Six phases from opportunity to opening day."}

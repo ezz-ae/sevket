@@ -126,9 +126,9 @@ export default async function Home() {
   ];
 
   const statusLabelMap: Record<string, { en: string; tr: string }> = {
-    open: { en: "Open", tr: "Açık" },
-    limited: { en: "Limited", tr: "Sınırlı" },
-    closed: { en: "Closed", tr: "Kapalı" },
+    open: { en: "Available", tr: "Mevcut" },
+    limited: { en: "Under Review", tr: "İncelemede" },
+    closed: { en: "Reserved", tr: "Rezerve" },
   };
 
   // Each slider override is intentionally distinct from the marketplace cards
@@ -368,7 +368,7 @@ export default async function Home() {
             <div>
               <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-[#e9c092]">
                 <span className="h-px w-10 bg-[#b8865a]" />
-                {isTurkish ? "Sermaye konuşlandırma" : "Capital deployment"}
+                {isTurkish ? "Yatırım erişimi" : "Investment access"}
               </span>
               <h2 className="mt-6 max-w-[18ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
                 {isTurkish
@@ -385,7 +385,7 @@ export default async function Home() {
                   href={withLocale("/deployment-room", locale)}
                   className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
                 >
-                  {isTurkish ? "Konuşlandırma Odası'nı aç" : "Open the Deployment Room"}
+                  {isTurkish ? "Ünite inceleme odasını aç" : "Open the Unit Review Room"}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
@@ -404,7 +404,7 @@ export default async function Home() {
               <p className="mt-5 max-w-[58ch] font-mono text-[10px] uppercase tracking-[0.18em] text-[#e9c092]">
                 {isTurkish
                   ? "Yeni · Şawarma Time Yatırımcı Konuşlandırma Odası — Powered by AFFAREM"
-                  : "New · Shawarma Time Investor Deployment Room — Powered by AFFAREM"}
+                  : "New · Shawarma Time Investor Review Room — Powered by AFFAREM"}
               </p>
             </div>
 
@@ -412,7 +412,7 @@ export default async function Home() {
               {[
                 {
                   icon: TrendingUp,
-                  label: isTurkish ? "Toplam yatırım" : "Total capital deployed",
+                  label: isTurkish ? "İzlenen sermaye" : "Tracked capital",
                   value: "$30.9M",
                   hint: isTurkish ? "5 marka, 18 pazar" : "5 brands, 18 markets",
                 },

@@ -296,6 +296,52 @@ export default async function SocialResponsibilityPage() {
         </div>
       </section>
 
+      <section id="global-funding" className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-12">
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.images.villageEducation.src}
+              alt={olmezBrandAssets.images.villageEducation.alt}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Ekim 2026" : "October 2026"}
+            </span>
+            <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl">
+              Global Ölmez Funding Department.
+            </h2>
+            <p className="mt-8 max-w-[62ch] text-base leading-[1.85] text-white/68">
+              From October 2026, Ölmez will launch the Global Ölmez Funding Department as part of its wider social responsibility platform. The department will be supported by 0.5% of eligible investor distributions and will focus on high-risk discovery, early infrastructure preparation, and responsible market entry support in Saudi Arabia, Greece, and Jordan.
+            </p>
+            <p className="mt-6 max-w-[58ch] font-display text-2xl leading-[1.35] tracking-[-0.03em] text-white">
+              The purpose is not to donate randomly. The purpose is to build responsible entry points before expansion becomes aggressive.
+            </p>
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {["Saudi Arabia", "Greece", "Jordan"].map((country) => (
+                <div key={country} className="border border-white/10 bg-black/24 p-5">
+                  <p className="font-display text-2xl tracking-[-0.03em] text-white">{country}</p>
+                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
+                    Priority country
+                  </p>
+                </div>
+              ))}
+            </div>
+            <Link
+              href={withLocale("/social-responsibility/global-funding", locale)}
+              className="mt-10 inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+            >
+              {isTurkish ? "Departmanı aç" : "Open department page"}
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <FooterSection />
     </main>
   );

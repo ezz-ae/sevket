@@ -1,11 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Eye, Heart, Users } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { ArticleRenderer } from "@/components/magazine/article-renderer";
 import { articles, getArticle, getAdjacent } from "@/lib/magazine-data";
+import { getArticleEngagement, formatCompactNumber } from "@/lib/live-engagement";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
@@ -41,6 +43,7 @@ export default async function ArticlePage({
   if (!article) notFound();
 
   const { prev, next } = getAdjacent(slug);
+  const engagement = getArticleEngagement(article.slug, article.readingMinutes, article.sectionNumber);
 
   return (
     <main className="relative min-h-screen bg-background text-foreground">
@@ -60,6 +63,10 @@ export default async function ArticlePage({
           <div className="flex flex-wrap items-center gap-3 mb-10 font-mono text-[11px] uppercase tracking-[0.22em]">
             <span className="ember">{article.series}</span>
             <span className="text-foreground/30">·</span>
+            <span className="text-muted-foreground">{article.category ?? "Article"}</span>
+            <span className="text-foreground/30">·</span>
+            <span className="text-muted-foreground">{article.author ?? "Ölmez Editorial Desk"}</span>
+            <span className="text-foreground/30">·</span>
             <span className="text-muted-foreground">
               §{article.sectionNumber} {isTurkish ? "/" : "of"} {article.totalInSeries}
             </span>
@@ -76,6 +83,36 @@ export default async function ArticlePage({
           <p className="mt-10 lg:mt-14 max-w-[58ch] text-xl lg:text-2xl text-muted-foreground leading-[1.5] italic font-display">
             {article.dek}
           </p>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-3 lg:max-w-3xl">
+            {[
+              { icon: Eye, label: "people read this article", value: engagement.views },
+              { icon: Heart, label: "likes", value: engagement.likes },
+              { icon: Users, label: "people reading now", value: engagement.peopleReadingNow },
+            ].map((item) => (
+              <div key={item.label} className="border border-foreground/10 bg-foreground/[0.02] p-4">
+                <item.icon className="h-4 w-4 text-[#b8865a]" />
+                <p className="mt-3 font-display text-2xl tracking-[-0.03em]">
+                  {formatCompactNumber(item.value)}
+                </p>
+                <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {article.image && (
+            <div className="mt-12 max-w-4xl overflow-hidden border border-foreground/10 bg-foreground/[0.02]">
+              <Image
+                src={article.image.src}
+                alt={article.image.alt}
+                width={1086}
+                height={1448}
+                className="h-auto w-full object-cover"
+              />
+            </div>
+          )}
         </div>
       </header>
 

@@ -2,718 +2,325 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowRight, BrainCircuit, BriefcaseBusiness, Globe2, Mail, MapPin, Users } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { peopleCulture, peopleOpenings, peopleRegions } from "@/lib/people-data";
+import { useMemo, useState } from "react";
+import { ArrowRight, BriefcaseBusiness, Filter, Mail, MapPin, Search, Users } from "lucide-react";
+import {
+  countryFilters,
+  departmentFilters,
+  peopleCulture,
+  peopleOpenings,
+  peopleRegions,
+  type JobCountry,
+  type JobDepartment,
+} from "@/lib/people-data";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { SiteLocale, withLocale } from "@/lib/site-locale";
 
-const countryFilters = ["All", "Turkey", "United States", "United Kingdom"] as const;
-const departmentFilters = [
-  "All",
-  "Culinary",
-  "Service",
-  "Operations",
-  "Logistics",
-  "People",
-  "Growth",
-  "Finance",
-] as const;
-
 export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
   const isTurkish = locale === "tr";
-  const localizedCountry = (value: string) => {
-    if (!isTurkish) return value;
-    const labels: Record<string, string> = {
-      Turkey: "Türkiye",
-      "United States": "Amerika Birleşik Devletleri",
-      "United Kingdom": "Birleşik Krallık",
-    };
-    return labels[value] || value;
-  };
-  const localizedDepartment = (value: string) => {
-    if (!isTurkish) return value;
-    const labels: Record<string, string> = {
-      Culinary: "Mutfak",
-      Service: "Servis",
-      Operations: "Operasyon",
-      Logistics: "Lojistik",
-      People: "İnsan",
-      Growth: "Büyüme",
-      Finance: "Finans",
-    };
-    return labels[value] || value;
-  };
-  const localizedWorkMode = (value: string) => {
-    if (!isTurkish) return value;
-    const labels: Record<string, string> = {
-      "On-site": "Ofisten",
-      Field: "Saha",
-      Hybrid: "Hibrit",
-    };
-    return labels[value] || value;
-  };
-  const localizedTeam = (value: string) => {
-    if (!isTurkish) return value;
-    const labels: Record<string, string> = {
-      "Kitchen Leadership": "Mutfak Liderliği",
-      "Back-of-House Support": "Arka Alan Desteği",
-      "Delivery & Dispatch": "Teslimat ve Sevkiyat",
-      "Guest Mobility": "Misafir Mobilitesi",
-      "Front Counter": "Ön Tezgah",
-      "Inventory Control": "Stok Kontrolü",
-      "Procurement & Vendor Control": "Satın Alma ve Tedarikçi Kontrolü",
-      "Front-of-House Leadership": "Salon Liderliği",
-      "Talent & People Operations": "Yetenek ve İnsan Operasyonları",
-      "Brand & Market Growth": "Marka ve Pazar Büyümesi",
-      "Content & Social": "İçerik ve Sosyal",
-      "Finance & Control": "Finans ve Kontrol",
-      "Fleet & Route Execution": "Filo ve Rota Yürütme",
-      "AI Growth Systems": "YZ Büyüme Sistemleri",
-      "AI Finance Systems": "YZ Finans Sistemleri",
-    };
-    return labels[value] || value;
-  };
-  const regions = isTurkish
-    ? [
-        {
-          country: "Türkiye",
-          cities: ["İstanbul", "Ankara", "İzmir", "Bursa"],
-          summary:
-            "Mutfak, servis, finans, lojistik ve insan operasyonları boyunca amiral, eğitim ve şube rolleri.",
-        },
-        {
-          country: "Amerika Birleşik Devletleri",
-          cities: ["New York", "Newark", "Houston", "Miami"],
-          summary:
-            "ABD genişlemesini destekleyen büyüme pazarı misafirperverliği, filo, teslimat, finans ve marka rolleri.",
-        },
-        {
-          country: "Birleşik Krallık",
-          cities: ["Edinburgh", "London"],
-          summary:
-            "İnsan, pazarlama ve yapay zeka destekli büyüme ile muhasebe sistemlerine odaklı dört ofis rolü.",
-        },
-      ]
-    : peopleRegions;
-  const [country, setCountry] = useState<(typeof countryFilters)[number]>("All");
-  const [department, setDepartment] = useState<(typeof departmentFilters)[number]>("All");
+  const [country, setCountry] = useState<"All" | JobCountry>("All");
+  const [department, setDepartment] = useState<"All" | JobDepartment>("All");
   const [query, setQuery] = useState("");
 
-  const filteredOpenings = peopleOpenings.filter((opening) => {
-    const matchesCountry = country === "All" || opening.country === country;
-    const matchesDepartment =
-      department === "All" || opening.department === department;
-    const normalizedQuery = query.trim().toLowerCase();
-    const matchesQuery =
-      normalizedQuery.length === 0 ||
-      `${opening.title} ${opening.city} ${opening.country} ${opening.team} ${opening.department}`
-        .toLowerCase()
-        .includes(normalizedQuery);
+  const filteredOpenings = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return peopleOpenings.filter((opening) => {
+      const matchesCountry = country === "All" || opening.country === country;
+      const matchesDepartment = department === "All" || opening.department === department;
+      const haystack = `${opening.title} ${opening.country} ${opening.city} ${opening.department} ${opening.status}`.toLowerCase();
+      const matchesQuery = normalized.length === 0 || haystack.includes(normalized);
+      return matchesCountry && matchesDepartment && matchesQuery;
+    });
+  }, [country, department, query]);
 
-    return matchesCountry && matchesDepartment && matchesQuery;
-  });
-
-  const aiCount = peopleOpenings.filter((opening) => opening.isAI).length;
-  const ukOfficeCount = peopleOpenings.filter(
-    (opening) => opening.country === "United Kingdom"
-  ).length;
+  const visibleOpenings = filteredOpenings.slice(0, 72);
+  const countryCounts = peopleRegions.map((region) => ({
+    country: region.country,
+    count: peopleOpenings.filter((opening) => opening.country === region.country).length,
+  }));
 
   return (
     <>
       <section className="relative overflow-hidden border-t border-white/10">
         <div className="absolute inset-0">
           <Image
-            src={olmezBrandAssets.images.peopleEvent.src}
-            alt={olmezBrandAssets.images.peopleEvent.alt}
+            src={olmezBrandAssets.images.peopleGrowth.src}
+            alt={olmezBrandAssets.images.peopleGrowth.alt}
             fill
             priority
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-black/72 to-black/45" />
-        <div
-          className="absolute inset-0 opacity-80 animate-[gradient-shift_18s_ease-in-out_infinite]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 12% 20%, rgba(184, 134, 90, 0.18), transparent 24%), radial-gradient(circle at 74% 16%, rgba(60, 92, 70, 0.14), transparent 20%), radial-gradient(circle at 78% 76%, rgba(160, 103, 74, 0.12), transparent 24%)",
-            backgroundSize: "180% 180%",
-          }}
-        />
-        <div className="absolute inset-y-0 right-[-4%] hidden w-[42rem] lg:block">
-          <Image
-            src={olmezBrandAssets.logos.copper.src}
-            alt={olmezBrandAssets.logos.copper.alt}
-            fill
-            className="object-contain opacity-[0.08]"
-          />
-        </div>
+        <div className="absolute inset-0 bg-black/76" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-black/72 to-black/24" />
 
-        <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-12 lg:py-28">
+        <div className="relative mx-auto max-w-[1400px] px-6 py-24 lg:px-12 lg:py-36">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/58">
               <span className="h-px w-10 bg-[#b8865a]" />
-              {isTurkish ? "İnsan açılış sayfası" : "People landing page"}
+              {isTurkish ? "İnsan ofisi" : "People Office"}
             </span>
-            <h1 className="mt-8 max-w-[10.5ch] font-display text-[clamp(2.9rem,6.6vw,6rem)] leading-[0.94] tracking-[-0.04em]">
-              {isTurkish
-                ? "Ölmez için insan kaynakları portalı."
-                : "The human resourcing portal for Ölmez."}
+            <h1 className="mt-8 max-w-[11ch] font-display text-[clamp(3rem,7vw,6.4rem)] leading-[0.94] tracking-[-0.04em]">
+              {isTurkish ? "İnsanlar sistemi taşır." : "People carry the system."}
             </h1>
-            <p className="mt-7 max-w-[54ch] text-base leading-[1.8] text-white/72 md:text-lg">
+            <p className="mt-7 max-w-[56ch] text-base leading-[1.8] text-white/74 md:text-lg">
               {isTurkish
-                ? "Türkiye, Amerika Birleşik Devletleri ve Birleşik Krallık genelinde işe alım yapıyoruz. Bu tam kapsamlı bir insan portalıdır: kültür, ofis bağlamı ve misafirperverlik, operasyon, lojistik, büyüme, finans ve yapay zeka destekli ofis sistemleri içinde 48 aktif tam zamanlı rol."
-                : "Hiring across Turkey, the United States, and the United Kingdom. This is a full people portal: culture, office context, and 48 live full-time roles across hospitality, operations, logistics, growth, finance, and AI-enabled office systems."}
+                ? "Ölmez, ülke ve departman bazlı işe alım yapıyor. Aşağıdaki açık roller gerçek operasyon, yatırımcı ilişkileri, AFFAREM, teknoloji, mutfak, saha ve sosyal sorumluluk ihtiyaçlarına göre düzenlenmiştir."
+                : "Ölmez hires by country and department. The open roles below are structured around real operating needs: branch work, investor relations, AFFAREM, technology, kitchen, field execution, and social responsibility."}
             </p>
+            <blockquote className="mt-8 max-w-[48ch] border-l-2 border-[#b8865a] pl-6 font-display text-2xl leading-[1.35] tracking-[-0.03em] text-white">
+              “From 5 people to nearly 3,000 people, the system stayed the same: discipline first, opportunity second, growth third.”
+            </blockquote>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="#positions"
                 className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
               >
-                {isTurkish ? "Açık pozisyonları gör" : "View open positions"}
+                {isTurkish ? "Açık rolleri gör" : "View open roles"}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="#culture"
-                className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
+                href={withLocale("/talents", locale)}
+                className="inline-flex h-12 items-center justify-center gap-3 border border-white/16 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/34 hover:text-white"
               >
-                {isTurkish ? "Kültürümüzü oku" : "Read our culture"}
+                {isTurkish ? "Yetenek odası" : "Talent room"}
               </Link>
             </div>
           </div>
 
           <div className="mt-12 grid gap-4 md:grid-cols-4">
             {[
-              { label: isTurkish ? "Global ekip" : "Global team", value: "2,700+" },
-              { label: isTurkish ? "Servis edilen öğün" : "Meals served", value: "405 / min" },
-              { label: isTurkish ? "Açık tam zamanlı rol" : "Open full-time roles", value: String(peopleOpenings.length) },
-              { label: isTurkish ? "BK ofis rolü" : "UK office roles", value: String(ukOfficeCount) },
+              { label: isTurkish ? "Global ekip" : "Global team", value: "Nearly 3,000" },
+              { label: isTurkish ? "Açık fırsat" : "Open opportunities", value: `${peopleOpenings.length}+` },
+              { label: isTurkish ? "Ülke ve masa" : "Countries and desks", value: "8" },
+              { label: isTurkish ? "Departman" : "Departments", value: "13" },
             ].map((stat) => (
-              <div
-                key={stat.label}
-                className="border border-white/12 bg-black/24 p-5 backdrop-blur-sm"
-              >
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">
-                  {stat.label}
-                </p>
-                <p className="mt-2 font-display text-3xl tracking-[-0.03em] text-white">
-                  {stat.value}
-                </p>
+              <div key={stat.label} className="border border-white/12 bg-black/28 p-5 backdrop-blur-sm">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">{stat.label}</p>
+                <p className="mt-2 font-display text-3xl tracking-[-0.03em] text-white">{stat.value}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section
-        id="culture"
-        className="relative overflow-hidden border-t border-white/10 bg-white/[0.02] py-24 lg:py-32"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-70 animate-[gradient-shift_20s_ease-in-out_infinite]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 18% 18%, rgba(184, 134, 90, 0.12), transparent 24%), radial-gradient(circle at 82% 28%, rgba(53, 84, 61, 0.14), transparent 22%)",
-            backgroundSize: "180% 180%",
-          }}
-        />
+      <section className="border-t border-white/10 bg-white/[0.02] py-20 lg:py-28">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
                 {isTurkish ? "Kültür" : "Culture"}
               </span>
               <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
-                {isTurkish ? "Mekanın arkasındaki insan sistemi." : "The people system behind the room."}
+                {isTurkish ? "Başlık değil, davranış aranır." : "Behavior before title."}
               </h2>
               <p className="mt-8 max-w-[56ch] text-base leading-[1.85] text-white/66">
                 {isTurkish
-                  ? "Ölmez bugün dünya genelinde 2.700’den fazla kişiyi istihdam ediyor. Kültür burada bir slogan değildir. Markanın kaotik görünmeden veya hissettirmeden dakikada 405 öğün servis etmesini sağlayan disiplindir."
-                  : "Ölmez now employs more than 2,700 people globally. Culture is not a slogan here. It is the discipline that lets a brand serve 405 meals per minute without looking or feeling chaotic."}
+                  ? "Ölmez büyümeyi insan sayısıyla açıklamaz. Asıl ölçü, daha fazla insan katıldığında aynı standardın korunup korunmadığıdır."
+                  : "Ölmez does not explain growth by headcount alone. The test is whether the standard survives as more people enter the system."}
               </p>
-
-              <div className="mt-10 space-y-5">
-                {(isTurkish
-                  ? [
-                      {
-                        title: "Karizma yerine disiplin",
-                        body: "Biz güvenilirlik, standart ve operasyonel sakinlik için işe alım yaparız. Ekip markayı dramatik günlerde değil, sıradan günlerde güçlendirmelidir.",
-                      },
-                      {
-                        title: "Mekanlar hazır kalmalı",
-                        body: "İş mutfakta, filo rotasında veya ofiste olsun fark etmez; beklenti aynıdır: vardiyayı aldığından daha temiz teslim et.",
-                      },
-                      {
-                        title: "Sistemler insan işidir",
-                        body: "Marka premium görünüyorsa bunun sebebi insanların yapılandırılmış olmasıdır. İnsan kaynakları burada operasyondan ayrı değildir; operasyon katmanlarından biridir.",
-                      },
-                    ]
-                  : peopleCulture
-                ).map((pillar) => (
-                  <article
-                    key={pillar.title}
-                    className="border border-white/10 bg-black/25 p-6"
-                  >
-                    <h3 className="font-display text-2xl tracking-[-0.03em] text-[#e7bc8b]">
-                      {pillar.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-[1.8] text-white/64">
-                      {pillar.body}
-                    </p>
-                  </article>
-                ))}
-              </div>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-1">
-              {regions.map((region) => (
-                <article
-                  key={region.country}
-                  className="border border-white/10 bg-black/25 p-6"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                        <p className="font-display text-2xl tracking-[-0.03em] text-white">
-                          {region.country}
-                        </p>
-                      <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                        {region.cities.join(" / ")}
-                      </p>
-                    </div>
-                    <Globe2 className="h-5 w-5 text-white/38" />
-                  </div>
-                  <p className="mt-4 text-sm leading-[1.8] text-white/62">
-                    {region.summary}
-                  </p>
+            <div className="grid gap-5 md:grid-cols-3">
+              {peopleCulture.map((pillar) => (
+                <article key={pillar.title} className="border border-white/10 bg-black/25 p-6">
+                  <h3 className="font-display text-2xl tracking-[-0.03em] text-[#e7bc8b]">{pillar.title}</h3>
+                  <p className="mt-4 text-sm leading-[1.8] text-white/64">{pillar.body}</p>
                 </article>
               ))}
-
-              <article className="border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(184,134,90,0.22),transparent_36%)] p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-display text-2xl tracking-[-0.03em] text-white">
-                      {isTurkish ? "Yapay zeka destekli ofis işe alımı" : "AI-enabled office hiring"}
-                    </p>
-                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                      {isTurkish ? "Pazarlama / muhasebe" : "Marketing / accounting"}
-                    </p>
-                  </div>
-                  <BrainCircuit className="h-5 w-5 text-[#e7bc8b]" />
-                </div>
-                <p className="mt-4 text-sm leading-[1.8] text-white/62">
-                  {isTurkish
-                    ? "Birleşik Krallık ofis rollerinden ikisi özel yapay zeka pozisyonlarıdır: biri pazarlama operasyonlarında, diğeri muhasebe otomasyonunda."
-                    : "Two of the UK office roles are purpose-built AI positions: one in marketing operations and one in accounting automation."}
-                </p>
-              </article>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="positions" className="border-t border-white/10 py-24 lg:py-32">
+      <section className="border-t border-white/10 py-20 lg:py-28">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
-                {isTurkish ? "Açık pozisyonlar" : "Open positions"}
+                {isTurkish ? "Ülke yapısı" : "Country structure"}
               </span>
               <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
-                {isTurkish ? "Üç ülkede 48 aktif rol." : "48 active roles across three countries."}
+                {isTurkish ? "Açık roller pazara göre düzenlenir." : "Open roles by market."}
               </h2>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                {
-                  icon: Users,
-                  label: isTurkish ? "Açık rol" : "Open roles",
-                  value: String(peopleOpenings.length),
-                },
-                {
-                  icon: BriefcaseBusiness,
-                  label: isTurkish ? "BK ofis işleri" : "UK office jobs",
-                  value: String(ukOfficeCount),
-                },
-                {
-                  icon: BrainCircuit,
-                  label: isTurkish ? "YZ pozisyonları" : "AI openings",
-                  value: String(aiCount),
-                },
-              ].map((item) => (
-                <div key={item.label} className="border border-white/10 px-5 py-4">
-                  <item.icon className="h-4 w-4 text-[#e7bc8b]" />
-                  <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                    {item.label}
-                  </p>
-                  <p className="mt-2 font-display text-2xl tracking-[-0.03em] text-white">
-                    {item.value}
-                  </p>
-                </div>
-              ))}
+            <Link
+              href="mailto:people@olmez.us"
+              className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-white/72 transition-colors hover:text-[#e7bc8b]"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              people@olmez.us
+            </Link>
+          </div>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {countryCounts.map((item) => (
+              <article key={item.country} className="border border-white/10 bg-black/25 p-5">
+                <p className="font-display text-2xl tracking-[-0.03em] text-white">{item.country}</p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
+                  {item.count} open roles
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="positions" className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+                {isTurkish ? "Açık pozisyonlar" : "Open opportunities"}
+              </span>
+              <h2 className="mt-6 max-w-[15ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+                {peopleOpenings.length}+ roles across countries and departments.
+              </h2>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="border border-white/10 px-5 py-4">
+                <Users className="h-4 w-4 text-[#e7bc8b]" />
+                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">Applications in review</p>
+                <p className="mt-2 font-display text-2xl tracking-[-0.03em] text-white">
+                  {peopleOpenings.reduce((sum, opening) => sum + opening.applications, 0).toLocaleString("en-US")}
+                </p>
+              </div>
+              <div className="border border-white/10 px-5 py-4">
+                <BriefcaseBusiness className="h-4 w-4 text-[#e7bc8b]" />
+                <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">Active filters</p>
+                <p className="mt-2 font-display text-2xl tracking-[-0.03em] text-white">{filteredOpenings.length}</p>
+              </div>
             </div>
           </div>
 
-          <div className="mt-12 space-y-6 border border-white/10 bg-white/[0.02] p-6 lg:p-8">
-            <div className="grid gap-4 lg:grid-cols-[1.1fr_1fr]">
+          <div className="mt-12 border border-white/10 bg-black/24 p-5 lg:p-6">
+            <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr_0.9fr]">
               <label className="block">
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                  {isTurkish ? "Rolleri ara" : "Search roles"}
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  <Search className="h-3.5 w-3.5" />
+                  Search
                 </span>
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder={isTurkish ? "Şef, kasiyer, yapay zeka, Londra, İstanbul..." : "Chef, cashier, AI, London, Istanbul..."}
+                  placeholder="AFFAREM, Riyadh, finance, kitchen..."
                   className="mt-3 h-12 w-full border border-white/10 bg-black/35 px-4 text-sm text-white outline-none transition-colors placeholder:text-white/28 focus:border-[#b8865a]"
                 />
               </label>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                    {isTurkish ? "Ülke" : "Country"}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {countryFilters.map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        onClick={() => setCountry(item)}
-                        className={`h-10 border px-4 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors ${
-                          country === item
-                            ? "border-[#b8865a] bg-[#b8865a] text-black"
-                            : "border-white/10 bg-black/35 text-white/72 hover:border-white/24"
-                        }`}
-                      >
-                        {item === "All"
-                          ? (isTurkish ? "Tüm pazarlar" : "All markets")
-                          : localizedCountry(item)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                    {isTurkish ? "Departman" : "Department"}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {departmentFilters.map((item) => (
-                      <button
-                        key={item}
-                        type="button"
-                        onClick={() => setDepartment(item)}
-                        className={`h-10 border px-4 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors ${
-                          department === item
-                            ? "border-[#b8865a] bg-[#b8865a] text-black"
-                            : "border-white/10 bg-black/35 text-white/72 hover:border-white/24"
-                        }`}
-                      >
-                        {item === "All"
-                          ? (isTurkish ? "Tüm ekipler" : "All teams")
-                          : localizedDepartment(item)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 border-t border-white/10 pt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42 md:flex-row md:items-center md:justify-between">
-              <span>
-                {isTurkish
-                  ? `Filtrelerinize ${filteredOpenings.length} rol uyuyor`
-                  : `${filteredOpenings.length} roles match your filters`}
-              </span>
-              <span>{isTurkish ? "Tüm roller tam zamanlıdır" : "All roles are full-time"}</span>
-            </div>
-          </div>
-
-          <div className="mt-10 border border-white/10 bg-white/[0.02]">
-            <Accordion type="single" collapsible>
-              {filteredOpenings.map((opening) => (
-                <AccordionItem
-                  key={opening.id}
-                  value={opening.id}
-                  className="border-white/10 px-6 lg:px-8"
+              <label className="block">
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  <MapPin className="h-3.5 w-3.5" />
+                  Country
+                </span>
+                <select
+                  value={country}
+                  onChange={(event) => setCountry(event.target.value as "All" | JobCountry)}
+                  className="mt-3 h-12 w-full border border-white/10 bg-black/35 px-4 text-sm text-white outline-none transition-colors focus:border-[#b8865a]"
                 >
-                  <AccordionTrigger className="py-6 hover:no-underline">
-                    <div className="flex w-full flex-col gap-4 pr-4 text-left lg:flex-row lg:items-center lg:justify-between">
-                      <div>
-                        <p className="font-display text-2xl tracking-[-0.03em] text-white">
-                          {opening.title}
-                        </p>
-                        <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                          <span>{opening.id}</span>
-                          <span>{localizedDepartment(opening.department)}</span>
-                          <span>{localizedTeam(opening.team)}</span>
-                        </div>
-                      </div>
+                  {countryFilters.map((item) => (
+                    <option key={item} value={item}>{item}</option>
+                  ))}
+                </select>
+              </label>
 
-                      <div className="flex flex-wrap gap-2 lg:justify-end">
-                        <span className="inline-flex items-center gap-2 border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70">
-                          <MapPin className="h-3.5 w-3.5 text-[#e7bc8b]" />
-                          {opening.city}, {localizedCountry(opening.country)}
-                        </span>
-                        <span className="inline-flex items-center border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/70">
-                          {localizedWorkMode(opening.workMode)}
-                        </span>
-                        {opening.isAI && (
-                          <span className="inline-flex items-center gap-2 border border-[#b8865a]/50 bg-[#b8865a]/12 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-[#efc895]">
-                            <BrainCircuit className="h-3.5 w-3.5" />
-                            {isTurkish ? "YZ rolü" : "AI role"}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-
-                  <AccordionContent className="pb-8">
-                    <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-                      <div>
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                          {isTurkish ? "Rol özeti" : "Role summary"}
-                          </p>
-                          <p className="mt-4 text-sm leading-[1.9] text-white/68">
-                          {opening.summary}
-                        </p>
-                        {!isTurkish && (
-                          <p className="mt-4 text-sm leading-[1.9] text-white/68">
-                            {opening.focus}
-                          </p>
-                        )}
-
-                        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                          <div className="border border-white/10 p-4">
-                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                              {isTurkish ? "Ofis" : "Office"}
-                            </p>
-                            <p className="mt-2 text-sm text-white/74">{opening.office}</p>
-                          </div>
-                          <div className="border border-white/10 p-4">
-                            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                              {isTurkish ? "İstihdam" : "Employment"}
-                            </p>
-                            <p className="mt-2 text-sm text-white/74">
-                              {isTurkish
-                                ? `Tam zamanlı / ${localizedWorkMode(opening.workMode)}`
-                                : `${opening.employmentType} / ${opening.workMode}`}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="grid gap-6">
-                        <div className="border border-white/10 p-5">
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                            {isTurkish ? "Sorumluluklar" : "Responsibilities"}
-                          </p>
-                          <ul className="mt-4 space-y-3">
-                            {opening.responsibilities.map((item) => (
-                              <li key={item} className="text-sm leading-[1.8] text-white/68">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="border border-white/10 p-5">
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                            {isTurkish ? "Gereksinimler" : "Requirements"}
-                          </p>
-                          <ul className="mt-4 space-y-3">
-                            {opening.requirements.map((item) => (
-                              <li key={item} className="text-sm leading-[1.8] text-white/68">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="border border-white/10 p-5">
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                            {isTurkish ? "Başvuru yolu" : "Apply way"}
-                          </p>
-                          <ul className="mt-4 space-y-3">
-                            {opening.applySteps.map((item) => (
-                              <li key={item} className="text-sm leading-[1.8] text-white/68">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-
-                          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-                            <a
-                              href={`mailto:${opening.applyEmail}?subject=${encodeURIComponent(
-                                opening.applySubject
-                              )}`}
-                              className="inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-6 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
-                            >
-                              <Mail className="h-3.5 w-3.5" />
-                              {isTurkish ? "E-posta ile başvur" : "Apply by email"}
-                            </a>
-                            <div className="border border-white/10 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/55">
-                              {opening.applyEmail}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.92fr] lg:items-end">
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
-                {isTurkish ? "Liderlik yazıları" : "Leadership articles"}
-              </span>
-              <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
-                {isTurkish
-                  ? "Şirketin farklı katmanlarını taşıyan insanlar."
-                  : "The people carrying different layers of the company."}
-              </h2>
-              <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
-                {isTurkish
-                  ? "Kültür, kamu ilişkileri, satış, yönetim, etkinlik, finansal doğruluk ve yönetişim alanlarında yer alan isimler için ayrı editoryal profiller hazırlandı."
-                  : "Dedicated editorial articles now sit behind the core people list, covering the individuals responsible for culture, government relations, sales, management, events, finance, and governance."}
-              </p>
-            </div>
-            <div className="relative overflow-hidden border border-white/10 bg-black">
-              <Image
-                src={olmezBrandAssets.images.networking.src}
-                alt={olmezBrandAssets.images.networking.alt}
-                width={1600}
-                height={1000}
-                className="h-full w-full object-cover"
-              />
+              <label className="block">
+                <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  <Filter className="h-3.5 w-3.5" />
+                  Department
+                </span>
+                <select
+                  value={department}
+                  onChange={(event) => setDepartment(event.target.value as "All" | JobDepartment)}
+                  className="mt-3 h-12 w-full border border-white/10 bg-black/35 px-4 text-sm text-white outline-none transition-colors focus:border-[#b8865a]"
+                >
+                  {departmentFilters.map((item) => (
+                    <option key={item} value={item}>{item}</option>
+                  ))}
+                </select>
+              </label>
             </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={withLocale("/people/leadership", locale)}
-              className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
-            >
-              {isTurkish ? "Liderlik profillerini aç" : "Open leadership profiles"}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href={withLocale("/company-profile", locale)}
-              className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
-            >
-              {isTurkish ? "Şirket profili" : "Company profile"}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section id="community-pathways" className="border-t border-white/10 py-24 lg:py-32">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
-                {isTurkish ? "Topluluk yolları" : "Community pathways"}
-              </span>
-              <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
-                {isTurkish
-                  ? "Tam zamanlı kadroların yanında esnek destek ve eğitim yolları."
-                  : "Flexible support and education tracks beside the full-time registry."}
-              </h2>
-              <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
-                {isTurkish
-                  ? "Bu bölüm tam zamanlı açılışlardan ayrı tutulur: Texas eğitim destek rolleri, özel ihtiyaçlara uygun yarı zamanlı hatlar ve 4–7 saatlik ücretli misafirperverlik stajları."
-                  : "This sits outside the full-time openings list: Texas education support roles, part-time pathways designed for special-needs accessibility, and paid hospitality internships built around 4–7 hour working days."}
-              </p>
-            </div>
-            <div className="relative overflow-hidden border border-white/10 bg-black">
-              <Image
-                src={olmezBrandAssets.images.paidInternship.src}
-                alt={olmezBrandAssets.images.paidInternship.alt}
-                width={1600}
-                height={1000}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="mt-12 grid gap-6 xl:grid-cols-4">
-            {[
-              {
-                title: isTurkish ? "Texas eğitim destek rolleri" : "Texas education support roles",
-                body: isTurkish
-                  ? "Okul bağlantılı operasyon, öğrenci koordinasyonu ve toplum destekli misafirperverlik açılışları."
-                  : "School-linked operations, student coordination, and community-facing hospitality support openings.",
-                image: olmezBrandAssets.images.hospitalityTraining,
-              },
-              {
-                title: isTurkish ? "Özel ihtiyaçlara uygun yarı zamanlı işler" : "Special-needs part-time work",
-                body: isTurkish
-                  ? "Daha esnek saat yapılarıyla eğitim desteği ve çalışma deneyimi kazandıran erişilebilir roller."
-                  : "Accessible roles designed around flexible hours, education support, and structured work experience.",
-                image: olmezBrandAssets.images.studentSupport,
-              },
-              {
-                title: isTurkish ? "4–7 saatlik ücretli staj" : "4–7 hour paid internships",
-                body: isTurkish
-                  ? "Misafir hizmeti, servis disiplini ve restoran operasyonları için okul dostu vardiya modeli."
-                  : "A school-compatible shift model for guest service, service discipline, and restaurant operations.",
-                image: olmezBrandAssets.images.paidInternship,
-              },
-              {
-                title: isTurkish ? "700 öğrenci hedefi" : "Targeting 700 students",
-                body: isTurkish
-                  ? "500 öğrencilik mevcut destek hattı bu yıl 700 öğrenciye doğru genişletiliyor."
-                  : "The existing 500-student support line is being expanded toward 700 this year.",
-                image: olmezBrandAssets.images.villageEducation,
-              },
-            ].map((pathway) => (
-              <article
-                key={pathway.title}
-                className="overflow-hidden border border-white/10 bg-black/30"
-              >
-                <div className="relative aspect-[1.12] overflow-hidden border-b border-white/10">
-                  <Image
-                    src={pathway.image.src}
-                    alt={pathway.image.alt}
-                    fill
-                    className="object-cover"
-                  />
+          <div className="mt-10 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+            {visibleOpenings.map((opening) => (
+              <article key={opening.id} className="flex min-h-[330px] flex-col border border-white/10 bg-black/26 p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">{opening.id}</p>
+                    <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">{opening.title}</h3>
+                  </div>
+                  <span className="border border-white/10 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-white/58">
+                    {opening.status}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl tracking-[-0.03em] text-white">
-                    {pathway.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-[1.85] text-white/64">
-                    {pathway.body}
-                  </p>
+
+                <div className="mt-5 grid gap-3 border-y border-white/10 py-4 text-sm text-white/68">
+                  <p>{opening.city}, {opening.country}</p>
+                  <p>{opening.department} / {opening.jobType}</p>
+                  <p>Applications: {opening.applications}</p>
+                  <p>Screening activity: {opening.screeningActivity}</p>
                 </div>
+
+                <p className="mt-5 flex-1 text-sm leading-[1.75] text-white/62">{opening.summary}</p>
+
+                <Link
+                  href={opening.applyHref}
+                  className="mt-6 inline-flex h-11 items-center justify-center gap-3 bg-[#b8865a] px-5 font-mono text-[10px] uppercase tracking-[0.2em] text-black transition-colors hover:bg-[#d7ad7a]"
+                >
+                  Apply now
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </article>
             ))}
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={withLocale("/social-responsibility#pathways", locale)}
-              className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
-            >
-              {isTurkish ? "Sosyal sorumluluk yolları" : "View pathways detail"}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="mailto:careers@olmez.com?subject=Community%20Pathways%20Application"
-              className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
-            >
-              {isTurkish ? "Başvuru masasına yaz" : "Email the application desk"}
-            </Link>
+          {filteredOpenings.length > visibleOpenings.length && (
+            <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-white/46">
+              Showing {visibleOpenings.length} of {filteredOpenings.length}. Use country, department, or search filters to narrow the list.
+            </p>
+          )}
+        </div>
+      </section>
+
+      <section id="community-pathways" className="border-t border-white/10 py-24 lg:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1fr_0.92fr] lg:items-end lg:px-12">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              {isTurkish ? "Açık kapı" : "Open door"}
+            </span>
+            <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              Talent does not always arrive through a job title.
+            </h2>
+            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
+              If you can build, operate, design, cook, manage, sell, teach, improve, or open something with Ölmez, use the Talents page. The People Office reviews unusual opportunities as well as CVs.
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href={withLocale("/talents", locale)}
+                className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+              >
+                Tell us what you can build
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="mailto:people@olmez.us"
+                className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
+              >
+                people@olmez.us
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden border border-white/10 bg-black">
+            <Image
+              src={olmezBrandAssets.images.paidInternship.src}
+              alt={olmezBrandAssets.images.paidInternship.alt}
+              width={1600}
+              height={1000}
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>

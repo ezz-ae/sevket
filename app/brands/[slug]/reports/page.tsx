@@ -37,8 +37,8 @@ export async function generateMetadata({
       ? `${brand.name} Raporlar ve Analitik — H1 2026 Performansı`
       : `${brand.name} Reports & Analytics — H1 2026 Performance`,
     description: isTurkish
-      ? `${brand.name} için stratejik raporlar, performans verileri ve operasyonel metrikler. ${brand.unitCount} aktif ünite, ${brand.deployedCapital} konuşlanan sermaye.`
-      : `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.deployedCapital} deployed capital.`,
+      ? `${brand.name} için stratejik raporlar, performans verileri ve operasyonel metrikler. ${brand.unitCount} aktif ünite, ${brand.deployedCapital} izlenen sermaye.`
+      : `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.deployedCapital} tracked capital.`,
     keywords: [
       brand.name,
       "franchise reports",
@@ -86,7 +86,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         dek: `${brand?.name ?? ""} için çeyreklik ve yıllık raporlar. Performans metrikleri, sermaye takibi ve operasyonel istihbarat.`,
         latestReport: "Son rapor",
         activeUnits: "Aktif ünite",
-        deployedCapital: "Konuşlanan sermaye",
+        deployedCapital: "İzlenen sermaye",
         onTarget: "Hedefte",
         featuredReport: "Öne çıkan rapor",
         numbersClaim: "Her sayı kendini açıklar.",
@@ -122,7 +122,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         dek: `Quarterly and annual reports for ${brand?.name ?? ""}. Performance metrics, capital deployment tracking, and operational intelligence.`,
         latestReport: "Latest Report",
         activeUnits: "Active Units",
-        deployedCapital: "Deployed Capital",
+        deployedCapital: "Tracked Capital",
         onTarget: "On-Target",
         featuredReport: "Featured Report",
         numbersClaim: "Every number explains itself.",

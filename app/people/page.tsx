@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PeoplePortal } from "@/components/people/people-portal";
+import { peopleOpenings } from "@/lib/people-data";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
@@ -18,15 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "İnsanlar — Ölmez İnsan Kaynakları Portalı"
       : "People — Ölmez Human Resourcing Portal",
     description: isTurkish
-      ? "Ölmez insan portalını keşfedin: kültür, global işe alım ve Amerika Birleşik Devletleri, Türkiye ve Birleşik Krallık genelinde 48 tam zamanlı açık rol."
-      : "Explore the Ölmez people portal: culture, global hiring, and 48 full-time open positions across the United States, Turkey, and the United Kingdom.",
+      ? `Ölmez insan portalını keşfedin: kültür, global işe alım ve ülke/departman bazlı ${peopleOpenings.length}+ açık fırsat.`
+      : `Explore the Ölmez people portal: culture, global hiring, and ${peopleOpenings.length}+ open opportunities across countries and departments.`,
     openGraph: {
       title: isTurkish
         ? "İnsanlar — Ölmez İnsan Kaynakları Portalı"
         : "People — Ölmez Human Resourcing Portal",
       description: isTurkish
-        ? "Kültür, işe alım ve misafirperverlik, operasyon, büyüme, finans ve yapay zeka ofis sistemlerinde 48 açık rol."
-        : "Culture, hiring, and 48 open roles across hospitality, operations, growth, finance, and AI office systems.",
+        ? `${peopleOpenings.length}+ açık rol: operasyon, AFFAREM, yatırımcı ilişkileri, mutfak, teknoloji, finans, eğitim ve saha.`
+        : `${peopleOpenings.length}+ open roles across operations, AFFAREM, investor relations, kitchen, technology, finance, education, and field work.`,
       url: `${baseUrl}${localizedPath}`,
       type: "website",
     },
@@ -56,8 +57,6 @@ export default async function PeoplePage() {
             backgroundSize: "180% 180%",
           }}
         />
-        <div className="absolute -left-24 top-32 h-[26rem] w-[26rem] rounded-full bg-[#b8865a]/12 blur-3xl animate-[orb-drift_24s_ease-in-out_infinite]" />
-        <div className="absolute right-[-8rem] top-[28rem] h-[24rem] w-[24rem] rounded-full bg-[#36543d]/14 blur-3xl animate-[orb-drift_20s_ease-in-out_infinite]" />
       </div>
       <Navigation />
       <PeoplePortal locale={locale} />

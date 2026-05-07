@@ -7,6 +7,8 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
 import { articles, series } from "@/lib/magazine-data";
 import { magazineIssues } from "@/lib/brand-detailed-data";
+import { getArticleEngagement, formatCompactNumber } from "@/lib/live-engagement";
+import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
@@ -48,6 +50,7 @@ export default async function MagazinePage() {
   const olmezIssues = magazineIssues.filter((issue) => issue.brand === "olmez");
   const latestIssue = olmezIssues[0];
   const archiveIssues = olmezIssues.slice(1);
+  const founderArticles = articles.filter((article) => article.category === "Founder Essay");
 
   return (
     <main className="relative min-h-screen bg-white text-foreground">
@@ -192,6 +195,60 @@ export default async function MagazinePage() {
         </section>
       )}
 
+      {founderArticles.length > 0 && (
+        <section className="border-t border-gray-300 bg-white py-24 lg:py-32">
+          <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:px-12">
+            <div className="sticky top-24">
+              <div className="overflow-hidden border border-gray-300 bg-gray-50">
+                <Image
+                  src={olmezBrandAssets.founder.current.src}
+                  alt={olmezBrandAssets.founder.current.alt}
+                  width={1086}
+                  height={1448}
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+              <span className="mt-6 block font-mono text-[11px] uppercase tracking-[0.24em] text-gray-500">
+                {isTurkish ? "Kurucudan" : "Articles by Founder"}
+              </span>
+              <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] text-gray-900 md:text-6xl">
+                {isTurkish ? "Sistemin kamu sesi." : "The public voice of the system."}
+              </h2>
+              <p className="mt-6 max-w-[46ch] text-sm leading-[1.85] text-gray-600">
+                Short founder essays clarify how Ölmez thinks about control, responsibility, distribution rhythm, and the difference between a food counter and an investable operating system.
+              </p>
+            </div>
+
+            <div className="border border-gray-300 bg-gray-50">
+              {founderArticles.map((article) => {
+                const engagement = getArticleEngagement(article.slug, article.readingMinutes, article.sectionNumber);
+                return (
+                  <Link
+                    key={article.slug}
+                    href={withLocale(`/magazine/${article.slug}`, locale)}
+                    className="group block border-b border-gray-300 px-6 py-7 transition-colors last:border-b-0 hover:bg-white lg:px-8"
+                  >
+                    <div className="flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
+                      <span>{article.author}</span>
+                      <span>{article.publishedAt}</span>
+                      <span>{article.readingMinutes} min</span>
+                      <span>{formatCompactNumber(engagement.views)} views</span>
+                      <span>{formatCompactNumber(engagement.peopleReadingNow)} reading now</span>
+                    </div>
+                    <h3 className="mt-4 font-display text-3xl tracking-[-0.03em] text-gray-900 transition-colors group-hover:text-[#b8865a]">
+                      {article.title}
+                    </h3>
+                    <p className="mt-3 max-w-[54ch] text-sm leading-[1.8] text-gray-600">
+                      {article.dek}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="border-t border-gray-300 py-24 lg:py-32 bg-white">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
           <div>
@@ -235,6 +292,18 @@ export default async function MagazinePage() {
                         §{article.sectionNumber} / {article.totalInSeries}
                       </span>
                       <span>{article.readingMinutes} min</span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-gray-500">
+                      {(() => {
+                        const engagement = getArticleEngagement(article.slug, article.readingMinutes, article.sectionNumber);
+                        return (
+                          <>
+                            <span>{formatCompactNumber(engagement.views)} reads</span>
+                            <span>{formatCompactNumber(engagement.likes)} likes</span>
+                            <span>{formatCompactNumber(engagement.peopleReadingNow)} reading now</span>
+                          </>
+                        );
+                      })()}
                     </div>
                     <h3 className="mt-4 font-display text-2xl tracking-[-0.03em] text-gray-900 transition-colors group-hover:text-[#b8865a]">
                       {article.title}

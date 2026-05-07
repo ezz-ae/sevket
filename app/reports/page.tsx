@@ -30,7 +30,7 @@ const reports = [
       "Capital recovery schedules",
       "LiveOps intervention outcomes",
       "42 British Franchise Holders analysis",
-      "$16.5M deployed asset value",
+      "$16.5M tracked asset value",
       "H2 2026 strategic roadmap",
     ],
     metrics: {
@@ -168,7 +168,7 @@ export default async function ReportsPage() {
         meta={[
           { label: isTurkish ? "Son rapor" : "Latest Report", value: "H1 2026" },
           { label: isTurkish ? "Aktif portföy" : "Active Portfolio", value: isTurkish ? "147 ünite" : "147 Units" },
-          { label: isTurkish ? "Konuşlanan sermaye" : "Deployed Capital", value: "$16.5M" },
+          { label: isTurkish ? "İzlenen sermaye" : "Tracked Capital", value: "$16.5M" },
           { label: isTurkish ? "Yatırımcı toplantısı" : "Investor Meetings", value: isTurkish ? "4 planlandı" : "4 Scheduled" },
         ]}
       />

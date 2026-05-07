@@ -64,8 +64,8 @@ export default async function LeadershipIndexPage() {
         italicTail={isTurkish ? "roller." : "the system."}
         dek={
           isTurkish
-            ? "Donia, Sally ve CEO rolü hariç tutularak hazırlanan bu liderlik dizisi, her kişinin şirkette hangi katmanı taşıdığını açıklıyor."
-            : "A focused leadership series built around the remaining Ölmez people list, excluding Donia, Sally, and CEO-titled roles, and explaining what each person carries inside the company."
+            ? "Bu liderlik dizisi, şirketin kültür, yönetim, kamu ilişkileri, finans, etkinlik, satış ve yönetişim katmanlarını taşıyan kişileri açıklar."
+            : "A focused leadership series explaining the people who carry culture, management, government relations, finance, events, sales, and governance inside the company."
         }
         meta={[
           { label: isTurkish ? "Yazı sayısı" : "Profiles", value: String(leadershipProfiles.length) },

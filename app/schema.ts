@@ -33,8 +33,8 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Business Development',
-    telephone: '+44-000-0000000',
-    email: 'info@olmez.franchise.systems',
+    telephone: '+1-833-665-6398',
+    email: 'hello@olmez.us',
   },
   areaServed: ['US', 'UK', 'Turkey'],
   knowsAbout: [
@@ -60,7 +60,7 @@ export const localBusinessSchema = {
     postalCode: 'EH1 3AA',
     addressCountry: 'UK',
   },
-  telephone: '+44-000-0000000',
+  telephone: '+1-833-665-6398',
   url: baseUrl,
   sameAs: [
     'https://www.linkedin.com/company/olmez-franchise-systems',
@@ -121,12 +121,12 @@ export const articleSchema = (data: {
 export const deploymentRoomSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Shawarma Time Investor Deployment Room',
-  alternateName: ['Investor Deployment Room', 'Starter Investment Room'],
+  name: 'Shawarma Time Investor Review Room',
+  alternateName: ['Investor Review Room', 'Starter Investment Room'],
   description:
-    'A controlled, online inspection room where qualified investors can review SHAWARMA TIME gas-station restaurant units before deployment — from the US opportunity map and unit hotspots to financial overlay, six-phase timeline, calculator, and AFFAREM Investor Reporting with twice-weekly distribution.',
+    'A controlled, online inspection room where qualified investors can review SHAWARMA TIME gas-station restaurant units before opening — from the US opportunity map and unit hotspots to financial overlay, six-phase timeline, calculator, and AFFAREM Investor Reporting with twice-weekly distribution review.',
   url: `${baseUrl}/deployment-room`,
-  serviceType: 'Investor inspection and deployment platform',
+  serviceType: 'Investor inspection and unit review platform',
   provider: {
     '@type': 'Organization',
     name: 'Ölmez Franchise Systems',

@@ -82,8 +82,16 @@ export const olmezBrandAssets = {
       src: "/brand-library/sevetteam-ecosystem-portrait.png",
       alt: "Ecosystem portrait with Ölmez, AFFAREM, SevetTeam, and Sevet Global Market backdrops",
     },
+    peopleGrowth: {
+      src: "/brand-library/olmez-people-growth.png",
+      alt: "Ölmez people growth portrait used for the People Office",
+    },
   },
   founder: {
+    current: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for Ölmez public voice and founder essays",
+    },
     keynoteStage: {
       src: "/brand-library/olmez-founder-keynote-stage.png",
       alt: "Founder presenting on the Ölmez stage",

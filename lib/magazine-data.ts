@@ -17,6 +17,12 @@ export type Article = {
   dek: string;
   publishedAt: string;
   readingMinutes: number;
+  category?: string;
+  author?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   body: ArticleBlock[];
 };
 
@@ -33,7 +39,7 @@ export const articles: Article[] = [
     slug: "the-founders-blueprint",
     series: series.name,
     sectionNumber: 1,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "The Founder's Blueprint",
     dek: "Why a systems-first mind is built in three cities, not one.",
     publishedAt: "2026-05-06",
@@ -77,7 +83,7 @@ export const articles: Article[] = [
     slug: "strategic-location",
     series: series.name,
     sectionNumber: 2,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "Strategic Location",
     dek: "The logic of overlooked markets — and why metropolises lie.",
     publishedAt: "2026-05-06",
@@ -126,7 +132,7 @@ export const articles: Article[] = [
     slug: "mood-vs-system",
     series: series.name,
     sectionNumber: 3,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "Mood vs. System",
     dek: "We are not building a restaurant company; we are building a restaurant business company.",
     publishedAt: "2026-05-06",
@@ -165,7 +171,7 @@ export const articles: Article[] = [
     slug: "the-repeated-promise",
     series: series.name,
     sectionNumber: 4,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "The Repeated Promise",
     dek: "A brand is not a graphic-design choice. It is a promise repeated until it becomes an asset.",
     publishedAt: "2026-05-06",
@@ -204,7 +210,7 @@ export const articles: Article[] = [
     slug: "economics-of-access",
     series: series.name,
     sectionNumber: 5,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "Economics of Access",
     dek: "Payback, micro-starts, and the four-investor model that makes the ladder real.",
     publishedAt: "2026-05-06",
@@ -243,7 +249,7 @@ export const articles: Article[] = [
     slug: "smart-discipline-over-wealth",
     series: series.name,
     sectionNumber: 6,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "Smart Discipline Over Wealth",
     dek: "Money is normal. Discipline is rare. The score decides who scales.",
     publishedAt: "2026-05-06",
@@ -283,7 +289,7 @@ export const articles: Article[] = [
     slug: "golden-rules",
     series: series.name,
     sectionNumber: 7,
-    totalInSeries: 7,
+    totalInSeries: 12,
     title: "Golden Rules",
     dek: "Three takeaways for the operator who wants to build an asset, not a job.",
     publishedAt: "2026-05-06",
@@ -312,6 +318,179 @@ export const articles: Article[] = [
       {
         type: "pullquote",
         text: "We do not build restaurants. We build repetition.",
+      },
+    ],
+  },
+  {
+    slug: "restaurant-business-company",
+    series: series.name,
+    sectionNumber: 8,
+    totalInSeries: 12,
+    title: "Why We Are Building a Restaurant Business Company",
+    dek: "A restaurant sells food. A restaurant business company builds the conditions that let food become a controlled asset.",
+    publishedAt: "2026-05-07",
+    readingMinutes: 4,
+    category: "Founder Essay",
+    author: "Sevet Ölmez",
+    image: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for the restaurant business company essay",
+    },
+    body: [
+      {
+        type: "lead",
+        text: "The public can see the counter. Investors must see the system behind the counter. That is the difference between a restaurant company and a restaurant business company.",
+      },
+      {
+        type: "paragraph",
+        text: "Ölmez is not trying to make every unit feel dramatic. It is trying to make every unit legible: sales, labor, waste, manager behavior, branch readiness, and distribution language must all be visible enough to be managed.",
+      },
+      {
+        type: "pullquote",
+        text: "We are not investing in a restaurant company. We are building a restaurant business company.",
+        attribution: "Sevet Ölmez",
+      },
+      {
+        type: "paragraph",
+        text: "That distinction matters because the food business does not reward fantasy for long. It rewards the team that can repeat standards when the founder is not in the room.",
+      },
+    ],
+  },
+  {
+    slug: "starter-investors-before-branch",
+    series: series.name,
+    sectionNumber: 9,
+    totalInSeries: 12,
+    title: "Why Starter Investors Need a System Before a Branch",
+    dek: "A branch is too serious to be someone’s first lesson in food-business responsibility.",
+    publishedAt: "2026-05-07",
+    readingMinutes: 4,
+    category: "Founder Essay",
+    author: "Sevet Ölmez",
+    image: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for the starter investor essay",
+    },
+    body: [
+      {
+        type: "lead",
+        text: "A beginner should not learn the food business only after money is already tied to a single branch. The safer learning path is a controlled pool with real reporting and limited exposure.",
+      },
+      {
+        type: "paragraph",
+        text: "Junior Investor Pools exist for that reason. They teach the rhythm of reports, eligible distributions, reconciliation, reserves, and communication before the investor asks for a larger seat.",
+      },
+      {
+        type: "callout",
+        label: "Learning stage",
+        text: "The junior entry point is not designed to make a person feel finished. It is designed to show whether the person can read the system correctly.",
+      },
+      {
+        type: "paragraph",
+        text: "Early exit is allowed, but behavior still matters. The company has to see whether an investor can stay clear, patient, and responsible before being prioritized for larger opportunities.",
+      },
+    ],
+  },
+  {
+    slug: "product-is-control",
+    series: series.name,
+    sectionNumber: 10,
+    totalInSeries: 12,
+    title: "The Product Is Not Shawarma. The Product Is Control.",
+    dek: "The food earns attention. Control decides whether the business deserves capital.",
+    publishedAt: "2026-05-07",
+    readingMinutes: 4,
+    category: "Founder Essay",
+    author: "Sevet Ölmez",
+    image: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for the control essay",
+    },
+    body: [
+      {
+        type: "lead",
+        text: "Shawarma brings people to the counter. Control is what keeps the counter investable.",
+      },
+      {
+        type: "paragraph",
+        text: "A good product can hide weak operations for a short time. It cannot protect a branch from poor purchasing, staff drift, broken close-down routines, or confused distribution language.",
+      },
+      {
+        type: "list",
+        items: [
+          "Control means the branch can explain its own numbers.",
+          "Control means the operator knows what changed before the investor asks.",
+          "Control means the manager can fix the shift without changing the brand promise.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "AFFAREM exists to make that control visible. Without visibility, the company is asking for belief. With visibility, it can ask for judgment.",
+      },
+    ],
+  },
+  {
+    slug: "small-work-to-structured-ownership",
+    series: series.name,
+    sectionNumber: 11,
+    totalInSeries: 12,
+    title: "From Small Work to Structured Ownership",
+    dek: "The company’s human ladder starts with work, not with status.",
+    publishedAt: "2026-05-07",
+    readingMinutes: 3,
+    category: "Founder Essay",
+    author: "Sevet Ölmez",
+    image: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for structured ownership essay",
+    },
+    body: [
+      {
+        type: "lead",
+        text: "The healthiest ownership culture starts with people who respect the work. Counter, kitchen, delivery, reporting, and manager routines all teach the same lesson: the business has to be carried before it can be owned.",
+      },
+      {
+        type: "paragraph",
+        text: "That is why the People Office, Junior Investor Program, and operator pathway are connected. Talent, capital, and discipline should not live in separate rooms.",
+      },
+      {
+        type: "pullquote",
+        text: "Opportunity is stronger when it arrives after proof.",
+      },
+    ],
+  },
+  {
+    slug: "distribution-rhythm-matters",
+    series: series.name,
+    sectionNumber: 12,
+    totalInSeries: 12,
+    title: "Why Distribution Rhythm Matters More Than Annual Reports",
+    dek: "A twice-weekly rhythm forces the system to stay close to the branch reality.",
+    publishedAt: "2026-05-07",
+    readingMinutes: 4,
+    category: "Founder Essay",
+    author: "Sevet Ölmez",
+    image: {
+      src: "/brand-library/olmez-founder-current.png",
+      alt: "Founder portrait for distribution rhythm essay",
+    },
+    body: [
+      {
+        type: "lead",
+        text: "Annual reports are useful, but they are too slow to teach operating discipline. A food business changes every day. The reporting rhythm has to stay close to that reality.",
+      },
+      {
+        type: "paragraph",
+        text: "Eligible net distributions are reviewed and processed twice weekly after sales reconciliation, operating costs, reserves, fees, and applicable deductions. The rhythm does not guarantee a payout. It creates a review habit.",
+      },
+      {
+        type: "callout",
+        label: "Why rhythm matters",
+        text: "When review happens often, errors surface earlier, questions become more specific, and investors learn the operating language of the branch.",
+      },
+      {
+        type: "paragraph",
+        text: "The strongest investor is not the one who asks for the biggest number. It is the one who understands what had to happen inside the branch before any number could be distributed.",
       },
     ],
   },

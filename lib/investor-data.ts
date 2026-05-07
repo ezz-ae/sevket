@@ -5,7 +5,7 @@ export const investorPortfolio = {
   totalActiveUnits: 612,
   totalBrands: 5,
   marketsServed: 18,
-  averagePayback: "26 months",
+  averagePayback: "26-month projection",
   successRate: "84%",
   livestreamingUnits: "100%",
   averageDailyGain: "$685",
@@ -14,21 +14,22 @@ export const investorPortfolio = {
 export const investmentTiers = [
   {
     id: "micro-start",
-    name: "Micro-Start Tier",
+    name: "Junior Investor Pool",
     minimum: "$1,000",
-    maximum: "$2,000",
-    typeOfReturn: "Operator Equity",
-    paybackTarget: "3-6 months",
+    maximum: "$12,000",
+    typeOfReturn: "Pool-based eligible distribution",
+    paybackTarget: "6-month subscription",
     description:
-      "Entry-level participation in operator development pipeline. Ideal for individuals seeking franchise career path.",
+      "Low-friction entry into a shared pool of 50 Shawerma Time restaurant units. Designed for investors who need to learn AFFAREM reporting before applying for a branch position.",
     benefits: [
-      "Smart Discipline training included",
+      "Shared 50-restaurant pool",
       "AFFAREM platform access",
-      "Mentorship from master operators",
-      "Direct unit assignment opportunities",
+      "No penalty for early closure",
+      "Exit after at least two distributions",
+      "Strongly recommended for limited food-business experience",
     ],
-    riskLevel: "Low",
-    targetInvestor: "First-time entrants",
+    riskLevel: "Starter",
+    targetInvestor: "Starter and junior investors",
     color: "#1B5E20",
   },
   {
@@ -37,9 +38,9 @@ export const investmentTiers = [
     minimum: "$165,000",
     maximum: "$250,000",
     typeOfReturn: "Cash Flow + Asset",
-    paybackTarget: "24-30 months",
+    paybackTarget: "24-30 month projection",
     description:
-      "Direct ownership of one operational unit. Includes setup, equipment, training, and operational support.",
+      "Direct branch-level exposure. Includes setup, equipment, training, operational support, and investor responsibility for communication and reporting.",
     benefits: [
       "Full ownership of unit operations",
       "AFFAREM monitoring included",
@@ -56,10 +57,10 @@ export const investmentTiers = [
     name: "Multi-Unit Portfolio",
     minimum: "$500,000",
     maximum: "$2.5M",
-    typeOfReturn: "Diversified Cash Flow",
-    paybackTarget: "20-26 months",
+    typeOfReturn: "Diversified branch performance",
+    paybackTarget: "20-26 month projection",
     description:
-      "Portfolio of 3-15 units across multiple brands. Diversified risk with brand-level exposure.",
+      "Portfolio of 3-15 units across multiple brands. Diversified exposure with performance based on actual branch results.",
     benefits: [
       "Cross-brand diversification",
       "Priority site selection",
@@ -76,10 +77,10 @@ export const investmentTiers = [
     name: "Institutional Capital",
     minimum: "$5M",
     maximum: "$50M+",
-    typeOfReturn: "IRR + Strategic",
-    paybackTarget: "18-24 months",
+    typeOfReturn: "Strategic participation",
+    paybackTarget: "18-24 month projection",
     description:
-      "Strategic capital partnership for territory-level deployments and brand expansion initiatives.",
+      "Strategic capital partnership for territory-level investment, brand expansion initiatives, and market-entry infrastructure.",
     benefits: [
       "Territory exclusivity options",
       "Brand-level participation",
@@ -98,9 +99,9 @@ export const opportunities = [
     id: "us-gas-corridor",
     title: "U.S. Gas Station Corridor — 40 Unit Expansion",
     brand: "shawarmer",
-    type: "Multi-Unit Deployment",
+    type: "Multi-Unit Investment",
     capitalRequired: "$6.6M",
-    targetReturn: "26-month payback",
+    targetReturn: "26-month projected payback",
     timeline: "H2 2026 — Q2 2027",
     states: ["Texas", "Oklahoma", "California", "Florida", "Georgia"],
     description:
@@ -110,7 +111,7 @@ export const opportunities = [
       "AFFAREM monitoring included",
       "LiveOps support",
       "Heritage shawarma brand",
-      "$450-$950 daily gain target",
+      "$450-$950 projected daily gain range",
     ],
     status: "open",
     minimumInvestment: "$165,000 per unit",
@@ -123,7 +124,7 @@ export const opportunities = [
     brand: "turkishpide",
     type: "Strategic Market Entry",
     capitalRequired: "$880K",
-    targetReturn: "30-month payback",
+    targetReturn: "30-month projected payback",
     timeline: "Q3 2026 — Q1 2027",
     states: ["Germany", "Netherlands"],
     description:
@@ -132,7 +133,7 @@ export const opportunities = [
       "Premium European positioning",
       "Heritage recipe certification",
       "Direct supply chain integration",
-      "$380-$750 daily gain target",
+      "$380-$750 projected daily gain range",
       "82% of units exceed targets",
     ],
     status: "open",
@@ -146,7 +147,7 @@ export const opportunities = [
     brand: "olmez",
     type: "Premium Brand Authority",
     capitalRequired: "$3.5M",
-    targetReturn: "Strategic Asset",
+    targetReturn: "Strategic asset projection",
     timeline: "Q4 2026 — Q3 2027",
     states: ["United Kingdom"],
     description:
@@ -169,7 +170,7 @@ export const opportunities = [
     brand: "affarem",
     type: "Technology Investment",
     capitalRequired: "$2M",
-    targetReturn: "12-month payback + IP",
+    targetReturn: "12-month projected payback + IP exposure",
     timeline: "Q3 2026 — Q1 2027",
     states: ["Global"],
     description:
@@ -192,7 +193,7 @@ export const opportunities = [
     brand: "disciplina",
     type: "Infrastructure Investment",
     capitalRequired: "$1.5M",
-    targetReturn: "8-month payback",
+    targetReturn: "8-month projected payback",
     timeline: "H2 2026",
     states: ["Turkey"],
     description:
@@ -213,7 +214,7 @@ export const opportunities = [
 
 export const investorBenefits = [
   {
-    title: "100% Real-Time Visibility",
+    title: "Real-Time Operating Visibility",
     description:
       "Live AFFAREM dashboard access to your unit's operations, financials, and performance metrics 24/7.",
     icon: "Eye",
@@ -225,9 +226,9 @@ export const investorBenefits = [
     icon: "Target",
   },
   {
-    title: "Capital Recovery Tracking",
+    title: "Capital Recovery Projection",
     description:
-      "Month-by-month tracking of capital deployment and recovery. 30-month target with quarterly reviews.",
+      "Month-by-month tracking of capital use and projected recovery. Targets are planning tools, not promises.",
     icon: "TrendingUp",
   },
   {
@@ -239,7 +240,7 @@ export const investorBenefits = [
   {
     title: "Quarterly Investor Briefings",
     description:
-      "In-depth performance reviews with founder access. Strategic insights and capital deployment decisions.",
+      "In-depth performance reviews with founder access, strategic insights, and capital-use decisions.",
     icon: "Calendar",
   },
   {
@@ -271,7 +272,7 @@ export const investmentProcess = [
   },
   {
     step: 4,
-    title: "Capital Deployment & Setup",
+    title: "Capital Use & Setup",
     description: "Equipment procurement, build-out, and operational setup. AFFAREM systems installed.",
     duration: "8-12 weeks",
   },
@@ -284,7 +285,7 @@ export const investmentProcess = [
   {
     step: 6,
     title: "Ongoing Performance",
-    description: "Real-time monitoring, quarterly briefings, capital recovery tracking. 30-month payback target.",
+    description: "Real-time monitoring, quarterly briefings, and capital recovery projection. No payback target is a guarantee.",
     duration: "Ongoing",
   },
 ];

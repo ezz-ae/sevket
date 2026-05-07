@@ -47,9 +47,9 @@ const statusColors: Record<string, string> = {
 };
 
 const statusLabels: Record<string, string> = {
-  open: "Open",
-  limited: "Limited",
-  closed: "Closed",
+  open: "Available",
+  limited: "Under Review",
+  closed: "Reserved",
 };
 
 export default async function OpportunitiesPage() {
@@ -64,17 +64,17 @@ export default async function OpportunitiesPage() {
         locale={locale}
         backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
         eyebrow={isTurkish ? "Aktif yatırım fırsatları" : "Active Investment Opportunities"}
-        title={isTurkish ? "Sermaye konuşlandırma" : "Capital Deployment"}
-        italicTail={isTurkish ? "fırsatları." : "Opportunities."}
+        title={isTurkish ? "Yatırım" : "Investment"}
+        italicTail={isTurkish ? "fırsatları." : "opportunities."}
         dek={
           isTurkish
-            ? "Beş markalı ekosistemimiz genelinde aktif yatırım fırsatları. Her fırsat ön doğrulaması yapılmış lokasyonlar, sertifikalı operatörler ve yüzde 100 AFFAREM izleme içerir."
-            : "Active investment opportunities across our 5-brand ecosystem. Each opportunity includes pre-validated sites, certified operators, and 100% AFFAREM monitoring."
+            ? "Beş markalı ekosistemimiz genelinde aktif yatırım fırsatları. Her fırsat ön doğrulaması yapılmış lokasyonlar, sertifikalı operatörler ve AFFAREM raporlama görünürlüğü içerir."
+            : "Active investment opportunities across the Ölmez platform. Each opportunity includes pre-validated sites, certified operators, and AFFAREM reporting visibility."
         }
         meta={[
           { label: isTurkish ? "Aktif fırsat" : "Active Opportunities", value: opportunities.length.toString() },
           { label: isTurkish ? "Toplam sermaye" : "Total Capital", value: "$14.5M+" },
-          { label: isTurkish ? "Ort. geri ödeme" : "Avg Payback", value: isTurkish ? "26 ay" : "26 months" },
+          { label: isTurkish ? "Projeksiyon" : "Projected Payback", value: isTurkish ? "26 ay" : "26 months" },
           { label: isTurkish ? "Pazar" : "Markets", value: isTurkish ? "8 bölge" : "8 Regions" },
         ]}
       />
@@ -206,9 +206,9 @@ export default async function OpportunitiesPage() {
                           >
                             {isTurkish
                               ? ({
-                                  open: "Açık",
-                                  limited: "Sınırlı",
-                                  closed: "Kapalı",
+                                  open: "Mevcut",
+                                  limited: "İncelemede",
+                                  closed: "Rezerve",
                                 }[opp.status] || statusLabels[opp.status])
                               : statusLabels[opp.status]}
                           </span>
@@ -351,15 +351,15 @@ export default async function OpportunitiesPage() {
       <section className="relative border-t border-gray-300 py-32 lg:py-48 bg-gray-50">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-600">
-            {isTurkish ? "Sermaye konuşlandırma yolculuğu" : "Capital Deployment Journey"}
+            {isTurkish ? "Yatırım inceleme yolu" : "Investment Review Journey"}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8 text-gray-900">
             {isTurkish ? "Yapılı. Şeffaf. Disiplinli." : "Structured. Transparent. Disciplined."}
           </h2>
           <p className="text-xl text-gray-600 max-w-[60ch] mx-auto mb-12">
             {isTurkish
-              ? "Her fırsat altı adımlı konuşlandırma sürecimizi izler. İlk talepten operasyon açılışına kadar sermaye disiplinle konuşlandırılır."
-              : "Every opportunity follows our six-step deployment process. From initial inquiry to operations launch, capital is deployed with discipline."}
+              ? "Her fırsat altı adımlı inceleme ve açılış sürecini izler. İlk talepten operasyon açılışına kadar sermaye kullanımı, sorumluluk ve raporlama disiplini netleştirilir."
+              : "Every opportunity follows a six-step review and opening process. From inquiry to operations launch, capital use, responsibility, and reporting discipline are made clear."}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

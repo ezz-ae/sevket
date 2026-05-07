@@ -9,6 +9,10 @@ import {
   Layers,
   ArrowRight,
   CheckCircle2,
+  WalletCards,
+  FileText,
+  MessageSquare,
+  Landmark,
 } from "lucide-react";
 import {
   investorPortfolio,
@@ -28,14 +32,13 @@ const baseUrl =
 export const metadata: Metadata = {
   title: "Investor Relations — Ölmez Franchise Systems",
   description:
-    "Strategic investment opportunities across 5 brands. $30.9M deployed capital, 612 active units, 26-month average payback. Real-time visibility through AFFAREM platform.",
+    "Strategic investment access across the Ölmez platform with AFFAREM reporting, branch and pool visibility, responsibility standards, and compliance-safe distribution language.",
   keywords: [
     "franchise investment",
     "restaurant investment",
     "investor relations",
     "Ölmez investments",
     "franchise opportunities",
-    "passive income franchise",
     "shawarma franchise investment",
     "gas station franchise",
     "AFFAREM",
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Investor Relations — Ölmez Franchise Systems",
     description:
-      "Strategic investment opportunities. 612 active units. 26-month average payback. 100% real-time visibility.",
+      "Strategic investment access with AFFAREM reporting, controlled branch visibility, and compliance-safe distribution expectations.",
     url: `${baseUrl}/investors`,
     type: "website",
   },
@@ -61,6 +64,41 @@ const iconMap: Record<string, typeof Eye> = {
   Layers,
 };
 
+const dashboardModules = [
+  "Crypto wallet integration",
+  "Prepaid investor wallet",
+  "Payout details",
+  "Twice-weekly distribution history",
+  "System agreement",
+  "Documents",
+  "Messages",
+  "Live chat",
+  "Personal details",
+  "Tax filing",
+  "Investor profile",
+  "KYC / identity area",
+  "Bank account details",
+  "Distribution settings",
+  "Branch / pool performance",
+  "Risk notices",
+  "Support tickets",
+  "AFFAREM messages",
+  "Account statement downloads",
+];
+
+const walletFeatures = [
+  "Digital wallet",
+  "Prepaid card option",
+  "Virtual card",
+  "Physical card delivery",
+  "Crypto wallet connection",
+  "Bank payout",
+  "Distribution history",
+  "Wallet balance",
+  "Card spending controls",
+  "Tax statement export",
+];
+
 export default async function InvestorsPage() {
   const locale = await getRequestLocale();
   const isTurkish = isTurkishLocale(locale);
@@ -73,18 +111,18 @@ export default async function InvestorsPage() {
         locale={locale}
         backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
         eyebrow={isTurkish ? "Yatırımcı ilişkileri" : "Investor Relations"}
-        title={isTurkish ? "Disiplinli" : "Capital Deployment with"}
-        italicTail={isTurkish ? "sermaye konuşlandırması." : "Discipline."}
+        title={isTurkish ? "Disiplinli" : "Investment access with"}
+        italicTail={isTurkish ? "yatırım erişimi." : "operating control."}
         dek={
           isTurkish
             ? "Gerçek zamanlı operasyon görünürlüğü, yapılandırılmış geri ödeme planları ve disiplinli operatör gelişimiyle desteklenen stratejik franchise yatırımları. Her dolar kendini AFFAREM üzerinden açıklar."
-            : "Strategic franchise investments backed by real-time operational visibility, structured payback schedules, and disciplined operator development. Every dollar explains itself through AFFAREM."
+            : "Strategic food-business investments backed by real-time operating visibility, responsibility standards, and disciplined reporting. Every investor must understand the system before reading the return side."
         }
         meta={[
-          { label: isTurkish ? "Konuşlanan sermaye" : "Deployed Capital", value: investorPortfolio.totalDeployedCapital },
+          { label: isTurkish ? "İzlenen sermaye" : "Tracked Capital", value: investorPortfolio.totalDeployedCapital },
           { label: isTurkish ? "Aktif ünite" : "Active Units", value: investorPortfolio.totalActiveUnits.toString() },
-          { label: isTurkish ? "Ort. geri ödeme" : "Avg Payback", value: investorPortfolio.averagePayback },
-          { label: isTurkish ? "Başarı oranı" : "Success Rate", value: investorPortfolio.successRate },
+          { label: isTurkish ? "Raporlama" : "Reporting", value: "AFFAREM" },
+          { label: isTurkish ? "Dağıtım ritmi" : "Distribution rhythm", value: "Twice weekly review" },
         ]}
       />
 
@@ -102,12 +140,12 @@ export default async function InvestorsPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { label: "Deployed Capital", value: investorPortfolio.totalDeployedCapital, sub: "Across all brands" },
+              { label: "Tracked Capital", value: investorPortfolio.totalDeployedCapital, sub: "Across all brands" },
               { label: "Active Units", value: investorPortfolio.totalActiveUnits.toString(), sub: "Operating worldwide" },
               { label: "Brand Portfolio", value: investorPortfolio.totalBrands.toString(), sub: "Diversified ecosystem" },
               { label: "Markets", value: investorPortfolio.marketsServed.toString(), sub: "Countries served" },
-              { label: "Average Payback", value: investorPortfolio.averagePayback, sub: "Capital recovery" },
-              { label: "Success Rate", value: investorPortfolio.successRate, sub: "Units exceeding target" },
+              { label: "Projected Payback", value: investorPortfolio.averagePayback, sub: "Planning target, not guaranteed" },
+              { label: "Units At Target", value: investorPortfolio.successRate, sub: "Operational performance signal" },
               { label: "Live Monitoring", value: investorPortfolio.livestreamingUnits, sub: "Real-time visibility" },
               { label: "Daily Gain Avg", value: investorPortfolio.averageDailyGain, sub: "Per unit" },
             ].map((stat) => (
@@ -273,6 +311,84 @@ export default async function InvestorsPage() {
         </div>
       </section>
 
+      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                AFFAREM investor dashboard
+              </span>
+              <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[13ch]">
+                The account should explain itself.
+              </h2>
+              <p className="mt-8 max-w-[54ch] text-base leading-[1.85] text-foreground/68">
+                The investor dashboard is being expanded around account responsibility, branch and pool performance, twice-weekly distribution history, documents, messages, support, risk notices, tax exports, bank details, and AFFAREM reporting.
+              </p>
+              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <Link
+                  href={withLocale("/investor-responsibility", locale)}
+                  className="inline-flex h-12 items-center justify-center gap-3 bg-foreground px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-background transition-colors hover:bg-foreground/90"
+                >
+                  Investor Responsibility
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href={withLocale("/junior-investor-program", locale)}
+                  className="inline-flex h-12 items-center justify-center gap-3 border border-foreground/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/78 transition-colors hover:bg-foreground/5"
+                >
+                  Junior Program
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {dashboardModules.map((module, index) => {
+                const icons = [WalletCards, FileText, MessageSquare, Landmark, Shield, Calendar];
+                const Icon = icons[index % icons.length];
+                return (
+                  <article key={module} className="border border-foreground/12 bg-background p-5">
+                    <Icon className="h-4 w-4 text-[#b8865a]" />
+                    <p className="mt-4 font-display text-xl tracking-[-0.03em] text-foreground">
+                      {module}
+                    </p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
+        <div className="max-w-[1400px] mx-auto grid gap-10 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-12">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              Future distribution layer
+            </span>
+            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[13ch]">
+              Ölmez Investor Wallet.
+            </h2>
+            <p className="mt-8 max-w-[60ch] text-base leading-[1.85] text-foreground/70">
+              The Ölmez Investor Wallet is designed as a future distribution layer where eligible investor payouts may be received, tracked, transferred, or accessed through approved banking, prepaid card, or digital wallet partners.
+            </p>
+            <p className="mt-6 max-w-[60ch] text-sm leading-[1.85] text-foreground/56">
+              This concept is subject to provider approval, licensing, market availability, KYC/AML checks, card-program approval, banking partner terms, and country-specific regulation. It should not be described as a current financial product until those approvals exist.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {walletFeatures.map((feature) => (
+              <article key={feature} className="border border-foreground/12 bg-foreground/[0.015] p-5">
+                <WalletCards className="h-4 w-4 text-[#b8865a]" />
+                <p className="mt-4 font-display text-xl tracking-[-0.03em] text-foreground">
+                  {feature}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Investment Process */}
       <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -327,12 +443,12 @@ export default async function InvestorsPage() {
             {isTurkish ? "Yatırıma başlayın" : "Begin Your Investment"}
           </span>
           <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
-            {isTurkish ? "Disiplinli sermaye. Disiplinli getiri." : "Disciplined capital. Disciplined returns."}
+            {isTurkish ? "Disiplinli sermaye. Net sorumluluk." : "Disciplined capital. Clear responsibility."}
           </h2>
           <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
             {isTurkish
               ? "Yatırım ekibimizle stratejik bilgilendirme planlayın. Kapsamlı durum tespiti paketi ve kurucu Soru-Cevap erişimi alın."
-              : "Schedule a strategic briefing with our investment team. Receive comprehensive due diligence package and direct access to founder Q&A."}
+              : "Schedule a strategic briefing with the investment desk. Review responsibility, risk language, dashboard access, and the relevant documents before choosing an opportunity."}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
