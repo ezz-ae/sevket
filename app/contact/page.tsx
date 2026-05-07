@@ -75,10 +75,10 @@ const offices = [
     address: "Manhattan, New York, NY",
     type: "Operations",
     description:
-      "U.S. franchise development, gas station corridor expansion, and SHAWARMER operations.",
+      "U.S. franchise development, gas station corridor expansion, and SHAWARMA TIME operations.",
     departments: [
       "U.S. Franchise Development",
-      "SHAWARMER Operations",
+      "SHAWARMA TIME Operations",
       "Site Selection",
       "Capital Deployment",
     ],

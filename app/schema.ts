@@ -117,3 +117,51 @@ export const articleSchema = (data: {
     '@id': data.url,
   },
 })
+
+export const deploymentRoomSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Shawarma Time Investor Deployment Room',
+  alternateName: ['Investor Deployment Room', 'Starter Investment Room'],
+  description:
+    'A controlled, online inspection room where qualified investors can review SHAWARMA TIME gas-station restaurant units before deployment — from the US opportunity map and unit hotspots to financial overlay, six-phase timeline, calculator, and AFFAREM Investor Reporting with twice-weekly distribution.',
+  url: `${baseUrl}/deployment-room`,
+  serviceType: 'Investor inspection and deployment platform',
+  provider: {
+    '@type': 'Organization',
+    name: 'Ölmez Franchise Systems',
+    url: baseUrl,
+    logo: `${baseUrl}/olmez-full-logo.svg`,
+  },
+  areaServed: ['US'],
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Qualified investors and operator-investors',
+  },
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'USD',
+    lowPrice: 5000,
+    highPrice: 30000,
+    offerCount: 4,
+    description:
+      'Starter positions from $5,000 to a full $30,000 investor seat in a four-investor unit structure. Distributions follow actual unit performance after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions; no fixed return is implied or guaranteed.',
+  },
+  potentialAction: {
+    '@type': 'ReserveAction',
+    name: 'Review starter investment',
+    target: `${baseUrl}/contact`,
+  },
+}
+
+export const itemListSchema = (items: Array<{ name: string; url: string; description?: string }>) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: item.url,
+    name: item.name,
+    description: item.description,
+  })),
+})

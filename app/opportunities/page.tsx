@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MapPin, Clock, Users, Target } from "lucide-react";
 import { opportunities } from "@/lib/investor-data";
 import { brands, getBrand } from "@/lib/brands-data";
+import { localizeBrand } from "@/lib/brand-copy";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
+import { shawarmaTimeAssets, olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
@@ -76,6 +79,69 @@ export default async function OpportunitiesPage() {
         ]}
       />
 
+      {/* Highlighted brand strip — visual proof of where the capital lands */}
+      <section className="border-t border-gray-300 bg-[#0c0a09] text-white py-16">
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                image: shawarmaTimeAssets.counterHouston,
+                tag: "SHAWARMA TIME",
+                label: isTurkish ? "ABD koridoru" : "US corridor",
+                title: isTurkish
+                  ? "Houston, Teksas — yakıt durağı koridoru"
+                  : "Houston, TX — fuel corridor counter",
+              },
+              {
+                image: olmezBrandAssets.images.fleet,
+                tag: "Ölmez Flagship",
+                label: isTurkish ? "Birleşik Krallık" : "United Kingdom",
+                title: isTurkish
+                  ? "Edinburgh ve Londra premium amiral gemileri"
+                  : "Edinburgh & London premium flagships",
+              },
+              {
+                image: {
+                  src: "/brand-library/affarem-revenue-briefing.png",
+                  alt: "AFFAREM revenue briefing",
+                },
+                tag: "AFFAREM",
+                label: isTurkish ? "Kontrol katmanı" : "Control layer",
+                title: isTurkish
+                  ? "AFFAREM mobil — yatırımcı görünürlüğü"
+                  : "AFFAREM mobile — investor visibility",
+              },
+            ].map((card) => (
+              <article key={card.tag} className="group relative overflow-hidden border border-white/10 bg-black/40">
+                <div className="relative h-52">
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/0" />
+                  <div className="absolute left-4 top-4">
+                    <span className="inline-flex items-center px-3 h-7 font-mono text-[10px] uppercase tracking-[0.18em] text-white bg-[#b8865a]">
+                      {card.tag}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e9c092]">
+                      {card.label}
+                    </p>
+                    <p className="mt-2 font-display text-lg tracking-[-0.02em] text-white">
+                      {card.title}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Filter Tabs */}
       <section className="relative border-t border-gray-300 py-12 sticky top-[80px] z-40 bg-white/95 backdrop-blur-sm">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -113,7 +179,8 @@ export default async function OpportunitiesPage() {
               return (
                 <div
                   key={opp.id}
-                  className="border border-gray-300 hover:border-gray-400 transition-colors overflow-hidden shadow-sm hover:shadow-md"
+                  id={opp.id}
+                  className="scroll-mt-24 border border-gray-300 hover:border-gray-400 transition-colors overflow-hidden shadow-sm hover:shadow-md"
                 >
                   <div
                     className="h-1"

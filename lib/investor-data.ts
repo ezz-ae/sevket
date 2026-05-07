@@ -104,7 +104,7 @@ export const opportunities = [
     timeline: "H2 2026 — Q2 2027",
     states: ["Texas", "Oklahoma", "California", "Florida", "Georgia"],
     description:
-      "Premium fuel corridor placements across 5 high-traffic US states. SHAWARMER's expansion into 40 additional units leveraging Sevet Global Market platform.",
+      "Premium fuel corridor placements across 5 high-traffic US states. SHAWARMA TIME's expansion into 40 additional units leveraging Sevet Global Market platform.",
     highlights: [
       "Pre-validated site selection",
       "AFFAREM monitoring included",

@@ -92,7 +92,7 @@ export const magazineIssues: MagazineIssue[] = [
     subtitle: "How Ölmez is shaping a sharper, more disciplined future",
     issueNumber: "Issue 12",
     date: "Mid 2026",
-    coverImage: "/brand-library/olmez-mid-2026.png",
+    coverImage: "/brand-library/olmez-mid-2026-issue-12.png",
     description:
       "An in-depth look at the strategic blueprint guiding Ölmez through 2026. From leadership and expansion to office, fleet, and identity—this issue explores what comes after growth.",
     featuredHeadlines: [
@@ -102,6 +102,24 @@ export const magazineIssues: MagazineIssue[] = [
       "What Comes After Growth?",
     ],
     pages: 64,
+  },
+  {
+    id: "olmez-top-turkey-businessmen",
+    brand: "olmez",
+    title: "Top Turkey Businessmen",
+    subtitle: "The visionaries building tomorrow's Turkey — and the systems behind them",
+    issueNumber: "Issue 11.5",
+    date: "May 2026",
+    coverImage: "/brand-library/olmez-business-review-discipline-cover.png",
+    description:
+      "A long-form portrait issue profiling the operators, founders, and infrastructure thinkers building Turkey's next institutional generation, anchored by the cover essay on why discipline must precede scale.",
+    featuredHeadlines: [
+      "Discipline Before Scale",
+      "Smart Expansion: When and Where to Grow",
+      "Leading Through Uncertainty",
+      "The New Rules of Business Influence",
+    ],
+    pages: 56,
   },
   {
     id: "olmez-mag-26",
@@ -230,15 +248,15 @@ export const olmezBrandReport: BrandReport = {
   },
 };
 
-// SHAWARMER Brand Data
+// SHAWARMA TIME Brand Data
 export const shawarmerReport: BrandReport = {
-  title: "2026 H1 SHAWARMER — Growth & Market Expansion Report",
+  title: "2026 H1 SHAWARMA TIME — Growth & Market Expansion Report",
   quarter: "H1 2026",
   period: "January - June 2026",
   publishedDate: "June 2026",
   executiveSummary: {
     mandate:
-      "SHAWARMER has emerged as the premier quick-service shawarma platform integrated into US gas station infrastructure. Strategic focus on high-efficiency units that convert high-traffic fuel stops into food revenue centers.",
+      "SHAWARMA TIME has emerged as the premier quick-service shawarma platform integrated into US gas station infrastructure. Strategic focus on high-efficiency units that convert high-traffic fuel stops into food revenue centers.",
     pillars: [
       { name: "Gas Station Integration", subtitle: "Premium Unit Placement", description: "Strategic placement in high-traffic fuel corridors across 12 US states." },
       { name: "Shawarma Excellence", subtitle: "Signature Menu", description: "Heritage recipes and fresh ingredients driving customer loyalty." },
@@ -281,7 +299,7 @@ export const shawarmerReport: BrandReport = {
   },
   corePhilosophy: {
     quote: "Shawarma is not a product; it's a discipline. Every wrap, every rotation, every interaction is measured and optimized.",
-    author: "SHAWARMER Operations Philosophy",
+    author: "SHAWARMA TIME Operations Philosophy",
   },
 };
 
@@ -468,9 +486,9 @@ export const brandEvents: Record<string, BrandEvent[]> = {
     { id: 5, title: "Franchise Holder Summer Conference", date: new Date("2026-08-05"), time: "10:00 GMT", location: "Edinburgh HQ", type: "Annual Conference", capacity: 150, registered: 124, agenda: ["Founder strategic vision", "Advanced operator workshops", "Best practice sessions", "Awards ceremony"] },
   ],
   shawarmer: [
-    { id: 1, title: "SHAWARMER Texas & Oklahoma Territory Briefing", date: new Date("2026-07-12"), time: "14:00 CST", location: "Dallas + Virtual", type: "Territory Briefing", capacity: 35, registered: 28, agenda: ["Texas & Oklahoma market opportunity", "Site selection for fuel corridors", "Unit economics", "Operator recruitment"] },
-    { id: 2, title: "SHAWARMER Operator Excellence Summit", date: new Date("2026-08-19"), time: "10:00 GMT", location: "Istanbul Training Center", type: "Training Summit", capacity: 50, registered: 42, agenda: ["Heritage shawarma masterclass", "Meat sourcing standards", "Efficiency techniques", "Smart Discipline training"] },
-    { id: 3, title: "SHAWARMER H1 Performance Review", date: new Date("2026-09-05"), time: "15:00 EDT", location: "New York + Virtual", type: "Investor Briefing", capacity: 40, registered: 32, agenda: ["H1 market expansion results", "Unit economics analysis", "Capital deployment ROI", "H2 growth trajectory"] },
+    { id: 1, title: "SHAWARMA TIME Texas & Oklahoma Territory Briefing", date: new Date("2026-07-12"), time: "14:00 CST", location: "Dallas + Virtual", type: "Territory Briefing", capacity: 35, registered: 28, agenda: ["Texas & Oklahoma market opportunity", "Site selection for fuel corridors", "Unit economics", "Operator recruitment"] },
+    { id: 2, title: "SHAWARMA TIME Operator Excellence Summit", date: new Date("2026-08-19"), time: "10:00 GMT", location: "Istanbul Training Center", type: "Training Summit", capacity: 50, registered: 42, agenda: ["Heritage shawarma masterclass", "Meat sourcing standards", "Efficiency techniques", "Smart Discipline training"] },
+    { id: 3, title: "SHAWARMA TIME H1 Performance Review", date: new Date("2026-09-05"), time: "15:00 EDT", location: "New York + Virtual", type: "Investor Briefing", capacity: 40, registered: 32, agenda: ["H1 market expansion results", "Unit economics analysis", "Capital deployment ROI", "H2 growth trajectory"] },
     { id: 4, title: "California & West Coast Launch", date: new Date("2026-10-15"), time: "13:00 PST", location: "Los Angeles + Virtual", type: "Market Launch", capacity: 45, registered: 38, agenda: ["West Coast market entry", "Premium fuel corridor strategy", "Local supply chain", "Operator partnerships"] },
   ],
   turkishpide: [
@@ -502,7 +520,7 @@ export const brandMagazine: Record<string, BrandArticle[]> = {
   shawarmer: [
     { id: 1, title: "The Art of Meat Rotation: Weekly Shawarma Excellence", slug: "meat-rotation-excellence", excerpt: "How consistent preparation standards drive both quality and profitability in high-volume environments.", date: "June 2026", category: "Operations", featured: true, readTime: "8 min read" },
     { id: 2, title: "Gas Station Site Selection: Location as Asset", slug: "site-selection-strategy", excerpt: "Deep dive into traffic patterns, demographic analysis, and fuel-stop optimization.", date: "May 2026", category: "Strategy", featured: false, readTime: "10 min read" },
-    { id: 3, title: "Operator Spotlight: Building a $20K/Month Unit in Texas", slug: "operator-spotlight-texas", excerpt: "Profile of SHAWARMER's top performer and the systems driving consistent excellence.", date: "April 2026", category: "Spotlights", featured: false, readTime: "6 min read" },
+    { id: 3, title: "Operator Spotlight: Building a $20K/Month Unit in Texas", slug: "operator-spotlight-texas", excerpt: "Profile of SHAWARMA TIME's top performer and the systems driving consistent excellence.", date: "April 2026", category: "Spotlights", featured: false, readTime: "6 min read" },
     { id: 4, title: "Heritage Recipes Meet Modern Speed", slug: "heritage-meets-speed", excerpt: "Balancing authentic shawarma tradition with quick-service efficiency.", date: "March 2026", category: "Brand", featured: false, readTime: "9 min read" },
   ],
   turkishpide: [

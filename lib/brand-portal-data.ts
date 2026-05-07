@@ -298,11 +298,11 @@ export const brandPortals: Record<string, BrandPortalContent> = {
     hero: {
       eyebrow: "Travel-lane food asset",
       body:
-        "SHAWARMER is the corridor brand inside the ecosystem: a compact, visible, fast-moving branch model built to turn fuel-stop movement into disciplined hot-food volume.",
+        "SHAWARMA TIME is the corridor brand inside the ecosystem: a compact, visible, fast-moving branch model built to turn fuel-stop movement into disciplined hot-food volume.",
       image: image(
-        "/brand-library/shawarmer-branch-texas.png",
-        "SHAWARMER branch integrated into a Texas roadside site",
-        "Texas branch exterior"
+        "/brand-library/shawarma-time-storefront-day.png",
+        "SHAWARMA TIME branch integrated into a fuel-corridor roadside site",
+        "Forecourt branch exterior"
       ),
     },
     branchesIntro:
@@ -406,7 +406,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       },
     ],
     reviewsIntro:
-      "The SHAWARMER review layer is built around pace: ticket times, waste, line pressure, and whether the branch stays legible under rush.",
+      "The SHAWARMA TIME review layer is built around pace: ticket times, waste, line pressure, and whether the branch stays legible under rush.",
     reviews: [
       {
         title: "Ticket-speed review",
@@ -431,21 +431,21 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       },
     ],
     archiveIntro:
-      "The SHAWARMER portal now uses the real branch set from the local image folder rather than concept placeholders.",
+      "The SHAWARMA TIME portal now uses the real branch set from the local image folder rather than concept placeholders.",
     archive: [
       image(
-        "/brand-library/shawarmer-counter-houston.png",
-        "SHAWARMER counter service inside the Houston branch",
+        "/brand-library/shawarma-time-counter-houston.png",
+        "SHAWARMA TIME counter service inside the Houston, Texas branch",
         "Houston counter"
       ),
       image(
-        "/brand-library/shawarmer-team-houston.png",
-        "SHAWARMER team assembled outside the branch",
+        "/brand-library/shawarma-time-team-arizona.png",
+        "SHAWARMA TIME team assembled outside the Arizona branch",
         "Branch team"
       ),
       image(
-        "/brand-library/shawarmer-night-site.png",
-        "SHAWARMER branch operating in the evening",
+        "/brand-library/shawarma-time-arco-night.png",
+        "SHAWARMA TIME branch operating at night at an ARCO station",
         "Night-trade branch"
       ),
     ],

@@ -129,7 +129,7 @@ export default async function InvestorsPage() {
       </section>
 
       {/* Investment Tiers */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
+      <section id="tiers" className="relative scroll-mt-24 border-t border-foreground/10 py-24 lg:py-32 bg-foreground/[0.015]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="mb-20">
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">

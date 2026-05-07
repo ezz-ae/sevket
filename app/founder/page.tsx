@@ -128,8 +128,8 @@ export default async function FounderPage() {
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
           <div className="relative overflow-hidden border border-white/10 bg-black">
             <Image
-              src={olmezBrandAssets.editorial[0].src}
-              alt={olmezBrandAssets.editorial[0].alt}
+              src={olmezBrandAssets.founder.leatherOffice.src}
+              alt={olmezBrandAssets.founder.leatherOffice.alt}
               width={900}
               height={1200}
               className="h-full w-full object-cover"
@@ -253,8 +253,8 @@ export default async function FounderPage() {
 
           <div className="relative overflow-hidden border border-white/10 bg-black">
             <Image
-              src={olmezBrandAssets.editorial[1].src}
-              alt={olmezBrandAssets.editorial[1].alt}
+              src={olmezBrandAssets.founder.copperPortrait.src}
+              alt={olmezBrandAssets.founder.copperPortrait.alt}
               width={900}
               height={1200}
               className="h-full w-full object-cover"

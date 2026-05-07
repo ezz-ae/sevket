@@ -18,3 +18,12 @@ node_modules
 # TypeScript build artifacts
 *.tsbuildinfo
 .vercel
+
+# Source asset workspace (raw drops — copies live in public/brand-library)
+images /
+.playwright-mcp/
+*.m4a
+content.md
+SEO.md
+SEO-CHECKLIST.md
+REPORTS-EVENTS-SUMMARY.md

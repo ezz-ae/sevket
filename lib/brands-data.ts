@@ -61,8 +61,8 @@ export const brands: Brand[] = [
   {
     id: "shawarmer",
     slug: "shawarmer",
-    name: "SHAWARMER",
-    arabicName: "الشاورمر",
+    name: "SHAWARMA TIME",
+    arabicName: "شاورما تايم",
     tagline: "US Food Station Platform",
     description:
       "High-efficiency shawarma units integrated into US gas station infrastructure. Specializing in quick-service food stations that transform fuel stops into measurable food inventory conversion points.",

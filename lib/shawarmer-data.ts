@@ -1,7 +1,7 @@
-// SHAWARMER Brand Data & Reports
+// SHAWARMA TIME Brand Data & Reports
 
 export const shawarmerBrandReport = {
-  title: "2026 H1 SHAWARMER Growth & Market Expansion Report",
+  title: "2026 H1 SHAWARMA TIME Growth & Market Expansion Report",
   quarter: "H1 2026",
   period: "January - June 2026",
   publishedDate: "June 2026",
@@ -9,7 +9,7 @@ export const shawarmerBrandReport = {
 
   executiveSummary: {
     mandate:
-      "SHAWARMER has established itself as the premier quick-service shawarma platform integrated into US gas station infrastructure. Strategic focus on high-efficiency units that convert high-traffic fuel stops into food revenue centers.",
+      "SHAWARMA TIME has established itself as the premier quick-service shawarma platform integrated into US gas station infrastructure. Strategic focus on high-efficiency units that convert high-traffic fuel stops into food revenue centers.",
     pillars: [
       {
         name: "Gas Station Integration",
@@ -153,7 +153,7 @@ export const shawarmerBrandReport = {
   },
 
   smartDisciplineScore: {
-    description: "SHAWARMER-Specific 100-Point Discipline Scale",
+    description: "SHAWARMA TIME-Specific 100-Point Discipline Scale",
     categories: [
       {
         category: "Preparation Standards",
@@ -278,7 +278,7 @@ export const shawarmerBrandReport = {
   corePhilosophy: {
     quote:
       "Shawarma is not a product; it's a discipline. Every wrap, every rotation, every interaction is measured and optimized. Gas stations are just the venue—the real asset is the operator's commitment to excellence.",
-    author: "SHAWARMER Operations Philosophy",
+    author: "SHAWARMA TIME Operations Philosophy",
   },
 
   marketAnalysis: {
@@ -294,7 +294,7 @@ export const shawarmerBrandReport = {
 export const shawarmerEvents = [
   {
     id: 1,
-    title: "SHAWARMER Territory Briefing - Texas & Oklahoma",
+    title: "SHAWARMA TIME Territory Briefing - Texas & Oklahoma",
     date: new Date("2026-07-12"),
     time: "14:00 CST",
     location: "Dallas + Virtual",
@@ -311,7 +311,7 @@ export const shawarmerEvents = [
   },
   {
     id: 2,
-    title: "SHAWARMER Operator Summit - Preparation Excellence",
+    title: "SHAWARMA TIME Operator Summit - Preparation Excellence",
     date: new Date("2026-08-19"),
     time: "10:00 GMT",
     location: "Istanbul Training Center + Virtual",
@@ -328,7 +328,7 @@ export const shawarmerEvents = [
   },
   {
     id: 3,
-    title: "SHAWARMER Investor Update - H1 Performance Review",
+    title: "SHAWARMA TIME Investor Update - H1 Performance Review",
     date: new Date("2026-09-05"),
     time: "15:00 EDT",
     location: "New York + Virtual",
@@ -373,7 +373,7 @@ export const shawarmerMagazine = [
     title: "Operator Spotlight: Building a $20K/Month Unit in Texas",
     slug: "operator-spotlight-texas",
     excerpt:
-      "Profile of SHAWARMER's top performer and the systems that drive consistent excellence.",
+      "Profile of SHAWARMA TIME's top performer and the systems that drive consistent excellence.",
     date: "April 2026",
     category: "Spotlights",
     featured: false,

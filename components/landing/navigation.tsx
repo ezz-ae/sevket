@@ -9,20 +9,20 @@ import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { SiteLocale, splitLocaleFromPath, swapLocaleInPath, withLocale } from "@/lib/site-locale";
 
 const navLinkLabels = {
-  default: ["Brands", "Investors", "Opportunities", "Reports", "Magazine", "About", "People", "Contact"],
-  uk: ["Brands", "Investors", "Opportunities", "Reports", "Magazine", "About", "People", "Contact"],
-  us: ["Brands", "Investors", "Opportunities", "Reports", "Magazine", "About", "People", "Contact"],
-  ru: ["Brands", "Investors", "Opportunities", "Reports", "Magazine", "About", "People", "Contact"],
-  tr: ["Markalar", "Yatırımcılar", "Fırsatlar", "Raporlar", "Dergi", "Hakkında", "İnsanlar", "İletişim"],
+  default: ["Brands", "Investors", "Opportunities", "Deployment Room", "Reports", "Magazine", "People", "Contact"],
+  uk: ["Brands", "Investors", "Opportunities", "Deployment Room", "Reports", "Magazine", "People", "Contact"],
+  us: ["Brands", "Investors", "Opportunities", "Deployment Room", "Reports", "Magazine", "People", "Contact"],
+  ru: ["Brands", "Investors", "Opportunities", "Deployment Room", "Reports", "Magazine", "People", "Contact"],
+  tr: ["Markalar", "Yatırımcılar", "Fırsatlar", "Konuşlandırma Odası", "Raporlar", "Dergi", "İnsanlar", "İletişim"],
 } as const;
 
 const navHrefs = [
   "/brands",
   "/investors",
   "/opportunities",
+  "/deployment-room",
   "/reports",
   "/magazine",
-  "/about",
   "/people",
   "/contact",
 ];
