@@ -285,7 +285,7 @@ export const investmentProcess = [
   {
     step: 6,
     title: "Ongoing Performance",
-    description: "Real-time monitoring, quarterly briefings, and capital recovery projection. No payback target is a guarantee.",
+    description: "Real-time monitoring, quarterly briefings, and capital recovery projection. No payback target is a commitment.",
     duration: "Ongoing",
   },
 ];

@@ -5,6 +5,7 @@ import { ArrowRight, Eye, Heart, Share2 } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { LivePageCount } from "@/components/shared/live-page-count";
+import { networkFeed } from "@/lib/due-diligence-data";
 import { stories } from "@/lib/stories-data";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 
@@ -138,6 +139,33 @@ export default function StoriesPage() {
                   Share story
                   <Share2 className="h-3.5 w-3.5" />
                 </button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 py-20 lg:py-28">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-12">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              Network Feed
+            </span>
+            <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl">
+              Short operational updates.
+            </h2>
+            <p className="mt-7 max-w-[44ch] text-sm leading-[1.85] text-white/62">
+              Branch updates, risk notes, tender updates, people updates, social responsibility records, and market status belong in a feed, not a hype article.
+            </p>
+          </div>
+          <div className="grid gap-4">
+            {networkFeed.map((item) => (
+              <article key={`${item.type}-${item.text}`} className="border border-white/10 bg-black/24 p-5">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">{item.type}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/38">{item.date}</p>
+                </div>
+                <p className="mt-4 text-sm leading-[1.75] text-white/68">{item.text}</p>
               </article>
             ))}
           </div>

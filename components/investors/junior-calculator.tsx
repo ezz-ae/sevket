@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { siteMetrics } from "@/lib/site-metrics";
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -9,7 +10,7 @@ const formatter = new Intl.NumberFormat("en-US", {
 });
 
 export function JuniorCalculator() {
-  const [budget, setBudget] = useState(1000);
+  const [budget, setBudget] = useState<number>(siteMetrics.juniorLevel1Min);
   const projection = useMemo(() => {
     const monthlyLow = Math.round(budget * 0.012);
     const monthlyHigh = Math.round(budget * 0.034);
@@ -43,15 +44,15 @@ export function JuniorCalculator() {
         aria-label="Junior investor budget"
         type="range"
         min={1000}
-        max={12000}
+        max={siteMetrics.juniorLevel2Max}
         step={250}
         value={budget}
         onChange={(event) => setBudget(Number(event.target.value))}
         className="mt-8 w-full accent-[#b8865a]"
       />
       <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-white/38">
-        <span>$1,000</span>
-        <span>$12,000 max</span>
+        <span>{formatter.format(siteMetrics.juniorLevel1Min)}</span>
+        <span>{formatter.format(siteMetrics.juniorLevel2Max)} max</span>
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -74,7 +75,7 @@ export function JuniorCalculator() {
       </div>
 
       <p className="mt-6 text-xs leading-[1.8] text-white/48">
-        Projection only. Eligible distributions depend on pool performance, sales reconciliation, operating costs, reserves, fees, and applicable deductions. No fixed return or guaranteed payout is implied.
+        Projection only. Eligible distributions depend on pool performance, sales reconciliation, operating costs, reserves, fees, and applicable deductions. No preset payout or return commitment is implied.
       </p>
     </div>
   );

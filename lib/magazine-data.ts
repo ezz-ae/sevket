@@ -481,7 +481,7 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        text: "Eligible net distributions are reviewed and processed twice weekly after sales reconciliation, operating costs, reserves, fees, and applicable deductions. The rhythm does not guarantee a payout. It creates a review habit.",
+        text: "Eligible net distributions are reviewed and processed twice weekly after sales reconciliation, operating costs, reserves, fees, and applicable deductions. The rhythm does not create a payout commitment. It creates a review habit.",
       },
       {
         type: "callout",

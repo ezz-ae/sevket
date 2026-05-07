@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { PeoplePortal } from "@/components/people/people-portal";
-import { peopleOpenings } from "@/lib/people-data";
+import { peopleTotals } from "@/lib/people-data";
 import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
@@ -19,15 +19,15 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "İnsanlar — Ölmez İnsan Kaynakları Portalı"
       : "People — Ölmez Human Resourcing Portal",
     description: isTurkish
-      ? `Ölmez insan portalını keşfedin: kültür, global işe alım ve ülke/departman bazlı ${peopleOpenings.length}+ açık fırsat.`
-      : `Explore the Ölmez people portal: culture, global hiring, and ${peopleOpenings.length}+ open opportunities across countries and departments.`,
+      ? `Ölmez insan portalını keşfedin: kültür, global işe alım ve ülke/departman bazlı ${peopleTotals.openRoles} açık fırsat.`
+      : `Explore the Ölmez people portal: culture, global hiring, and ${peopleTotals.openRoles} open opportunities across countries and departments.`,
     openGraph: {
       title: isTurkish
         ? "İnsanlar — Ölmez İnsan Kaynakları Portalı"
         : "People — Ölmez Human Resourcing Portal",
       description: isTurkish
-        ? `${peopleOpenings.length}+ açık rol: operasyon, AFFAREM, yatırımcı ilişkileri, mutfak, teknoloji, finans, eğitim ve saha.`
-        : `${peopleOpenings.length}+ open roles across operations, AFFAREM, investor relations, kitchen, technology, finance, education, and field work.`,
+        ? `${peopleTotals.openRoles} açık rol: operasyon, AFFAREM, yatırımcı ilişkileri, mutfak, teknoloji, finans, eğitim ve saha.`
+        : `${peopleTotals.openRoles} open roles across operations, AFFAREM, investor relations, kitchen, technology, finance, education, and field work.`,
       url: `${baseUrl}${localizedPath}`,
       type: "website",
     },

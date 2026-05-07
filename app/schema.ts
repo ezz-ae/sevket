@@ -145,7 +145,7 @@ export const deploymentRoomSchema = {
     highPrice: 30000,
     offerCount: 4,
     description:
-      'Starter positions from $5,000 to a full $30,000 investor seat in a four-investor unit structure. Distributions follow actual unit performance after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions; no fixed return is implied or guaranteed.',
+      'Starter positions from $5,000 to a full $30,000 investor seat in a four-investor unit structure. Distributions follow actual unit performance after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions; no preset payout is implied.',
   },
   potentialAction: {
     '@type': 'ReserveAction',

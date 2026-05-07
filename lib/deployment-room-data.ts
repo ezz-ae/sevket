@@ -1,4 +1,4 @@
-// Investor Deployment Room — data layer for the SHAWARMA TIME unit explorer.
+// Investor Review Room — data layer for the SHAWARMA TIME unit explorer.
 // Powered by AFFAREM. The shapes here are read by the deployment-room page
 // and its sub-components.
 
@@ -349,7 +349,7 @@ export const deploymentPhases: DeploymentPhase[] = [
     duration: "Week 0 – 2",
     body: "Investor signs the inspection NDA and reviews the unit dossier with the desk.",
     steps: [
-      "Location selected from the deployment map",
+      "Location selected from the opportunity map",
       "Gas station agreement reviewed",
       "Traffic estimate and captive share checked",
       "Investor model selected (starter / operator / growth)",
@@ -499,7 +499,7 @@ export const starterLadder: StarterTier[] = [
     label: "Full Investor Seat",
     body: "One of the four-investor seats in a unit. Choice of three operating models — shift manager, hired manager, or LiveOps-controlled passive seat.",
     responsibility: "Active or LiveOps-supervised. Full AFFAREM file access.",
-    upgradePath: "→ Reinvest into the next deployment unit when this one stabilises.",
+    upgradePath: "→ Reinvest into the next opening unit when this one stabilises.",
   },
 ];
 
@@ -554,7 +554,7 @@ export function localizePhase(phase: DeploymentPhase, isTurkish: boolean): { tit
       duration: "Hafta 0 – 2",
       body: "Yatırımcı inceleme NDA'sını imzalar ve masayla birlikte ünite dosyasını gözden geçirir.",
       steps: [
-        "Lokasyon konuşlandırma haritasından seçilir",
+        "Lokasyon fırsat haritasından seçilir",
         "Akaryakıt istasyonu sözleşmesi gözden geçirilir",
         "Trafik tahmini ve sabit müşteri payı kontrol edilir",
         "Yatırımcı modeli seçilir (başlangıç / operatör / büyüme)",
@@ -724,5 +724,5 @@ export const affaremPreview = {
     },
   ],
   legalLine:
-    "Distributions are reviewed and released after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions. No fixed return is implied or guaranteed; payouts follow actual unit performance.",
+    "Distributions are reviewed and released after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions. No preset payout is implied; payouts follow actual unit performance.",
 };

@@ -133,7 +133,7 @@ export const h1_2026_report = {
 
   portfolioMetrics: {
     activeUnits: 147,
-    deployedCapital: "$16,500,000",
+    trackedCapital: "$16,500,000",
     avgDailyGain: "$550–$1,400",
     targetPayback: "30 months",
     meetsOrExceedsTarget: "72%",

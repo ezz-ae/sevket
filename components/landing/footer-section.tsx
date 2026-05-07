@@ -30,17 +30,17 @@ export function FooterSection() {
       title: isTurkish ? "Sermaye" : "Capital",
       eyebrow: isTurkish ? "Yatırım erişimi" : "Investment access",
       links: [
+        { name: isTurkish ? "Risk yönetimi" : "Risk Management", href: withLocale("/risk-management", locale), hint: isTurkish ? "Kayıt" : "Record" },
+        { name: isTurkish ? "Hesap belgeleri" : "Accounts Documentation", href: withLocale("/accounts-documentation", locale) },
         { name: isTurkish ? "Junior yatırımcı" : "Junior Investor", href: withLocale("/junior-investor-program", locale), hint: isTurkish ? "Yeni" : "New" },
+        { name: "AFFAREM Academy", href: withLocale("/affarem-academy", locale) },
         { name: isTurkish ? "AFFAREM paneli" : "AFFAREM Dashboard", href: withLocale("/investors/dashboard", locale), hint: isTurkish ? "Yeni" : "New" },
         { name: isTurkish ? "Yatırımcı sorumluluğu" : "Investor Responsibility", href: withLocale("/investor-responsibility", locale) },
+        { name: isTurkish ? "Vergi ve raporlama" : "Tax & Reporting", href: withLocale("/tax-reporting", locale) },
+        { name: isTurkish ? "Düzenleyici bekleme" : "Regulatory Holding", href: withLocale("/regulatory-holding", locale) },
+        { name: isTurkish ? "Tahsis seçenekleri" : "Allocation Options", href: withLocale("/allocation-options", locale) },
         { name: isTurkish ? "Ünite inceleme odası" : "Unit Review Room", href: withLocale("/deployment-room", locale), hint: isTurkish ? "Yeni" : "New" },
         { name: isTurkish ? "Aktif fırsatlar" : "Active Opportunities", href: withLocale("/opportunities", locale), hint: isTurkish ? "5 açık" : "5 open" },
-        { name: isTurkish ? "Yatırımcı portalı" : "Investor Portal", href: withLocale("/investors", locale) },
-        { name: isTurkish ? "Yatırım katmanları" : "Capital tiers", href: withLocale("/investors#tiers", locale) },
-        { name: isTurkish ? "Raporlar ve dosyalar" : "Reports & Filings", href: withLocale("/reports", locale) },
-        { name: isTurkish ? "SEC dosyaları" : "SEC Filings", href: withLocale("/filing", locale) },
-        { name: isTurkish ? "Denetim konsolu" : "Auditing Console", href: withLocale("/auditing", locale) },
-        { name: isTurkish ? "Başarılar" : "Achievements", href: withLocale("/achievements", locale) },
       ],
     },
     {
@@ -64,24 +64,24 @@ export function FooterSection() {
       title: isTurkish ? "Operasyon" : "Operations",
       eyebrow: isTurkish ? "İşletim katmanı" : "The operating layer",
       links: [
-        { name: isTurkish ? "Doktrin" : "Doctrine", href: withLocale("/#doctrine", locale) },
-        { name: "AFFAREM", href: withLocale("/#affarem", locale) },
-        { name: isTurkish ? "Ölçek modeli" : "Scale Model", href: withLocale("/#ladder", locale) },
-        { name: isTurkish ? "Ekosistem haritası" : "Ecosystem map", href: withLocale("/#marketplace", locale) },
+        { name: "AFFAREM", href: withLocale("/brands/affarem", locale), hint: isTurkish ? "Zeka katmanı" : "Intelligence" },
+        { name: isTurkish ? "İndirme merkezi" : "Download Center", href: withLocale("/download-center", locale) },
+        { name: isTurkish ? "Ortaklar ve tedarik" : "Partners & Supply", href: withLocale("/partners-supply", locale) },
+        { name: isTurkish ? "Açık ihaleler" : "Open Tenders", href: withLocale("/open-tenders", locale) },
+        { name: isTurkish ? "Hikayeler ve ağ akışı" : "Stories & Network Feed", href: withLocale("/stories", locale) },
         { name: isTurkish ? "Etkinlikler" : "Events", href: withLocale("/events", locale) },
-        { name: isTurkish ? "Analitik" : "Analytics", href: withLocale("/analytics", locale) },
         { name: isTurkish ? "İletişim Masası" : "Contact Desk", href: withLocale("/contact", locale) },
       ],
     },
   ];
 
   const featuredIssues = [
-    { name: isTurkish ? "Ünite inceleme odası" : "Investor Review Room", href: withLocale("/deployment-room", locale) },
-    { name: "Issue 12 — The Mid-2026 Blueprint", href: withLocale("/brands/olmez/magazine", locale) },
-    { name: "Issue 11.5 — Top Turkey Businessmen", href: withLocale("/magazine", locale) },
-    { name: isTurkish ? "Son makale: §1" : "Latest essay: §1", href: withLocale("/magazine/the-founders-blueprint", locale) },
-    { name: isTurkish ? "Marka dosyası" : "Brand deck", href: withLocale("/company-profile", locale) },
-    { name: isTurkish ? "Yatırımcı broşürü" : "Investor brief", href: withLocale("/investors", locale) },
+    { name: isTurkish ? "Risk merkezi" : "Risk Center", href: withLocale("/risk-management", locale) },
+    { name: isTurkish ? "Hesap belgeleri" : "Account Documents", href: withLocale("/accounts-documentation", locale) },
+    { name: isTurkish ? "İndirme merkezi" : "Download Center", href: withLocale("/download-center", locale) },
+    { name: isTurkish ? "Vergi raporlama" : "Tax Reporting", href: withLocale("/tax-reporting", locale) },
+    { name: isTurkish ? "Tedarik" : "Supply", href: withLocale("/partners-supply", locale) },
+    { name: isTurkish ? "İhale gönder" : "Submit Tender", href: withLocale("/open-tenders", locale) },
   ];
 
   const desks = [
@@ -110,7 +110,8 @@ export function FooterSection() {
   const quickLinks = [
     { name: isTurkish ? "Yatırımcılar" : "Investors", href: withLocale("/investors", locale) },
     { name: isTurkish ? "Fırsatlar" : "Opportunities", href: withLocale("/opportunities", locale) },
-    { name: isTurkish ? "Raporlar" : "Reports", href: withLocale("/reports", locale) },
+    { name: isTurkish ? "Risk" : "Risk", href: withLocale("/risk-management", locale) },
+    { name: isTurkish ? "Dosyalar" : "Files", href: withLocale("/download-center", locale) },
     { name: isTurkish ? "İnsanlar" : "People", href: withLocale("/people", locale) },
     { name: isTurkish ? "İletişim" : "Contact", href: withLocale("/contact", locale) },
   ];
@@ -153,15 +154,15 @@ export function FooterSection() {
                 {isTurkish ? "Son editoryal not" : "Final editorial note"}
               </span>
               <p className="mt-6 font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.02] max-w-[13ch]">
-                {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
+                {isTurkish ? "Kayıtlar korunur." : "Records maintained."}
                 <span className="block italic text-white/60">
-                  {isTurkish ? "Kontrolle ölçeklenir." : "Scale with control."}
+                  {isTurkish ? "Erişim, risk, belge, operasyon." : "Access, risk, documents, operations."}
                 </span>
               </p>
               <p className="mt-6 max-w-[56ch] text-base md:text-lg leading-[1.8] text-white/70">
                 {isTurkish
-                  ? "Ölmez, disiplinli restoran altyapısı için editoryal bir amiral gemisidir. Mekan, filo, yayın ve işletim sistemi aynı hikayeyi anlatır."
-                  : "Ölmez is an editorial flagship for disciplined restaurant infrastructure. The room, the fleet, the publication, and the operating system all tell the same story."}
+                  ? "Ölmez platformunda sayılar, hesaplar, dosyalar, risk kayıtları ve operasyon kararları görünür kalmalıdır."
+                  : "The Ölmez platform should keep numbers, accounts, files, risk records, and operating decisions visible."}
               </p>
             </div>
 

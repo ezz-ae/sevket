@@ -37,8 +37,8 @@ export async function generateMetadata({
       ? `${brand.name} Raporlar ve Analitik — H1 2026 Performansı`
       : `${brand.name} Reports & Analytics — H1 2026 Performance`,
     description: isTurkish
-      ? `${brand.name} için stratejik raporlar, performans verileri ve operasyonel metrikler. ${brand.unitCount} aktif ünite, ${brand.deployedCapital} izlenen sermaye.`
-      : `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.deployedCapital} tracked capital.`,
+      ? `${brand.name} için stratejik raporlar, performans verileri ve operasyonel metrikler. ${brand.unitCount} aktif ünite, ${brand.trackedCapital} izlenen sermaye.`
+      : `${brand.name} strategic reports, performance data, and operational metrics. ${brand.unitCount} active units, ${brand.trackedCapital} tracked capital.`,
     keywords: [
       brand.name,
       "franchise reports",
@@ -86,7 +86,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         dek: `${brand?.name ?? ""} için çeyreklik ve yıllık raporlar. Performans metrikleri, sermaye takibi ve operasyonel istihbarat.`,
         latestReport: "Son rapor",
         activeUnits: "Aktif ünite",
-        deployedCapital: "İzlenen sermaye",
+        trackedCapital: "İzlenen sermaye",
         onTarget: "Hedefte",
         featuredReport: "Öne çıkan rapor",
         numbersClaim: "Her sayı kendini açıklar.",
@@ -122,7 +122,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         dek: `Quarterly and annual reports for ${brand?.name ?? ""}. Performance metrics, capital allocation tracking, and operational intelligence.`,
         latestReport: "Latest Report",
         activeUnits: "Active Units",
-        deployedCapital: "Tracked Capital",
+        trackedCapital: "Tracked Capital",
         onTarget: "On-Target",
         featuredReport: "Featured Report",
         numbersClaim: "Every number explains itself.",
@@ -169,7 +169,7 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
         meta={[
           { label: ui.latestReport, value: report.quarter },
           { label: ui.activeUnits, value: report.portfolioMetrics.activeUnits.toString() },
-          { label: ui.deployedCapital, value: report.portfolioMetrics.deployedCapital },
+          { label: ui.trackedCapital, value: report.portfolioMetrics.trackedCapital },
           { label: ui.onTarget, value: report.portfolioMetrics.meetsOrExceedsTarget },
         ]}
       />
@@ -249,9 +249,9 @@ export default async function BrandReportsPage({ params }: BrandReportsPageProps
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60 text-xs">{ui.deployedCapital}</p>
+                        <p className="text-foreground/60 text-xs">{ui.trackedCapital}</p>
                         <p className="font-display text-lg tracking-[-0.005em]">
-                          {report.portfolioMetrics.deployedCapital}
+                          {report.portfolioMetrics.trackedCapital}
                         </p>
                       </div>
                       <div>

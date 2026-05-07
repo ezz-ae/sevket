@@ -1,4 +1,5 @@
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { siteMetrics } from "@/lib/site-metrics";
 
 export interface AchievementCategory {
   slug: string;
@@ -105,7 +106,7 @@ export const achievementYears: AchievementYear[] = [
         summary:
           "The company formalized a stronger support path for students, hospitality learners, and families managing education costs.",
         highlights: [
-          "500 students sponsored with a public target of 700.",
+          `${siteMetrics.studentSponsorshipCurrent} students sponsored with a public target of ${siteMetrics.studentSponsorshipTarget}.`,
           "Paid hospitality internships structured around 4–7 hour working days.",
           "School support, books, and equipment linked education to employability.",
         ],

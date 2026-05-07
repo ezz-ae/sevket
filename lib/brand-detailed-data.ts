@@ -29,7 +29,7 @@ export interface BrandReport {
   }[];
   portfolioMetrics: {
     activeUnits: number;
-    deployedCapital: string;
+    trackedCapital: string;
     avgDailyGain: string;
     targetPayback: string;
     meetsOrExceedsTarget: string;
@@ -227,7 +227,7 @@ export const olmezBrandReport: BrandReport = {
   ],
   portfolioMetrics: {
     activeUnits: 147,
-    deployedCapital: "$16.5M",
+    trackedCapital: "$16.5M",
     avgDailyGain: "$550-$1,400",
     targetPayback: "30 months",
     meetsOrExceedsTarget: "72%",
@@ -282,7 +282,7 @@ export const shawarmerReport: BrandReport = {
   ],
   portfolioMetrics: {
     activeUnits: 42,
-    deployedCapital: "$6.9M",
+    trackedCapital: "$6.9M",
     avgDailyGain: "$450-$950",
     targetPayback: "24-30 months",
     meetsOrExceedsTarget: "71%",
@@ -337,7 +337,7 @@ export const turkishPideReport: BrandReport = {
   ],
   portfolioMetrics: {
     activeUnits: 28,
-    deployedCapital: "$4.2M",
+    trackedCapital: "$4.2M",
     avgDailyGain: "$380-$750",
     targetPayback: "28-32 months",
     meetsOrExceedsTarget: "82%",
@@ -391,7 +391,7 @@ export const affaremReport: BrandReport = {
   ],
   portfolioMetrics: {
     activeUnits: 215,
-    deployedCapital: "$2.8M",
+    trackedCapital: "$2.8M",
     avgDailyGain: "$65K monthly recurring",
     targetPayback: "12 months",
     meetsOrExceedsTarget: "99.8%",
@@ -446,7 +446,7 @@ export const disciplinaReport: BrandReport = {
   ],
   portfolioMetrics: {
     activeUnits: 180,
-    deployedCapital: "$1.2M",
+    trackedCapital: "$1.2M",
     avgDailyGain: "94% Success Rate",
     targetPayback: "8 months",
     meetsOrExceedsTarget: "87%",

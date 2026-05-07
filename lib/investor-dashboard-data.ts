@@ -208,7 +208,7 @@ export const payoutHistory = [
 ];
 
 export const distributionLegal =
-  "Eligible net distributions are reviewed and released after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions. No fixed return is implied or guaranteed.";
+  "Eligible net distributions are reviewed and released after sales reconciliation, operating costs, branch reserves, management fees, and applicable deductions. No preset payout is implied.";
 
 // ─── Documents ────────────────────────────────────────────────────────────
 

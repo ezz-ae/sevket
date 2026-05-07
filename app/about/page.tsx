@@ -125,7 +125,7 @@ export default async function AboutPage() {
         backLabel={isTurkish ? "Ana sayfaya dön" : "Return to landing"}
         eyebrow={isTurkish ? "Amiral markanın profili" : "About the flagship"}
         title="Ölmez"
-        italicTail={isTurkish ? "İş. Bir sonraki seviye." : "Business. Built next."}
+        italicTail={isTurkish ? "Kayıtlı işletim sistemi." : "Maintained operating system."}
         dek={
           isTurkish
             ? "Mekan, yayın ve hareket arasında editoryal, kalıcı ve ölçeklenebilir hissettirmek için kurulmuş disiplinli bir amiral marka."

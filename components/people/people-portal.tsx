@@ -10,6 +10,7 @@ import {
   peopleCulture,
   peopleOpenings,
   peopleRegions,
+  peopleTotals,
   type JobCountry,
   type JobDepartment,
 } from "@/lib/people-data";
@@ -91,9 +92,9 @@ export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
 
           <div className="mt-12 grid gap-4 md:grid-cols-4">
             {[
-              { label: isTurkish ? "Global ekip" : "Global team", value: "Nearly 3,000" },
-              { label: isTurkish ? "Açık fırsat" : "Open opportunities", value: `${peopleOpenings.length}+` },
-              { label: isTurkish ? "Ülke ve masa" : "Countries and desks", value: "8" },
+              { label: isTurkish ? "Global ekip" : "Global team", value: peopleTotals.employees.toLocaleString("en-US") },
+              { label: isTurkish ? "Açık fırsat" : "Open opportunities", value: `${peopleTotals.openRoles}` },
+              { label: isTurkish ? "Ülke" : "Countries", value: `${peopleTotals.countries}` },
               { label: isTurkish ? "Departman" : "Departments", value: "13" },
             ].map((stat) => (
               <div key={stat.label} className="border border-white/12 bg-black/28 p-5 backdrop-blur-sm">
@@ -175,7 +176,7 @@ export function PeoplePortal({ locale = "default" }: { locale?: SiteLocale }) {
                 {isTurkish ? "Açık pozisyonlar" : "Open opportunities"}
               </span>
               <h2 className="mt-6 max-w-[15ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
-                {peopleOpenings.length}+ roles across countries and departments.
+                {peopleTotals.openRoles} roles across countries and departments.
               </h2>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">

@@ -131,7 +131,7 @@ export default async function InvestorsPage() {
               { label: "Active Units", value: investorPortfolio.totalActiveUnits.toString(), sub: "Operating worldwide" },
               { label: "Brand Portfolio", value: investorPortfolio.totalBrands.toString(), sub: "Diversified ecosystem" },
               { label: "Markets", value: investorPortfolio.marketsServed.toString(), sub: "Countries served" },
-              { label: "Projected Payback", value: investorPortfolio.averagePayback, sub: "Planning target, not guaranteed" },
+              { label: "Projected Payback", value: investorPortfolio.averagePayback, sub: "Planning target, not a commitment" },
               { label: "Units At Target", value: investorPortfolio.successRate, sub: "Operational performance signal" },
               { label: "Live Monitoring", value: investorPortfolio.livestreamingUnits, sub: "Real-time visibility" },
               { label: "Daily Gain Avg", value: investorPortfolio.averageDailyGain, sub: "Per unit" },

@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ? "Yatırım yapmadan önce SHAWARMA TIME yakıt durağı restoran ünitesini inceleyin: ABD lokasyon haritası, tezgâh ve mutfak inceleme noktaları, altı evreli konuşlandırma planı, üç senaryolu hesaplayıcı ve AFFAREM ile haftada iki kez dağıtım. Powered by AFFAREM."
       : "Inspect a SHAWARMA TIME gas-station restaurant unit before you invest: US opportunity map, counter and kitchen hotspots, six-phase opening plan, three-scenario calculator, and twice-weekly distribution review through AFFAREM Investor Reporting. Powered by AFFAREM.",
     keywords: [
-      "investor deployment room",
+      "investor review room",
       "starter investment",
       "shawarma franchise investment",
       "gas station franchise investment",
@@ -117,7 +117,7 @@ export default async function DeploymentRoomPage() {
       />
       <Navigation forceScrolled />
 
-      {/* HERO — Investor Deployment Room intro */}
+      {/* HERO — Investor Review Room intro */}
       <section className="relative overflow-hidden border-b border-white/10 pt-32 pb-16 lg:pt-40 lg:pb-24">
         <div className="absolute inset-0 opacity-[0.16]">
           <Image
@@ -244,7 +244,7 @@ export default async function DeploymentRoomPage() {
               <p className="mt-6 max-w-[58ch] text-base leading-[1.8] text-white/65">
                 {isTurkish
                   ? "On koridor lokasyonu, gerçek konuşlandırma durumlarıyla. Kart üzerine geldiğinde fırsatın tipi, sermaye penceresi ve operatör modeli açılır."
-                  : "Ten corridor locations with their real deployment status. Each card opens the unit type, the capital window, and the operator model."}
+                  : "Ten corridor locations with their real opportunity status. Each card opens the unit type, the capital window, and the operator model."}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -439,7 +439,7 @@ export default async function DeploymentRoomPage() {
             <p className="mt-6 max-w-[60ch] text-base leading-[1.8] text-white/65">
               {isTurkish
                 ? "Sabit bir getiri yoktur. Hesaplayıcı yalnızca planlama için bir penceredir; hiçbir tahmini taahhüt olarak okumayın."
-                : "There is no fixed return. The calculator is a planning window only — read no projection as a commitment."}
+                : "There is no preset return. The calculator is a planning window only — read no projection as a commitment."}
             </p>
           </div>
 

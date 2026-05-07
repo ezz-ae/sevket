@@ -41,8 +41,9 @@ const navGroups: NavGroup[] = [
       {
         heading: { default: "Operating layer", tr: "İşletim katmanı" },
         items: [
-          { href: "/brands/affarem", label: { default: "AFFAREM", tr: "AFFAREM" }, description: { default: "The control + reporting layer for every unit.", tr: "Her ünite için kontrol ve raporlama katmanı." } },
+          { href: "/brands/affarem", label: { default: "AFFAREM", tr: "AFFAREM" }, description: { default: "The intelligence layer for market, branch, account, risk, and distribution decisions.", tr: "Pazar, şube, hesap, risk ve dağıtım kararları için zeka katmanı." } },
           { href: "/brands/disciplina", label: { default: "DISCIPLINA", tr: "DISCIPLINA" }, description: { default: "Operator pipeline + Smart Discipline Score.", tr: "Operatör hattı ve Smart Discipline Score." } },
+          { href: "/download-center", label: { default: "Download Center", tr: "İndirme Merkezi" }, description: { default: "Public and access-granted files.", tr: "Herkese açık ve erişim verilen dosyalar." } },
           { href: "/sevet-project", label: { default: "The Sevet Project", tr: "Sevet Projesi" }, description: { default: "Mission, structure, and how the system holds.", tr: "Misyon, yapı ve sistemin nasıl ayakta durduğu." } },
         ],
       },
@@ -63,6 +64,8 @@ const navGroups: NavGroup[] = [
         heading: { default: "Enter the system", tr: "Sisteme gir" },
         items: [
           { href: "/junior-investor-program", label: { default: "Junior Investor Program", tr: "Junior Yatırımcı Programı" }, description: { default: "Pool of 50 units · $1K–$12K · 6-month subscription.", tr: "50 ünitelik havuz · $1K–$12K · 6 aylık abonelik." }, hint: { default: "New", tr: "Yeni" } },
+          { href: "/risk-management", label: { default: "Risk Management", tr: "Risk Yönetimi" }, description: { default: "Entry limits, senior risk, regulatory holding, and allocation options.", tr: "Giriş limitleri, üst seviye risk, düzenleyici bekleme ve tahsis seçenekleri." }, hint: { default: "Required", tr: "Gerekli" } },
+          { href: "/accounts-documentation", label: { default: "Accounts Documentation", tr: "Hesap Belgeleri" }, description: { default: "What each account can and cannot do.", tr: "Her hesabın ne yapıp yapamayacağı." } },
           { href: "/opportunities", label: { default: "Active Opportunities", tr: "Aktif Fırsatlar" }, description: { default: "Open seats across the brand network.", tr: "Marka ağında açık koltuklar." } },
           { href: "/deployment-room", label: { default: "Investor Review Room", tr: "Yatırımcı İnceleme Odası" }, description: { default: "Hotspot inspection of the unit before opening day.", tr: "Açılış gününden önce ünite incelemesi." } },
           { href: "/filing", label: { default: "Filings Marketplace", tr: "Dosya Pazarı" }, description: { default: "Corridor filings with seat structure and disclosures.", tr: "Koridor dosyaları ve koltuk yapıları." } },
@@ -72,8 +75,8 @@ const navGroups: NavGroup[] = [
         heading: { default: "After you invest", tr: "Yatırımdan sonra" },
         items: [
           { href: "/investors/dashboard", label: { default: "AFFAREM Dashboard", tr: "AFFAREM Paneli" }, description: { default: "Wallet, agreements, payouts, tax, and live chat.", tr: "Cüzdan, sözleşmeler, ödemeler, vergi ve canlı sohbet." }, hint: { default: "Live", tr: "Canlı" } },
-          { href: "/investors", label: { default: "Investor Portal", tr: "Yatırımcı Portalı" }, description: { default: "Capital tiers, briefings, and qualification.", tr: "Sermaye katmanları, brifingler ve nitelik." } },
-          { href: "/reports", label: { default: "Reports & Filings", tr: "Raporlar ve Dosyalar" }, description: { default: "Quarterly filings, audits, and brand reports.", tr: "Üç aylık dosyalar, denetimler ve marka raporları." } },
+          { href: "/tax-reporting", label: { default: "Tax & Reporting", tr: "Vergi ve Raporlama" }, description: { default: "Statements, tax profiles, country rules, and regulatory holds.", tr: "Ekstreler, vergi profilleri, ülke kuralları ve düzenleyici beklemeler." } },
+          { href: "/affarem-academy", label: { default: "AFFAREM Academy", tr: "AFFAREM Academy" }, description: { default: "Paper accounts, family accounts, work reports, and AFFAREM Connect.", tr: "Kağıt hesaplar, aile hesapları, iş raporları ve AFFAREM Connect." } },
           { href: "/investor-responsibility", label: { default: "Investor Responsibility", tr: "Yatırımcı Sorumluluğu" }, description: { default: "Global Funding Department · 0.5% of distribution.", tr: "Global Funding Department · dağıtımın %0,5'i." } },
         ],
       },
@@ -97,6 +100,8 @@ const navGroups: NavGroup[] = [
         heading: { default: "Movement", tr: "Hareket" },
         items: [
           { href: "/stories", label: { default: "People Stories", tr: "İnsan Hikayeleri" }, hint: { default: "New", tr: "Yeni" } },
+          { href: "/partners-supply", label: { default: "Partners & Supply", tr: "Ortaklar ve Tedarik" } },
+          { href: "/open-tenders", label: { default: "Open Tenders", tr: "Açık İhaleler" } },
           { href: "/achievements", label: { default: "Achievements Archive", tr: "Başarılar Arşivi" } },
           { href: "/social-responsibility", label: { default: "Social Responsibility", tr: "Sosyal Sorumluluk" } },
           { href: "/social-responsibility/global-funding", label: { default: "Global Funding Department", tr: "Global Funding Department" }, hint: { default: "Oct 2026", tr: "Eki 2026" } },
@@ -544,7 +549,7 @@ export function Navigation({ forceScrolled = false }: { forceScrolled?: boolean 
               {isTurkish ? "Edinburgh merkezi · İstanbul / Londra köprüsü" : "Edinburgh HQ · Istanbul / London bridge"}
             </p>
             <p className="mt-1 font-mono text-[11px] text-white/38">
-              {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
+              {isTurkish ? "Kayıtlar korunur." : "Records maintained."}
             </p>
           </div>
         </div>

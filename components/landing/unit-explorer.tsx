@@ -321,7 +321,7 @@ export function InvestorCalculator({ isTurkish = false }: InvestorCalculatorProp
         <p className="mt-2 text-xs text-white/55">
           {isTurkish
             ? "Sabit getiri yoktur. Her sayı, fiili şube performansına ve mutabakatına bağlıdır."
-            : "No fixed return. Every number is conditional on actual unit performance and reconciliation."}
+            : "No preset return. Every number is conditional on actual unit performance and reconciliation."}
         </p>
 
         <div className="mt-6 grid grid-cols-2 gap-4">

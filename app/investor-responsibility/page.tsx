@@ -169,10 +169,10 @@ export default function InvestorResponsibilityPage() {
             </h2>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
-                "No guaranteed return.",
-                "No risk-free participation.",
-                "No automatic profit.",
-                "No fixed return unless a signed legal instrument explicitly says so.",
+                "No return commitment.",
+                "No participation without exposure.",
+                "No automatic income.",
+                "No preset payout unless a signed legal instrument explicitly says so.",
                 "No passive owner privilege when the branch needs attention.",
                 "No distribution before reconciliation and reserve review.",
               ].map((item) => (

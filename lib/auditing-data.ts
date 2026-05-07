@@ -142,7 +142,7 @@ export const liveOpsModes: LiveOpsMode[] = [
     name: "On-site LiveOps",
     window: "Triggered · operator cost",
     pricing: "$7,500 – $15,000 / mo",
-    body: "A regional lead deploys to the floor. Auto-activated by a Smart Discipline Score drop, a waste-threshold breach, or operator-initiated request. Held until the score recovers and three audit cycles clear.",
+    body: "A regional lead goes to the floor. Auto-activated by a Smart Discipline Score drop, a waste-threshold breach, or operator-initiated request. Held until the score recovers and three audit cycles clear.",
     triggers: ["SDS drops below tier floor", "7%+ waste in rolling 7-day window", "Operator-requested intervention"],
   },
 ];

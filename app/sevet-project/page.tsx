@@ -196,7 +196,7 @@ export default function SevetProjectPage() {
         <section className="mb-16 pb-16 border-b border-border">
           <h2 className="text-3xl font-serif font-bold mb-6">Financial and Operational Models</h2>
           <p className="text-base leading-relaxed text-muted-foreground mb-8">
-            Ölmez Franchise Systems operates on scenario-based modeling rather than guaranteed profits.
+            Ölmez Franchise Systems operates on scenario-based modeling rather than profit promises.
           </p>
 
           <div className="mb-8">

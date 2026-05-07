@@ -35,7 +35,7 @@ const reports = [
     ],
     metrics: {
       activeUnits: 147,
-      deployedCapital: "$16.5M",
+      trackedCapital: "$16.5M",
       avgDailyGain: "$550–$1,400",
       paybackTarget: "30 months",
       disciplineScore: "72%+ target",

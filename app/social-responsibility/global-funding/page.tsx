@@ -5,13 +5,14 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { formatUsd, siteMetrics } from "@/lib/site-metrics";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
 
 export const metadata: Metadata = {
   title: "Global Ölmez Funding Department — Social Responsibility",
   description:
-    "The Global Ölmez Funding Department begins in October 2026: 0.5% of distributions, supporting infrastructure expansion in Saudi Arabia, Greece, and Jordan, with $50M projected by end of 2028.",
+    `The Global Ölmez Funding Department begins in October 2026: 0.5% of distributions, supporting infrastructure expansion in Saudi Arabia, Greece, and Jordan, with ${formatUsd(siteMetrics.globalFundingTarget2028Usd)} projected by end of 2028.`,
   alternates: { canonical: `${baseUrl}/social-responsibility/global-funding` },
   openGraph: {
     title: "Global Ölmez Funding Department",
@@ -72,7 +73,7 @@ export default function GlobalFundingPage() {
             ["Funding source", "0.5% of eligible investor distributions"],
             ["Start", "October 2026"],
             ["Priority countries", "Saudi Arabia / Greece / Jordan"],
-            ["Projected support target", "$50M by end of 2028"],
+            ["Projected support target", `${formatUsd(siteMetrics.globalFundingTarget2028Usd)} by end of 2028`],
           ].map(([label, value]) => (
             <article key={label} className="border border-white/10 bg-black/24 p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">{label}</p>
@@ -92,7 +93,7 @@ export default function GlobalFundingPage() {
               Build the ground before the growth.
             </h2>
             <p className="mt-8 max-w-[54ch] text-sm leading-[1.85] text-white/64">
-              The department is designed for market-readiness work that is too early, risky, or educational to be treated as a normal branch investment. It is not framed as guaranteed funding, charity marketing, or automatic capital allocation.
+              The department is designed for market-readiness work that is too early, risky, or educational to be treated as a normal branch investment. It is not framed as committed funding, charity marketing, or automatic capital allocation.
             </p>
           </div>
 
@@ -119,7 +120,7 @@ export default function GlobalFundingPage() {
             Projected does not mean promised.
           </h2>
           <p className="mx-auto mt-8 max-w-[62ch] text-sm leading-[1.85] text-white/62">
-            The $50M figure is a projected target by the end of 2028. Actual support depends on eligible distributions, operating performance, market readiness, governance approval, provider availability, and country-specific conditions.
+            The {formatUsd(siteMetrics.globalFundingTarget2028Usd)} figure is a projected target by the end of 2028. Actual support depends on eligible distributions, operating performance, market readiness, governance approval, provider availability, and country-specific conditions.
           </p>
           <Link
             href="/social-responsibility"

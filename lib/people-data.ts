@@ -1,3 +1,5 @@
+import { siteMetrics } from "@/lib/site-metrics";
+
 export type JobCountry =
   | "United States"
   | "Turkey"
@@ -85,15 +87,15 @@ const screening = [
   "Assessment calls in progress",
 ];
 
-const markets: { country: JobCountry; cities: string[]; prefix: string }[] = [
-  { country: "United States", cities: ["New York", "Houston", "Miami", "Phoenix"], prefix: "US" },
-  { country: "Turkey", cities: ["Istanbul", "Ankara", "Izmir", "Bursa"], prefix: "TR" },
-  { country: "United Kingdom", cities: ["Edinburgh", "London", "Manchester", "Birmingham"], prefix: "UK" },
-  { country: "Saudi Arabia", cities: ["Riyadh", "Jeddah", "Dammam", "Medina"], prefix: "SA" },
-  { country: "Greece", cities: ["Athens", "Thessaloniki", "Patras", "Heraklion"], prefix: "GR" },
-  { country: "Jordan", cities: ["Amman", "Irbid", "Aqaba", "Zarqa"], prefix: "JO" },
-  { country: "UAE", cities: ["Dubai", "Abu Dhabi", "Sharjah", "Ras Al Khaimah"], prefix: "AE" },
-  { country: "Remote / Global", cities: ["Remote", "Hybrid", "Global Desk", "Market Desk"], prefix: "GL" },
+const markets: { country: JobCountry; cities: string[]; prefix: string; target: number }[] = [
+  { country: "United States", cities: ["New York", "Houston", "Miami", "Phoenix"], prefix: "US", target: 38 },
+  { country: "Turkey", cities: ["Istanbul", "Ankara", "Izmir", "Bursa"], prefix: "TR", target: 31 },
+  { country: "United Kingdom", cities: ["Edinburgh", "London", "Manchester", "Birmingham"], prefix: "UK", target: 18 },
+  { country: "Saudi Arabia", cities: ["Riyadh", "Jeddah", "Dammam", "Medina"], prefix: "SA", target: 9 },
+  { country: "Jordan", cities: ["Amman", "Irbid", "Aqaba", "Zarqa"], prefix: "JO", target: 6 },
+  { country: "UAE", cities: ["Dubai", "Abu Dhabi", "Sharjah", "Ras Al Khaimah"], prefix: "AE", target: 7 },
+  { country: "Greece", cities: ["Athens", "Thessaloniki", "Patras", "Heraklion"], prefix: "GR", target: 4 },
+  { country: "Remote / Global", cities: ["Remote", "Hybrid", "Global Desk", "Market Desk"], prefix: "GL", target: 12 },
 ];
 
 const templates: {
@@ -211,16 +213,17 @@ function slugify(input: string) {
 }
 
 export const peopleOpenings: JobOpening[] = markets.flatMap((market, marketIndex) =>
-  templates.map((template, templateIndex) => {
-    const id = `PEO-${market.prefix}-${String(templateIndex + 1).padStart(3, "0")}`;
-    const city = market.cities[(templateIndex + marketIndex) % market.cities.length];
-    const applications = 38 + ((marketIndex + 3) * (templateIndex + 7) * 11) % 176;
+  Array.from({ length: market.target }, (_, openingIndex) => {
+    const template = templates[(openingIndex + marketIndex) % templates.length];
+    const id = `PEO-${market.prefix}-${String(openingIndex + 1).padStart(3, "0")}`;
+    const city = market.cities[(openingIndex + marketIndex) % market.cities.length];
+    const applications = 24 + ((marketIndex + 3) * (openingIndex + 7) * 11) % 221;
     const status: JobStatus =
-      templateIndex % 11 === 0
+      openingIndex % 11 === 0
         ? "Priority hiring"
-        : templateIndex % 7 === 0
+        : openingIndex % 7 === 0
           ? "Pipeline review"
-          : templateIndex % 5 === 0
+          : openingIndex % 5 === 0
             ? "Opening soon"
             : "Accepting candidates";
 
@@ -232,13 +235,19 @@ export const peopleOpenings: JobOpening[] = markets.flatMap((market, marketIndex
       department: template.department,
       jobType: template.jobType,
       applications,
-      screeningActivity: screening[(templateIndex + marketIndex) % screening.length],
+      screeningActivity: screening[(openingIndex + marketIndex) % screening.length],
       status,
       summary: template.summary,
       applyHref: `/people/apply?role=${encodeURIComponent(id)}&title=${encodeURIComponent(template.title)}&country=${encodeURIComponent(market.country)}&city=${encodeURIComponent(city)}`,
     };
   })
 );
+
+export const peopleTotals = {
+  employees: siteMetrics.employees,
+  countries: siteMetrics.countries,
+  openRoles: peopleOpenings.length,
+};
 
 export const peopleCulture = [
   {

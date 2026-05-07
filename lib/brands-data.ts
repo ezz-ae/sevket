@@ -9,7 +9,7 @@ export interface Brand {
   headquarters: string;
   focusMarket: string;
   unitCount: number;
-  deployedCapital: string;
+  trackedCapital: string;
   theme: {
     primary: string;
     secondary: string;
@@ -37,7 +37,7 @@ export const brands: Brand[] = [
     headquarters: "Edinburgh, UK",
     focusMarket: "Global (UK, Europe, US)",
     unitCount: 147,
-    deployedCapital: "$16.5M",
+    trackedCapital: "$16.5M",
     theme: {
       primary: "#8B5A3C",
       secondary: "#A0674A",
@@ -70,7 +70,7 @@ export const brands: Brand[] = [
     headquarters: "New York, USA",
     focusMarket: "United States",
     unitCount: 42,
-    deployedCapital: "$6.9M",
+    trackedCapital: "$6.9M",
     theme: {
       primary: "#8B3A3A",
       secondary: "#A04545",
@@ -102,7 +102,7 @@ export const brands: Brand[] = [
     headquarters: "Istanbul, Turkey",
     focusMarket: "Europe",
     unitCount: 28,
-    deployedCapital: "$4.2M",
+    trackedCapital: "$4.2M",
     theme: {
       primary: "#D4A574",
       secondary: "#E8B887",
@@ -134,7 +134,7 @@ export const brands: Brand[] = [
     headquarters: "London, UK",
     focusMarket: "Internal Branch & Franchise Management",
     unitCount: 215,
-    deployedCapital: "$2.8M",
+    trackedCapital: "$2.8M",
     theme: {
       primary: "#2E5C7F",
       secondary: "#3D7BA3",
@@ -166,7 +166,7 @@ export const brands: Brand[] = [
     headquarters: "Istanbul, Turkey",
     focusMarket: "Global",
     unitCount: 180,
-    deployedCapital: "$1.2M",
+    trackedCapital: "$1.2M",
     theme: {
       primary: "#1B5E20",
       secondary: "#2E7D32",

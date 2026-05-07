@@ -105,7 +105,7 @@ export function MarketplaceSection() {
           {[
             { v: `${opportunities.filter((o) => o.status !== "Reserved").length}`, k: "Open filings" },
             { v: `${openSeats}`, k: "Seats unfilled" },
-            { v: fmtMoney(Math.round(totalCapital)), k: "Capital deployable" },
+            { v: fmtMoney(Math.round(totalCapital)), k: "Capital available" },
             { v: `${avgPayback} mo`, k: "Avg payback target" },
           ].map((s, i) => (
             <div

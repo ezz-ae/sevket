@@ -1,4 +1,5 @@
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
+import { siteMetrics } from "@/lib/site-metrics";
 
 export interface BrandPortalImage {
   src: string;
@@ -883,7 +884,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
         eyebrow: "Student layer",
         body:
           "This group manages school-expense support, student selection, and part-time work access so education support stays organized and measurable.",
-        metric: "500 to 700 students",
+        metric: `${siteMetrics.studentSponsorshipCurrent} to ${siteMetrics.studentSponsorshipTarget} students`,
       },
       {
         title: "Operator mentors",

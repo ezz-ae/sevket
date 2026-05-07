@@ -7,6 +7,7 @@ import { FooterSection } from "@/components/landing/footer-section";
 import { PageHeader } from "@/components/shared/page-header";
 import { olmezBrandAssets } from "@/lib/olmez-brand-assets";
 import { getRequestLocale } from "@/lib/server-locale";
+import { formatUsd, siteMetrics } from "@/lib/site-metrics";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
 const baseUrl =
@@ -84,7 +85,7 @@ export default async function SocialResponsibilityPage() {
     {
       title: "Need help with school expenses?",
       summary:
-        "The student sponsorship program currently supports 500 students per year and is being expanded toward 700.",
+            `The student sponsorship program currently supports ${siteMetrics.studentSponsorshipCurrent} students per year and is being expanded toward ${siteMetrics.studentSponsorshipTarget}.`,
     },
   ];
 
@@ -110,8 +111,8 @@ export default async function SocialResponsibilityPage() {
         }
         meta={[
           { label: isTurkish ? "Ağaç kuralı" : "Tree rule", value: "1 / 100 bill" },
-          { label: isTurkish ? "Öğrenciler" : "Students", value: "500" },
-          { label: isTurkish ? "Hedef" : "Target", value: "700" },
+          { label: isTurkish ? "Öğrenciler" : "Students", value: `${siteMetrics.studentSponsorshipCurrent}` },
+          { label: isTurkish ? "Hedef" : "Target", value: `${siteMetrics.studentSponsorshipTarget}` },
           { label: isTurkish ? "Staj vardiyası" : "Internship shift", value: "4–7 hrs" },
         ]}
       />
@@ -209,13 +210,13 @@ export default async function SocialResponsibilityPage() {
             </span>
             <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
               {isTurkish
-                ? "500 öğrenciden 700 hedefe giden destek hattı."
-                : "A sponsorship path growing from 500 toward 700 students."}
+                ? `${siteMetrics.studentSponsorshipCurrent} öğrenciden ${siteMetrics.studentSponsorshipTarget} hedefe giden destek hattı.`
+                : `A sponsorship path growing from ${siteMetrics.studentSponsorshipCurrent} toward ${siteMetrics.studentSponsorshipTarget} students.`}
             </h2>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
-                { label: isTurkish ? "Mevcut sponsorluk" : "Current sponsorship", value: "500 students / year" },
-                { label: isTurkish ? "Bu yıl hedef" : "This year target", value: "700 students" },
+                { label: isTurkish ? "Mevcut sponsorluk" : "Current sponsorship", value: `${siteMetrics.studentSponsorshipCurrent} students / year` },
+                { label: isTurkish ? "Bu yıl hedef" : "This year target", value: `${siteMetrics.studentSponsorshipTarget} students` },
                 { label: isTurkish ? "Çalışma modeli" : "Work model", value: "4–7 hour paid days" },
                 { label: isTurkish ? "Fırsat bölgesi" : "Opportunity region", value: "Texas" },
               ].map((item) => (
@@ -316,7 +317,7 @@ export default async function SocialResponsibilityPage() {
               Global Ölmez Funding Department.
             </h2>
             <p className="mt-8 max-w-[62ch] text-base leading-[1.85] text-white/68">
-              From October 2026, Ölmez will launch the Global Ölmez Funding Department as part of its wider social responsibility platform. The department will be supported by 0.5% of eligible investor distributions and will focus on high-risk discovery, early infrastructure preparation, and responsible market entry support in Saudi Arabia, Greece, and Jordan.
+              From October 2026, Ölmez will launch the Global Ölmez Funding Department as part of its wider social responsibility platform. The department will be supported by 0.5% of eligible investor distributions and will focus on high-risk discovery, early infrastructure preparation, and responsible market entry support in Saudi Arabia, Greece, and Jordan. Projected support target: {formatUsd(siteMetrics.globalFundingTarget2028Usd)} by end of 2028.
             </p>
             <p className="mt-6 max-w-[58ch] font-display text-2xl leading-[1.35] tracking-[-0.03em] text-white">
               The purpose is not to donate randomly. The purpose is to build responsible entry points before expansion becomes aggressive.

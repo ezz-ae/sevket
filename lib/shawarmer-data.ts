@@ -123,7 +123,7 @@ export const shawarmerBrandReport = {
 
   portfolioMetrics: {
     activeUnits: 42,
-    deployedCapital: "$6.9M",
+    trackedCapital: "$6.9M",
     avgDailyGain: "$450–$950",
     targetPayback: "24-30 months",
     meetsOrExceedsTarget: "71%",

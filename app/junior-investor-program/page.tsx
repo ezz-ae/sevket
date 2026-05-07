@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileText } from "lucide-react";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { JuniorCalculator } from "@/components/investors/junior-calculator";
-import { olmezBrandAssets, shawarmaTimeAssets } from "@/lib/olmez-brand-assets";
+import { formatUsd, siteMetrics } from "@/lib/site-metrics";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
 
 export const metadata: Metadata = {
   title: "Junior Investor Program — Ölmez / AFFAREM",
   description:
-    "Junior Investor Pools let new investors enter a shared pool of 50 Shawerma Time restaurant units before applying for larger opportunities. $1K–$12K, 6-month subscription, twice-weekly distribution.",
+    "Junior Investor Pools let new investors enter a controlled pool before applying for larger opportunities. Level 1, Level 2, account review, early exit, and risk rules.",
   alternates: { canonical: `${baseUrl}/junior-investor-program` },
   openGraph: {
     title: "Junior Investor Program — Ölmez / AFFAREM",
-    description: "Start inside the system before choosing a branch. $1K–$12K starter pool with twice-weekly distribution.",
+    description: "Start inside the system before choosing a branch. Level 1 and Level 2 junior entry with account review.",
     url: `${baseUrl}/junior-investor-program`,
     type: "website",
   },
@@ -25,25 +24,12 @@ export const metadata: Metadata = {
 export default function JuniorInvestorProgramPage() {
   return (
     <main
-      className="relative min-h-screen text-white"
-      style={{ background: "linear-gradient(180deg, #170f0b 0%, #050505 44%, #111511 100%)" }}
+      className="relative min-h-screen bg-[#060606] text-white"
     >
       <Navigation forceScrolled />
 
-      <section className="relative overflow-hidden border-t border-white/10 pt-40 pb-20 lg:pt-56 lg:pb-28">
-        <div className="absolute inset-0">
-          <Image
-            src={shawarmaTimeAssets.counterHouston.src}
-            alt={shawarmaTimeAssets.counterHouston.alt}
-            fill
-            priority
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="absolute inset-0 bg-black/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-black/70 to-black/30" />
-
-        <div className="relative mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-end lg:px-12">
+      <section className="border-t border-white/10 px-6 pt-36 pb-20 lg:px-12 lg:pt-48">
+        <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div>
             <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/58">
               <span className="h-px w-10 bg-[#b8865a]" />
@@ -53,10 +39,7 @@ export default function JuniorInvestorProgramPage() {
               Start inside the system before choosing a branch.
             </h1>
             <p className="mt-7 max-w-[60ch] text-base leading-[1.85] text-white/72 md:text-lg">
-              Junior Investor Pools allow new investors to enter a shared pool of 50 Shawerma Time restaurant units, follow the reporting rhythm, receive eligible distributions, and understand how AFFAREM works before applying for larger opportunities.
-            </p>
-            <p className="mt-5 max-w-[58ch] font-display text-2xl leading-[1.35] tracking-[-0.03em] text-white">
-              This is not the final investment stage. It is the learning stage with real reporting.
+              Junior Investor Pools allow new investors to enter a controlled pool, follow the reporting rhythm, receive eligible distributions when terms allow, and understand how AFFAREM works before applying for larger opportunities.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
@@ -84,10 +67,10 @@ export default function JuniorInvestorProgramPage() {
       <section className="border-t border-white/10 py-20 lg:py-28">
         <div className="mx-auto grid max-w-[1400px] gap-6 px-6 md:grid-cols-2 xl:grid-cols-4 lg:px-12">
           {[
-            ["Pool entry", "$1,000 – $12,000"],
-            ["Maximum package", "$12,000"],
-            ["Subscription period", "6 months"],
-            ["Branch exposure", "50-unit pool"],
+            ["Junior Level 1", `${formatUsd(siteMetrics.juniorLevel1Min)}-${formatUsd(siteMetrics.juniorLevel1Max)} first month`],
+            ["Junior Level 2", `Up to ${formatUsd(siteMetrics.juniorLevel2Max)} after review`],
+            ["Maximum period", `${siteMetrics.juniorMaxMonths} months`],
+            ["Entry rule", "New investors only"],
           ].map(([label, value]) => (
             <article key={label} className="border border-white/10 bg-black/24 p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">{label}</p>
@@ -107,18 +90,18 @@ export default function JuniorInvestorProgramPage() {
               Low friction does not mean no responsibility.
             </h2>
             <p className="mt-8 max-w-[54ch] text-sm leading-[1.85] text-white/64">
-              The Junior Program is strongly recommended for investors with limited managerial or food-business experience. It gives them a controlled view of reporting, distribution rhythm, and operating language before applying for a branch-specific position.
+              The Junior Program is for new investors who need to prove understanding before larger access. It tests account behavior, document discipline, risk language, distribution understanding, and response quality.
             </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             {[
-              "No penalty for early closure.",
-              "Investor may exit after at least 2 distributions, approximately one week.",
-              "Early exit may reduce priority or eligibility for future mega opportunities.",
-              "Junior investors are not investing in one particular restaurant.",
+              "Level 1 is limited to first-month entry exposure.",
+              "Level 2 requires review and proof before the full cap.",
+              "Upgrade requires learning basics, documents, risk quiz, distribution understanding, and account review.",
+              "Early exit is allowed under terms and may affect priority for larger opportunities.",
               "Eligible net distributions are reviewed and processed twice weekly after sales reconciliation, operating costs, reserves, fees, and applicable deductions.",
-              "All projections are estimated, not guaranteed, and based on pool performance.",
+              `Minimum ${siteMetrics.juniorGuaranteePercent}% guarantee applies only under signed Junior Program terms. It is not available to current investors and is not a public return claim.`,
             ].map((rule) => (
               <article key={rule} className="border border-white/10 bg-black/24 p-5">
                 <CheckCircle2 className="h-4 w-4 text-[#b8865a]" />
@@ -130,26 +113,25 @@ export default function JuniorInvestorProgramPage() {
       </section>
 
       <section className="border-t border-white/10 py-20 lg:py-28">
-        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:px-12">
+        <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:px-12">
           <div>
             <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
-              AFFAREM rhythm
+              Document route
             </span>
             <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl">
-              Learn the reporting system before the branch decision.
+              Junior access is still documented access.
             </h2>
             <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/66">
               A junior investor learns account access, distribution notices, risk language, document requests, and basic pool reporting without entering a full unit obligation.
             </p>
           </div>
-          <div className="relative overflow-hidden border border-white/10 bg-black">
-            <Image
-              src={olmezBrandAssets.images.revenuePresentation.src}
-              alt={olmezBrandAssets.images.revenuePresentation.alt}
-              width={1600}
-              height={1000}
-              className="h-full w-full object-cover"
-            />
+          <div className="grid gap-4">
+            {["Signed Junior Program terms", "Risk acknowledgment", "Distribution understanding", "Account review note"].map((doc) => (
+              <div key={doc} className="flex items-center gap-4 border border-white/10 bg-black/24 p-5">
+                <FileText className="h-5 w-5 text-[#b8865a]" />
+                <span className="text-sm text-white/70">{doc}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

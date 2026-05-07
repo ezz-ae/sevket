@@ -21,12 +21,12 @@ const returnData = [
   { investor: "New (2025)", annualReturn: 14, cumulative: 15, units: 12 },
 ];
 
-const capitalDeployment = [
-  { quarter: "Q1 2024", deployed: 400, reserved: 800, utilization: 33 },
-  { quarter: "Q2 2024", deployed: 520, reserved: 680, utilization: 43 },
-  { quarter: "Q3 2024", deployed: 680, reserved: 520, utilization: 57 },
-  { quarter: "Q4 2024", deployed: 820, reserved: 380, utilization: 68 },
-  { quarter: "Q1 2025", deployed: 1100, reserved: 100, utilization: 92 },
+const capitalAllocation = [
+  { quarter: "Q1 2024", allocated: 400, reserved: 800, utilization: 33 },
+  { quarter: "Q2 2024", allocated: 520, reserved: 680, utilization: 43 },
+  { quarter: "Q3 2024", allocated: 680, reserved: 520, utilization: 57 },
+  { quarter: "Q4 2024", allocated: 820, reserved: 380, utilization: 68 },
+  { quarter: "Q1 2025", allocated: 1100, reserved: 100, utilization: 92 },
 ];
 
 const cohortPerformance = [
@@ -93,7 +93,7 @@ export function InvestorReturns() {
           Capital allocation timeline
         </h3>
         <ResponsiveContainer width="100%" height={350}>
-          <LineChart data={capitalDeployment}>
+          <LineChart data={capitalAllocation}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
             <XAxis dataKey="quarter" stroke="rgba(255,255,255,0.5)" />
             <YAxis yAxisId="left" stroke="rgba(255,255,255,0.5)" />
@@ -109,7 +109,7 @@ export function InvestorReturns() {
             <Line
               yAxisId="left"
               type="monotone"
-              dataKey="deployed"
+              dataKey="allocated"
               stroke="#8B5A3C"
               strokeWidth={2}
               dot={{ fill: "#8B5A3C", r: 4 }}
