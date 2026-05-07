@@ -688,7 +688,7 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       },
     ],
     teamIntro:
-      "The AFFAREM team is measured on whether branch truth stays legible when the network becomes noisy: investors must see clearly, operators must report clearly, and field issues must surface early.",
+      "The AFFAREM team is measured on whether branch truth stays legible as the network grows: investors must see clearly, operators must report clearly, and field issues must surface early.",
     team: [
       {
         title: "Product and data operators",

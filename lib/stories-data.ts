@@ -17,7 +17,7 @@ export const stories: Story[] = [
     slug: "from-counter-shift-to-branch-manager",
     title: "From Counter Shift to Branch Manager",
     excerpt:
-      "A cashier learned the reporting rhythm, then became the person trusted to open and close the branch without noise.",
+      "A cashier learned the reporting rhythm, then became the person trusted to open and close the branch without losing control.",
     country: "United States",
     category: "Branch manager",
     tag: "Started small",

@@ -27,6 +27,7 @@ const corePages: CorePage[] = [
   { path: '/company-profile', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/brands', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/investors', priority: 0.95, changeFrequency: 'weekly' },
+  { path: '/investors/dashboard', priority: 0.9, changeFrequency: 'weekly' },
   { path: '/investor-responsibility', priority: 0.86, changeFrequency: 'monthly' },
   { path: '/junior-investor-program', priority: 0.92, changeFrequency: 'weekly' },
   { path: '/opportunities', priority: 0.95, changeFrequency: 'weekly' },

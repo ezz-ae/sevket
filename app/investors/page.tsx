@@ -12,7 +12,6 @@ import {
   WalletCards,
   FileText,
   MessageSquare,
-  Landmark,
 } from "lucide-react";
 import {
   investorPortfolio,
@@ -64,39 +63,27 @@ const iconMap: Record<string, typeof Eye> = {
   Layers,
 };
 
-const dashboardModules = [
-  "Crypto wallet integration",
-  "Prepaid investor wallet",
-  "Payout details",
-  "Twice-weekly distribution history",
-  "System agreement",
-  "Documents",
-  "Messages",
-  "Live chat",
-  "Personal details",
-  "Tax filing",
-  "Investor profile",
-  "KYC / identity area",
-  "Bank account details",
-  "Distribution settings",
-  "Branch / pool performance",
-  "Risk notices",
-  "Support tickets",
-  "AFFAREM messages",
-  "Account statement downloads",
-];
-
-const walletFeatures = [
-  "Digital wallet",
-  "Prepaid card option",
-  "Virtual card",
-  "Physical card delivery",
-  "Crypto wallet connection",
-  "Bank payout",
-  "Distribution history",
-  "Wallet balance",
-  "Card spending controls",
-  "Tax statement export",
+const dashboardHighlights = [
+  {
+    title: "AFFAREM account",
+    detail: "Investor profile, system agreement, branch or pool visibility, documents, and account status.",
+    icon: Shield,
+  },
+  {
+    title: "Wallet and payouts",
+    detail: "Payout details, twice-weekly distribution history, bank rail, prepaid wallet concept, and crypto connection review.",
+    icon: WalletCards,
+  },
+  {
+    title: "Documents and tax",
+    detail: "KYC, identity, personal details, tax filing, statements, downloads, and adviser-ready records.",
+    icon: FileText,
+  },
+  {
+    title: "Messages and support",
+    detail: "AFFAREM messages, live chat, support tickets, risk notices, and account communication history.",
+    icon: MessageSquare,
+  },
 ];
 
 export default async function InvestorsPage() {
@@ -319,72 +306,49 @@ export default async function InvestorsPage() {
                 AFFAREM investor dashboard
               </span>
               <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[13ch]">
-                The account should explain itself.
+                One account for the business behind the branch.
               </h2>
               <p className="mt-8 max-w-[54ch] text-base leading-[1.85] text-foreground/68">
-                The investor dashboard is being expanded around account responsibility, branch and pool performance, twice-weekly distribution history, documents, messages, support, risk notices, tax exports, bank details, and AFFAREM reporting.
+                AFFAREM access brings investor identity, payout settings, documents, support, risk notices, branch or pool performance, and distribution history into one controlled dashboard.
+              </p>
+              <p className="mt-5 max-w-[54ch] text-sm leading-[1.75] text-foreground/56">
+                The wallet layer is framed as a future integration with approved banking, prepaid card, digital wallet, and crypto providers. It is subject to licensing, provider approval, and market availability.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href={withLocale("/investor-responsibility", locale)}
+                  href={withLocale("/investors/dashboard", locale)}
                   className="inline-flex h-12 items-center justify-center gap-3 bg-foreground px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-background transition-colors hover:bg-foreground/90"
                 >
-                  Investor Responsibility
+                  Open Dashboard
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <Link
-                  href={withLocale("/junior-investor-program", locale)}
+                  href={withLocale("/investor-responsibility", locale)}
                   className="inline-flex h-12 items-center justify-center gap-3 border border-foreground/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/78 transition-colors hover:bg-foreground/5"
                 >
-                  Junior Program
+                  Investor Responsibility
                 </Link>
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {dashboardModules.map((module, index) => {
-                const icons = [WalletCards, FileText, MessageSquare, Landmark, Shield, Calendar];
-                const Icon = icons[index % icons.length];
+            <div className="grid gap-4 md:grid-cols-2">
+              {dashboardHighlights.map((item) => {
+                const Icon = item.icon;
                 return (
-                  <article key={module} className="border border-foreground/12 bg-background p-5">
-                    <Icon className="h-4 w-4 text-[#b8865a]" />
-                    <p className="mt-4 font-display text-xl tracking-[-0.03em] text-foreground">
-                      {module}
+                  <article key={item.title} className="border border-foreground/12 bg-background p-6">
+                    <div className="flex items-center justify-between gap-4">
+                      <h3 className="font-display text-2xl tracking-[-0.03em] text-foreground">
+                        {item.title}
+                      </h3>
+                      <Icon className="h-5 w-5 text-[#b8865a]" />
+                    </div>
+                    <p className="mt-4 text-sm leading-[1.7] text-foreground/64">
+                      {item.detail}
                     </p>
                   </article>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
-        <div className="max-w-[1400px] mx-auto grid gap-10 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-12">
-          <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Future distribution layer
-            </span>
-            <h2 className="mt-6 font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[13ch]">
-              Ölmez Investor Wallet.
-            </h2>
-            <p className="mt-8 max-w-[60ch] text-base leading-[1.85] text-foreground/70">
-              The Ölmez Investor Wallet is designed as a future distribution layer where eligible investor payouts may be received, tracked, transferred, or accessed through approved banking, prepaid card, or digital wallet partners.
-            </p>
-            <p className="mt-6 max-w-[60ch] text-sm leading-[1.85] text-foreground/56">
-              This concept is subject to provider approval, licensing, market availability, KYC/AML checks, card-program approval, banking partner terms, and country-specific regulation. It should not be described as a current financial product until those approvals exist.
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {walletFeatures.map((feature) => (
-              <article key={feature} className="border border-foreground/12 bg-foreground/[0.015] p-5">
-                <WalletCards className="h-4 w-4 text-[#b8865a]" />
-                <p className="mt-4 font-display text-xl tracking-[-0.03em] text-foreground">
-                  {feature}
-                </p>
-              </article>
-            ))}
           </div>
         </div>
       </section>

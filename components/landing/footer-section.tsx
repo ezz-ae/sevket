@@ -31,6 +31,7 @@ export function FooterSection() {
       eyebrow: isTurkish ? "Yatırım erişimi" : "Investment access",
       links: [
         { name: isTurkish ? "Junior yatırımcı" : "Junior Investor", href: withLocale("/junior-investor-program", locale), hint: isTurkish ? "Yeni" : "New" },
+        { name: isTurkish ? "AFFAREM paneli" : "AFFAREM Dashboard", href: withLocale("/investors/dashboard", locale), hint: isTurkish ? "Yeni" : "New" },
         { name: isTurkish ? "Yatırımcı sorumluluğu" : "Investor Responsibility", href: withLocale("/investor-responsibility", locale) },
         { name: isTurkish ? "Ünite inceleme odası" : "Unit Review Room", href: withLocale("/deployment-room", locale), hint: isTurkish ? "Yeni" : "New" },
         { name: isTurkish ? "Aktif fırsatlar" : "Active Opportunities", href: withLocale("/opportunities", locale), hint: isTurkish ? "5 açık" : "5 open" },
@@ -154,7 +155,7 @@ export function FooterSection() {
               <p className="mt-6 font-display text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-[1.02] max-w-[13ch]">
                 {isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next."}
                 <span className="block italic text-white/60">
-                  {isTurkish ? "Gürültü olmadan ölçekle." : "Scale without noise."}
+                  {isTurkish ? "Kontrolle ölçeklenir." : "Scale with control."}
                 </span>
               </p>
               <p className="mt-6 max-w-[56ch] text-base md:text-lg leading-[1.8] text-white/70">

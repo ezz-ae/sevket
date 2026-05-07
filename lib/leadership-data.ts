@@ -38,7 +38,7 @@ export const leadershipProfiles: LeadershipProfile[] = [
       "Adnan Ahmet translates Ölmez from a business system into a market story, making the company feel Turkish, international, and operationally credible at the same time.",
     article: [
       "Adnan Ahmet carries one of the most sensitive roles in the company: translating Ölmez from a business system into a market story. In Turkey, food is not only a product. It is memory, pride, street culture, identity, family, and rhythm. Marketing a Turkish food business badly would make the company look artificial. Marketing it well gives SevetTeam cultural power.",
-      "His role is not to create noise. It is to make the market understand why Ölmez is different. He does not sell shawarma as another food product. He frames it as part of a larger business architecture: Turkish restaurants in major cities, gas station shawarma units in the United States, micro-start programs for small operators, and AFFAREM as the control layer behind the branches.",
+      "His role is not to create volume. It is to make the market understand why Ölmez is different. He does not sell shawarma as another food product. He frames it as part of a larger business architecture: Turkish restaurants in major cities, gas station shawarma units in the United States, micro-start programs for small operators, and AFFAREM as the control layer behind the branches.",
       "In Turkey, his work also connects to the story of the 42 British franchise holders with Istanbul experience. This is a powerful narrative: Istanbul trained the food instinct, Britain added operational discipline, and SevetTeam turned both into a scalable model.",
       "Adnan’s value is not only advertising. His value is market belief. He makes the company feel Turkish without becoming old-fashioned, international without losing its roots, and operational without becoming boring.",
     ],
@@ -53,7 +53,7 @@ export const leadershipProfiles: LeadershipProfile[] = [
       "Annabel Komar runs the executive order behind SevetTeam, turning founder decisions into traceable action across investors, operations, and internal teams.",
     article: [
       "Annabel Komar runs the part of the company that most people never see but every serious company depends on: executive order. In a business like SevetTeam, the founder’s office is not just calendar management. It is the nerve center between decisions, investors, branch design sessions, LiveOps reviews, legal coordination, reports, travel, and internal execution.",
-      "Annabel’s part is to protect Sevet Ölmez from operational noise while making sure important decisions do not get lost in the noise. She coordinates the conversations that matter: investor meetings, AFFAREM design sessions, follow-ups after branch reviews, internal leadership discussions, travel planning for LiveOps intervention, and communication between departments.",
+      "Annabel’s part is to protect Sevet Ölmez from operational distraction while making sure important decisions do not disappear into routine movement. She coordinates the conversations that matter: investor meetings, AFFAREM design sessions, follow-ups after branch reviews, internal leadership discussions, travel planning for LiveOps intervention, and communication between departments.",
       "A weak founder’s office creates delays, duplicated decisions, missed commitments, and confused teams. Annabel prevents that. She makes sure the founder’s thinking becomes action, and action becomes traceable.",
       "In SevetTeam’s world, where every branch must explain itself in numbers, Annabel makes sure every leadership decision also has a clear owner, timeline, and next step.",
     ],
@@ -140,9 +140,9 @@ export const leadershipProfiles: LeadershipProfile[] = [
     title: "Chairman and Co-Founder",
     region: "Board Leadership",
     summary:
-      "Servet Ölmez provides governance, restraint, and strategic gravity, keeping the company aligned with its infrastructure promise rather than drifting into franchise noise.",
+      "Servet Ölmez provides governance, restraint, and strategic gravity, keeping the company aligned with its infrastructure promise rather than drifting into loose franchise behavior.",
     article: [
-      "Servet Ölmez sits at the top of the company structure as chairman and co-founder. His role is governance, long-range judgment, and protection of the company’s direction. Every ambitious company needs someone who is not trapped in daily noise.",
+      "Servet Ölmez sits at the top of the company structure as chairman and co-founder. His role is governance, long-range judgment, and protection of the company’s direction. Every ambitious company needs someone who is not trapped in daily pressure.",
       "Servet’s part is to ask whether the company is still becoming what it promised to become. He oversees the big questions: expansion timing, capital discipline, major partnerships, brand reputation, investor confidence, and the relationship between SevetTeam’s commercial ambition and its operating standards.",
       "He should not be written as a ceremonial chairman. His value is restraint. When sales wants speed, operations wants control, investors want return, and marketing wants visibility, the chairman protects the center.",
       "Servet’s role is to make sure SevetTeam does not become just another restaurant franchise company. The company’s real promise is bigger: restaurant business infrastructure, controlled ownership, operator development, and measurable food assets.",

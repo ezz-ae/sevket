@@ -19,7 +19,7 @@ const rules = [
     number: "03",
     title: "A small market is not a small opportunity",
     body:
-      "Truth lives where the noise is lowest. Gas-station corridors, not high streets, build durable cash.",
+      "Truth appears where the operating variables are visible. Gas-station corridors, not high streets, build durable cash.",
   },
   {
     number: "04",

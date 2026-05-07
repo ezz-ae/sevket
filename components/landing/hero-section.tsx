@@ -7,30 +7,38 @@ import { SiteLocale, withLocale } from "@/lib/site-locale";
 export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
   const isTurkish = locale === "tr";
   const heroStats = [
-    { label: isTurkish ? "Merkez" : "Headquarters", value: "Edinburgh" },
-    { label: isTurkish ? "Güncel sayı" : "Current issue", value: "Mid 2026" },
-    { label: isTurkish ? "Marka cümlesi" : "Brand line", value: isTurkish ? "İş. Bir sonraki seviye için kuruldu." : "Business. Built next." },
-    { label: isTurkish ? "Ana odak" : "Primary focus", value: isTurkish ? "Ölçekten önce hikaye" : "Story before scale" },
+    { label: isTurkish ? "Ana marka" : "Master brand", value: "Ölmez" },
+    { label: isTurkish ? "Kontrol katmanı" : "Control layer", value: "AFFAREM" },
+    { label: isTurkish ? "Fırsat markası" : "Opportunity brand", value: "Shawerma Time" },
+    { label: isTurkish ? "Dağıtım ritmi" : "Distribution rhythm", value: "Twice-weekly review" },
   ];
   const previewCards = isTurkish
     ? [
         {
-          label: "Operasyon dili",
-          value: "Mekan, yayın ve sistem tek yüzeyde okunur",
+          label: "Yemek fırsatı",
+          value: "Shawerma Time, mevcut akışa sahip istasyon noktalarını yönetilen restoran ünitelerine çevirir.",
         },
         {
-          label: "Veri netliği",
-          value: "Koyu zemin üstünde ayrılmış kartlar ve okunabilir metrikler",
+          label: "Yatırımcı kontrolü",
+          value: "AFFAREM; raporlama, belgeler, mesajlar, dağıtım kayıtları ve şube görünürlüğünü tek hesaba bağlar.",
+        },
+        {
+          label: "İnsan sistemi",
+          value: "Operatörler, yöneticiler, ekipler ve yetenek hattı aynı işletme standardı etrafında çalışır.",
         },
       ]
     : [
         {
-          label: "Operating language",
-          value: "Room, publication, and system read as one surface",
+          label: "Food opportunity",
+          value: "Shawerma Time turns existing gas-station traffic into managed restaurant units.",
         },
         {
-          label: "Data clarity",
-          value: "Separated cards and readable metrics over the dark field",
+          label: "Investor control",
+          value: "AFFAREM connects reporting, documents, messages, payout history, and branch visibility.",
+        },
+        {
+          label: "People system",
+          value: "Operators, managers, teams, and talent pipelines work around one operating standard.",
         },
       ];
 
@@ -56,14 +64,13 @@ export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
           backgroundSize: "180% 180%",
         }}
       />
-      <div className="absolute right-[-8rem] top-24 h-[26rem] w-[26rem] rounded-full bg-[#b8865a]/12 blur-3xl animate-[orb-drift_22s_ease-in-out_infinite]" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-6 pb-14 pt-28 lg:px-12 lg:pb-20 lg:pt-36">
         <div className="grid gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-end lg:gap-16">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-white/60">
               <span className="h-px w-10 bg-[#b8865a]" />
-              {isTurkish ? "Edinburgh amiral gemisi" : "Edinburgh flagship"}
+              {isTurkish ? "Restoran iş şirketi" : "Restaurant business company"}
             </span>
 
             <div className="mt-8 w-44 sm:w-52 lg:w-60">
@@ -77,16 +84,16 @@ export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
               />
             </div>
 
-            <h1 className="mt-8 max-w-[10.5ch] font-display text-[clamp(2.9rem,6.6vw,6.2rem)] leading-[0.92] tracking-[-0.045em] text-balance">
+            <h1 className="mt-8 max-w-[13ch] font-display text-[clamp(2.9rem,6.2vw,6rem)] leading-[0.94] tracking-[-0.04em] text-balance">
               {isTurkish
-                ? "Disiplinli büyüme için net bir amiral gemisi."
-                : "A clear flagship for disciplined growth."}
+                ? "Yemek markaları, yatırımcı kontrolü ve şube operasyonu tek sistemde."
+                : "Food brands, investor control, and branch operations in one system."}
             </h1>
 
             <p className="mt-7 max-w-[52ch] text-base leading-[1.8] text-white/74 md:text-lg">
               {isTurkish
-                ? "Ölmez; mekan, yayın, filo ve işletim sistemini tek bir kurumsal dil altında toplar. Büyük söylem yerine daha net veri, daha kontrollü yüzey ve daha okunabilir bir marka yapısı hedeflenir."
-                : "Ölmez brings the room, publication, fleet, and operating system under one institutional language. The goal is less noise, clearer data, and a surface that reads like a business standard."}
+                ? "Ölmez, restoran işi altyapısı kurar: Shawerma Time üniteleri, AFFAREM yatırımcı raporlaması, operatör standardı, insan hattı ve pazar giriş desteği. Kamu yemek markasını görür; yatırımcı arkasındaki işletim sistemini görür."
+                : "Ölmez builds restaurant business infrastructure: Shawerma Time units, AFFAREM investor reporting, operator standards, people pipelines, and market-entry support. The public sees food; investors see the operating system behind it."}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -100,17 +107,17 @@ export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
-                href={withLocale("/about", locale)}
+                href={withLocale("/investors/dashboard", locale)}
                 className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
               >
-                {isTurkish ? "Markaya gir" : "Enter the brand"}
+                {isTurkish ? "AFFAREM paneli" : "Open investor dashboard"}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href={withLocale("/magazine", locale)}
+                href={withLocale("/opportunities", locale)}
                 className="inline-flex h-12 items-center justify-center gap-3 border border-white/18 bg-black/20 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:border-white/35 hover:bg-white/6"
               >
-                {isTurkish ? "Field Notes oku" : "Read field notes"}
+                {isTurkish ? "Fırsatları gör" : "View opportunities"}
               </Link>
             </div>
           </div>
@@ -120,18 +127,18 @@ export function HeroSection({ locale = "default" }: { locale?: SiteLocale }) {
               <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(184,134,90,0.16),transparent_42%,rgba(76,104,82,0.14))]" />
               <div className="relative">
                 <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/52">
-                  {isTurkish ? "Sistem önizlemesi" : "System preview"}
+                  {isTurkish ? "İş modeli" : "Business model"}
                 </span>
                 <h2 className="mt-4 max-w-[12ch] font-display text-3xl tracking-[-0.03em] text-white md:text-4xl">
-                  {isTurkish ? "Marka açık. Veri okunur." : "Brand clear. Data readable."}
+                  {isTurkish ? "Restoran değil. Restoran işi." : "Not a restaurant. A restaurant business."}
                 </h2>
                 <p className="mt-4 max-w-[42ch] text-sm leading-[1.8] text-white/68">
                   {isTurkish
-                    ? "Koyu alanlar artık tek ton bırakılmıyor. Bakır ve zeytin tonlu hareket katmanları veri kartlarını ayırıyor ve ana odakları daha kolay okunur hale getiriyor."
-                    : "The dark field no longer sits as one flat tone. Copper and olive motion layers separate the data cards and make the main signals easier to read."}
+                    ? "Ölmez, tek bir yemek fikri satmaz. Sermaye, saha operasyonu, insan yapısı ve raporlama kontrolünü aynı işletme düzenine bağlar."
+                    : "Ölmez does not sell one food idea. It connects capital, field operations, people structure, and reporting control into one operating model."}
                 </p>
 
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="mt-6 grid gap-4">
                   {previewCards.map((card) => (
                     <div
                       key={card.label}

@@ -67,7 +67,7 @@ export const articles: Article[] = [
       {
         type: "callout",
         label: "Edinburgh · Scotland",
-        text: "Strategic silence. Stop chasing the noise of metropolis startups; engineer silent, high-margin repetitions instead.",
+        text: "Strategic silence. Stop chasing the spectacle of metropolis startups; engineer quiet, high-margin repetitions instead.",
       },
       {
         type: "paragraph",
@@ -91,7 +91,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "lead",
-        text: "The metropolis trap is a common failure: entrepreneurs mistake big-city noise for opportunity. Ölmez argues that big cities lie by using massive volume to hide operational rot. Gas stations and small cities, by contrast, reveal the truth.",
+        text: "The metropolis trap is a common failure: entrepreneurs mistake big-city volume for opportunity. Ölmez argues that big cities lie by using massive activity to hide operational rot. Gas stations and small cities, by contrast, reveal the truth.",
       },
       {
         type: "paragraph",
@@ -109,7 +109,7 @@ export const articles: Article[] = [
           [
             "Operational risk",
             "High rent and competition mask system weaknesses with temporary hype.",
-            "Lower overhead and limited noise reveal whether the operational system is actually profitable.",
+            "Lower overhead and fewer distractions reveal whether the operational system is actually profitable.",
           ],
           [
             "Brand truth",
