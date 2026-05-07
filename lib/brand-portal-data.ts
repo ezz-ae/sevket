@@ -653,9 +653,9 @@ export const brandPortals: Record<string, BrandPortalContent> = {
   },
   affarem: {
     hero: {
-      eyebrow: "Control-layer technology",
+      eyebrow: "Asset Franchise & Field Management",
       body:
-        "AFFAREM is the governance surface for the entire ecosystem: live branch truth, investor visibility, intervention triggers, and a reporting spine that turns restaurants into readable assets.",
+        "AFFAREM is the internal branch and franchise management layer of the SevetTeam ecosystem: the operating room that tracks setup, operators, compliance, sales, field behavior, and payback visibility inside one controlled system. Primary interface: affarem.olmez.us.",
       image: image(
         "/brand-library/affarem-revenue-briefing.png",
         "Revenue and operating briefing under the AFFAREM banner",
@@ -663,127 +663,127 @@ export const brandPortals: Record<string, BrandPortalContent> = {
       ),
     },
     branchesIntro:
-      "AFFAREM does not operate branches in the same way the food brands do. It deploys control surfaces into branches, rooms, and review cycles across the network.",
+      "AFFAREM does not sell food or run dining rooms. It installs the management surface inside branches and franchise operations so every unit can be followed from setup to field performance and capital recovery.",
     branches: [
       {
-        title: "Investor Room deployment",
-        eyebrow: "Visibility surface",
+        title: "Investor Room and franchise view",
+        eyebrow: "Stakeholder coordination",
         body:
-          "Capital providers see branch status, recovery progress, and problem escalation through one disciplined interface instead of scattered conversations.",
-        metric: "Live branch visibility",
+          "Investors, operators, designers, and accountants are brought into one controlled environment so branch truth does not fragment across calls, spreadsheets, and assumptions.",
+        metric: "Single operating room",
       },
       {
-        title: "LiveOps command path",
-        eyebrow: "Intervention surface",
+        title: "Operator and LiveOps control",
+        eyebrow: "Field management",
         body:
-          "When a branch weakens, AFFAREM turns from reporting layer into correction layer with daily routines, score pressure, and action ownership.",
-        metric: "Crisis-to-correction mode",
+          "When a branch drifts, AFFAREM moves from observation into intervention: routines, score pressure, ownership paths, and escalation from branch status into field correction.",
+        metric: "Branch to field action",
       },
       {
-        title: "Payback and accountant rooms",
-        eyebrow: "Truth surface",
+        title: "Accountant Room and Payback Room",
+        eyebrow: "Asset management",
         body:
-          "The system tracks recovered capital, cost leakage, and behavior quality so the financial story never outruns the operational reality.",
+          "The system tracks recovered capital, cost leakage, compliance quality, and reporting behavior so every unit can explain itself in numbers from setup through payback.",
         metric: "$650 monthly platform fee",
       },
     ],
     teamIntro:
-      "The platform team is measured on whether it keeps the truth legible when branches become noisy.",
+      "The AFFAREM team is measured on whether branch truth stays legible when the network becomes noisy: investors must see clearly, operators must report clearly, and field issues must surface early.",
     team: [
       {
         title: "Product and data operators",
         eyebrow: "System team",
         body:
-          "This layer owns dashboards, alert logic, scoring visibility, and the connective tissue that lets multiple rooms speak to one another.",
+          "This layer owns the dashboards, alert logic, branch status flow, and the connective tissue that allows Investor Room, Operator Room, Accountant Room, and LiveOps to speak to one another.",
         metric: "215 connected units",
       },
       {
         title: "LiveOps analysts",
         eyebrow: "Correction team",
         body:
-          "The analysts read branch drift early, set action paths, and keep weak units from consuming capital in silence.",
+          "The analysts read branch drift early, assign action paths, and stop weak units from consuming capital quietly in the field.",
         metric: "Real-time flagging",
       },
       {
         title: "Accountant-room reviewers",
         eyebrow: "Financial truth",
         body:
-          "They classify what is healthy, what is weak, and what is fictional by reconciling branch numbers against actual operational behavior.",
+          "They reconcile sales, waste, compliance, and reporting quality so the financial story never outruns operational behavior.",
         metric: "99.8% platform uptime",
       },
     ],
     investmentIntro:
-      "AFFAREM capital is product capital: interface quality, alert logic, reporting depth, and the ability to keep distance from becoming blindness.",
+      "AFFAREM capital is management capital: interface depth, alert logic, reporting quality, and the ability to stop distance from turning into blindness inside a franchise network.",
     investments: [
       {
-        title: "Core control-layer license",
+        title: "Core branch-management license",
         eyebrow: "Platform seat",
         body:
-          "The standard deployment gives a branch the base reporting and visibility needed to function as an asset rather than a loose unit.",
+          "The standard deployment gives a unit the reporting, stakeholder coordination, and live branch visibility needed to function as an asset rather than a loose restaurant.",
         metric: "Per-unit recurring revenue",
       },
       {
         title: "Advanced monitoring stack",
-        eyebrow: "Smart CCTV + scoring",
+        eyebrow: "Compliance + scoring",
         body:
-          "Higher layers expand visual compliance, branch grading, and issue escalation for operators who need deeper governance.",
+          "Higher layers expand CCTV compliance, Smart Discipline visibility, branch grading, and issue escalation for operators and investors who need deeper governance.",
         metric: "Remote control layer",
       },
       {
         title: "Enterprise corridor deployment",
         eyebrow: "Multi-site integration",
         body:
-          "Built for brands and territories that need portfolio comparison, corridor review, and shared visibility across multiple operators.",
+          "Built for brands and territories that need portfolio comparison, corridor review, and shared branch visibility across multiple operators and investors.",
         metric: "Cluster-wide reporting",
       },
     ],
     investorsIntro:
-      "AFFAREM appeals to disciplined investors because it reduces narrative fog. The value is not software for its own sake; it is readable capital behavior.",
+      "AFFAREM appeals to disciplined investors because it removes narrative fog. The value is not software alone; it is readable capital behavior, visible branch health, and measurable operating discipline.",
     investors: [
       {
         title: "Governance-first partners",
         eyebrow: "Visibility buyers",
         body:
-          "These investors fund the layer because it prevents weak operations from hiding behind charisma or delayed reporting.",
+          "These investors back the layer because it stops weak operations from hiding behind charisma, delayed reporting, or distance from the field.",
         metric: "Capital protection logic",
       },
       {
         title: "Operator-integrated accounts",
         eyebrow: "Behavior buyers",
         body:
-          "Operators accept the system when they want clarity about which habits are scaling and which are quietly harming the branch.",
+          "Operators use the system when they want clarity about which habits are scaling and which behaviors are quietly harming the branch.",
         metric: "Behavior over wealth",
       },
       {
         title: "Portfolio reviewers",
         eyebrow: "Expansion gatekeepers",
         body:
-          "Expansion decisions can be made quickly because the branch truth is already structured into readable scores and thresholds.",
+          "Expansion decisions move faster because the branch truth is already structured into readable thresholds, scores, and room-by-room accountability.",
         metric: "90-100 elite threshold",
       },
     ],
     reviewsIntro:
-      "AFFAREM review is the review of reviews: alerts, correction cycles, and account scoring designed to prevent confusion from scaling.",
+      "AFFAREM review is the review of reviews: alerts, correction cycles, branch scoring, and stakeholder behavior designed to prevent confusion from scaling.",
     reviews: [
       {
         title: "Daily alert review",
         eyebrow: "Platform review",
         body:
-          "The system flags the operational events that matter most: reporting gaps, cost spikes, slowdown, and hygiene drift.",
+          "The system flags the events that matter most: reporting gaps, cost spikes, sales slowdown, field non-compliance, and hygiene drift.",
         metric: "Live daily alert flow",
       },
       {
         title: "Monthly compliance review",
         eyebrow: "Behavior review",
         body:
-          "Scores and branch classes are re-read against actual participation, not only revenue, so wealth cannot disguise low discipline.",
+          "Smart Discipline Scores and branch classes are read against actual participation, not only revenue, so capital cannot disguise low discipline.",
         metric: "9-category score model",
       },
       {
         title: "Quarterly platform review",
         eyebrow: "Capability review",
         body:
-          "Each quarter the platform is reviewed as a capital-protection product: what improved transparency, what reduced drift, and what still needs refinement.",
+          "Each quarter the platform is reviewed as a branch and franchise management product: what improved transparency, what reduced drift, and what still needs refinement.",
         metric: "Quarterly rollout logic",
       },
     ],

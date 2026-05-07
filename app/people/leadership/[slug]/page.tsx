@@ -12,7 +12,7 @@ import { getRequestLocale } from "@/lib/server-locale";
 import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 
 const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
 
 export function generateStaticParams() {
   return leadershipProfiles.map((profile) => ({ slug: profile.slug }));

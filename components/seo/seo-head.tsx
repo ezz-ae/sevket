@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.franchise.systems'
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.us'
 
 interface SEOHeadProps {
   title: string

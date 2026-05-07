@@ -11,7 +11,7 @@ import { isTurkishLocale, withLocale } from "@/lib/site-locale";
 import { Calendar, MapPin, Users, ArrowRight } from "lucide-react";
 
 const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
 
 interface BrandEventsPageProps {
   params: Promise<{

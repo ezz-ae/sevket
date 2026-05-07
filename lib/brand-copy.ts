@@ -66,21 +66,21 @@ const turkishBrandCopy: Record<string, LocalizedBrandCopy> = {
     ],
   },
   affarem: {
-    tagline: "Akıllı Operasyon Teknolojisi",
+    tagline: "Asset Franchise & Field Management",
     description:
-      "Tüm franchise üniteleri için gerçek zamanlı görünürlük, CCTV takibi, uzaktan yönetim ve operasyonel analitik sağlayan kontrol katmanı teknoloji platformu.",
-    focusMarket: "Küresel",
+      "SevetTeam ekosisteminin iç şube ve franchise yönetim katmanı. Yatırımcıları, operatörleri, tasarımcıları, muhasebeyi, uyumu ve saha performansını tek ölçülebilir işletim ortamında bir araya getirir.",
+    focusMarket: "İç Şube ve Franchise Yönetimi",
     headquarters: "Londra, Birleşik Krallık",
     keyMetrics: [
       { label: "Bağlı Üniteler", value: "215" },
       { label: "Çalışma Süresi", value: "99.8%" },
       { label: "Aylık Gelir", value: "$65K+" },
-      { label: "Sistem Yetkinliği", value: "%100 uzaktan" },
+      { label: "Sistem Kapsamı", value: "Yatırımcıdan Sahaya" },
     ],
     operationalFocus: [
-      "Gerçek Zamanlı İzleme",
-      "Akıllı CCTV",
-      "Uzaktan Kontrol",
+      "Şube Yönetimi",
+      "Franchise İzleme",
+      "Saha Performans Kontrolü",
     ],
   },
   disciplina: {

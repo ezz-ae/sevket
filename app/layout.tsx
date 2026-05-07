@@ -8,7 +8,7 @@ import { LocaleNotice } from '@/components/site/locale-notice'
 import { getLocaleLang } from '@/lib/site-locale'
 import { getRequestLocale } from '@/lib/server-locale'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.franchise.systems'
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.us'
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],

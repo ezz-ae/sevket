@@ -1,4 +1,4 @@
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.franchise.systems'
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.us'
 
 export const organizationSchema = {
   '@context': 'https://schema.org',

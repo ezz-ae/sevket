@@ -71,7 +71,7 @@ export async function generateMetadata({
       ? `${brand.name} için şubeler, ekip yapısı, yatırım modelleri, yatırımcı katmanları ve arşiv yüzeyleri.`
       : portal.hero.body,
     alternates: {
-      canonical: `https://olmez.franchise.systems${localizedPath}`,
+      canonical: `https://olmez.us${localizedPath}`,
     },
   };
 }

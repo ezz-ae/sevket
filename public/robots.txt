@@ -19,7 +19,7 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://olmez.franchise.systems/sitemap.xml
+Sitemap: https://olmez.us/sitemap.xml
 
 # Crawl delay for other bots
 User-agent: *

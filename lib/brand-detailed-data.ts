@@ -342,17 +342,17 @@ export const turkishPideReport: BrandReport = {
 
 // AFFAREM Brand Data
 export const affaremReport: BrandReport = {
-  title: "2026 H1 AFFAREM — Technology Platform Performance Report",
+  title: "2026 H1 AFFAREM — Asset Franchise & Field Management Report",
   quarter: "H1 2026",
   period: "January - June 2026",
   publishedDate: "June 2026",
   executiveSummary: {
     mandate:
-      "AFFAREM has become the operational backbone of the Ölmez ecosystem—delivering 100% real-time visibility, smart CCTV monitoring, and remote control capabilities across all franchise units.",
+      "AFFAREM (Asset Franchise & Field Management) is the internal branch and franchise management layer of the SevetTeam ecosystem, delivering live branch visibility, smart CCTV compliance, stakeholder coordination, and field-performance control across all active units.",
     pillars: [
-      { name: "Real-Time Monitoring", subtitle: "100% Visibility", description: "Live operational data, smart CCTV feeds, and instant alerting across the entire network." },
-      { name: "Control Layer", subtitle: "Remote Operations", description: "Active management capabilities allowing intervention and optimization from any location." },
-      { name: "Investor Dashboard", subtitle: "Capital Transparency", description: "Real-time financial visibility with capital recovery tracking and performance analytics." },
+      { name: "Branch Visibility", subtitle: "Investor to Operator", description: "Live operational data, smart CCTV feeds, reporting quality, and instant alerting across the entire network." },
+      { name: "Field Management", subtitle: "LiveOps Control", description: "Active management capabilities that allow intervention, correction, and field coordination from any location." },
+      { name: "Asset Truth", subtitle: "Payback and Compliance", description: "Real-time financial visibility with capital recovery tracking, compliance scoring, and branch-performance analytics." },
     ],
   },
   unitPerformanceTiering: {
@@ -380,7 +380,7 @@ export const affaremReport: BrandReport = {
   },
   h2Roadmap: {
     title: "H2 2026 Platform Strategy",
-    focus: "Advanced AI integration for predictive operations and automated quality control.",
+    focus: "Advance branch-management intelligence, predictive field monitoring, and stronger multi-stakeholder visibility across the network.",
     mandate: "Visibility precedes intervention. Data precedes decision.",
     priorities: [
       { initiative: "AI Predictive Analytics", description: "Machine learning for demand forecasting and quality prediction", target: "Beta launch Q3" },
@@ -389,7 +389,7 @@ export const affaremReport: BrandReport = {
     ],
   },
   corePhilosophy: {
-    quote: "What cannot be measured cannot be managed. AFFAREM exists to ensure no decision is made on intuition when data is available.",
+    quote: "What cannot be measured cannot be managed. AFFAREM exists so every branch, franchise seat, and field issue can explain itself in numbers before instinct is allowed to speak.",
     author: "AFFAREM Engineering Charter",
   },
 };

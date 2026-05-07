@@ -12,7 +12,7 @@ import { isTurkishLocale } from "@/lib/site-locale";
 import { ArrowRight, BookOpen, Download } from "lucide-react";
 
 const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.franchise.systems";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://olmez.us";
 
 interface BrandMagazinePageProps {
   params: Promise<{

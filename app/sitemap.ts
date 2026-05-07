@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { achievementYears } from '@/lib/achievements-data'
 import { leadershipProfiles } from '@/lib/leadership-data'
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.franchise.systems'
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://olmez.us'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
