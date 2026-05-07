@@ -1,0 +1,966 @@
+- main [ref=e2]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - link "Ölmez copper wordmark" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "Ölmez copper wordmark" [ref=e8]
+      - generic [ref=e9]:
+        - link "Brands" [ref=e10] [cursor=pointer]:
+          - /url: /brands
+          - text: Brands
+        - link "Investors" [ref=e11] [cursor=pointer]:
+          - /url: /investors
+          - text: Investors
+        - link "Opportunities" [ref=e12] [cursor=pointer]:
+          - /url: /opportunities
+          - text: Opportunities
+        - link "Reports" [ref=e13] [cursor=pointer]:
+          - /url: /reports
+          - text: Reports
+        - link "Magazine" [ref=e14] [cursor=pointer]:
+          - /url: /magazine
+          - text: Magazine
+        - link "About" [ref=e15] [cursor=pointer]:
+          - /url: /about
+          - text: About
+        - link "People" [ref=e16] [cursor=pointer]:
+          - /url: /people
+          - text: People
+        - link "Contact" [ref=e18] [cursor=pointer]:
+          - /url: /contact
+          - text: Contact
+  - generic [ref=e19]:
+    - img "Ölmez annual team gathering and people event" [ref=e21]
+    - img "Ölmez copper wordmark" [ref=e25]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: People landing page
+        - heading "The human resourcing portal for Ölmez." [level=1] [ref=e30]
+        - paragraph [ref=e31]: "Hiring across Turkey, the United States, and the United Kingdom. This is a full people portal: culture, office context, and 48 live full-time roles across hospitality, operations, logistics, growth, finance, and AI-enabled office systems."
+        - generic [ref=e32]:
+          - link "View open positions" [ref=e33] [cursor=pointer]:
+            - /url: "#positions"
+            - text: View open positions
+            - img [ref=e34]
+          - link "Read our culture" [ref=e36] [cursor=pointer]:
+            - /url: "#culture"
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - paragraph [ref=e39]: Global team
+          - paragraph [ref=e40]: 2,700+
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Meals served
+          - paragraph [ref=e43]: 405 / min
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Open full-time roles
+          - paragraph [ref=e46]: "48"
+        - generic [ref=e47]:
+          - paragraph [ref=e48]: UK office roles
+          - paragraph [ref=e49]: "4"
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - text: Culture
+      - heading "The people system behind the room." [level=2] [ref=e54]
+      - paragraph [ref=e55]: Ölmez now employs more than 2,700 people globally. Culture is not a slogan here. It is the discipline that lets a brand serve 405 meals per minute without looking or feeling chaotic.
+      - generic [ref=e56]:
+        - article [ref=e57]:
+          - heading "Discipline beats charisma" [level=3] [ref=e58]
+          - paragraph [ref=e59]: We hire for reliability, standards, and operating calm. The team should make the brand stronger on an ordinary day, not just a dramatic one.
+        - article [ref=e60]:
+          - heading "Rooms must stay ready" [level=3] [ref=e61]
+          - paragraph [ref=e62]: "Whether the work happens in a kitchen, a fleet route, or an office, the expectation is the same: hand off the shift cleaner than you received it."
+        - article [ref=e63]:
+          - heading "Systems are human work" [level=3] [ref=e64]
+          - paragraph [ref=e65]: The brand looks premium because the people are structured. Human resourcing is not separate from operations here; it is one of the operating layers.
+    - generic [ref=e66]:
+      - article [ref=e67]:
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: Turkey
+            - paragraph [ref=e71]: Istanbul / Ankara / Izmir / Bursa
+          - img [ref=e72]
+        - paragraph [ref=e77]: Flagship, training, and branch roles across kitchen, service, finance, logistics, and people operations.
+      - article [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - paragraph [ref=e81]: United States
+            - paragraph [ref=e82]: New York / Newark / Houston / Miami
+          - img [ref=e83]
+        - paragraph [ref=e88]: Growth-market hospitality, fleet, delivery, finance, and brand roles supporting U.S. expansion.
+      - article [ref=e89]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: United Kingdom
+            - paragraph [ref=e93]: Edinburgh / London
+          - img [ref=e94]
+        - paragraph [ref=e99]: Four office-based roles focused on people, marketing, and AI-enabled growth and accounting systems.
+      - article [ref=e100]:
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - paragraph [ref=e103]: AI-enabled office hiring
+            - paragraph [ref=e104]: Marketing / accounting
+          - img [ref=e105]
+        - paragraph [ref=e117]: "Two of the UK office roles are purpose-built AI positions: one in marketing operations and one in accounting automation."
+  - generic [ref=e119]:
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - text: Open positions
+        - heading "48 active roles across three countries." [level=2] [ref=e122]
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - img [ref=e125]
+          - paragraph [ref=e130]: Open roles
+          - paragraph [ref=e131]: "48"
+        - generic [ref=e132]:
+          - img [ref=e133]
+          - paragraph [ref=e137]: UK office jobs
+          - paragraph [ref=e138]: "4"
+        - generic [ref=e139]:
+          - img [ref=e140]
+          - paragraph [ref=e152]: AI openings
+          - paragraph [ref=e153]: "2"
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - text: Search roles
+          - textbox "Search roles" [ref=e157]:
+            - /placeholder: Chef, cashier, AI, London, Istanbul...
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - paragraph [ref=e160]: Country
+            - generic [ref=e161]:
+              - button "All markets" [ref=e162]
+              - button "Turkey" [ref=e163]
+              - button "United States" [ref=e164]
+              - button "United Kingdom" [ref=e165]
+          - generic [ref=e166]:
+            - paragraph [ref=e167]: Department
+            - generic [ref=e168]:
+              - button "All teams" [ref=e169]
+              - button "Culinary" [ref=e170]
+              - button "Service" [ref=e171]
+              - button "Operations" [ref=e172]
+              - button "Logistics" [ref=e173]
+              - button "People" [ref=e174]
+              - button "Growth" [ref=e175]
+              - button "Finance" [ref=e176]
+      - generic [ref=e177]:
+        - generic [ref=e178]: 48 roles match your filters
+        - generic [ref=e179]: All roles are full-time
+    - generic [ref=e181]:
+      - heading "Executive Chef PEO-TR-001 Culinary Kitchen Leadership Istanbul, Turkey On-site" [level=3] [ref=e183]:
+        - button "Executive Chef PEO-TR-001 Culinary Kitchen Leadership Istanbul, Turkey On-site" [ref=e184]:
+          - generic [ref=e185]:
+            - generic [ref=e186]:
+              - paragraph [ref=e187]: Executive Chef
+              - generic [ref=e188]:
+                - generic [ref=e189]: PEO-TR-001
+                - generic [ref=e190]: Culinary
+                - generic [ref=e191]: Kitchen Leadership
+            - generic [ref=e192]:
+              - generic [ref=e193]:
+                - img [ref=e194]
+                - text: Istanbul, Turkey
+              - generic [ref=e197]: On-site
+          - img
+      - heading "Sous Chef PEO-TR-002 Culinary Kitchen Leadership Istanbul, Turkey On-site" [level=3] [ref=e199]:
+        - button "Sous Chef PEO-TR-002 Culinary Kitchen Leadership Istanbul, Turkey On-site" [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - paragraph [ref=e203]: Sous Chef
+              - generic [ref=e204]:
+                - generic [ref=e205]: PEO-TR-002
+                - generic [ref=e206]: Culinary
+                - generic [ref=e207]: Kitchen Leadership
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - img [ref=e210]
+                - text: Istanbul, Turkey
+              - generic [ref=e213]: On-site
+          - img
+      - heading "Line Chef PEO-TR-003 Culinary Kitchen Leadership Ankara, Turkey On-site" [level=3] [ref=e215]:
+        - button "Line Chef PEO-TR-003 Culinary Kitchen Leadership Ankara, Turkey On-site" [ref=e216]:
+          - generic [ref=e217]:
+            - generic [ref=e218]:
+              - paragraph [ref=e219]: Line Chef
+              - generic [ref=e220]:
+                - generic [ref=e221]: PEO-TR-003
+                - generic [ref=e222]: Culinary
+                - generic [ref=e223]: Kitchen Leadership
+            - generic [ref=e224]:
+              - generic [ref=e225]:
+                - img [ref=e226]
+                - text: Ankara, Turkey
+              - generic [ref=e229]: On-site
+          - img
+      - heading "Steward PEO-TR-004 Service Back-of-House Support Istanbul, Turkey On-site" [level=3] [ref=e231]:
+        - button "Steward PEO-TR-004 Service Back-of-House Support Istanbul, Turkey On-site" [ref=e232]:
+          - generic [ref=e233]:
+            - generic [ref=e234]:
+              - paragraph [ref=e235]: Steward
+              - generic [ref=e236]:
+                - generic [ref=e237]: PEO-TR-004
+                - generic [ref=e238]: Service
+                - generic [ref=e239]: Back-of-House Support
+            - generic [ref=e240]:
+              - generic [ref=e241]:
+                - img [ref=e242]
+                - text: Istanbul, Turkey
+              - generic [ref=e245]: On-site
+          - img
+      - heading "Steward PEO-TR-005 Service Back-of-House Support Izmir, Turkey On-site" [level=3] [ref=e247]:
+        - button "Steward PEO-TR-005 Service Back-of-House Support Izmir, Turkey On-site" [ref=e248]:
+          - generic [ref=e249]:
+            - generic [ref=e250]:
+              - paragraph [ref=e251]: Steward
+              - generic [ref=e252]:
+                - generic [ref=e253]: PEO-TR-005
+                - generic [ref=e254]: Service
+                - generic [ref=e255]: Back-of-House Support
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - img [ref=e258]
+                - text: Izmir, Turkey
+              - generic [ref=e261]: On-site
+          - img
+      - heading "Delivery Coordinator PEO-TR-006 Logistics Delivery & Dispatch Ankara, Turkey On-site" [level=3] [ref=e263]:
+        - button "Delivery Coordinator PEO-TR-006 Logistics Delivery & Dispatch Ankara, Turkey On-site" [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]:
+              - paragraph [ref=e267]: Delivery Coordinator
+              - generic [ref=e268]:
+                - generic [ref=e269]: PEO-TR-006
+                - generic [ref=e270]: Logistics
+                - generic [ref=e271]: Delivery & Dispatch
+            - generic [ref=e272]:
+              - generic [ref=e273]:
+                - img [ref=e274]
+                - text: Ankara, Turkey
+              - generic [ref=e277]: On-site
+          - img
+      - heading "Delivery Dispatcher PEO-TR-007 Logistics Delivery & Dispatch Istanbul, Turkey On-site" [level=3] [ref=e279]:
+        - button "Delivery Dispatcher PEO-TR-007 Logistics Delivery & Dispatch Istanbul, Turkey On-site" [ref=e280]:
+          - generic [ref=e281]:
+            - generic [ref=e282]:
+              - paragraph [ref=e283]: Delivery Dispatcher
+              - generic [ref=e284]:
+                - generic [ref=e285]: PEO-TR-007
+                - generic [ref=e286]: Logistics
+                - generic [ref=e287]: Delivery & Dispatch
+            - generic [ref=e288]:
+              - generic [ref=e289]:
+                - img [ref=e290]
+                - text: Istanbul, Turkey
+              - generic [ref=e293]: On-site
+          - img
+      - heading "Car Service Concierge PEO-TR-008 Operations Guest Mobility Istanbul, Turkey Field" [level=3] [ref=e295]:
+        - button "Car Service Concierge PEO-TR-008 Operations Guest Mobility Istanbul, Turkey Field" [ref=e296]:
+          - generic [ref=e297]:
+            - generic [ref=e298]:
+              - paragraph [ref=e299]: Car Service Concierge
+              - generic [ref=e300]:
+                - generic [ref=e301]: PEO-TR-008
+                - generic [ref=e302]: Operations
+                - generic [ref=e303]: Guest Mobility
+            - generic [ref=e304]:
+              - generic [ref=e305]:
+                - img [ref=e306]
+                - text: Istanbul, Turkey
+              - generic [ref=e309]: Field
+          - img
+      - heading "Cashier PEO-TR-009 Service Front Counter Istanbul, Turkey On-site" [level=3] [ref=e311]:
+        - button "Cashier PEO-TR-009 Service Front Counter Istanbul, Turkey On-site" [ref=e312]:
+          - generic [ref=e313]:
+            - generic [ref=e314]:
+              - paragraph [ref=e315]: Cashier
+              - generic [ref=e316]:
+                - generic [ref=e317]: PEO-TR-009
+                - generic [ref=e318]: Service
+                - generic [ref=e319]: Front Counter
+            - generic [ref=e320]:
+              - generic [ref=e321]:
+                - img [ref=e322]
+                - text: Istanbul, Turkey
+              - generic [ref=e325]: On-site
+          - img
+      - heading "Cashier PEO-TR-010 Service Front Counter Bursa, Turkey On-site" [level=3] [ref=e327]:
+        - button "Cashier PEO-TR-010 Service Front Counter Bursa, Turkey On-site" [ref=e328]:
+          - generic [ref=e329]:
+            - generic [ref=e330]:
+              - paragraph [ref=e331]: Cashier
+              - generic [ref=e332]:
+                - generic [ref=e333]: PEO-TR-010
+                - generic [ref=e334]: Service
+                - generic [ref=e335]: Front Counter
+            - generic [ref=e336]:
+              - generic [ref=e337]:
+                - img [ref=e338]
+                - text: Bursa, Turkey
+              - generic [ref=e341]: On-site
+          - img
+      - heading "Store Officer PEO-TR-011 Operations Inventory Control Istanbul, Turkey On-site" [level=3] [ref=e343]:
+        - button "Store Officer PEO-TR-011 Operations Inventory Control Istanbul, Turkey On-site" [ref=e344]:
+          - generic [ref=e345]:
+            - generic [ref=e346]:
+              - paragraph [ref=e347]: Store Officer
+              - generic [ref=e348]:
+                - generic [ref=e349]: PEO-TR-011
+                - generic [ref=e350]: Operations
+                - generic [ref=e351]: Inventory Control
+            - generic [ref=e352]:
+              - generic [ref=e353]:
+                - img [ref=e354]
+                - text: Istanbul, Turkey
+              - generic [ref=e357]: On-site
+          - img
+      - heading "Store Officer PEO-TR-012 Operations Inventory Control Izmir, Turkey On-site" [level=3] [ref=e359]:
+        - button "Store Officer PEO-TR-012 Operations Inventory Control Izmir, Turkey On-site" [ref=e360]:
+          - generic [ref=e361]:
+            - generic [ref=e362]:
+              - paragraph [ref=e363]: Store Officer
+              - generic [ref=e364]:
+                - generic [ref=e365]: PEO-TR-012
+                - generic [ref=e366]: Operations
+                - generic [ref=e367]: Inventory Control
+            - generic [ref=e368]:
+              - generic [ref=e369]:
+                - img [ref=e370]
+                - text: Izmir, Turkey
+              - generic [ref=e373]: On-site
+          - img
+      - heading "Restaurant Captain PEO-TR-013 Service Front-of-House Leadership Istanbul, Turkey On-site" [level=3] [ref=e375]:
+        - button "Restaurant Captain PEO-TR-013 Service Front-of-House Leadership Istanbul, Turkey On-site" [ref=e376]:
+          - generic [ref=e377]:
+            - generic [ref=e378]:
+              - paragraph [ref=e379]: Restaurant Captain
+              - generic [ref=e380]:
+                - generic [ref=e381]: PEO-TR-013
+                - generic [ref=e382]: Service
+                - generic [ref=e383]: Front-of-House Leadership
+            - generic [ref=e384]:
+              - generic [ref=e385]:
+                - img [ref=e386]
+                - text: Istanbul, Turkey
+              - generic [ref=e389]: On-site
+          - img
+      - heading "Restaurant Captain PEO-TR-014 Service Front-of-House Leadership Ankara, Turkey On-site" [level=3] [ref=e391]:
+        - button "Restaurant Captain PEO-TR-014 Service Front-of-House Leadership Ankara, Turkey On-site" [ref=e392]:
+          - generic [ref=e393]:
+            - generic [ref=e394]:
+              - paragraph [ref=e395]: Restaurant Captain
+              - generic [ref=e396]:
+                - generic [ref=e397]: PEO-TR-014
+                - generic [ref=e398]: Service
+                - generic [ref=e399]: Front-of-House Leadership
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - img [ref=e402]
+                - text: Ankara, Turkey
+              - generic [ref=e405]: On-site
+          - img
+      - heading "Procurement Officer PEO-TR-015 Operations Procurement & Vendor Control Istanbul, Turkey On-site" [level=3] [ref=e407]:
+        - button "Procurement Officer PEO-TR-015 Operations Procurement & Vendor Control Istanbul, Turkey On-site" [ref=e408]:
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - paragraph [ref=e411]: Procurement Officer
+              - generic [ref=e412]:
+                - generic [ref=e413]: PEO-TR-015
+                - generic [ref=e414]: Operations
+                - generic [ref=e415]: Procurement & Vendor Control
+            - generic [ref=e416]:
+              - generic [ref=e417]:
+                - img [ref=e418]
+                - text: Istanbul, Turkey
+              - generic [ref=e421]: On-site
+          - img
+      - heading "Recruitment Coordinator PEO-TR-016 People Talent & People Operations Istanbul, Turkey Hybrid" [level=3] [ref=e423]:
+        - button "Recruitment Coordinator PEO-TR-016 People Talent & People Operations Istanbul, Turkey Hybrid" [ref=e424]:
+          - generic [ref=e425]:
+            - generic [ref=e426]:
+              - paragraph [ref=e427]: Recruitment Coordinator
+              - generic [ref=e428]:
+                - generic [ref=e429]: PEO-TR-016
+                - generic [ref=e430]: People
+                - generic [ref=e431]: Talent & People Operations
+            - generic [ref=e432]:
+              - generic [ref=e433]:
+                - img [ref=e434]
+                - text: Istanbul, Turkey
+              - generic [ref=e437]: Hybrid
+          - img
+      - heading "Marketing Coordinator PEO-TR-017 Growth Brand & Market Growth Istanbul, Turkey Hybrid" [level=3] [ref=e439]:
+        - button "Marketing Coordinator PEO-TR-017 Growth Brand & Market Growth Istanbul, Turkey Hybrid" [ref=e440]:
+          - generic [ref=e441]:
+            - generic [ref=e442]:
+              - paragraph [ref=e443]: Marketing Coordinator
+              - generic [ref=e444]:
+                - generic [ref=e445]: PEO-TR-017
+                - generic [ref=e446]: Growth
+                - generic [ref=e447]: Brand & Market Growth
+            - generic [ref=e448]:
+              - generic [ref=e449]:
+                - img [ref=e450]
+                - text: Istanbul, Turkey
+              - generic [ref=e453]: Hybrid
+          - img
+      - heading "Social Media Content Producer PEO-TR-018 Growth Content & Social Istanbul, Turkey Hybrid" [level=3] [ref=e455]:
+        - button "Social Media Content Producer PEO-TR-018 Growth Content & Social Istanbul, Turkey Hybrid" [ref=e456]:
+          - generic [ref=e457]:
+            - generic [ref=e458]:
+              - paragraph [ref=e459]: Social Media Content Producer
+              - generic [ref=e460]:
+                - generic [ref=e461]: PEO-TR-018
+                - generic [ref=e462]: Growth
+                - generic [ref=e463]: Content & Social
+            - generic [ref=e464]:
+              - generic [ref=e465]:
+                - img [ref=e466]
+                - text: Istanbul, Turkey
+              - generic [ref=e469]: Hybrid
+          - img
+      - heading "Accountant PEO-TR-019 Finance Finance & Control Istanbul, Turkey Hybrid" [level=3] [ref=e471]:
+        - button "Accountant PEO-TR-019 Finance Finance & Control Istanbul, Turkey Hybrid" [ref=e472]:
+          - generic [ref=e473]:
+            - generic [ref=e474]:
+              - paragraph [ref=e475]: Accountant
+              - generic [ref=e476]:
+                - generic [ref=e477]: PEO-TR-019
+                - generic [ref=e478]: Finance
+                - generic [ref=e479]: Finance & Control
+            - generic [ref=e480]:
+              - generic [ref=e481]:
+                - img [ref=e482]
+                - text: Istanbul, Turkey
+              - generic [ref=e485]: Hybrid
+          - img
+      - heading "Accountant PEO-TR-020 Finance Finance & Control Ankara, Turkey Hybrid" [level=3] [ref=e487]:
+        - button "Accountant PEO-TR-020 Finance Finance & Control Ankara, Turkey Hybrid" [ref=e488]:
+          - generic [ref=e489]:
+            - generic [ref=e490]:
+              - paragraph [ref=e491]: Accountant
+              - generic [ref=e492]:
+                - generic [ref=e493]: PEO-TR-020
+                - generic [ref=e494]: Finance
+                - generic [ref=e495]: Finance & Control
+            - generic [ref=e496]:
+              - generic [ref=e497]:
+                - img [ref=e498]
+                - text: Ankara, Turkey
+              - generic [ref=e501]: Hybrid
+          - img
+      - heading "Driver PEO-TR-021 Logistics Fleet & Route Execution Istanbul, Turkey Field" [level=3] [ref=e503]:
+        - button "Driver PEO-TR-021 Logistics Fleet & Route Execution Istanbul, Turkey Field" [ref=e504]:
+          - generic [ref=e505]:
+            - generic [ref=e506]:
+              - paragraph [ref=e507]: Driver
+              - generic [ref=e508]:
+                - generic [ref=e509]: PEO-TR-021
+                - generic [ref=e510]: Logistics
+                - generic [ref=e511]: Fleet & Route Execution
+            - generic [ref=e512]:
+              - generic [ref=e513]:
+                - img [ref=e514]
+                - text: Istanbul, Turkey
+              - generic [ref=e517]: Field
+          - img
+      - heading "Driver PEO-TR-022 Logistics Fleet & Route Execution Bursa, Turkey Field" [level=3] [ref=e519]:
+        - button "Driver PEO-TR-022 Logistics Fleet & Route Execution Bursa, Turkey Field" [ref=e520]:
+          - generic [ref=e521]:
+            - generic [ref=e522]:
+              - paragraph [ref=e523]: Driver
+              - generic [ref=e524]:
+                - generic [ref=e525]: PEO-TR-022
+                - generic [ref=e526]: Logistics
+                - generic [ref=e527]: Fleet & Route Execution
+            - generic [ref=e528]:
+              - generic [ref=e529]:
+                - img [ref=e530]
+                - text: Bursa, Turkey
+              - generic [ref=e533]: Field
+          - img
+      - heading "Executive Chef PEO-US-023 Culinary Kitchen Leadership New York, United States On-site" [level=3] [ref=e535]:
+        - button "Executive Chef PEO-US-023 Culinary Kitchen Leadership New York, United States On-site" [ref=e536]:
+          - generic [ref=e537]:
+            - generic [ref=e538]:
+              - paragraph [ref=e539]: Executive Chef
+              - generic [ref=e540]:
+                - generic [ref=e541]: PEO-US-023
+                - generic [ref=e542]: Culinary
+                - generic [ref=e543]: Kitchen Leadership
+            - generic [ref=e544]:
+              - generic [ref=e545]:
+                - img [ref=e546]
+                - text: New York, United States
+              - generic [ref=e549]: On-site
+          - img
+      - heading "Prep Chef PEO-US-024 Culinary Kitchen Leadership Houston, United States On-site" [level=3] [ref=e551]:
+        - button "Prep Chef PEO-US-024 Culinary Kitchen Leadership Houston, United States On-site" [ref=e552]:
+          - generic [ref=e553]:
+            - generic [ref=e554]:
+              - paragraph [ref=e555]: Prep Chef
+              - generic [ref=e556]:
+                - generic [ref=e557]: PEO-US-024
+                - generic [ref=e558]: Culinary
+                - generic [ref=e559]: Kitchen Leadership
+            - generic [ref=e560]:
+              - generic [ref=e561]:
+                - img [ref=e562]
+                - text: Houston, United States
+              - generic [ref=e565]: On-site
+          - img
+      - heading "Steward PEO-US-025 Service Back-of-House Support Newark, United States On-site" [level=3] [ref=e567]:
+        - button "Steward PEO-US-025 Service Back-of-House Support Newark, United States On-site" [ref=e568]:
+          - generic [ref=e569]:
+            - generic [ref=e570]:
+              - paragraph [ref=e571]: Steward
+              - generic [ref=e572]:
+                - generic [ref=e573]: PEO-US-025
+                - generic [ref=e574]: Service
+                - generic [ref=e575]: Back-of-House Support
+            - generic [ref=e576]:
+              - generic [ref=e577]:
+                - img [ref=e578]
+                - text: Newark, United States
+              - generic [ref=e581]: On-site
+          - img
+      - heading "Steward PEO-US-026 Service Back-of-House Support Miami, United States On-site" [level=3] [ref=e583]:
+        - button "Steward PEO-US-026 Service Back-of-House Support Miami, United States On-site" [ref=e584]:
+          - generic [ref=e585]:
+            - generic [ref=e586]:
+              - paragraph [ref=e587]: Steward
+              - generic [ref=e588]:
+                - generic [ref=e589]: PEO-US-026
+                - generic [ref=e590]: Service
+                - generic [ref=e591]: Back-of-House Support
+            - generic [ref=e592]:
+              - generic [ref=e593]:
+                - img [ref=e594]
+                - text: Miami, United States
+              - generic [ref=e597]: On-site
+          - img
+      - heading "Delivery Supervisor PEO-US-027 Logistics Delivery & Dispatch New York, United States On-site" [level=3] [ref=e599]:
+        - button "Delivery Supervisor PEO-US-027 Logistics Delivery & Dispatch New York, United States On-site" [ref=e600]:
+          - generic [ref=e601]:
+            - generic [ref=e602]:
+              - paragraph [ref=e603]: Delivery Supervisor
+              - generic [ref=e604]:
+                - generic [ref=e605]: PEO-US-027
+                - generic [ref=e606]: Logistics
+                - generic [ref=e607]: Delivery & Dispatch
+            - generic [ref=e608]:
+              - generic [ref=e609]:
+                - img [ref=e610]
+                - text: New York, United States
+              - generic [ref=e613]: On-site
+          - img
+      - heading "Delivery Runner PEO-US-028 Logistics Delivery & Dispatch Houston, United States Field" [level=3] [ref=e615]:
+        - button "Delivery Runner PEO-US-028 Logistics Delivery & Dispatch Houston, United States Field" [ref=e616]:
+          - generic [ref=e617]:
+            - generic [ref=e618]:
+              - paragraph [ref=e619]: Delivery Runner
+              - generic [ref=e620]:
+                - generic [ref=e621]: PEO-US-028
+                - generic [ref=e622]: Logistics
+                - generic [ref=e623]: Delivery & Dispatch
+            - generic [ref=e624]:
+              - generic [ref=e625]:
+                - img [ref=e626]
+                - text: Houston, United States
+              - generic [ref=e629]: Field
+          - img
+      - heading "Car Service Lead PEO-US-029 Operations Guest Mobility New York, United States Field" [level=3] [ref=e631]:
+        - button "Car Service Lead PEO-US-029 Operations Guest Mobility New York, United States Field" [ref=e632]:
+          - generic [ref=e633]:
+            - generic [ref=e634]:
+              - paragraph [ref=e635]: Car Service Lead
+              - generic [ref=e636]:
+                - generic [ref=e637]: PEO-US-029
+                - generic [ref=e638]: Operations
+                - generic [ref=e639]: Guest Mobility
+            - generic [ref=e640]:
+              - generic [ref=e641]:
+                - img [ref=e642]
+                - text: New York, United States
+              - generic [ref=e645]: Field
+          - img
+      - heading "Car Service Dispatcher PEO-US-030 Operations Guest Mobility Miami, United States Hybrid" [level=3] [ref=e647]:
+        - button "Car Service Dispatcher PEO-US-030 Operations Guest Mobility Miami, United States Hybrid" [ref=e648]:
+          - generic [ref=e649]:
+            - generic [ref=e650]:
+              - paragraph [ref=e651]: Car Service Dispatcher
+              - generic [ref=e652]:
+                - generic [ref=e653]: PEO-US-030
+                - generic [ref=e654]: Operations
+                - generic [ref=e655]: Guest Mobility
+            - generic [ref=e656]:
+              - generic [ref=e657]:
+                - img [ref=e658]
+                - text: Miami, United States
+              - generic [ref=e661]: Hybrid
+          - img
+      - heading "Cashier PEO-US-031 Service Front Counter New York, United States On-site" [level=3] [ref=e663]:
+        - button "Cashier PEO-US-031 Service Front Counter New York, United States On-site" [ref=e664]:
+          - generic [ref=e665]:
+            - generic [ref=e666]:
+              - paragraph [ref=e667]: Cashier
+              - generic [ref=e668]:
+                - generic [ref=e669]: PEO-US-031
+                - generic [ref=e670]: Service
+                - generic [ref=e671]: Front Counter
+            - generic [ref=e672]:
+              - generic [ref=e673]:
+                - img [ref=e674]
+                - text: New York, United States
+              - generic [ref=e677]: On-site
+          - img
+      - heading "Cashier PEO-US-032 Service Front Counter Houston, United States On-site" [level=3] [ref=e679]:
+        - button "Cashier PEO-US-032 Service Front Counter Houston, United States On-site" [ref=e680]:
+          - generic [ref=e681]:
+            - generic [ref=e682]:
+              - paragraph [ref=e683]: Cashier
+              - generic [ref=e684]:
+                - generic [ref=e685]: PEO-US-032
+                - generic [ref=e686]: Service
+                - generic [ref=e687]: Front Counter
+            - generic [ref=e688]:
+              - generic [ref=e689]:
+                - img [ref=e690]
+                - text: Houston, United States
+              - generic [ref=e693]: On-site
+          - img
+      - heading "Store Officer PEO-US-033 Operations Inventory Control Newark, United States On-site" [level=3] [ref=e695]:
+        - button "Store Officer PEO-US-033 Operations Inventory Control Newark, United States On-site" [ref=e696]:
+          - generic [ref=e697]:
+            - generic [ref=e698]:
+              - paragraph [ref=e699]: Store Officer
+              - generic [ref=e700]:
+                - generic [ref=e701]: PEO-US-033
+                - generic [ref=e702]: Operations
+                - generic [ref=e703]: Inventory Control
+            - generic [ref=e704]:
+              - generic [ref=e705]:
+                - img [ref=e706]
+                - text: Newark, United States
+              - generic [ref=e709]: On-site
+          - img
+      - heading "Store Officer PEO-US-034 Operations Inventory Control Miami, United States On-site" [level=3] [ref=e711]:
+        - button "Store Officer PEO-US-034 Operations Inventory Control Miami, United States On-site" [ref=e712]:
+          - generic [ref=e713]:
+            - generic [ref=e714]:
+              - paragraph [ref=e715]: Store Officer
+              - generic [ref=e716]:
+                - generic [ref=e717]: PEO-US-034
+                - generic [ref=e718]: Operations
+                - generic [ref=e719]: Inventory Control
+            - generic [ref=e720]:
+              - generic [ref=e721]:
+                - img [ref=e722]
+                - text: Miami, United States
+              - generic [ref=e725]: On-site
+          - img
+      - heading "Restaurant Captain PEO-US-035 Service Front-of-House Leadership New York, United States On-site" [level=3] [ref=e727]:
+        - button "Restaurant Captain PEO-US-035 Service Front-of-House Leadership New York, United States On-site" [ref=e728]:
+          - generic [ref=e729]:
+            - generic [ref=e730]:
+              - paragraph [ref=e731]: Restaurant Captain
+              - generic [ref=e732]:
+                - generic [ref=e733]: PEO-US-035
+                - generic [ref=e734]: Service
+                - generic [ref=e735]: Front-of-House Leadership
+            - generic [ref=e736]:
+              - generic [ref=e737]:
+                - img [ref=e738]
+                - text: New York, United States
+              - generic [ref=e741]: On-site
+          - img
+      - heading "Restaurant Captain PEO-US-036 Service Front-of-House Leadership Miami, United States On-site" [level=3] [ref=e743]:
+        - button "Restaurant Captain PEO-US-036 Service Front-of-House Leadership Miami, United States On-site" [ref=e744]:
+          - generic [ref=e745]:
+            - generic [ref=e746]:
+              - paragraph [ref=e747]: Restaurant Captain
+              - generic [ref=e748]:
+                - generic [ref=e749]: PEO-US-036
+                - generic [ref=e750]: Service
+                - generic [ref=e751]: Front-of-House Leadership
+            - generic [ref=e752]:
+              - generic [ref=e753]:
+                - img [ref=e754]
+                - text: Miami, United States
+              - generic [ref=e757]: On-site
+          - img
+      - heading "Procurement Specialist PEO-US-037 Operations Procurement & Vendor Control New York, United States Hybrid" [level=3] [ref=e759]:
+        - button "Procurement Specialist PEO-US-037 Operations Procurement & Vendor Control New York, United States Hybrid" [ref=e760]:
+          - generic [ref=e761]:
+            - generic [ref=e762]:
+              - paragraph [ref=e763]: Procurement Specialist
+              - generic [ref=e764]:
+                - generic [ref=e765]: PEO-US-037
+                - generic [ref=e766]: Operations
+                - generic [ref=e767]: Procurement & Vendor Control
+            - generic [ref=e768]:
+              - generic [ref=e769]:
+                - img [ref=e770]
+                - text: New York, United States
+              - generic [ref=e773]: Hybrid
+          - img
+      - heading "Recruitment Specialist PEO-US-038 People Talent & People Operations New York, United States Hybrid" [level=3] [ref=e775]:
+        - button "Recruitment Specialist PEO-US-038 People Talent & People Operations New York, United States Hybrid" [ref=e776]:
+          - generic [ref=e777]:
+            - generic [ref=e778]:
+              - paragraph [ref=e779]: Recruitment Specialist
+              - generic [ref=e780]:
+                - generic [ref=e781]: PEO-US-038
+                - generic [ref=e782]: People
+                - generic [ref=e783]: Talent & People Operations
+            - generic [ref=e784]:
+              - generic [ref=e785]:
+                - img [ref=e786]
+                - text: New York, United States
+              - generic [ref=e789]: Hybrid
+          - img
+      - heading "Marketing Field Executive PEO-US-039 Growth Brand & Market Growth New York, United States Field" [level=3] [ref=e791]:
+        - button "Marketing Field Executive PEO-US-039 Growth Brand & Market Growth New York, United States Field" [ref=e792]:
+          - generic [ref=e793]:
+            - generic [ref=e794]:
+              - paragraph [ref=e795]: Marketing Field Executive
+              - generic [ref=e796]:
+                - generic [ref=e797]: PEO-US-039
+                - generic [ref=e798]: Growth
+                - generic [ref=e799]: Brand & Market Growth
+            - generic [ref=e800]:
+              - generic [ref=e801]:
+                - img [ref=e802]
+                - text: New York, United States
+              - generic [ref=e805]: Field
+          - img
+      - heading "Social Media Community Manager PEO-US-040 Growth Content & Social Miami, United States Hybrid" [level=3] [ref=e807]:
+        - button "Social Media Community Manager PEO-US-040 Growth Content & Social Miami, United States Hybrid" [ref=e808]:
+          - generic [ref=e809]:
+            - generic [ref=e810]:
+              - paragraph [ref=e811]: Social Media Community Manager
+              - generic [ref=e812]:
+                - generic [ref=e813]: PEO-US-040
+                - generic [ref=e814]: Growth
+                - generic [ref=e815]: Content & Social
+            - generic [ref=e816]:
+              - generic [ref=e817]:
+                - img [ref=e818]
+                - text: Miami, United States
+              - generic [ref=e821]: Hybrid
+          - img
+      - heading "Accountant PEO-US-041 Finance Finance & Control Houston, United States Hybrid" [level=3] [ref=e823]:
+        - button "Accountant PEO-US-041 Finance Finance & Control Houston, United States Hybrid" [ref=e824]:
+          - generic [ref=e825]:
+            - generic [ref=e826]:
+              - paragraph [ref=e827]: Accountant
+              - generic [ref=e828]:
+                - generic [ref=e829]: PEO-US-041
+                - generic [ref=e830]: Finance
+                - generic [ref=e831]: Finance & Control
+            - generic [ref=e832]:
+              - generic [ref=e833]:
+                - img [ref=e834]
+                - text: Houston, United States
+              - generic [ref=e837]: Hybrid
+          - img
+      - heading "Accountant PEO-US-042 Finance Finance & Control Newark, United States Hybrid" [level=3] [ref=e839]:
+        - button "Accountant PEO-US-042 Finance Finance & Control Newark, United States Hybrid" [ref=e840]:
+          - generic [ref=e841]:
+            - generic [ref=e842]:
+              - paragraph [ref=e843]: Accountant
+              - generic [ref=e844]:
+                - generic [ref=e845]: PEO-US-042
+                - generic [ref=e846]: Finance
+                - generic [ref=e847]: Finance & Control
+            - generic [ref=e848]:
+              - generic [ref=e849]:
+                - img [ref=e850]
+                - text: Newark, United States
+              - generic [ref=e853]: Hybrid
+          - img
+      - heading "Senior Driver PEO-US-043 Logistics Fleet & Route Execution New York, United States Field" [level=3] [ref=e855]:
+        - button "Senior Driver PEO-US-043 Logistics Fleet & Route Execution New York, United States Field" [ref=e856]:
+          - generic [ref=e857]:
+            - generic [ref=e858]:
+              - paragraph [ref=e859]: Senior Driver
+              - generic [ref=e860]:
+                - generic [ref=e861]: PEO-US-043
+                - generic [ref=e862]: Logistics
+                - generic [ref=e863]: Fleet & Route Execution
+            - generic [ref=e864]:
+              - generic [ref=e865]:
+                - img [ref=e866]
+                - text: New York, United States
+              - generic [ref=e869]: Field
+          - img
+      - heading "Route Driver PEO-US-044 Logistics Fleet & Route Execution Miami, United States Field" [level=3] [ref=e871]:
+        - button "Route Driver PEO-US-044 Logistics Fleet & Route Execution Miami, United States Field" [ref=e872]:
+          - generic [ref=e873]:
+            - generic [ref=e874]:
+              - paragraph [ref=e875]: Route Driver
+              - generic [ref=e876]:
+                - generic [ref=e877]: PEO-US-044
+                - generic [ref=e878]: Logistics
+                - generic [ref=e879]: Fleet & Route Execution
+            - generic [ref=e880]:
+              - generic [ref=e881]:
+                - img [ref=e882]
+                - text: Miami, United States
+              - generic [ref=e885]: Field
+          - img
+      - heading "People & Recruitment Partner PEO-UK-045 People Talent & People Operations London, United Kingdom Hybrid" [level=3] [ref=e887]:
+        - button "People & Recruitment Partner PEO-UK-045 People Talent & People Operations London, United Kingdom Hybrid" [ref=e888]:
+          - generic [ref=e889]:
+            - generic [ref=e890]:
+              - paragraph [ref=e891]: People & Recruitment Partner
+              - generic [ref=e892]:
+                - generic [ref=e893]: PEO-UK-045
+                - generic [ref=e894]: People
+                - generic [ref=e895]: Talent & People Operations
+            - generic [ref=e896]:
+              - generic [ref=e897]:
+                - img [ref=e898]
+                - text: London, United Kingdom
+              - generic [ref=e901]: Hybrid
+          - img
+      - heading "Brand Marketing Manager PEO-UK-046 Growth Brand & Market Growth Edinburgh, United Kingdom Hybrid" [level=3] [ref=e903]:
+        - button "Brand Marketing Manager PEO-UK-046 Growth Brand & Market Growth Edinburgh, United Kingdom Hybrid" [ref=e904]:
+          - generic [ref=e905]:
+            - generic [ref=e906]:
+              - paragraph [ref=e907]: Brand Marketing Manager
+              - generic [ref=e908]:
+                - generic [ref=e909]: PEO-UK-046
+                - generic [ref=e910]: Growth
+                - generic [ref=e911]: Brand & Market Growth
+            - generic [ref=e912]:
+              - generic [ref=e913]:
+                - img [ref=e914]
+                - text: Edinburgh, United Kingdom
+              - generic [ref=e917]: Hybrid
+          - img
+      - heading "AI Marketing Operations Lead PEO-UK-047 Growth AI Growth Systems London, United Kingdom Hybrid AI role" [level=3] [ref=e919]:
+        - button "AI Marketing Operations Lead PEO-UK-047 Growth AI Growth Systems London, United Kingdom Hybrid AI role" [ref=e920]:
+          - generic [ref=e921]:
+            - generic [ref=e922]:
+              - paragraph [ref=e923]: AI Marketing Operations Lead
+              - generic [ref=e924]:
+                - generic [ref=e925]: PEO-UK-047
+                - generic [ref=e926]: Growth
+                - generic [ref=e927]: AI Growth Systems
+            - generic [ref=e928]:
+              - generic [ref=e929]:
+                - img [ref=e930]
+                - text: London, United Kingdom
+              - generic [ref=e933]: Hybrid
+              - generic [ref=e934]:
+                - img [ref=e935]
+                - text: AI role
+          - img
+      - heading "AI Accounting Automation Manager PEO-UK-048 Finance AI Finance Systems Edinburgh, United Kingdom Hybrid AI role" [level=3] [ref=e948]:
+        - button "AI Accounting Automation Manager PEO-UK-048 Finance AI Finance Systems Edinburgh, United Kingdom Hybrid AI role" [ref=e949]:
+          - generic [ref=e950]:
+            - generic [ref=e951]:
+              - paragraph [ref=e952]: AI Accounting Automation Manager
+              - generic [ref=e953]:
+                - generic [ref=e954]: PEO-UK-048
+                - generic [ref=e955]: Finance
+                - generic [ref=e956]: AI Finance Systems
+            - generic [ref=e957]:
+              - generic [ref=e958]:
+                - img [ref=e959]
+                - text: Edinburgh, United Kingdom
+              - generic [ref=e962]: Hybrid
+              - generic [ref=e963]:
+                - img [ref=e964]
+                - text: AI role
+          - img
+  - generic [ref=e976]:
+    - generic [ref=e977]:
+      - img "Ölmez fleet positioned outside a flagship building" [ref=e979]
+      - generic [ref=e983]:
+        - img "Ölmez white wordmark" [ref=e985]
+        - generic [ref=e986]: Final editorial note
+        - paragraph [ref=e988]:
+          - text: Business. Built next.
+          - generic [ref=e989]: Scale without noise.
+        - paragraph [ref=e990]: Ölmez is an editorial flagship for disciplined restaurant infrastructure. The room, the fleet, the publication, and the operating system all tell the same story.
+    - generic [ref=e991]:
+      - generic [ref=e992]:
+        - generic [ref=e993]:
+          - img "Ölmez copper wordmark" [ref=e995]
+          - paragraph [ref=e996]: Edinburgh desk. Istanbul rhythm. U.S. movement. A premium system built around repeatability, design restraint, and operational control.
+          - generic [ref=e997]:
+            - paragraph [ref=e998]: Edinburgh HQ
+            - paragraph [ref=e999]: London bridge / Istanbul operations
+            - paragraph [ref=e1000]: Field Notes dated 2026
+          - generic [ref=e1001]:
+            - link "Issue 12" [ref=e1002] [cursor=pointer]:
+              - /url: /brands/olmez/magazine
+              - text: Issue 12
+              - img [ref=e1003]
+            - link "Latest Story" [ref=e1006] [cursor=pointer]:
+              - /url: /magazine/the-founders-blueprint
+              - text: Latest Story
+              - img [ref=e1007]
+            - link "People" [ref=e1010] [cursor=pointer]:
+              - /url: /people
+              - text: People
+              - img [ref=e1011]
+            - link "Brand Deck" [ref=e1014] [cursor=pointer]:
+              - /url: /about
+              - text: Brand Deck
+              - img [ref=e1015]
+        - generic [ref=e1018]:
+          - heading "Story" [level=3] [ref=e1019]
+          - list [ref=e1020]:
+            - listitem [ref=e1021]:
+              - link "About Ölmez" [ref=e1022] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e1023]:
+              - link "Founder Profile" [ref=e1024] [cursor=pointer]:
+                - /url: /founder
+            - listitem [ref=e1025]:
+              - link "Field Notes" [ref=e1026] [cursor=pointer]:
+                - /url: /magazine
+            - listitem [ref=e1027]:
+              - link "People Portal" [ref=e1028] [cursor=pointer]:
+                - /url: /people
+            - listitem [ref=e1029]:
+              - link "Contact Desk" [ref=e1030] [cursor=pointer]:
+                - /url: /contact
+        - generic [ref=e1031]:
+          - heading "Platform" [level=3] [ref=e1032]
+          - list [ref=e1033]:
+            - listitem [ref=e1034]:
+              - link "Doctrine" [ref=e1035] [cursor=pointer]:
+                - /url: /#doctrine
+            - listitem [ref=e1036]:
+              - link "AFFAREM Rooms" [ref=e1037] [cursor=pointer]:
+                - /url: /#affarem
+            - listitem [ref=e1038]:
+              - link "Scale Model" [ref=e1039] [cursor=pointer]:
+                - /url: /#ladder
+            - listitem [ref=e1040]:
+              - link "Ecosystem" [ref=e1041] [cursor=pointer]:
+                - /url: /#marketplace
+        - generic [ref=e1042]:
+          - heading "Capital" [level=3] [ref=e1043]
+          - list [ref=e1044]:
+            - listitem [ref=e1045]:
+              - link "Reports & Filings" [ref=e1046] [cursor=pointer]:
+                - /url: /reports
+            - listitem [ref=e1047]:
+              - link "Investor Relations" [ref=e1048] [cursor=pointer]:
+                - /url: /investors
+            - listitem [ref=e1049]:
+              - link "Opportunities" [ref=e1050] [cursor=pointer]:
+                - /url: /opportunities
+            - listitem [ref=e1051]:
+              - link "Auditing Console" [ref=e1052] [cursor=pointer]:
+                - /url: /auditing
+      - generic [ref=e1053]:
+        - paragraph [ref=e1054]: © 2026 Ölmez Franchise Systems Ltd. All rights reserved.
+        - generic [ref=e1055]:
+          - generic [ref=e1056]: Editorial flagship
+          - generic [ref=e1057]: Discipline qualified
+          - generic [ref=e1058]: Network operational

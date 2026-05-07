@@ -54,7 +54,7 @@ export default async function OpportunitiesPage() {
   const isTurkish = isTurkishLocale(locale);
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
+    <main className="relative min-h-screen bg-white text-gray-900">
       <Navigation forceScrolled />
 
       <PageHeader
@@ -77,10 +77,10 @@ export default async function OpportunitiesPage() {
       />
 
       {/* Filter Tabs */}
-      <section className="relative border-t border-foreground/10 py-12 sticky top-[80px] z-40 bg-background/95 backdrop-blur-sm">
+      <section className="relative border-t border-gray-300 py-12 sticky top-[80px] z-40 bg-white/95 backdrop-blur-sm">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex overflow-x-auto gap-4 pb-2">
-            <button className="flex-shrink-0 px-6 h-10 border border-foreground bg-foreground text-background font-mono text-[10px] uppercase tracking-[0.1em]">
+            <button className="flex-shrink-0 px-6 h-10 border border-gray-900 bg-gray-900 text-white font-mono text-[10px] uppercase tracking-[0.1em]">
               {isTurkish ? "Tüm fırsatlar" : "All Opportunities"} ({opportunities.length})
             </button>
             {brands.map((brand) => {
@@ -91,7 +91,7 @@ export default async function OpportunitiesPage() {
               return (
                 <button
                   key={brand.slug}
-                  className="flex-shrink-0 px-6 h-10 border border-foreground/25 text-foreground font-mono text-[10px] uppercase tracking-[0.1em] hover:bg-foreground/5 transition-colors"
+                  className="flex-shrink-0 px-6 h-10 border border-gray-300 text-gray-700 font-mono text-[10px] uppercase tracking-[0.1em] hover:bg-gray-50 transition-colors"
                 >
                   {brand.name} ({count})
                 </button>
@@ -102,7 +102,7 @@ export default async function OpportunitiesPage() {
       </section>
 
       {/* Opportunities Grid */}
-      <section className="relative border-t border-foreground/10 py-24 lg:py-32">
+      <section className="relative border-t border-gray-300 py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="space-y-8">
             {opportunities.map((opp) => {
@@ -113,7 +113,7 @@ export default async function OpportunitiesPage() {
               return (
                 <div
                   key={opp.id}
-                  className="border border-foreground/15 hover:border-foreground/30 transition-colors overflow-hidden"
+                  className="border border-gray-300 hover:border-gray-400 transition-colors overflow-hidden shadow-sm hover:shadow-md"
                 >
                   <div
                     className="h-1"
@@ -145,51 +145,51 @@ export default async function OpportunitiesPage() {
                                 }[opp.status] || statusLabels[opp.status])
                               : statusLabels[opp.status]}
                           </span>
-                          <span className="px-3 h-7 inline-flex items-center font-mono text-[10px] uppercase tracking-[0.18em] border border-foreground/20">
+                          <span className="px-3 h-7 inline-flex items-center font-mono text-[10px] uppercase tracking-[0.18em] border border-gray-300 text-gray-700">
                             {opp.type}
                           </span>
                         </div>
 
-                        <h3 className="font-display text-3xl lg:text-4xl tracking-[-0.015em] mb-4">
+                        <h3 className="font-display text-3xl lg:text-4xl tracking-[-0.015em] mb-4 text-gray-900">
                           {opp.title}
                         </h3>
 
-                        <p className="text-base text-foreground/75 leading-[1.7] mb-6">
+                        <p className="text-base text-gray-600 leading-[1.7] mb-6">
                           {opp.description}
                         </p>
 
                         <div className="grid sm:grid-cols-2 gap-6 mb-6">
                           <div className="flex items-start gap-3">
-                            <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+                            <MapPin className="w-5 h-5 text-gray-500 flex-shrink-0 mt-0.5" />
                             <div>
-                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
+                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-1">
                                 {isTurkish ? "Pazarlar" : "Markets"}
                               </p>
-                              <p className="text-sm">{opp.states.join(", ")}</p>
+                              <p className="text-sm text-gray-700">{opp.states.join(", ")}</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <Clock className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+                            <Clock className="w-5 h-5 text-gray-500 flex-shrink-0 mt-0.5" />
                             <div>
-                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">
+                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-1">
                                 {isTurkish ? "Zaman planı" : "Timeline"}
                               </p>
-                              <p className="text-sm">{opp.timeline}</p>
+                              <p className="text-sm text-gray-700">{opp.timeline}</p>
                             </div>
                           </div>
                         </div>
 
                         <div>
-                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-3">
+                          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-3">
                             {isTurkish ? "Yatırım başlıkları" : "Investment Highlights"}
                           </p>
                           <div className="grid sm:grid-cols-2 gap-2">
                             {opp.highlights.map((highlight) => (
                               <span
                                 key={highlight}
-                                className="text-sm text-foreground/70 flex items-center gap-2"
+                                className="text-sm text-gray-600 flex items-center gap-2"
                               >
-                                <span className="text-muted-foreground">→</span>
+                                <span className="text-gray-400">→</span>
                                 {highlight}
                               </span>
                             ))}
@@ -198,45 +198,43 @@ export default async function OpportunitiesPage() {
                       </div>
 
                       <div className="lg:col-span-1">
-                        <div
-                          className="border border-foreground/15 p-6 bg-foreground/[0.02]"
-                        >
+                        <div className="border border-gray-300 p-6 bg-gray-50">
                           <div className="space-y-6">
                             <div>
-                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-2">
                                 {isTurkish ? "Gereken sermaye" : "Capital Required"}
                               </p>
-                              <p className="font-display text-3xl tracking-[-0.015em]">
+                              <p className="font-display text-3xl tracking-[-0.015em] text-gray-900">
                                 {opp.capitalRequired}
                               </p>
                             </div>
                             <div>
-                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-2">
                                 {isTurkish ? "Hedef getiri" : "Target Return"}
                               </p>
-                              <p className="font-display text-xl tracking-[-0.005em]">
+                              <p className="font-display text-xl tracking-[-0.005em] text-gray-900">
                                 {opp.targetReturn}
                               </p>
                             </div>
                             <div>
-                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-2">
+                              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600 mb-2">
                                 {isTurkish ? "Minimum yatırım" : "Minimum Investment"}
                               </p>
-                              <p className="font-display text-lg tracking-[-0.005em]">
+                              <p className="font-display text-lg tracking-[-0.005em] text-gray-900">
                                 {opp.minimumInvestment}
                               </p>
                             </div>
 
-                            <div className="pt-4 border-t border-foreground/10">
+                            <div className="pt-4 border-t border-gray-300">
                               <div className="flex items-center justify-between mb-2">
-                                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                                   {isTurkish ? "Tahsis" : "Allocation"}
                                 </p>
-                                <p className="text-sm font-mono">
+                                <p className="text-sm font-mono text-gray-700">
                                   {opp.spotsAllocated}/{opp.spotsAvailable}
                                 </p>
                               </div>
-                              <div className="h-2 bg-foreground/10 relative overflow-hidden">
+                              <div className="h-2 bg-gray-200 relative overflow-hidden">
                                 <div
                                   className="absolute top-0 left-0 h-full transition-all"
                                   style={{
@@ -246,7 +244,7 @@ export default async function OpportunitiesPage() {
                                   }}
                                 />
                               </div>
-                              <p className="text-xs text-muted-foreground mt-2">
+                              <p className="text-xs text-gray-600 mt-2">
                                 {opp.spotsAvailable - opp.spotsAllocated} {isTurkish ? "slot kaldı" : "spots remaining"}
                               </p>
                             </div>
@@ -255,7 +253,7 @@ export default async function OpportunitiesPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 pt-8 border-t border-foreground/10">
+                    <div className="flex flex-wrap gap-4 pt-8 border-t border-gray-300">
                       <Link
                         href={withLocale("/contact", locale)}
                         className="inline-flex items-center justify-center gap-2 text-white px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:opacity-90 transition-opacity"
@@ -268,7 +266,7 @@ export default async function OpportunitiesPage() {
                       </Link>
                       <Link
                         href={withLocale(`/brands/${opp.brand}`, locale)}
-                        className="inline-flex items-center justify-center gap-2 border border-foreground/25 text-foreground px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-foreground/5 transition-colors"
+                        className="inline-flex items-center justify-center gap-2 border border-gray-300 text-gray-700 px-6 h-12 font-mono text-[11px] uppercase tracking-[0.22em] hover:bg-gray-50 transition-colors"
                       >
                         {isTurkish ? "Gör" : "View"} {brand?.name || (isTurkish ? "Marka" : "Brand")}
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -283,15 +281,15 @@ export default async function OpportunitiesPage() {
       </section>
 
       {/* Process CTA */}
-      <section className="relative border-t border-foreground/10 py-32 lg:py-48 bg-foreground/[0.015]">
+      <section className="relative border-t border-gray-300 py-32 lg:py-48 bg-gray-50">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-gray-600">
             {isTurkish ? "Sermaye konuşlandırma yolculuğu" : "Capital Deployment Journey"}
           </span>
-          <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8">
+          <h2 className="mt-10 lg:mt-14 font-display text-5xl md:text-6xl lg:text-7xl tracking-[-0.015em] leading-[1.0] max-w-[20ch] mx-auto mb-8 text-gray-900">
             {isTurkish ? "Yapılı. Şeffaf. Disiplinli." : "Structured. Transparent. Disciplined."}
           </h2>
-          <p className="text-xl text-foreground/70 max-w-[60ch] mx-auto mb-12">
+          <p className="text-xl text-gray-600 max-w-[60ch] mx-auto mb-12">
             {isTurkish
               ? "Her fırsat altı adımlı konuşlandırma sürecimizi izler. İlk talepten operasyon açılışına kadar sermaye disiplinle konuşlandırılır."
               : "Every opportunity follows our six-step deployment process. From initial inquiry to operations launch, capital is deployed with discipline."}
@@ -300,14 +298,14 @@ export default async function OpportunitiesPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={withLocale("/investors", locale)}
-              className="inline-flex items-center justify-center gap-3 bg-foreground text-background font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/90 transition-colors"
+              className="inline-flex items-center justify-center gap-3 bg-gray-900 text-white font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-gray-800 transition-colors"
             >
               {isTurkish ? "Yatırımcı portalını gör" : "View Investor Portal"}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href={withLocale("/contact", locale)}
-              className="inline-flex items-center justify-center gap-3 border border-foreground/25 text-foreground font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-foreground/5 transition-colors"
+              className="inline-flex items-center justify-center gap-3 border border-gray-300 text-gray-700 font-mono text-[11px] uppercase tracking-[0.22em] px-8 h-13 hover:bg-white transition-colors"
             >
               {isTurkish ? "Yatırım görüşmesi planla" : "Schedule Investment Call"}
               <ArrowRight className="w-4 h-4" />

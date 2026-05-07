@@ -97,21 +97,21 @@ export default async function Home() {
   ];
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-white text-gray-900">
       <Navigation />
       <HeroSection locale={locale} />
 
       <section
         id="doctrine"
-        className="border-t border-white/10 bg-[#050505] py-24 lg:py-32"
+        className="border-t border-gray-300 bg-white py-24 lg:py-32"
       >
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1.05fr_1.25fr] lg:gap-16">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-600">
                 {isTurkish ? "Temel" : "Foundation"}
               </span>
-              <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
                 {isTurkish
                   ? "Marka, sistemin ağırlığını taşımalıdır."
                   : "The brand has to carry the weight of the system."}
@@ -137,12 +137,12 @@ export default async function Home() {
               ).map((point) => (
                 <article
                   key={point.title}
-                  className="border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm"
+                  className="border border-gray-300 bg-gray-50 p-7"
                 >
-                  <p className="font-display text-2xl tracking-[-0.03em] text-[#e7bc8b]">
+                  <p className="font-display text-2xl tracking-[-0.03em] text-[#b8865a]">
                     {point.title}
                   </p>
-                  <p className="mt-4 text-sm leading-[1.8] text-white/68">
+                  <p className="mt-4 text-sm leading-[1.8] text-gray-700">
                     {point.body}
                   </p>
                 </article>
@@ -154,11 +154,10 @@ export default async function Home() {
 
       <section
         id="affarem"
-        className="border-t border-white/10 bg-[linear-gradient(180deg,#050505_0%,#0b0b0b_100%)] py-24 lg:py-32"
+        className="border-t border-gray-300 bg-gradient-to-br from-white to-gray-50 py-24 lg:py-32"
       >
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.15fr_0.95fr] lg:gap-16 lg:px-12">
-          <div className="relative overflow-hidden border border-white/10 bg-black">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(184,134,90,0.22),transparent_32%)]" />
+          <div className="relative overflow-hidden border border-gray-300 bg-white shadow-sm">
             <Image
               src={olmezBrandAssets.images.office.src}
               alt={olmezBrandAssets.images.office.alt}
@@ -169,7 +168,7 @@ export default async function Home() {
           </div>
 
           <div className="flex flex-col justify-center">
-            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-600">
               {isTurkish ? "Ofis ve kimlik" : "Office & identity"}
             </span>
             <div className="mt-8 w-36">
@@ -181,12 +180,12 @@ export default async function Home() {
                 className="h-auto w-full"
               />
             </div>
-            <h2 className="mt-8 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+            <h2 className="mt-8 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl text-gray-900">
               {isTurkish
                 ? "Mekan, biri konuşmadan önce işi açıklamalı."
                 : "The room should explain the business before anyone speaks."}
             </h2>
-            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/68">
+            <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-gray-700">
               {isTurkish
                 ? "Bu, AFFAREM'in ve Edinburgh amiral gemisinin görsel dilidir: füme cam, bakır sıcaklığı, disiplinli çizgiler ve ilk bakışta ölçülü görünen bir sistem. Ofis dekor değildir. Markanın kurumsal düşündüğünün kanıtıdır."
                 : "This is the visual language of AFFAREM and the Edinburgh flagship: smoked glass, copper warmth, disciplined lines, and a system that looks measured from the first glance. The office is not décor. It is the proof that the brand thinks institutionally."}
@@ -230,11 +229,11 @@ export default async function Home() {
                   body: "The office connects directly into the founder profile, field notes, and brand deck.",
                 },
               ]).map((item) => (
-                <div key={item.label} className="border border-white/10 p-5">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
+                <div key={item.label} className="border border-gray-300 p-5 bg-white">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#b8865a]">
                     {item.label}
                   </p>
-                  <p className="mt-3 text-sm leading-[1.75] text-white/64">
+                  <p className="mt-3 text-sm leading-[1.75] text-gray-700">
                     {item.body}
                   </p>
                 </div>
@@ -244,14 +243,14 @@ export default async function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link
                 href={withLocale("/about", locale)}
-                className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+                className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#d7ad7a]"
               >
                 {isTurkish ? "Markayı keşfet" : "Explore the brand"}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href={withLocale("/founder", locale)}
-                className="inline-flex h-12 items-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
+                className="inline-flex h-12 items-center gap-3 border border-gray-300 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
               >
                 {isTurkish ? "Kurucuyu oku" : "Read the founder"}
               </Link>
@@ -260,14 +259,14 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-[#070707] py-24 lg:py-32">
+      <section className="border-t border-gray-300 bg-gray-50 py-24 lg:py-32">
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-600">
                 {isTurkish ? "Editoryal kanıt" : "Editorial proof"}
               </span>
-              <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              <h2 className="mt-6 max-w-[14ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
                 {isTurkish
                   ? "Yayın, sistemin bir parçasıdır."
                   : "The publication is part of the system."}
@@ -275,7 +274,7 @@ export default async function Home() {
             </div>
             <Link
               href={withLocale("/magazine", locale)}
-              className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#e7bc8b] transition-colors hover:text-[#f3cf9b]"
+              className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#b8865a] transition-colors hover:text-[#d7ad7a]"
             >
               {isTurkish ? "Arşivi incele" : "Browse the archive"}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -291,24 +290,24 @@ export default async function Home() {
                 }`}
               >
                 <Link href={item.href} className="block">
-                  <div className="relative overflow-hidden border border-white/10 bg-black">
+                  <div className="relative overflow-hidden border border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow">
                     <Image
                       src={item.image}
                       alt={item.title}
                       width={900}
                       height={1200}
-                      className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="mt-5 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.18em] text-white/42">
+                  <div className="mt-5 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.18em] text-gray-600">
                     <span>{item.issueLabel}</span>
-                    <span className="text-white/22">/</span>
+                    <span className="text-gray-300">/</span>
                     <span>{item.date}</span>
                   </div>
-                  <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
+                  <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-gray-900">
                     {item.title}
                   </h3>
-                  <p className="mt-3 max-w-[36ch] text-sm leading-[1.8] text-white/62">
+                  <p className="mt-3 max-w-[36ch] text-sm leading-[1.8] text-gray-600">
                     {item.description}
                   </p>
                 </Link>
@@ -320,9 +319,9 @@ export default async function Home() {
 
       <section
         id="ladder"
-        className="relative overflow-hidden border-t border-white/10 py-24 lg:py-32"
+        className="relative overflow-hidden border-t border-gray-300 py-24 lg:py-32 bg-white"
       >
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 opacity-10">
           <Image
             src={olmezBrandAssets.images.fleet.src}
             alt={olmezBrandAssets.images.fleet.alt}
@@ -330,21 +329,19 @@ export default async function Home() {
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/45" />
 
         <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/50">
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-600">
                 {isTurkish ? "Filo ve ölçek" : "Fleet & scale"}
               </span>
-              <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
                 {isTurkish
                   ? "Ölçek hareket ederken sakin görünmelidir."
                   : "Scale should look calm while it moves."}
               </h2>
-              <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-white/70">
+              <p className="mt-8 max-w-[58ch] text-base leading-[1.85] text-gray-700">
                 {isTurkish
                   ? "ABD görsel katmanı, Ölmez'e sadelikten ödün vermeden erişim kazandırır. Hareket markanın sisteminin bir parçasına dönüşür: siyah yüzeyler, bakır işaretler ve amiral gemisi mekandan kopuk değil onunla hizalı bir dış görünürlük."
                   : "The U.S. image layer gives Ölmez reach without losing restraint. Movement becomes part of the brand system: black surfaces, copper marks, and an exterior presence that feels aligned with the flagship room rather than detached from it."}
@@ -398,13 +395,13 @@ export default async function Home() {
                 ]).map((item) => (
                   <div
                     key={item.label}
-                    className="border border-white/10 bg-black/20 p-5 backdrop-blur-sm"
+                    className="border border-gray-300 bg-gray-50 p-5"
                   >
-                    <item.icon className="h-5 w-5 text-[#e7bc8b]" />
-                    <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
+                    <item.icon className="h-5 w-5 text-[#b8865a]" />
+                    <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                       {item.label}
                     </p>
-                    <p className="mt-2 font-display text-xl tracking-[-0.03em] text-white">
+                    <p className="mt-2 font-display text-xl tracking-[-0.03em] text-gray-900">
                       {item.value}
                     </p>
                   </div>
@@ -412,8 +409,8 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="border border-white/10 bg-black/30 p-8 backdrop-blur-sm lg:p-10">
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#e7bc8b]">
+            <div className="border border-gray-300 bg-white p-8 lg:p-10 shadow-sm">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[#b8865a]">
                 {isTurkish ? "Ölçek sinyalleri" : "Scale signals"}
               </p>
               <ul className="mt-8 space-y-6">
@@ -427,9 +424,9 @@ export default async function Home() {
                 ).map((signal) => (
                   <li
                     key={signal}
-                    className="border-b border-white/10 pb-6 last:border-b-0 last:pb-0"
+                    className="border-b border-gray-300 pb-6 last:border-b-0 last:pb-0"
                   >
-                    <p className="text-base leading-[1.8] text-white/72">{signal}</p>
+                    <p className="text-base leading-[1.8] text-gray-700">{signal}</p>
                   </li>
                 ))}
               </ul>
@@ -442,10 +439,10 @@ export default async function Home() {
                   { label: isTurkish ? "Editoryal sayılar" : "Editorial issues", value: `${olmezIssues.length}` },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                       {stat.label}
                     </p>
-                    <p className="mt-2 font-display text-3xl tracking-[-0.03em] text-white">
+                    <p className="mt-2 font-display text-3xl tracking-[-0.03em] text-gray-900">
                       {stat.value}
                     </p>
                   </div>
@@ -458,20 +455,20 @@ export default async function Home() {
 
       <section
         id="marketplace"
-        className="border-t border-white/10 bg-[#050505] py-24 lg:py-32"
+        className="border-t border-gray-300 bg-white py-24 lg:py-32"
       >
         <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-600">
                 {isTurkish ? "Daha geniş sistem" : "The wider system"}
               </span>
-              <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
                 {isTurkish
                   ? "Ölmez önden gider. Ekosistem onun arkasından gelir."
                   : "Ölmez leads. The ecosystem follows behind it."}
               </h2>
-              <p className="mt-8 max-w-[56ch] text-base leading-[1.85] text-white/66">
+              <p className="mt-8 max-w-[56ch] text-base leading-[1.85] text-gray-700">
                 {isTurkish
                   ? "Bu ana sayfa artık önce bir Ölmez amiral gemisi olarak okunur. Sistemin geri kalanı görünür kalır ama ikincildir: tamamlayıcı markalar, rapor merkezleri ve operasyon katmanları ancak ana kimlik kurulduktan sonra açılır."
                   : "This homepage now reads as an Ölmez flagship first. The rest of the system remains visible, but secondary: complementary brands, reports hubs, and operating layers accessible once the main identity has been established."}
@@ -479,14 +476,14 @@ export default async function Home() {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href={withLocale("/brands", locale)}
-                  className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+                  className="group inline-flex h-12 items-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#d7ad7a]"
                 >
                   {isTurkish ? "Tüm markaları keşfet" : "Explore all brands"}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
                   href={withLocale("/reports", locale)}
-                  className="inline-flex h-12 items-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
+                  className="inline-flex h-12 items-center gap-3 border border-gray-300 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-gray-700 transition-colors hover:border-gray-400 hover:bg-gray-50"
                 >
                   {isTurkish ? "Raporları gör" : "View reports"}
                 </Link>
@@ -498,23 +495,23 @@ export default async function Home() {
                 <Link
                   key={brand.slug}
                   href={withLocale(`/brands/${brand.slug}`, locale)}
-                  className="group border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-white/20 hover:bg-white/[0.05]"
+                  className="group border border-gray-300 bg-gray-50 p-6 transition-colors hover:border-gray-400 hover:bg-white shadow-sm hover:shadow-md"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                         {brand.focusMarket}
                       </p>
-                      <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
+                      <h3 className="mt-3 font-display text-2xl tracking-[-0.03em] text-gray-900">
                         {brand.name}
                       </h3>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-white/36 transition-colors group-hover:text-[#e7bc8b]" />
+                    <ArrowRight className="h-4 w-4 text-gray-400 transition-colors group-hover:text-[#b8865a]" />
                   </div>
-                  <p className="mt-4 text-sm leading-[1.8] text-white/64">
+                  <p className="mt-4 text-sm leading-[1.8] text-gray-600">
                     {brand.tagline}
                   </p>
-                  <div className="mt-8 flex flex-wrap gap-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35">
+                  <div className="mt-8 flex flex-wrap gap-4 font-mono text-[10px] uppercase tracking-[0.16em] text-gray-500">
                     <span>{isTurkish ? `${brand.unitCount} birim` : `${brand.unitCount} units`}</span>
                     <span>{brand.founded}</span>
                     <span>{brand.headquarters}</span>

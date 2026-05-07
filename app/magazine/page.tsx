@@ -50,7 +50,7 @@ export default async function MagazinePage() {
   const archiveIssues = olmezIssues.slice(1);
 
   return (
-    <main className="relative min-h-screen bg-[#050505] text-white">
+    <main className="relative min-h-screen bg-white text-foreground">
       <Navigation forceScrolled />
 
       <PageHeader
@@ -73,67 +73,68 @@ export default async function MagazinePage() {
       />
 
       {latestIssue && (
-        <section className="border-t border-white/10 py-24 lg:py-32">
-          <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-12">
-            <div className="relative overflow-hidden border border-white/10 bg-black">
-              <Image
-                src={latestIssue.coverImage}
-                alt={latestIssue.title}
-                width={900}
-                height={1200}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </div>
+        <section className="relative py-0 lg:py-0 overflow-hidden">
+          <div className="mx-auto max-w-[1400px] px-0 lg:px-0">
+            <div className="grid lg:grid-cols-2 gap-0">
+              <div className="relative w-full h-[400px] lg:h-[700px] overflow-hidden">
+                <Image
+                  src={latestIssue.coverImage}
+                  alt={latestIssue.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
 
-            <div className="flex flex-col justify-center">
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
-                {isTurkish ? "Güncel sayı" : "Current issue"}
-              </span>
-              <div className="mt-6 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
-                <span className="bg-[#b8865a] px-3 py-1 text-black">
-                  {latestIssue.issueNumber}
+              <div className="flex flex-col justify-center px-6 lg:px-12 py-16 lg:py-24 bg-gradient-to-br from-white to-gray-50">
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-500">
+                  {isTurkish ? "Güncel sayı" : "Current issue"}
                 </span>
-                <span>{latestIssue.date}</span>
-                <span>{latestIssue.pages} {isTurkish ? "sayfa" : "pages"}</span>
-              </div>
-              <h2 className="mt-8 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
-                {latestIssue.title}
-              </h2>
-              <p className="mt-6 max-w-[54ch] text-xl italic tracking-[-0.01em] text-white/76">
-                {latestIssue.subtitle}
-              </p>
-              <p className="mt-8 max-w-[56ch] text-base leading-[1.85] text-white/66">
-                {latestIssue.description}
-              </p>
+                <div className="mt-6 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
+                  <span className="bg-[#b8865a] px-3 py-1 text-white">
+                    {latestIssue.issueNumber}
+                  </span>
+                  <span>{latestIssue.date}</span>
+                  <span>{latestIssue.pages} {isTurkish ? "sayfa" : "pages"}</span>
+                </div>
+                <h2 className="mt-8 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl text-black">
+                  {latestIssue.title}
+                </h2>
+                <p className="mt-6 max-w-[54ch] text-xl italic tracking-[-0.01em] text-gray-700">
+                  {latestIssue.subtitle}
+                </p>
+                <p className="mt-8 max-w-[56ch] text-base leading-[1.85] text-gray-600">
+                  {latestIssue.description}
+                </p>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
-                {latestIssue.featuredHeadlines.map((headline) => (
-                  <div key={headline} className="border border-white/10 p-4">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#e7bc8b]">
-                      {isTurkish ? "Kapak satırı" : "Cover line"}
-                    </p>
-                    <p className="mt-3 text-sm leading-[1.7] text-white/68">
-                      {headline}
-                    </p>
-                  </div>
-                ))}
-              </div>
+                <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                  {latestIssue.featuredHeadlines.map((headline) => (
+                    <div key={headline} className="border border-gray-300 p-4 bg-white">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#b8865a]">
+                        {isTurkish ? "Kapak satırı" : "Cover line"}
+                      </p>
+                      <p className="mt-3 text-sm leading-[1.7] text-gray-700">
+                        {headline}
+                      </p>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href={withLocale("/brands/olmez/magazine", locale)}
-                  className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
-                >
-                  {isTurkish ? "Sayı masasını aç" : "Open issue desk"}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  href={withLocale(`/magazine/${articles[0].slug}`, locale)}
-                  className="inline-flex h-12 items-center justify-center gap-3 border border-white/14 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white/82 transition-colors hover:border-white/30 hover:text-white"
-                >
-                  {isTurkish ? "§1 ile başla" : "Begin with §1"}
-                </Link>
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                  <Link
+                    href={withLocale("/brands/olmez/magazine", locale)}
+                    className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#d7ad7a]"
+                  >
+                    {isTurkish ? "Sayı masasını aç" : "Open issue desk"}
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    href={withLocale(`/magazine/${articles[0].slug}`, locale)}
+                    className="inline-flex h-12 items-center justify-center gap-3 border border-gray-300 px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-gray-800 transition-colors hover:border-gray-400 hover:bg-gray-100"
+                  >
+                    {isTurkish ? "§1 ile başla" : "Begin with §1"}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -141,20 +142,20 @@ export default async function MagazinePage() {
       )}
 
       {archiveIssues.length > 0 && (
-        <section className="border-t border-white/10 bg-white/[0.02] py-24 lg:py-32">
+        <section className="border-t border-gray-300 bg-gray-50 py-24 lg:py-32">
           <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+                <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-500">
                   {isTurkish ? "Arşiv kapakları" : "Archive covers"}
                 </span>
-                <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+                <h2 className="mt-6 max-w-[12ch] font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
                   {isTurkish
                     ? "Geçmiş sayılar odanın parçası olarak kalır."
                     : "Past issues remain part of the room."}
                 </h2>
               </div>
-              <p className="max-w-[44ch] text-sm leading-[1.8] text-white/60">
+              <p className="max-w-[44ch] text-sm leading-[1.8] text-gray-600">
                 {isTurkish
                   ? "Arşiv önce görseldir: her kapak, Ölmez'in dünya görüşünü, liderliği ve ölçeği editoryal disiplinle anlatabildiğinin kanıtı olarak ele alınır."
                   : "The archive is visual first: each cover is treated as proof that Ölmez can communicate worldview, leadership, and scale through editorial discipline."}
@@ -164,24 +165,24 @@ export default async function MagazinePage() {
             <div className="mt-14 grid gap-8 md:grid-cols-2">
               {archiveIssues.map((issue) => (
                 <article key={issue.id} className="group">
-                  <div className="overflow-hidden border border-white/10 bg-black">
+                  <div className="overflow-hidden border border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow">
                     <Image
                       src={issue.coverImage}
                       alt={issue.title}
                       width={900}
                       height={1200}
-                      className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="h-auto w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                  <div className="mt-5 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                     <span>{issue.issueNumber}</span>
-                    <span className="text-white/20">/</span>
+                    <span className="text-gray-300">/</span>
                     <span>{issue.date}</span>
                   </div>
-                  <h3 className="mt-3 font-display text-3xl tracking-[-0.03em] text-white">
+                  <h3 className="mt-3 font-display text-3xl tracking-[-0.03em] text-gray-900">
                     {issue.title}
                   </h3>
-                  <p className="mt-3 max-w-[42ch] text-sm leading-[1.8] text-white/62">
+                  <p className="mt-3 max-w-[42ch] text-sm leading-[1.8] text-gray-600">
                     {issue.subtitle}
                   </p>
                 </article>
@@ -191,16 +192,16 @@ export default async function MagazinePage() {
         </section>
       )}
 
-      <section className="border-t border-white/10 py-24 lg:py-32">
+      <section className="border-t border-gray-300 py-24 lg:py-32 bg-white">
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-12">
           <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+            <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-500">
               {isTurkish ? "Seri dosyası" : "Series dossier"}
             </span>
-            <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl">
+            <h2 className="mt-6 max-w-[13ch] font-display text-4xl tracking-[-0.03em] md:text-5xl lg:text-6xl text-gray-900">
               {series.name}
             </h2>
-            <p className="mt-8 max-w-[54ch] text-base leading-[1.85] text-white/66">
+            <p className="mt-8 max-w-[54ch] text-base leading-[1.85] text-gray-600">
               {series.description}
             </p>
             <div className="mt-10 grid gap-5 sm:grid-cols-3">
@@ -209,11 +210,11 @@ export default async function MagazinePage() {
                 { label: isTurkish ? "Masa" : "Desk", value: series.hq },
                 { label: isTurkish ? "Bölüm" : "Sections", value: String(articles.length) },
               ].map((item) => (
-                <div key={item.label} className="border border-white/10 p-5">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/42">
+                <div key={item.label} className="border border-gray-300 p-5 bg-gray-50">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                     {item.label}
                   </p>
-                  <p className="mt-3 font-display text-2xl tracking-[-0.03em] text-white">
+                  <p className="mt-3 font-display text-2xl tracking-[-0.03em] text-gray-900">
                     {item.value}
                   </p>
                 </div>
@@ -221,24 +222,24 @@ export default async function MagazinePage() {
             </div>
           </div>
 
-          <div className="border border-white/10 bg-white/[0.02]">
+          <div className="border border-gray-300 bg-gray-50">
             <ol>
               {articles.map((article) => (
-                <li key={article.slug} className="border-b border-white/10 last:border-b-0">
+                <li key={article.slug} className="border-b border-gray-300 last:border-b-0">
                   <Link
                     href={withLocale(`/magazine/${article.slug}`, locale)}
-                    className="group block px-6 py-7 transition-colors hover:bg-white/[0.03] lg:px-8"
+                    className="group block px-6 py-7 transition-colors hover:bg-white lg:px-8"
                   >
-                    <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/40">
+                    <div className="flex items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-[0.18em] text-gray-600">
                       <span>
                         §{article.sectionNumber} / {article.totalInSeries}
                       </span>
                       <span>{article.readingMinutes} min</span>
                     </div>
-                    <h3 className="mt-4 font-display text-2xl tracking-[-0.03em] text-white transition-colors group-hover:text-[#f1c995]">
+                    <h3 className="mt-4 font-display text-2xl tracking-[-0.03em] text-gray-900 transition-colors group-hover:text-[#b8865a]">
                       {article.title}
                     </h3>
-                    <p className="mt-3 max-w-[44ch] text-sm leading-[1.8] text-white/60">
+                    <p className="mt-3 max-w-[44ch] text-sm leading-[1.8] text-gray-600">
                       {article.dek}
                     </p>
                   </Link>
@@ -249,17 +250,17 @@ export default async function MagazinePage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-white/[0.02] py-28 lg:py-36">
+      <section className="border-t border-gray-300 bg-gray-50 py-28 lg:py-36">
         <div className="mx-auto max-w-[1100px] px-6 text-center lg:px-12">
-          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/45">
+          <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-gray-500">
             {isTurkish ? "Okumaya devam" : "Continue reading"}
           </span>
-          <h2 className="mt-8 font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl">
+          <h2 className="mt-8 font-display text-4xl tracking-[-0.03em] md:text-6xl lg:text-7xl text-gray-900">
             {isTurkish
-              ? "Kurucunun blueprint'i ile başlayın."
+              ? "Kurucunun blueprint’i ile başlayın."
               : "Start with the founder’s blueprint."}
           </h2>
-          <p className="mx-auto mt-8 max-w-[56ch] text-base leading-[1.85] text-white/64">
+          <p className="mx-auto mt-8 max-w-[56ch] text-base leading-[1.85] text-gray-600">
             {isTurkish
               ? "En güçlü giriş noktası hâlâ kurucu dosyası; serinin geri kalanı oradan açılır."
               : "The strongest entry point remains the founder dossier, then the rest of the series unfolds from there."}
@@ -267,10 +268,10 @@ export default async function MagazinePage() {
           <div className="mt-10 flex justify-center">
             <Link
               href={withLocale(`/magazine/${articles[0].slug}`, locale)}
-              className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#d7ad7a]"
+              className="group inline-flex h-12 items-center justify-center gap-3 bg-[#b8865a] px-7 font-mono text-[11px] uppercase tracking-[0.22em] text-white transition-colors hover:bg-[#d7ad7a]"
             >
               <BookOpen className="h-3.5 w-3.5" />
-              {isTurkish ? "§1'i oku" : "Read §1"}
+              {isTurkish ? "§1’i oku" : "Read §1"}
               <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
